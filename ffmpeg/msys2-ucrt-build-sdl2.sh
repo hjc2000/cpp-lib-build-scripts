@@ -1,7 +1,7 @@
 source_root_path=$(pwd)
-install_path=${source_root_path}/install
+install_path=${source_root_path}/msys2-ucrt-build-install/
 
-get-repo.sh https://github.com/libsdl-org/SDL.git SDL2 &&
+get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2 &&
 cd SDL &&
 if [ ! -d "./build/" ]; then
 	mkdir build
@@ -13,3 +13,8 @@ cmake -G "Unix Makefiles" .. \
 
 make -j12 &&
 make install
+
+cd ${install_path}/include/SDL2 &&
+mv * ${install_path}/include/ &&
+cd ${install_path}/include/ &&
+rm -rf SDL2/

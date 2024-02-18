@@ -18,4 +18,3 @@ cd ${install_path}/include/SDL2 &&
 mv * ${install_path}/include/ &&
 cd ${install_path}/include/ &&
 rm -rf SDL2/
-
