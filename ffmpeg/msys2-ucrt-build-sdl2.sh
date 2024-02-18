@@ -8,13 +8,9 @@ if [ ! -d "./build/" ]; then
 fi &&
 cd build &&
 rm -rf * &&
-cmake -G "Unix Makefiles" .. \
--DCMAKE_INSTALL_PREFIX=${install_path} &&
+cmake -G "Visual Studio 17 2022" .. \
+-DCMAKE_INSTALL_PREFIX=${install_path}
 
-make -j12 &&
-make install
-
-cd ${install_path}/include/SDL2 &&
-mv * ${install_path}/include/ &&
-cd ${install_path}/include/ &&
-rm -rf SDL2/
+# 如果使用 makefile 进行构建，SDL 会检测一些头文件，结果就绑死了 mysy2 了，
+# 编译出来的库在 vs 中无法使用。
+# 所以需要手动打开 vs 进行编译。本脚本只能做到这了。
