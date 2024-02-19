@@ -27,6 +27,7 @@ cd ${source_root_path}/tsduck &&
 make -j12 NOGITHUB=1 NOVATEK=1 NOTEST=1 NODEKTEC=1 NOHIDES=1 NOCURL=1 NOEDITLINE=1 NOSRT=1 NORIST=1 &&
 make install SYSPREFIX=${install_path} &&
 
-echo delete etc share
+echo 删除目录 etc/
+echo 删除目录 share/
 cd ${install_path} &&
 rm -rf etc share
