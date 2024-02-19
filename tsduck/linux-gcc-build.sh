@@ -30,3 +30,8 @@ echo 删除： 安装目录/etc/
 echo 删除： 安装目录/share/
 cd ${install_path} &&
 rm -rf etc share
+
+cd ${install_path}/include/tsduck &&
+mv ./* ../ &&
+cd ../ &&
+rm -rf tsduck/
