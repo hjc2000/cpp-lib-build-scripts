@@ -23,4 +23,4 @@ cmake -G "Ninja" .. \
 -DCMAKE_TOOLCHAIN_FILE=$(pwd)/toolchain.cmake \
 -DCMAKE_INSTALL_PREFIX=${install_path} &&
 
-ninja && ninja install
+ninja -j12 && ninja install
