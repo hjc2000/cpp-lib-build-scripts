@@ -3,7 +3,7 @@
 # C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\x64\bin
 # C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja
 source_root_path=$(pwd)
-install_path=${source_root_path}/msys2-ucrt-build-install/
+install_path=${source_root_path}/msys2-build-install/
 
 get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2 &&
 cd SDL &&
@@ -24,4 +24,9 @@ cmake -G "Ninja" .. \
 -DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_INSTALL_PREFIX=${install_path} &&
 
-ninja -j12 && ninja install
+ninja -j12 && ninja install &&
+
+cd ${install_path}/include/SDL2 &&
+mv * ${install_path}/include/ &&
+cd ${install_path}/include/ &&
+rm -rf SDL2/
