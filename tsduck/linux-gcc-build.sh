@@ -1,5 +1,5 @@
 source_root_path=$(pwd)
-install_path="${source_root_path}/linux-gcc-build-install/"
+install_path="${source_root_path}/install/linux-gcc-build-install/"
 
 get-repo.sh https://github.com/tsduck/tsduck.git &&
 cd ${source_root_path}/tsduck &&
