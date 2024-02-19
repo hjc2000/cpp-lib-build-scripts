@@ -1,3 +1,7 @@
+# 需要环境变量 PATH
+# 需要 vs 安装 clang
+# C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\x64\bin
+# C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja
 source_root_path=$(pwd)
 install_path=${source_root_path}/msys2-ucrt-build-install/
 
@@ -15,8 +19,8 @@ set(CMAKE_SYSTEM_PROCESSOR x64)
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)" > toolchain.cmake &&
 
-cmake -G "Unix Makefiles" .. \
+cmake -G "Ninja" .. \
 -DCMAKE_TOOLCHAIN_FILE=$(pwd)/toolchain.cmake \
 -DCMAKE_INSTALL_PREFIX=${install_path} &&
 
-make -j12 && make install
+ninja && ninja install
