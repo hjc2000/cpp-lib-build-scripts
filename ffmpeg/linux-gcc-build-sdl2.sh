@@ -1,5 +1,5 @@
 source_root_path=$(pwd)
-install_path=${source_root_path}/linux-localhost-install/
+install_path=${source_root_path}/install/linux-gcc-install/
 
 get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2 &&
 cd SDL &&

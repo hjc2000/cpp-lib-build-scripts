@@ -1,5 +1,5 @@
 source_root_path=$(pwd)
-install_path="${source_root_path}/linux-localhost-install/"
+install_path="${source_root_path}/install/linux-gcc-install/"
 
 get-repo.sh https://gitee.com/Qianshunan/x265_git.git &&
 cd x265_git/source &&
@@ -19,4 +19,3 @@ cmake -G "Unix Makefiles" .. \
 make clean
 make -j12 &&
 make install
-

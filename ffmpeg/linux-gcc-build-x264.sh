@@ -1,5 +1,5 @@
 source_root_path=$(pwd)
-install_path="${source_root_path}/linux-localhost-install/"
+install_path="${source_root_path}/install/linux-gcc-install/"
 
 get-repo.sh https://gitee.com/Qianshunan/x264.git &&
 cd ${source_root_path}/x264 &&
@@ -13,4 +13,3 @@ cd ${source_root_path}/x264 &&
 make clean
 make -j12 &&
 make install
-
