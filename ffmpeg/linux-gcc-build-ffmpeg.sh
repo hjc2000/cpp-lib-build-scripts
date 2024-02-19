@@ -2,7 +2,8 @@ source_root_path=$(pwd)
 install_path="${source_root_path}/install/linux-gcc-install"
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"${install_path}/lib/pkgconfig"
 
-cd ffmpeg-6.1.1 &&
+get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1 &&
+cd FFmpeg &&
 
 ./configure \
 --prefix="${install_path}" \
