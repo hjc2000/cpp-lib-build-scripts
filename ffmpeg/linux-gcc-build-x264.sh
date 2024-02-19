@@ -4,6 +4,8 @@ install_path="${source_root_path}/install/linux-gcc-install/"
 get-repo.sh https://gitee.com/Qianshunan/x264.git &&
 cd ${source_root_path}/x264 &&
 
+
+echo $(pwd)
 ./configure \
 --prefix="${install_path}" \
 --enable-shared \
