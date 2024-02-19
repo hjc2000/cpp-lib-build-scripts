@@ -30,6 +30,8 @@
 
 # 将 Shell 脚本文件标记为文本，并使用 LF 作为行结束符
 *.sh 		text eol=lf
+*.cmd		text eol=crlf
+*.bat		text eol=crlf
 
 # 将 C、C++ 和 C# 源文件和头文件标记为文本，并使用 LF 作为行结束符
 *.[cC] 		text eol=crlf
