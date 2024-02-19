@@ -21,6 +21,7 @@ set(CMAKE_CXX_COMPILER clang++)" > toolchain.cmake &&
 
 cmake -G "Ninja" .. \
 -DCMAKE_TOOLCHAIN_FILE=$(pwd)/toolchain.cmake \
+-DCMAKE_BUILD_TYPE=Release \
 -DCMAKE_INSTALL_PREFIX=${install_path} &&
 
 ninja -j12 && ninja install
