@@ -32,3 +32,13 @@ export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/SDL2/lib/pkgconfig
 
 make clean &&
 make -j12 && make install
+
+# 将 msys2 中的 dll 复制到安装目录
+# 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
+cp /ucrt64/bin/libstdc++-6.dll ${install_path}/bin/
+cp /ucrt64/bin/libwinpthread-1.dll ${install_path}/bin/
+cp /ucrt64/bin/zlib1.dll ${install_path}/bin/
+cp /ucrt64/bin/libgcc_s_seh-1.dll ${install_path}/bin/
+cp /ucrt64/bin/libbz2-1.dll ${install_path}/bin/
+cp /ucrt64/bin/libiconv-2.dll ${install_path}/bin/
+cp /ucrt64/bin/liblzma-5.dll ${install_path}/bin/
