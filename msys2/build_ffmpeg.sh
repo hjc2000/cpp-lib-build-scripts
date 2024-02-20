@@ -7,15 +7,15 @@ export cpp_lib_build_scripts_path=$(cygpath ${cpp_lib_build_scripts_path})
 
 install_path="${libs_path}/ffmpeg"
 
-cd ${repos_path} &&
-get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1 &&
-cd ${repos_path}/FFmpeg/ &&
+cd ${repos_path}
+get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1
+cd ${repos_path}/FFmpeg/
 
 
 # 编译依赖
-${cpp_lib_build_scripts_path}/msys2/build_x264.sh &&
-${cpp_lib_build_scripts_path}/msys2/build_x265.sh &&
-${cpp_lib_build_scripts_path}/msys2/build_sdl2.sh &&
+${cpp_lib_build_scripts_path}/msys2/build_x264.sh
+${cpp_lib_build_scripts_path}/msys2/build_x265.sh
+${cpp_lib_build_scripts_path}/msys2/build_sdl2.sh
 ${cpp_lib_build_scripts_path}/msys2/build_amf.sh
 
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x264/lib/pkgconfig
@@ -30,10 +30,11 @@ export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/SDL2/lib/pkgconfig
 --enable-amf \
 --enable-pic \
 --enable-gpl \
---enable-shared &&
+--enable-shared
 
-make clean &&
-make -j12 && make install
+make clean
+make -j12
+make install
 
 # 将 msys2 中的 dll 复制到安装目录
 # 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
