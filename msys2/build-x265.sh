@@ -9,7 +9,7 @@ cd ${repos_path}/x265_git/source &&
 if [ ! -d ./build/ ]; then
 	mkdir build
 fi &&
-cd build && rm -rf *
+cd build &&
 
 cmake -G "Unix Makefiles" .. \
 -DCMAKE_INSTALL_PREFIX="${install_path}" \
