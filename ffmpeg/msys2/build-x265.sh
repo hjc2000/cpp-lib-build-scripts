@@ -18,4 +18,6 @@ cmake -G "Unix Makefiles" .. \
 -DENABLE_ASSEMBLY=off &&
 
 make -j12 &&
-make install
+make install &&
+cd ${libs_path}/x265/lib/pkgconfig &&
+update-pc-prefix.sh x265.pc
