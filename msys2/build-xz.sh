@@ -6,19 +6,22 @@ export cpp_lib_build_scripts_path=$(cygpath ${cpp_lib_build_scripts_path})
 install_path="${libs_path}/xz"
 
 cd ${repos_path} &&
-get-repo.sh https://github.com/xz-mirror/xz.git &&
-cd ${repos_path}/xz/ &&
+wget-repo.sh ${repos_path} https://github.com/tukaani-project/xz/releases/download/v5.4.6/xz-5.4.6.tar.gz &&
+cd ${repos_path}/xz-5.4.6/ &&
 
 
 # 确保 build 目录存在
 if [ ! -d ./build/ ]; then
 	mkdir build
 fi &&
-cd build && rm -rf *
+cd build &&
 
 cmake -G "Unix Makefiles" .. \
 -DCMAKE_INSTALL_PREFIX="${install_path}" \
 -DBUILD_SHARED_LIBS=ON &&
 
 make -j12 &&
-make install
+make install &&
+
+cd ${install_path}/bin/ &&
+cp liblzma.dll liblzma-5.dll
