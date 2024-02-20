@@ -1,4 +1,5 @@
 install_path="${libs_path}/x265"
+install_path=$(cygpath ${install_path})
 
 cd ${repos_path} &&
 get-repo.sh https://gitee.com/Qianshunan/x265_git.git &&
