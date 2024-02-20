@@ -1,3 +1,5 @@
+set -e
+
 # 将依赖的环境变量转换成 msys 格式，然后导出。
 export libs_path=$(cygpath ${libs_path})
 export repos_path=$(cygpath ${repos_path})
