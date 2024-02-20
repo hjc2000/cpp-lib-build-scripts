@@ -1,5 +1,13 @@
 export libs_path=$(cygpath ${libs_path})
+export repos_path=$(cygpath ${repos_path})
+export cpp_lib_build_scripts_path=$(cygpath ${cpp_lib_build_scripts_path})
+
 install_path="${libs_path}/ffmpeg"
+
+# 编译依赖
+${cpp_lib_build_scripts_path}/msys2/build-x264.sh
+${cpp_lib_build_scripts_path}/msys2/build-x265.sh
+${cpp_lib_build_scripts_path}/msys2/build-sdl2.sh
 
 cd ${repos_path} &&
 get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1 &&
