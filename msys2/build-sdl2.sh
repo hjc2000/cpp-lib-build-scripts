@@ -5,17 +5,18 @@
 install_path="${libs_path}/SDL2"
 
 cd ${repos_path} &&
-get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2 &&
+get-repo.sh https://github.com/libsdl-org/SDL.git release-2.30.x &&
 cd ${repos_path}/SDL/ &&
 
 if [ ! -d ./build/ ]; then
 	mkdir build
 fi &&
-cd build && rm -rf *
+cd build &&
 
 touch toolchain.cmake &&
 echo "set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_SYSTEM_PROCESSOR x64)
+set(CMAKE_RC_COMPILER llvm-rc)
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)" > toolchain.cmake &&
 
