@@ -11,10 +11,10 @@ cd ${repos_path}/FFmpeg/ &&
 
 
 # 编译依赖
-${cpp_lib_build_scripts_path}/msys2/build-x264.sh &&
-${cpp_lib_build_scripts_path}/msys2/build-x265.sh &&
-${cpp_lib_build_scripts_path}/msys2/build-sdl2.sh &&
-${cpp_lib_build_scripts_path}/msys2/build-amf.sh
+${cpp_lib_build_scripts_path}/msys2/build_x264.sh &&
+${cpp_lib_build_scripts_path}/msys2/build_x265.sh &&
+${cpp_lib_build_scripts_path}/msys2/build_sdl2.sh &&
+${cpp_lib_build_scripts_path}/msys2/build_amf.sh
 
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x264/lib/pkgconfig
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x265/lib/pkgconfig
