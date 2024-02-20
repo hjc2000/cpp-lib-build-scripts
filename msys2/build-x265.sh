@@ -19,5 +19,7 @@ cmake -G "Unix Makefiles" .. \
 
 make -j12 &&
 make install &&
-cd ${libs_path}/x265/lib/pkgconfig &&
+
+# 修复 .pc 文件内的路径
+cd ${install_path}/lib/pkgconfig &&
 update-pc-prefix.sh x265.pc
