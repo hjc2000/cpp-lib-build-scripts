@@ -5,10 +5,10 @@ cd ${repos_path} &&
 get-repo.sh https://gitee.com/Qianshunan/x265_git.git &&
 cd ${repos_path}/x265_git/source &&
 
+# 确保 build 目录存在
 if [ ! -d ./build/ ]; then
 	mkdir build
 fi &&
-
 cd build && rm -rf *
 
 cmake -G "Unix Makefiles" .. \

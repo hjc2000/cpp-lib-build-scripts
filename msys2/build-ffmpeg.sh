@@ -1,3 +1,4 @@
+# 将依赖的环境变量转换成 msys 格式，然后导出。
 export libs_path=$(cygpath ${libs_path})
 export repos_path=$(cygpath ${repos_path})
 export cpp_lib_build_scripts_path=$(cygpath ${cpp_lib_build_scripts_path})
@@ -13,6 +14,9 @@ ${cpp_lib_build_scripts_path}/msys2/build-amf.sh
 cd ${repos_path} &&
 get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1 &&
 cd ${repos_path}/FFmpeg/ &&
+
+
+
 
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x264/lib/pkgconfig
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x265/lib/pkgconfig
