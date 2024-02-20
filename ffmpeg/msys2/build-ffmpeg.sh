@@ -1,6 +1,5 @@
+export libs_path=$(cygpath ${libs_path})
 install_path="${libs_path}/ffmpeg"
-install_path=$(cygpath ${install_path})
-libs_path=$(cygpath ${libs_path})
 
 cd ${repos_path} &&
 get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1 &&
@@ -22,5 +21,4 @@ pkg-config --libs --cflags x264
 --enable-gpl \
 --enable-shared &&
 
-make clean &&
 make -j12 && make install
