@@ -2,11 +2,11 @@
 # 需要 vs 安装 clang
 # C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\Llvm\x64\bin
 # C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja
-source_root_path=$(pwd)
-install_path=${source_root_path}/msys2-build-install/
+install_path="${libs_path}/SDL2"
 
+cd ${repos_path} &&
 get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2 &&
-cd SDL &&
+cd ${repos_path}/SDL/ &&
 
 if [ ! -d ./build/ ]; then
 	mkdir build

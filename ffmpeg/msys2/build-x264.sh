@@ -1,8 +1,8 @@
-source_root_path=$(pwd)
-install_path="${source_root_path}/msys2-build-install/"
+install_path="${libs_path}/x264"
 
+cd ${repos_path} &&
 get-repo.sh https://gitee.com/Qianshunan/x264.git &&
-cd ${source_root_path}/x264 &&
+cd ${repos_path}/x264 &&
 
 ./configure \
 --prefix="${install_path}" \

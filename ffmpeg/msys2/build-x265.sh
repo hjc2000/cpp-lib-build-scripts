@@ -1,8 +1,8 @@
-source_root_path=$(pwd)
-install_path="${source_root_path}/msys2-build-install/"
+install_path="${libs_path}/x265"
 
+cd ${repos_path} &&
 get-repo.sh https://gitee.com/Qianshunan/x265_git.git &&
-cd x265_git/source &&
+cd ${repos_path}/x265_git/source &&
 
 if [ ! -d ./build/ ]; then
 	mkdir build
