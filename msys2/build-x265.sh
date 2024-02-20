@@ -2,7 +2,7 @@ export libs_path=$(cygpath ${libs_path})
 install_path="${libs_path}/x265"
 
 cd ${repos_path} &&
-get-repo.sh https://gitee.com/Qianshunan/x265_git.git &&
+get-repo.sh https://bitbucket.org/multicoreware/x265_git.git &&
 cd ${repos_path}/x265_git/source &&
 
 # 确保 build 目录存在

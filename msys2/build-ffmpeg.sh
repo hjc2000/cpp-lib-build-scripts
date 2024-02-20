@@ -25,11 +25,10 @@ export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/SDL2/lib/pkgconfig
 --extra-cflags="-I${libs_path}/amf/include -DAMF_CORE_STATICTIC" \
 --enable-libx264 \
 --enable-libx265 \
---disable-lzma \
---disable-zlib \
 --enable-amf \
 --enable-pic \
 --enable-gpl \
 --enable-shared &&
 
+make clean &&
 make -j12 && make install
