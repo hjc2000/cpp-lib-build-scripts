@@ -17,8 +17,6 @@ cd ${repos_path}/FFmpeg/ &&
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x264/lib/pkgconfig
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x265/lib/pkgconfig
 export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/SDL2/lib/pkgconfig
-echo $PKG_CONFIG_PATH
-pkg-config --libs --cflags x264
 
 ./configure \
 --prefix="${install_path}" \
