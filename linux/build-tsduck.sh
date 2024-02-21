@@ -1,6 +1,5 @@
 set -e
-current_path=$(pwd)
-${current_path}/base_scripts/check-env-var.sh
+${cpp_lib_build_scripts_path}/linux/base-scripts/check-env-var.sh
 install_path="${libs_path}/tsduck"
 
 cd ${repos_path}
