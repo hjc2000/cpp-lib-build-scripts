@@ -1,8 +1,23 @@
-source_root_path=$(pwd)
-install_path="${source_root_path}/install/linux-gcc-build-install/"
+set -e
 
-get-repo.sh https://github.com/tsduck/tsduck.git &&
-cd ${source_root_path}/tsduck &&
+if [ -z "$libs_path" ]; then
+  exit 1
+fi
+
+if [ -z "$repos_path" ]; then
+  exit 1
+fi
+
+if [ -z "$cpp_lib_build_scripts_path" ]; then
+  exit 1
+fi
+
+install_path="${libs_path}/tsduck"
+
+cd ${repos_path}
+get-repo.sh https://github.com/tsduck/tsduck.git
+cd ${repos_path}/tsduck/
+
 
 # ./scripts/install-prerequisites.sh
 # 这里面的很多依赖与系统的现有项冲突，所以就不要安装了。
@@ -22,14 +37,17 @@ cd ${source_root_path}/tsduck &&
 #  - NOGITHUB   : No version check, no download, no upgrade from GitHub.
 #  - NOHWACCEL  : Disable hardware acceleration such as crypto instructions.
 #  - NOPCSTD    : Remove the std=c++17 flag from libtsduck's pkg-config file.
-make clean &&
-make -j12 NOGITHUB=1 NOVATEK=1 NOTEST=1 NODEKTEC=1 NOHIDES=1 NOCURL=1 NOEDITLINE=1 NOSRT=1 NORIST=1 &&
-make install SYSPREFIX=${install_path} &&
+make clean
 
-cd ${install_path} &&
+make -j12 \
+NOGITHUB=1 NOVATEK=1 NOTEST=1 \
+NODEKTEC=1 NOHIDES=1 NOCURL=1 \
+NOEDITLINE=1 NOSRT=1 NORIST=1
+
+make install SYSPREFIX=${install_path}
+
+cd ${install_path}
 rm -rf etc share
 
-cd ${install_path}/include/tsduck &&
-mv ./* ../ &&
-cd ../ &&
-rm -rf tsduck/
+mv ${install_path}/include/tsduck/* ${install_path}/include/
+rm -rf ${install_path}/include/tsduck/
