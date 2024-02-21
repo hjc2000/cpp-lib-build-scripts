@@ -3,6 +3,8 @@ current_path=$(pwd)
 ${current_path}/base_scripts/check_env_var.sh
 install_path="${libs_path}/SDL2"
 
+sudo apt install libxext-dev
+
 cd ${repos_path}
 get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2
 cd ${repos_path}/SDL/
@@ -15,6 +17,7 @@ cd build
 cmake -G "Unix Makefiles" .. \
 -DCMAKE_INSTALL_PREFIX=${install_path}
 
+make clean
 make -j12
 make install
 
