@@ -12,7 +12,7 @@ wget-repo.sh ${repos_path} https://boostorg.jfrog.io/artifactory/main/release/1.
 if [ -d  ${repos_path}/boost_1_84_0/ ]; then
 	# 因为 URL 是 boost_1_84_0_rc1，但解压后是 boost_1_84_0，所以需要移动。
 	# 
-	# 但是，如果已经移动过了，再次执行本脚本就会因为已经存在 boost_1_84_0_rc1 了，
+	# 但是，如果已经移动过了，再次执行本脚本，就会因为已经存在 boost_1_84_0_rc1 了，
 	# wget-repo.sh 不执行下载解压，也就不会有 boost_1_84_0，所以移动会失败。
 	# 所以需要先判断，然后才能移动。
 	mv ${repos_path}/boost_1_84_0/ ${repos_path}/boost_1_84_0_rc1/
