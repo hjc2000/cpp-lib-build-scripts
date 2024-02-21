@@ -27,6 +27,7 @@ export PKG_CONFIG_PATH=${libs_path}/openssl/lib64/pkgconfig:${PKG_CONFIG_PATH}
 --enable-pic \
 --enable-openssl \
 --enable-gpl \
+--enable-version3 \
 --enable-shared
 
 make clean
