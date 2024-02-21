@@ -11,11 +11,13 @@ cd ${repos_path}/FFmpeg
 ${cpp_lib_build_scripts_path}/linux/build-x264.sh
 ${cpp_lib_build_scripts_path}/linux/build-x265.sh
 ${cpp_lib_build_scripts_path}/linux/build-sdl2.sh
+${cpp_lib_build_scripts_path}/linux/build-openssl.sh
 
 export PKG_CONFIG_PATH=""
 export PKG_CONFIG_PATH=${libs_path}/x264/lib/pkgconfig:${PKG_CONFIG_PATH}
 export PKG_CONFIG_PATH=${libs_path}/x265/lib/pkgconfig:${PKG_CONFIG_PATH}
 export PKG_CONFIG_PATH=${libs_path}/SDL2/lib/pkgconfig:${PKG_CONFIG_PATH}
+export PKG_CONFIG_PATH=${libs_path}/openssl/lib64/pkgconfig:${PKG_CONFIG_PATH}
 
 
 ./configure \
@@ -23,6 +25,7 @@ export PKG_CONFIG_PATH=${libs_path}/SDL2/lib/pkgconfig:${PKG_CONFIG_PATH}
 --enable-libx265 \
 --enable-libx264 \
 --enable-pic \
+--enable-openssl \
 --enable-gpl \
 --enable-shared
 
