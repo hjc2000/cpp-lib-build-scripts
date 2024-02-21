@@ -1,9 +1,13 @@
-source_root_path=$(pwd)
-install_path="${source_root_path}/install/linux-gcc-install"
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:"${install_path}/lib/pkgconfig"
+set -e
+current_path=$(pwd)
+${current_path}/base_scripts/check-env-var.sh
 
-get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1 &&
-cd FFmpeg &&
+
+install_path="${libs_path}/ffmpeg"
+cd ${repos_path}
+get-repo.sh https://gitee.com/programmingwindows/FFmpeg.git release/6.1
+cd ${repos_path}/FFmpeg
+
 
 ./configure \
 --prefix="${install_path}" \
@@ -14,7 +18,8 @@ cd FFmpeg &&
 --enable-libx264 \
 --enable-pic \
 --enable-gpl \
---enable-shared &&
+--enable-shared
 
-make clean &&
-make -j12 && make install
+make clean
+make -j12
+make install

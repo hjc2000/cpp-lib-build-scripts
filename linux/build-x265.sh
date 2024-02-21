@@ -19,7 +19,7 @@ cmake -G "Unix Makefiles" .. \
 -DCMAKE_INSTALL_PREFIX="${install_path}" \
 -DENABLE_SHARED=on \
 -DENABLE_PIC=on \
--DENABLE_ASSEMBLY=off &&
+-DENABLE_ASSEMBLY=off
 
 make clean
 make -j12
