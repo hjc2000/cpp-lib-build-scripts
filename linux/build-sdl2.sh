@@ -1,5 +1,17 @@
-# 依赖
-# sudo apt-get install libasound2-dev libpulse-dev
+set -e
+# 依赖项
+dependencies=(libasound2-dev libpulse-dev)
+# 检查依赖项是否安装
+for dep in "${dependencies[@]}"; do
+    if ! dpkg -l | grep -qw "$dep"; then
+        echo "缺少依赖项: $dep"
+        sudo apt-get install $dep
+    fi
+done
+
+
+
+
 
 set -e
 ${cpp_lib_build_scripts_path}/linux/base-scripts/check-env-var.sh
