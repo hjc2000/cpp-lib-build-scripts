@@ -2,8 +2,6 @@ set -e
 ${cpp_lib_build_scripts_path}/linux/base-scripts/check-env-var.sh
 install_path="${libs_path}/SDL2"
 
-sudo apt install libxext-dev
-
 cd ${repos_path}
 get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2
 cd ${repos_path}/SDL/
