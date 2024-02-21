@@ -1,11 +1,15 @@
-source_root_path=$(pwd)
-install_path="${source_root_path}/install/linux-gcc-install/"
+set -e
+current_path=$(pwd)
+${current_path}/base_scripts/check_env_var.sh
+install_path="${libs_path}/x264"
 
-get-repo.sh https://gitee.com/Qianshunan/x264.git &&
-cd ${source_root_path}/x264 &&
+
+cd ${repos_path}
+get-repo.sh https://gitee.com/Qianshunan/x264.git
+cd ${repos_path}/x264
 
 
-echo $(pwd)
+
 ./configure \
 --prefix="${install_path}" \
 --enable-shared \
@@ -13,5 +17,5 @@ echo $(pwd)
 --enable-pic &&
 
 make clean
-make -j12 &&
+make -j12
 make install
