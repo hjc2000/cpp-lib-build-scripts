@@ -4,7 +4,7 @@ ${current_path}/base_scripts/check_env_var.sh
 install_path="${libs_path}/SDL2"
 
 cd ${repos_path}
-get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2 &&
+get-repo.sh https://gitee.com/mycn027b/SDL.git SDL2
 cd ${repos_path}/SDL/
 
 if [ ! -d "./build/" ]; then
