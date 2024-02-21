@@ -1,15 +1,18 @@
 set -e
 
 if [ -z "$libs_path" ]; then
-  exit 1
+	echo "未发现环境变量 libs_path"
+	exit 1
 fi
 
 if [ -z "$repos_path" ]; then
-  exit 1
+	echo "未发现环境变量 repos_path"
+	exit 1
 fi
 
 if [ -z "$cpp_lib_build_scripts_path" ]; then
-  exit 1
+	echo "未发现环境变量 cpp_lib_build_scripts_path"
+	exit 1
 fi
 
 install_path="${libs_path}/tsduck"
