@@ -1,3 +1,6 @@
+# 依赖
+# sudo apt-get install libasound2-dev libpulse-dev
+
 set -e
 ${cpp_lib_build_scripts_path}/linux/base-scripts/check-env-var.sh
 install_path="${libs_path}/SDL2"
