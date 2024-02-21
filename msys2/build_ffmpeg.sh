@@ -18,9 +18,10 @@ ${cpp_lib_build_scripts_path}/msys2/build_x265.sh
 ${cpp_lib_build_scripts_path}/msys2/build_sdl2.sh
 ${cpp_lib_build_scripts_path}/msys2/build_amf.sh
 
-export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x264/lib/pkgconfig
-export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/x265/lib/pkgconfig
-export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/SDL2/lib/pkgconfig
+export PKG_CONFIG_PATH=""
+export PKG_CONFIG_PATH=${libs_path}/x264/lib/pkgconfig:${PKG_CONFIG_PATH}
+export PKG_CONFIG_PATH=${libs_path}/x265/lib/pkgconfig:${PKG_CONFIG_PATH}
+export PKG_CONFIG_PATH=${libs_path}/SDL2/lib/pkgconfig:${PKG_CONFIG_PATH}
 
 ./configure \
 --prefix="${install_path}" \
@@ -32,7 +33,6 @@ export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:${libs_path}/SDL2/lib/pkgconfig
 --enable-gpl \
 --enable-shared
 
-make clean
 make -j12
 make install
 
