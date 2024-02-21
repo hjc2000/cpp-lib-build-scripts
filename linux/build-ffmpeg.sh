@@ -11,9 +11,6 @@ cd ${repos_path}/FFmpeg
 
 ./configure \
 --prefix="${install_path}" \
---pkg-config="/usr/bin/pkg-config" \
---extra-cflags="-I${install_path}/include" \
---extra-ldflags="-L${install_path}/lib" \
 --enable-libx265 \
 --enable-libx264 \
 --enable-pic \
