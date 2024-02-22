@@ -21,5 +21,6 @@ run-bash-cmd.ps1 @"
 run-bash-cmd.ps1 "make -j12"
 run-bash-cmd.ps1 "make install"
 
+Write-Host "`n`n`n========================================"
 Write-Host "pc 文件的内容："
 Get-Content $install_path/lib/pkgconfig/x264.pc
