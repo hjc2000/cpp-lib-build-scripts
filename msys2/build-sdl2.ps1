@@ -6,14 +6,15 @@ param (
 $ErrorActionPreference = "Stop"
 
 Set-Location ${repos_path}
-get-git-repo.ps1 https://github.com/libsdl-org/SDL.git release-2.30.x
-
-# 创建构建目录
-New-Item -ItemType Directory -Path "${repos_path}/SDL/build/" -Force
-Set-Location "${repos_path}/SDL/build/"
+git clone https://github.com/libsdl-org/SDL.git --branch release-2.30.x
+$source_path = "${repos_path}/SDL/"
+$build_path = "$source_path/build/"
+New-Item -ItemType Directory -Path $build_path -Force
+Set-Location $build_path
+Remove-Item -Path "$build_path/*"
 
 # 创建文件 toolchain.cmake
-New-Item -ItemType File -Path "${repos_path}/SDL/build/toolchain.cmake" -Force
+New-Item -ItemType File -Path "$build_path/toolchain.cmake" -Force
 # 向 toolchain.cmake 写入内容
 $toolchain_file_content = @"
 set(CMAKE_SYSTEM_NAME Windows)
@@ -26,8 +27,8 @@ set(CMAKE_CXX_COMPILER clang++)
 $toolchain_file_content | Out-File -FilePath toolchain.cmake -Encoding UTF8
 
 $install_path = "$libs_path/SDL2/"
-cmake -G "Ninja" .. `
-	-DCMAKE_TOOLCHAIN_FILE="${repos_path}/SDL/build/toolchain.cmake" `
+cmake -G "Ninja" $source_path `
+	-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 	-DCMAKE_BUILD_TYPE=Release `
 	-DCMAKE_INSTALL_PREFIX="$install_path"
 

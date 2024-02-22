@@ -5,11 +5,23 @@ param (
 )
 $ErrorActionPreference = "Stop"
 
+# 通过 apt 安装依赖
+$dependent_libs = @(
+	"libasound2-dev",
+	"libpulse-dev"
+)
+foreach ($lib in $dependent_libs)
+{
+	sudo apt install $lib
+}
+
 Set-Location ${repos_path}
-get-git-repo.ps1 https://gitee.com/mycn027b/SDL.git release-2.30.x
+git clone https://gitee.com/mycn027b/SDL.git --branch release-2.30.x
+$source_path = "${repos_path}/SDL/"
+$build_path = "$source_path/build/"
 
 # 创建构建目录
-New-Item -ItemType Directory -Path "${repos_path}/SDL/build/" -Force
+New-Item -ItemType Directory -Path $build_path -Force
 Set-Location "${repos_path}/SDL/build/"
 
 $install_path = "$libs_path/SDL2/"

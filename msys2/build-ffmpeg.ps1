@@ -12,7 +12,7 @@ $ErrorActionPreference = "Stop"
 & ${cpp_lib_build_scripts_path}/msys2/build-amf.ps1
 
 Set-Location ${repos_path}
-get-git-repo.ps1 https://gitee.com/programmingwindows/FFmpeg.git release/6.1
+git clone https://gitee.com/programmingwindows/FFmpeg.git --branch release/6.1
 Set-Location -Path "${repos_path}/FFmpeg/"
 
 $install_path = "${libs_path}/ffmpeg"
@@ -29,6 +29,7 @@ run-bash-cmd.ps1 @"
 --enable-gpl \
 --enable-shared
 "@
+run-bash-cmd.ps1 "make clean"
 run-bash-cmd.ps1 "make -j12"
 run-bash-cmd.ps1 "make install"
 

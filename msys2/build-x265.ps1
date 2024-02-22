@@ -6,13 +6,14 @@ param (
 $ErrorActionPreference = "Stop"
 
 Set-Location $repos_path
-get-git-repo.ps1 https://bitbucket.org/multicoreware/x265_git.git
-Set-Location $repos_path/x265_git/source
+get-git-repo.ps1 -git_url https://bitbucket.org/multicoreware/x265_git.git
+$source_path = "$repos_path/x265_git/source"
+$build_path = "$source_path/build/"
+New-Item -ItemType Directory -Path $build_path -Force
+Remove-Item "$build_path/*" -Recurse -Force
+Set-Location $build_path
 
-New-Item -ItemType Directory -Path "$repos_path/x265_git/source/build/" -Force
-Set-Location "$repos_path/x265_git/source/build/"
-
-$install_path = "$libs_path/x265"
+$install_path = "$libs_path/x265/"
 cmake -G "Ninja" .. `
 	-DCMAKE_INSTALL_PREFIX="${install_path}" `
 	-DENABLE_SHARED=on `
