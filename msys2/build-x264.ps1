@@ -7,21 +7,25 @@ $ErrorActionPreference = "Stop"
 
 Set-Location $repos_path
 get-git-repo.ps1 https://gitee.com/Qianshunan/x264.git
-Set-Location $repos_path/x264
+Set-Location "$repos_path/x264/"
 
 $install_path = "$libs_path/x264"
 
 $configure_cmd = @"
+set -e
+
+cd $repos_path/x264/
+
 ./configure \
---prefix=${install_path} \
+--prefix="$(cygpath.exe ${install_path})" \
 --enable-shared \
 --disable-opencl \
 --enable-pic
-"@
-configure.ps1 $configure_cmd
 
 make -j12
 make install
+"@
+run-bash-cmd.ps1 $configure_cmd
 
 Write-Host "pc 文件的内容："
 Get-Content $install_path/lib/pkgconfig/x264.pc
