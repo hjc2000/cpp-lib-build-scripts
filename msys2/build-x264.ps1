@@ -10,15 +10,15 @@ get-git-repo.ps1 https://gitee.com/Qianshunan/x264.git
 Set-Location $repos_path/x264
 
 $install_path = "$libs_path/x264"
-Write-Host $install_path
 
-bash.exe -c "./configure \
+$configure_cmd = @"
+./configure \
 --prefix=${install_path} \
 --enable-shared \
 --disable-opencl \
---enable-pic &&
-exit
-"
+--enable-pic
+"@
+configure.ps1 $configure_cmd
 
 make -j12
 make install
