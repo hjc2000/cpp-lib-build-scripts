@@ -1,8 +1,13 @@
+param (
+	[string]$libs_path = $env:libs_path,
+	[string]$repos_path = $env:repos_path,
+	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
+)
 $ErrorActionPreference = "Stop"
 
-Set-Location ${repos_path}
+Set-Location $repos_path
 get-git-repo.ps1 https://gitee.com/Qianshunan/x264.git
-Set-Location ${repos_path}/x264
+Set-Location $repos_path/x264
 
 $install_path = "$libs_path/x264"
 Write-Host $install_path
