@@ -10,7 +10,6 @@ get-git-repo.ps1 https://bitbucket.org/multicoreware/x265_git.git
 Set-Location $repos_path/x265_git/source
 
 New-Item -ItemType Directory -Path "$repos_path/x265_git/source/build/" -Force
-# Remove-Item "$repos_path/x265_git/source/build/*" -Recurse
 Set-Location "$repos_path/x265_git/source/build/"
 
 $install_path = "$libs_path/x265"
