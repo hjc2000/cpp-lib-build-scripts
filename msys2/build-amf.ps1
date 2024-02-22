@@ -7,10 +7,8 @@ $ErrorActionPreference = "Stop"
 
 
 Set-Location ${repos_path}
-wget-repo.ps1 -workspace_dir $(Get-Location) `
-	-repo_url https://github.com/GPUOpen-LibrariesAndSDKs/AMF/archive/refs/tags/v1.4.33.tar.gz `
-	-out_dir_name AMF
-$source_path = "${repos_path}/AMF"
+get-git-repo.ps1 -git_url https://gitee.com/mirrors_GPUOpen-LibrariesAndSDKs/AMF_1.git
+$source_path = "${repos_path}/AMF_1/"
 Set-Location $source_path
 
 # 准备好安装目录
@@ -18,6 +16,6 @@ $amf_include_install_path = "${libs_path}/amf/include/AMF/"
 New-Item -Path ${amf_include_install_path} -ItemType Directory -Force
 
 # 将头文件复制到安装目录
-Copy-Item -Path "${source_path}/AMF-1.4.33/amf/public/include/*" `
+Copy-Item -Path "${source_path}/amf/public/include/*" `
 	-Destination ${amf_include_install_path} `
 	-Force -Recurse

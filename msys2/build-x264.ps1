@@ -6,7 +6,7 @@ param (
 $ErrorActionPreference = "Stop"
 
 Set-Location $repos_path
-git clone https://gitee.com/Qianshunan/x264.git
+get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x264.git
 Set-Location "$repos_path/x264/"
 
 $install_path = "$libs_path/x264"

@@ -6,12 +6,13 @@ param (
 $ErrorActionPreference = "Stop"
 
 Set-Location ${repos_path}
-git clone https://github.com/libsdl-org/SDL.git --branch release-2.30.x
+get-git-repo.ps1 -git_url https://github.com/libsdl-org/SDL.git `
+	-branch_name release-2.30.x
 $source_path = "${repos_path}/SDL/"
 $build_path = "$source_path/build/"
 New-Item -ItemType Directory -Path $build_path -Force
 Set-Location $build_path
-Remove-Item -Path "$build_path/*"
+Remove-Item -Path "$build_path/*" -Recurse -Force
 
 # 创建文件 toolchain.cmake
 New-Item -ItemType File -Path "$build_path/toolchain.cmake" -Force
