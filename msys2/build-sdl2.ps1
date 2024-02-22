@@ -36,7 +36,11 @@ ninja install
 
 # 修复 .pc 文件内的路径
 update-pc-prefix.ps1 "${install_path}/lib/pkgconfig/sdl2.pc"
+Write-Host "`n`n`n========================================"
+Write-Host "pc 文件的内容："
+Get-Content "${install_path}/lib/pkgconfig/sdl2.pc"
 
+# 将头文件移出来，不然它是处于 include/SDL2/ 内
 Move-Item -Path ${install_path}/include/SDL2/* `
 	-Destination ${install_path}/include/ `
 	-Force
