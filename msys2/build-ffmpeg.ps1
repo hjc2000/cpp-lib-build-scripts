@@ -36,7 +36,8 @@ make clean
 make -j12
 make install
 "@
-run-bash-cmd.ps1 $configure_cmd
+# run-bash-cmd.ps1 $configure_cmd
+run-bash-cmd.ps1 "make -j12"
 
 # 将 msys2 中的 dll 复制到安装目录
 # 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
