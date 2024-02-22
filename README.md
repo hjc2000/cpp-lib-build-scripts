@@ -22,11 +22,11 @@ export libs_path=${HOME}/libs
 然后创建这 3 个目录。在家目录中执行
 
 ```bash
-mkdir -p ${HOME}/cpp-lib-build-scripts &&\
 mkdir -p ${HOME}/lib_source &&\
 mkdir -p ${HOME}/libs
 ```
 
+cpp-lib-build-scripts 不是用 mkdir 创建的，这个要克隆本项目的仓库来创建。
 
 
 # 编译
