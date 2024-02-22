@@ -6,10 +6,10 @@ param (
 $ErrorActionPreference = "Stop"
 
 # 编译依赖项
-# & ${cpp_lib_build_scripts_path}/msys2/build-x264.ps1
-# & ${cpp_lib_build_scripts_path}/msys2/build-x265.ps1
-# & ${cpp_lib_build_scripts_path}/msys2/build-sdl2.ps1
-# & ${cpp_lib_build_scripts_path}/msys2/build-amf.ps1
+& ${cpp_lib_build_scripts_path}/msys2/build-x264.ps1
+& ${cpp_lib_build_scripts_path}/msys2/build-x265.ps1
+& ${cpp_lib_build_scripts_path}/msys2/build-sdl2.ps1
+& ${cpp_lib_build_scripts_path}/msys2/build-amf.ps1
 
 Set-Location ${repos_path}
 get-git-repo.ps1 -git_url https://gitee.com/programmingwindows/FFmpeg.git `
