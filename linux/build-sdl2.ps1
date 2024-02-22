@@ -6,7 +6,7 @@ param (
 $ErrorActionPreference = "Stop"
 
 Set-Location ${repos_path}
-get-git-repo.ps1 https://github.com/libsdl-org/SDL.git release-2.30.x
+get-git-repo.ps1 https://gitee.com/mycn027b/SDL.git release-2.30.x
 
 # 创建构建目录
 New-Item -ItemType Directory -Path "${repos_path}/SDL/build/" -Force
