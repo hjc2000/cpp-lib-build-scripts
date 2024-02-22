@@ -5,25 +5,22 @@ param (
 )
 $ErrorActionPreference = "Stop"
 
+# 编译依赖项
+& ${cpp_lib_build_scripts_path}/msys2/build-x264.ps1
+& ${cpp_lib_build_scripts_path}/msys2/build-x265.ps1
+& ${cpp_lib_build_scripts_path}/msys2/build-sdl2.ps1
+& ${cpp_lib_build_scripts_path}/msys2/build-amf.ps1
+
 Set-Location ${repos_path}
 get-git-repo.ps1 https://gitee.com/programmingwindows/FFmpeg.git release/6.1
-
-# 编译依赖项
-# & ${cpp_lib_build_scripts_path}/msys2/build-x264.ps1
-# & ${cpp_lib_build_scripts_path}/msys2/build-x265.ps1
-# & ${cpp_lib_build_scripts_path}/msys2/build-sdl2.ps1
-# & ${cpp_lib_build_scripts_path}/msys2/build-amf.ps1
-
 Set-Location -Path "${repos_path}/FFmpeg/"
-$configure_cmd = @"
-set -e
 
-cd ${repos_path}/FFmpeg/
-echo 666666666666666666666666
-echo `$(pwd)
+$install_path = "${libs_path}/ffmpeg"
 
+# 执行 bash 命令。只能有一行命令，或者使用 \ 号进行换行。
+run-bash-cmd.ps1 @"
 ./configure \
---prefix="$(cygpath.exe ${repos_path}/FFmpeg/)" \
+--prefix="$(cygpath.exe $install_path)" \
 --extra-cflags="-I$(cygpath.exe ${libs_path})/amf/include -DAMF_CORE_STATICTIC" \
 --enable-libx264 \
 --enable-libx265 \
@@ -31,13 +28,9 @@ echo `$(pwd)
 --enable-pic \
 --enable-gpl \
 --enable-shared
-
-make clean
-make -j12
-make install
 "@
-# run-bash-cmd.ps1 $configure_cmd
 run-bash-cmd.ps1 "make -j12"
+run-bash-cmd.ps1 "make install"
 
 # 将 msys2 中的 dll 复制到安装目录
 # 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
@@ -50,9 +43,10 @@ $msys_dlls = @(
 	"/ucrt64/bin/libwinpthread-1.dll",
 	"/ucrt64/bin/zlib1.dll"
 )
+Write-Host "正在复制 msys2 中的 dll 到 安装目录/bin"
 foreach ($msys_dll in $msys_dlls)
 {
-	Copy-Item -Path $(cygpath.exe -w ${msys_dll}) `
+	Copy-Item -Path $(cygpath.exe ${msys_dll} -w) `
 		-Destination "${install_path}/bin/" `
 		-Force
 }

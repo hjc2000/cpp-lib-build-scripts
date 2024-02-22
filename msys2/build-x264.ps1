@@ -11,21 +11,15 @@ Set-Location "$repos_path/x264/"
 
 $install_path = "$libs_path/x264"
 
-$configure_cmd = @"
-set -e
-
-cd $repos_path/x264/
-
+run-bash-cmd.ps1 @"
 ./configure \
 --prefix="$(cygpath.exe ${install_path})" \
 --enable-shared \
 --disable-opencl \
 --enable-pic
-
-make -j12
-make install
 "@
-run-bash-cmd.ps1 $configure_cmd
+run-bash-cmd.ps1 "make -j12"
+run-bash-cmd.ps1 "make install"
 
 Write-Host "pc 文件的内容："
 Get-Content $install_path/lib/pkgconfig/x264.pc
