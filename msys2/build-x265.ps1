@@ -14,14 +14,14 @@ Remove-Item "$build_path/*" -Recurse -Force
 Set-Location $build_path
 
 $install_path = "$libs_path/x265/"
-cmake -G "Ninja" .. `
+cmake -G "Unix Makefiles" .. `
 	-DCMAKE_INSTALL_PREFIX="${install_path}" `
 	-DENABLE_SHARED=on `
 	-DENABLE_PIC=on `
 	-DENABLE_ASSEMBLY=off
 
-ninja -j12
-ninja install
+make -j12
+make install
 
 # 修复 .pc 文件内的路径
 update-pc-prefix.ps1 "${install_path}/lib/pkgconfig/x265.pc"

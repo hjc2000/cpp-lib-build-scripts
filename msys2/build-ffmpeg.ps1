@@ -28,7 +28,8 @@ run-bash-cmd.ps1 @"
 --enable-amf \
 --enable-pic \
 --enable-gpl \
---enable-shared
+--enable-shared \
+--disable-static
 "@
 run-bash-cmd.ps1 "make clean"
 run-bash-cmd.ps1 "make -j12"

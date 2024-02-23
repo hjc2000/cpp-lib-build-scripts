@@ -31,7 +31,9 @@ $install_path = "$libs_path/SDL2/"
 cmake -G "Ninja" $source_path `
 	-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 	-DCMAKE_BUILD_TYPE=Release `
-	-DCMAKE_INSTALL_PREFIX="$install_path"
+	-DCMAKE_INSTALL_PREFIX="$install_path" `
+	-DSDL_SHARED=ON `
+	-DSDL_STATIC=OFF
 
 ninja -j12
 ninja install
@@ -43,7 +45,7 @@ Write-Host "pc 文件的内容："
 Get-Content "${install_path}/lib/pkgconfig/sdl2.pc"
 
 # 将头文件移出来，不然它是处于 include/SDL2/ 内
-Move-Item -Path ${install_path}/include/SDL2/* `
-	-Destination ${install_path}/include/ `
+Move-Item -Path "${install_path}/include/SDL2/*" `
+	-Destination "${install_path}/include/" `
 	-Force
-Remove-Item ${install_path}/include/SDL2/
+Remove-Item "${install_path}/include/SDL2/"
