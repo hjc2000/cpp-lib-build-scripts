@@ -16,7 +16,20 @@ New-Item -ItemType Directory -Path $build_path -Force
 Remove-Item "$build_path/*" -Recurse -Force
 Set-Location $build_path
 
+# 创建文件 toolchain.cmake
+New-Item -ItemType File -Path "$build_path/toolchain.cmake" -Force
+$toolchain_file_content = @"
+set(CMAKE_SYSTEM_NAME Windows)
+set(CMAKE_SYSTEM_PROCESSOR x64)
+set(CMAKE_RC_COMPILER llvm-rc)
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
+"@
+$toolchain_file_content | Out-File -FilePath toolchain.cmake -Encoding UTF8
+
 cmake -G "Ninja" $source_path `
+	-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+	-DCMAKE_BUILD_TYPE=Release `
 	-DCMAKE_INSTALL_PREFIX="${install_path}"
 
 ninja -j12
