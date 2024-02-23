@@ -10,13 +10,13 @@ get-git-repo.ps1 -git_url https://github.com/libsdl-org/SDL.git `
 	-branch_name release-2.30.x
 $source_path = "${repos_path}/SDL/"
 $build_path = "$source_path/build/"
+$install_path = "$libs_path/SDL2/"
 New-Item -ItemType Directory -Path $build_path -Force
 Set-Location $build_path
 Remove-Item -Path "$build_path/*" -Recurse -Force
 
 # 创建文件 toolchain.cmake
 New-Item -ItemType File -Path "$build_path/toolchain.cmake" -Force
-# 向 toolchain.cmake 写入内容
 $toolchain_file_content = @"
 set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_SYSTEM_PROCESSOR x64)
@@ -24,10 +24,8 @@ set(CMAKE_RC_COMPILER llvm-rc)
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 "@
-# 使用 Out-File cmdlet 写入文件
 $toolchain_file_content | Out-File -FilePath toolchain.cmake -Encoding UTF8
 
-$install_path = "$libs_path/SDL2/"
 cmake -G "Ninja" $source_path `
 	-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 	-DCMAKE_BUILD_TYPE=Release `
