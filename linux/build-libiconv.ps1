@@ -11,7 +11,7 @@ wget-repo.ps1 -workspace_dir $repos_path `
 
 $install_path = "$libs_path/libiconv"
 
-run-bash-cmd.ps1 -cmd @"
+$cmd = @"
 set -e
 cd "$repos_path/libiconv/libiconv-1.17/"
 
@@ -20,3 +20,5 @@ cd "$repos_path/libiconv/libiconv-1.17/"
 make -j12
 make install
 "@
+
+$cmd | bash -norc
