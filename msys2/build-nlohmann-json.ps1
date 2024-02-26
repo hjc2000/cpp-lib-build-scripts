@@ -6,6 +6,7 @@ param (
 $ErrorActionPreference = "Stop"
 
 $install_path = "$libs_path/nlohmann-json/include/nlohmann"
+New-Item -Path $install_path -ItemType Directory -Force
 
 if (Test-Path -Path "$install_path/json.hpp")
 {
