@@ -14,5 +14,5 @@ if (Test-Path -Path "$install_path/json.hpp")
 }
 
 
-Invoke-WebRequest -Uri https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp `
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp" `
 	-OutFile "$install_path/json.hpp"
