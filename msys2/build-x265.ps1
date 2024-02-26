@@ -5,7 +5,7 @@ param (
 )
 $ErrorActionPreference = "Stop"
 
-Push-Location
+Push-Location $repos_path
 get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
 $source_path = "$repos_path/x265_git/source"
 $build_path = "$source_path/build/"

@@ -5,7 +5,7 @@ param (
 )
 $ErrorActionPreference = "Stop"
 
-Set-Location $repos_path
+Push-Location $repos_path
 wget-repo.ps1 -workspace_dir $repos_path `
 	-repo_url https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz `
 	-out_dir_name libiconv
@@ -22,3 +22,5 @@ cd $(cygpath.exe $repos_path)/libiconv/libiconv-1.17/
 make -j12
 make install
 "@
+
+Pop-Location

@@ -5,18 +5,17 @@ param (
 )
 $ErrorActionPreference = "Stop"
 
-# 确保工作区目录存在
-if (-not (Test-Path -Path $repos_path))
-{
-	Write-Host "Repository path does not exist: $repos_path"
-	exit 1
-}
+Push-Location $repos_path
 
 # 文件URL
 $url = "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0_rc1.tar.gz"
-wget-repo.ps1 -workspace_dir $repos_path -repo_url $url
+wget-repo.ps1 -workspace_dir $repos_path `
+	-repo_url $url `
+	-out_dir_name boost
 
 Copy-Item -Path $repos_path/boost_1_84_0_rc1/boost_1_84_0/boost/ `
 	-Destination $libs_path/boost/ `
 	-Force `
 	-Recurse
+
+Pop-Location

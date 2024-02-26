@@ -4,7 +4,7 @@ param (
 	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
 )
 $ErrorActionPreference = "Stop"
-Push-Location
+Push-Location $repos_path
 
 # 编译依赖项
 & $cpp_lib_build_scripts_path/msys2/build-x264.ps1
