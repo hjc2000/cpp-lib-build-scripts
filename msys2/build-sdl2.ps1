@@ -5,14 +5,13 @@ param (
 )
 $ErrorActionPreference = "Stop"
 
-Set-Location ${repos_path}
+Push-Location $repos_path
 get-git-repo.ps1 -git_url https://github.com/libsdl-org/SDL.git `
 	-branch_name release-2.30.x
 $source_path = "${repos_path}/SDL/"
 $build_path = "$source_path/build/"
 $install_path = "$libs_path/SDL2/"
 New-Item -ItemType Directory -Path $build_path -Force
-Set-Location $build_path
 Remove-Item -Path "$build_path/*" -Recurse -Force
 
 # 创建文件 toolchain.cmake
@@ -47,3 +46,4 @@ Move-Item -Path "${install_path}/include/SDL2/*" `
 	-Destination "${install_path}/include/" `
 	-Force
 Remove-Item "${install_path}/include/SDL2/"
+Pop-Location
