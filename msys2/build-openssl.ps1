@@ -6,7 +6,7 @@ param (
 $ErrorActionPreference = "Stop"
 
 Push-Location $repos_path
-get-git-repo.ps1 -git_url "https://github.com/openssl/openssl.git"
+get-git-repo.ps1 -git_url "https://gitee.com/hughpenn23/openssl.git"
 $source_path = "$repos_path/openssl"
 $install_path = "$libs_path/openssl"
 
