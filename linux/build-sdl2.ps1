@@ -15,17 +15,15 @@ foreach ($lib in $dependent_libs)
 	sudo apt install $lib
 }
 
-Set-Location ${repos_path}
+Push-Location $repos_path
 git clone https://gitee.com/mycn027b/SDL.git --branch release-2.30.x
 $source_path = "${repos_path}/SDL/"
 $build_path = "$source_path/build/"
 $install_path = "$libs_path/SDL2/"
 
 # 创建构建目录
-New-Item -ItemType Directory -Path $build_path -Force
-Set-Location "${repos_path}/SDL/build/"
-
-cmake -G "Unix Makefiles" .. `
+New-Item -Path $build_path -ItemType Directory -Force
+cmake -G "Unix Makefiles" $source_path `
 	-DCMAKE_BUILD_TYPE=Release `
 	-DCMAKE_INSTALL_PREFIX="$install_path"
 
@@ -37,3 +35,4 @@ Move-Item -Path ${install_path}/include/SDL2/* `
 	-Destination ${install_path}/include/ `
 	-Force
 Remove-Item ${install_path}/include/SDL2/
+Pop-Location
