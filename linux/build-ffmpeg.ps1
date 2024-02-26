@@ -9,9 +9,12 @@ $ErrorActionPreference = "Stop"
 & $cpp_lib_build_scripts_path/linux/build-x264.ps1
 & $cpp_lib_build_scripts_path/linux/build-x265.ps1
 & $cpp_lib_build_scripts_path/linux/build-sdl2.ps1
+& $cpp_lib_build_scripts_path/linux/build-openssl.ps1
 
-$env:PKG_CONFIG_PATH = "$libs_path/x264/lib/pkgconfig:" +
+$env:PKG_CONFIG_PATH = 
+"$libs_path/x264/lib/pkgconfig:" +
 "$libs_path/x265/lib/pkgconfig:" +
+"$libs_path/openssl/lib64/pkgconfig:" +
 "$libs_path/SDL2/lib/pkgconfig:"
 Write-Host $env:PKG_CONFIG_PATH
 
@@ -29,6 +32,7 @@ cd $source_path
 --prefix="$install_path" \
 --enable-libx264 \
 --enable-libx265 \
+--enable-openssl \
 --enable-pic \
 --enable-gpl \
 --enable-shared \
