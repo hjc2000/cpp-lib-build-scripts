@@ -27,7 +27,6 @@ cd $source_path
 
 ./configure \
 --prefix="$install_path" \
---extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
 --enable-libx264 \
 --enable-libx265 \
 --enable-pic \
