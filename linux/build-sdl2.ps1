@@ -12,7 +12,11 @@ $dependent_libs = @(
 )
 foreach ($lib in $dependent_libs)
 {
-	sudo apt install $lib
+	if (apt list --installed | grep "$lib")
+	{
+		# 如果此包没安装，安装。
+		sudo apt install $lib
+	}
 }
 
 Push-Location $repos_path
