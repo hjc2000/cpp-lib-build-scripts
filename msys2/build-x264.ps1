@@ -5,7 +5,7 @@ param (
 )
 $ErrorActionPreference = "Stop"
 
-Set-Location $repos_path
+Push-Location $repos_path
 get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x264.git
 $source_path = "$repos_path/x264/"
 $install_path = "$libs_path/x264"
@@ -29,3 +29,4 @@ make install
 Write-Host "`n`n`n========================================"
 Write-Host "pc 文件的内容："
 Get-Content $install_path/lib/pkgconfig/x264.pc
+Pop-Location
