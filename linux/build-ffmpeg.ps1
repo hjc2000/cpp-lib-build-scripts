@@ -33,6 +33,7 @@ cd $source_path
 --enable-libx264 \
 --enable-libx265 \
 --enable-openssl \
+--enable-version3 \
 --enable-pic \
 --enable-gpl \
 --enable-shared \
