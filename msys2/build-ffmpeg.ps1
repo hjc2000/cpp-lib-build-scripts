@@ -13,15 +13,15 @@ Push-Location
 & $cpp_lib_build_scripts_path/common/build-amf.ps1
 
 $env:PKG_CONFIG_PATH = "$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +
-"$(cygpath.exe ${libs_path})/x265/lib/pkgconfig:" +
-"$(cygpath.exe ${libs_path})/SDL2/lib/pkgconfig:"
+"$(cygpath.exe $libs_path)/x265/lib/pkgconfig:" +
+"$(cygpath.exe $libs_path)/SDL2/lib/pkgconfig:"
 Write-Host $env:PKG_CONFIG_PATH
 
-Set-Location ${repos_path}
-get-git-repo.ps1 -git_url https://gitee.com/programmingwindows/FFmpeg.git `
+Set-Location $repos_path
+get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
 	-branch_name release/6.1
-$source_path = "${repos_path}/FFmpeg/"
-$install_path = "${libs_path}/ffmpeg/"
+$source_path = "$repos_path/FFmpeg/"
+$install_path = "$libs_path/ffmpeg/"
 Set-Location -Path $source_path
 
 run-bash-cmd.ps1 @"
@@ -30,7 +30,7 @@ cd $(cygpath.exe $source_path)
 
 ./configure \
 --prefix="$(cygpath.exe $install_path)" \
---extra-cflags="-I$(cygpath.exe ${libs_path})/amf/include/ -DAMF_CORE_STATICTIC" \
+--extra-cflags="-I$(cygpath.exe $libs_path)/amf/include/ -DAMF_CORE_STATICTIC" \
 --enable-libx264 \
 --enable-libx265 \
 --enable-amf \
@@ -58,8 +58,8 @@ $msys_dlls = @(
 Write-Host "正在复制 msys2 中的 dll 到 安装目录/bin"
 foreach ($msys_dll in $msys_dlls)
 {
-	Copy-Item -Path $(cygpath.exe ${msys_dll} -w) `
-		-Destination "${install_path}/bin/" `
+	Copy-Item -Path $(cygpath.exe $msys_dll -w) `
+		-Destination "$install_path/bin/" `
 		-Force
 }
 
