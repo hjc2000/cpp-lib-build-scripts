@@ -6,11 +6,22 @@ param (
 $ErrorActionPreference = "Stop"
 
 $install_path = "$libs_path/nlohmann-json/include/nlohmann"
+Write-Host $install_path
+New-Item -Path $install_path -ItemType Directory -Force
+if (Test-Path -Path $install_path)
+{
+	Write-Host "创建目录成功"
+}
+else
+{
+	Write-Host "创建目录失败"
+}
 
 if (Test-Path -Path "$install_path/json.hpp")
 {
 	Remove-Item -Path "$install_path/json.hpp" -Force
 }
+
 
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp `
 	-OutFile "$install_path/json.hpp"
