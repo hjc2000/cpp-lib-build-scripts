@@ -12,7 +12,7 @@ $dependent_libs = @(
 )
 foreach ($lib in $dependent_libs)
 {
-	if (apt list --installed | grep "$lib")
+	if (-not (apt list --installed | grep "$lib"))
 	{
 		# 如果此包没安装，安装。
 		sudo apt install $lib
