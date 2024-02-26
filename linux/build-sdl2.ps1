@@ -19,12 +19,12 @@ Set-Location ${repos_path}
 git clone https://gitee.com/mycn027b/SDL.git --branch release-2.30.x
 $source_path = "${repos_path}/SDL/"
 $build_path = "$source_path/build/"
+$install_path = "$libs_path/SDL2/"
 
 # 创建构建目录
 New-Item -ItemType Directory -Path $build_path -Force
 Set-Location "${repos_path}/SDL/build/"
 
-$install_path = "$libs_path/SDL2/"
 cmake -G "Unix Makefiles" .. `
 	-DCMAKE_BUILD_TYPE=Release `
 	-DCMAKE_INSTALL_PREFIX="$install_path"
