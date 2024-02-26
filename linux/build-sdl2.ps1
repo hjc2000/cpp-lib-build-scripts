@@ -23,12 +23,14 @@ $install_path = "$libs_path/SDL2/"
 
 # 创建构建目录
 New-Item -Path $build_path -ItemType Directory -Force
-cmake -G "Unix Makefiles" $source_path `
+
+Set-Location $build_path
+cmake -G "Ninja" $source_path `
 	-DCMAKE_BUILD_TYPE=Release `
 	-DCMAKE_INSTALL_PREFIX="$install_path"
 
-make -j12
-make install
+ninja -j12
+ninja install
 
 # 将头文件移出来，不然它是处于 include/SDL2/ 内
 Move-Item -Path ${install_path}/include/SDL2/* `
