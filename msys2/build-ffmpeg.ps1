@@ -4,12 +4,13 @@ param (
 	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
 )
 $ErrorActionPreference = "Stop"
+Push-Location
 
 # 编译依赖项
-& ${cpp_lib_build_scripts_path}/msys2/build-x264.ps1
-& ${cpp_lib_build_scripts_path}/msys2/build-x265.ps1
-& ${cpp_lib_build_scripts_path}/msys2/build-sdl2.ps1
-& ${cpp_lib_build_scripts_path}/msys2/build-amf.ps1
+& $cpp_lib_build_scripts_path/msys2/build-x264.ps1
+& $cpp_lib_build_scripts_path/msys2/build-x265.ps1
+& $cpp_lib_build_scripts_path/msys2/build-sdl2.ps1
+& $cpp_lib_build_scripts_path/common/build-amf.ps1
 
 $env:PKG_CONFIG_PATH = "$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +
 "$(cygpath.exe ${libs_path})/x265/lib/pkgconfig:" +
@@ -61,3 +62,5 @@ foreach ($msys_dll in $msys_dlls)
 		-Destination "${install_path}/bin/" `
 		-Force
 }
+
+Pop-Location

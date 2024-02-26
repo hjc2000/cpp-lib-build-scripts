@@ -8,10 +8,11 @@ $ErrorActionPreference = "Stop"
 Push-Location $repos_path
 get-git-repo.ps1 -git_url https://github.com/libsdl-org/SDL.git `
 	-branch_name release-2.30.x
-$source_path = "${repos_path}/SDL/"
+$source_path = "$repos_path/SDL/"
 $build_path = "$source_path/build/"
 $install_path = "$libs_path/SDL2/"
-New-Item -ItemType Directory -Path $build_path -Force
+
+New-Item -Path $build_path -ItemType Directory -Force
 Remove-Item -Path "$build_path/*" -Recurse -Force
 
 # 创建文件 toolchain.cmake
@@ -23,8 +24,9 @@ set(CMAKE_RC_COMPILER llvm-rc)
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
 "@
-$toolchain_file_content | Out-File -FilePath toolchain.cmake -Encoding UTF8
+$toolchain_file_content | Out-File -FilePath "$build_path/toolchain.cmake" -Encoding UTF8
 
+Set-Location $build_path
 cmake -G "Ninja" $source_path `
 	-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 	-DCMAKE_BUILD_TYPE=Release `
