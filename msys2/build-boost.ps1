@@ -13,8 +13,8 @@ wget-repo.ps1 -workspace_dir $repos_path `
 	-repo_url $url `
 	-out_dir_name boost
 
-Copy-Item -Path $repos_path/boost_1_84_0_rc1/boost_1_84_0/boost/ `
-	-Destination $libs_path/boost/ `
+Copy-Item -Path $repos_path/boost/boost_1_84_0/boost/ `
+	-Destination $libs_path/boost/include/ `
 	-Force `
 	-Recurse
 
