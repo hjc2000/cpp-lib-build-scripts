@@ -17,7 +17,7 @@ set -e
 cd $repos_path/libiconv/libiconv-1.17/
 
 ./configure \
---prefix=$install_path
+--prefix="$install_path"
 
 make -j12
 make install
