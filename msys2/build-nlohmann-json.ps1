@@ -8,10 +8,6 @@ $ErrorActionPreference = "Stop"
 $install_path = "$libs_path/nlohmann-json/include/nlohmann"
 New-Item -Path $install_path -ItemType Directory -Force
 
-if (Test-Path -Path "$install_path/json.hpp")
-{
-	Remove-Item -Path "$install_path/json.hpp" -Force
-}
 
 Invoke-WebRequest -Uri https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp `
 	-OutFile "$install_path/json.hpp"
