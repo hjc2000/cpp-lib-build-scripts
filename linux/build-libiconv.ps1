@@ -15,8 +15,7 @@ run-bash-cmd.ps1 -cmd @"
 set -e
 cd "$repos_path/libiconv/libiconv-1.17/"
 
-./configure \
---prefix="$install_path"
+./configure --prefix="$install_path"
 
 make -j12
 make install
