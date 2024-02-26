@@ -14,7 +14,7 @@ $install_path = "$libs_path/libiconv"
 
 run-bash-cmd.ps1 -cmd @"
 set -e
-cd $repos_path/libiconv/libiconv-1.17/
+cd "$repos_path/libiconv/libiconv-1.17/"
 
 ./configure \
 --prefix="$install_path"
