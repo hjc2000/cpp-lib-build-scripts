@@ -11,9 +11,12 @@ Push-Location $repos_path
 & $cpp_lib_build_scripts_path/msys2/build-x265.ps1
 & $cpp_lib_build_scripts_path/msys2/build-sdl2.ps1
 & $cpp_lib_build_scripts_path/common/build-amf.ps1
+& $cpp_lib_build_scripts_path/msys2/build-openssl.ps1
 
-$env:PKG_CONFIG_PATH = "$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +
+$env:PKG_CONFIG_PATH = 
+"$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +
 "$(cygpath.exe $libs_path)/x265/lib/pkgconfig:" +
+"$(cygpath.exe $libs_path)/openssl/lib64/pkgconfig:" +
 "$(cygpath.exe $libs_path)/SDL2/lib/pkgconfig:"
 Write-Host $env:PKG_CONFIG_PATH
 
@@ -33,6 +36,8 @@ cd $(cygpath.exe $source_path)
 --extra-cflags="-I$(cygpath.exe $libs_path)/amf/include/ -DAMF_CORE_STATICTIC" \
 --enable-libx264 \
 --enable-libx265 \
+--enable-openssl \
+--enable-version3 \
 --enable-amf \
 --enable-pic \
 --enable-gpl \
