@@ -27,8 +27,8 @@ $install_path = "$libs_path/SDL2/"
 
 # 创建构建目录
 New-Item -Path $build_path -ItemType Directory -Force
-
 Set-Location $build_path
+Remove-Item -Path "$build_path/*" -Force -Recurse
 cmake -G "Ninja" $source_path `
 	-DCMAKE_BUILD_TYPE=Release `
 	-DCMAKE_INSTALL_PREFIX="$install_path"
