@@ -21,6 +21,6 @@ else
 	# linux 平台
 	foreach ($lib in $libs_to_install)
 	{
-		"install-lib.ps1 -src_path $env:libs_path/$lib -dst_path /usr/" | sudo pwsh
+		"install-lib.ps1 -src_path $env:libs_path/$lib -dst_path /usr/" | sudo bash
 	}
 }
