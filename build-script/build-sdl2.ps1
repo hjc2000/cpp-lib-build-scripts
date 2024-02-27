@@ -48,7 +48,13 @@ set(CMAKE_SYSTEM_PROCESSOR armv4)
 set(CMAKE_OSX_ARCHITECTURES armv4)
 set(CMAKE_C_COMPILER $cross_compiler_prefix-gcc)
 set(CMAKE_CXX_COMPILER $cross_compiler_prefix-g++)
-set(CMAKE_OSX_SYSROOT /home/hjc/install/arm-none-linux-gnueabihf-v13/arm-none-linux-gnueabihf/libc/usr)
+set(CMAKE_OSX_SYSROOT /home/hjc/work-space/nfs-boot/rootfs)
+set(CMAKE_FIND_ROOT_PATH /home/hjc/work-space/nfs-boot/rootfs)
+
+# 只在指定的根路径中查找库和头文件
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 "@
 }
 elseif ($IsWindows)
