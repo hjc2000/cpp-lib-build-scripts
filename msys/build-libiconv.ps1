@@ -5,20 +5,15 @@ param (
 )
 $ErrorActionPreference = "Stop"
 . $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
-
-
-
-
-Push-Location $repos_path
-wget-repo.ps1 -workspace_dir $repos_path `
-	-repo_url https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz `
-	-out_dir_name libiconv
 $install_path = "$libs_path/libiconv"
+Push-Location $repos_path
+try
+{
+	wget-repo.ps1 -workspace_dir $repos_path `
+		-repo_url https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz `
+		-out_dir_name libiconv
 
-
-
-
-run-bash-cmd.ps1 -cmd @"
+	run-bash-cmd.ps1 -cmd @"
 set -e
 cd $(cygpath.exe $repos_path)/libiconv/libiconv-1.17/
 
@@ -28,5 +23,12 @@ cd $(cygpath.exe $repos_path)/libiconv/libiconv-1.17/
 make -j12
 make install
 "@
+}
+catch
+{
 
-Pop-Location
+}
+finally
+{
+	Pop-Location
+}

@@ -6,16 +6,25 @@ param (
 $ErrorActionPreference = "Stop"
 . $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
 $install_path = "$libs_path/nlohmann-json/include/nlohmann"
-
-
-
-Write-Host $install_path
-New-Item -Path $install_path -ItemType Directory -Force
-if (Test-Path -Path "$install_path/json.hpp")
+Push-Location $repos_path
+try
 {
-	Remove-Item -Path "$install_path/json.hpp" -Force
+	Write-Host $install_path
+	New-Item -Path $install_path -ItemType Directory -Force
+	if (Test-Path -Path "$install_path/json.hpp")
+	{
+		Remove-Item -Path "$install_path/json.hpp" -Force
+	}
+	
+	
+	Invoke-WebRequest -Uri "https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp" `
+		-OutFile "$install_path/json.hpp"
 }
-
-
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp" `
-	-OutFile "$install_path/json.hpp"
+catch
+{
+	<#Do this if a terminating exception happens#>
+}
+finally
+{
+	Pop-Location
+}
