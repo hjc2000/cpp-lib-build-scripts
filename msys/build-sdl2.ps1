@@ -19,9 +19,9 @@ try
 		-Content @"
 set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_SYSTEM_PROCESSOR x64)
-set(CMAKE_RC_COMPILER llvm-rc)
 set(CMAKE_C_COMPILER clang)
 set(CMAKE_CXX_COMPILER clang++)
+set(CMAKE_RC_COMPILER llvm-rc)
 "@
 
 	cmake -G "Ninja" $source_path `
@@ -35,7 +35,7 @@ set(CMAKE_CXX_COMPILER clang++)
 	ninja install
 
 	# 修复 .pc 文件内的路径
-	update-pc-prefix.ps1 "${install_path}/lib/pkgconfig/sdl2.pc"
+	Fix-PC-Config-PC-File "${install_path}/lib/pkgconfig/sdl2.pc"
 
 	# 将头文件移出来，不然它是处于 include/SDL2/ 内
 	Move-Item -Path "${install_path}/include/SDL2/*" `
