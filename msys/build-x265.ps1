@@ -13,7 +13,6 @@ try
 {
 	get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
 
-
 	Prepare-And-CD-CMake-Build-Dir $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
@@ -30,7 +29,9 @@ try
 }
 catch
 {
-	
-}
 
-Pop-Location
+}
+finally
+{
+	Pop-Location
+}
