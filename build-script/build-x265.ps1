@@ -24,6 +24,10 @@ cmake -G "Unix Makefiles" $source_path `
 make -j12
 make install
 
-# 修复 .pc 文件内的路径
-update-pc-prefix.ps1 "$install_path/lib/pkgconfig/x265.pc"
+if ($IsWindows)
+{
+	# 修复 .pc 文件内的路径
+	update-pc-prefix.ps1 "$install_path/lib/pkgconfig/x265.pc"
+}
+
 Pop-Location
