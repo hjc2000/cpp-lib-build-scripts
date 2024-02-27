@@ -24,8 +24,8 @@ else
 		$PATH = $env:PATH
 		run-bash-cmd.ps1 @"
 sudo su
-`$PATH=$PATH
 pwsh
+`$env:PATH=$PATH
 install-lib.ps1 -src_path $env:libs_path/$lib -dst_path /usr/
 exit
 "@
