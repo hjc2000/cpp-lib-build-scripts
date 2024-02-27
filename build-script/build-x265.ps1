@@ -12,10 +12,12 @@ $source_path = "$repos_path/x265_git/source"
 $build_path = "$source_path/build/"
 $install_path = "$libs_path/x265/"
 
+# 创建 build 目录
 New-Item -Path $build_path -ItemType Directory -Force
+# 清空 build 目录里面的内容
 Remove-Item "$build_path/*" -Recurse -Force
 
-# 创建文件 toolchain.cmake
+# 工具链文件的内容
 $toolchain_file_content = ""
 if ($cross_compile)
 {
@@ -28,21 +30,21 @@ set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 "@
 }
-
+# 创建文件 toolchain.cmake
 New-Item -ItemType File -Path "$build_path/toolchain.cmake" -Force
 $toolchain_file_content | Out-File -FilePath "$build_path/toolchain.cmake" -Encoding UTF8
 
 # 切换到 build 目录开始构建
 Set-Location $build_path
-cmake -G "Unix Makefiles" $source_path `
+cmake -G "Ninja" $source_path `
 	-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 	-DCMAKE_INSTALL_PREFIX="${install_path}" `
 	-DENABLE_SHARED=on `
 	-DENABLE_PIC=on `
 	-DENABLE_ASSEMBLY=off
 
-make -j12
-make install
+ninja -j12
+ninja install
 
 if ($IsWindows)
 {
