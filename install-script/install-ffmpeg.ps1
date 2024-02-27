@@ -20,6 +20,7 @@ else
 {
 	foreach ($lib in $libs_to_install)
 	{
+		sudo su
 		install-lib.ps1 -src_path "$env:libs_path/$lib" -dst_path "/usr/"
 	}
 }
