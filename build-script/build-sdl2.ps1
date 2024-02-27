@@ -78,7 +78,8 @@ cmake -G "Ninja" $source_path `
 	-DCMAKE_INSTALL_PREFIX="$install_path" `
 	-DSDL_SHARED=ON `
 	-DSDL_STATIC=OFF `
-	-DSDL_WAYLAND=OFF
+	-DSDL_WAYLAND=OFF `
+	-DSDL_IBUS=OFF `
 
 ninja -j12
 ninja install
