@@ -5,37 +5,29 @@ param (
 )
 $ErrorActionPreference = "Stop"
 . $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
-
-Push-Location $repos_path
-
-
-
-# 编译依赖项
-& $cpp_lib_build_scripts_path/build-script/build-x264.ps1
-& $cpp_lib_build_scripts_path/build-script/build-x265.ps1
-& $cpp_lib_build_scripts_path/build-script/build-sdl2.ps1
-& $cpp_lib_build_scripts_path/build-script/build-amf.ps1
-& $cpp_lib_build_scripts_path/build-script/build-openssl.ps1
-
-$env:PKG_CONFIG_PATH = 
-"$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +
-"$(cygpath.exe $libs_path)/x265/lib/pkgconfig:" +
-"$(cygpath.exe $libs_path)/openssl/lib64/pkgconfig:" +
-"$(cygpath.exe $libs_path)/SDL2/lib/pkgconfig:"
-Write-Host $env:PKG_CONFIG_PATH
-
-
-
-Set-Location $repos_path
-get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
-	-branch_name release/6.1
 $source_path = "$repos_path/FFmpeg/"
 $install_path = "$libs_path/ffmpeg/"
-Set-Location -Path $source_path
+Push-Location $repos_path
+try
+{
+	get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
+		-branch_name release/6.1
 
+	# 编译依赖项
+	& $cpp_lib_build_scripts_path/msys/build-x264.ps1
+	& $cpp_lib_build_scripts_path/msys/build-x265.ps1
+	& $cpp_lib_build_scripts_path/msys/build-sdl2.ps1
+	& $cpp_lib_build_scripts_path/msys/build-amf.ps1
+	& $cpp_lib_build_scripts_path/msys/build-openssl.ps1
 
+	$env:PKG_CONFIG_PATH = 
+	"$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +
+	"$(cygpath.exe $libs_path)/x265/lib/pkgconfig:" +
+	"$(cygpath.exe $libs_path)/openssl/lib64/pkgconfig:" +
+	"$(cygpath.exe $libs_path)/SDL2/lib/pkgconfig:"
+	Write-Host $env:PKG_CONFIG_PATH
 
-run-bash-cmd.ps1 @"
+	run-bash-cmd.ps1 @"
 set -e
 cd $(cygpath.exe $source_path)
 
@@ -59,23 +51,30 @@ make install
 
 
 
-# 将 msys2 中的 dll 复制到安装目录
-# 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
-$msys_dlls = @(
-	"/ucrt64/bin/libgcc_s_seh-1.dll",
-	"/ucrt64/bin/libbz2-1.dll",
-	"/ucrt64/bin/libiconv-2.dll",
-	"/ucrt64/bin/liblzma-5.dll",
-	"/ucrt64/bin/libstdc++-6.dll",
-	"/ucrt64/bin/libwinpthread-1.dll",
-	"/ucrt64/bin/zlib1.dll"
-)
-Write-Host "正在复制 msys2 中的 dll 到 安装目录/bin"
-foreach ($msys_dll in $msys_dlls)
-{
-	Copy-Item -Path $(cygpath.exe $msys_dll -w) `
-		-Destination "$install_path/bin/" `
-		-Force
+	# 将 msys2 中的 dll 复制到安装目录
+	# 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
+	$msys_dlls = @(
+		"/ucrt64/bin/libgcc_s_seh-1.dll",
+		"/ucrt64/bin/libbz2-1.dll",
+		"/ucrt64/bin/libiconv-2.dll",
+		"/ucrt64/bin/liblzma-5.dll",
+		"/ucrt64/bin/libstdc++-6.dll",
+		"/ucrt64/bin/libwinpthread-1.dll",
+		"/ucrt64/bin/zlib1.dll"
+	)
+	Write-Host "正在复制 msys2 中的 dll 到 安装目录/bin"
+	foreach ($msys_dll in $msys_dlls)
+	{
+		Copy-Item -Path $(cygpath.exe $msys_dll -w) `
+			-Destination "$install_path/bin/" `
+			-Force
+	}
 }
-
-Pop-Location
+catch
+{
+	<#Do this if a terminating exception happens#>
+}
+finally
+{
+	Pop-Location
+}
