@@ -4,6 +4,7 @@ param (
 	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
 )
 $ErrorActionPreference = "Stop"
+. $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
 $source_path = "$repos_path/x265_git/source"
 $build_path = "$source_path/build/"
 $install_path = "$libs_path/x265/"
@@ -15,18 +16,7 @@ Push-Location $repos_path
 get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
 
 
-
-
-# 创建 build 目录
-New-Item -Path $build_path -ItemType Directory -Force
-Remove-Item "$build_path/*" -Recurse -Force
-
-
-
-
-
-# 切换到 build 目录开始构建
-Set-Location $build_path
+Prepare-And-CD-CMake-Build-Dir $build_path
 cmake -G "Ninja" $source_path `
 	-DCMAKE_INSTALL_PREFIX="${install_path}" `
 	-DENABLE_SHARED=on `
