@@ -14,7 +14,7 @@ try
 	get-git-repo.ps1 -git_url https://github.com/tukaani-project/xz.git `
 		-branch_name v5.6
 
-	Prepare-And-CD-CMake-Build-Dir $build_path
+	New-Empty-Dir $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `

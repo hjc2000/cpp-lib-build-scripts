@@ -13,7 +13,7 @@ try
 {
 	get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
 
-	Prepare-And-CD-CMake-Build-Dir $build_path
+	New-Empty-Dir $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
 		-DENABLE_SHARED=on `

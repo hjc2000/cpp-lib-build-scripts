@@ -7,17 +7,13 @@ $ErrorActionPreference = "Stop"
 . $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
 $source_path = "$repos_path/x264/"
 $install_path = "$libs_path/x264"
-
-
-
-
 Push-Location $repos_path
-get-git-repo.ps1 -git_url "https://gitee.com/Qianshunan/x264.git"
+try
+{
+	get-git-repo.ps1 -git_url "https://gitee.com/Qianshunan/x264.git"
 
-
-
-# 执行命令进行构建
-run-bash-cmd.ps1 @"
+	# 执行命令进行构建
+	run-bash-cmd.ps1 @"
 set -e
 cd $(cygpath.exe $source_path)
 
@@ -32,7 +28,12 @@ make -j12
 make install
 "@
 
-Write-Host "`n`n`n========================================"
-Write-Host "pc 文件的内容："
-Get-Content "$install_path/lib/pkgconfig/x264.pc"
-Pop-Location
+}
+catch
+{
+	<#Do this if a terminating exception happens#>
+}
+finally
+{
+	Pop-Location
+}

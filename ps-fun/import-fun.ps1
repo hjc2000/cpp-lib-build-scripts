@@ -1,16 +1,15 @@
-# 准备好 cmake 项目的 build 目录，并切换到该目录。
-# 并且会清空 build 目录。
-function Prepare-And-CD-CMake-Build-Dir
+# 准备好一个空的文件夹。如果文件夹本来就存在且里面有东西，则会删除所有内容
+function New-Empty-Dir
 {
 	param (
 		[Parameter(Mandatory = $true)]
-		[string]$desired_build_path
+		[string]$Path
 	)
 	
 	# 创建 build 目录
-	New-Item -Path $desired_build_path -ItemType Directory -Force
-	Remove-Item "$desired_build_path/*" -Recurse -Force
-	Set-Location $desired_build_path
+	New-Item -Path $Path -ItemType Directory -Force
+	Remove-Item "$Path/*" -Recurse -Force
+	Set-Location $Path
 }
 
 

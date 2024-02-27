@@ -15,7 +15,7 @@ try
 		-branch_name release-2.30.x
 
 
-	Prepare-And-CD-CMake-Build-Dir $build_path
+	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 set(CMAKE_SYSTEM_NAME Windows)
