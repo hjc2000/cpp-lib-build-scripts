@@ -40,7 +40,16 @@ Remove-Item -Path "$build_path/*" -Recurse -Force
 
 # 创建文件 toolchain.cmake
 $toolchain_file_content = ""
-if ($IsWindows)
+if ($cross_compile)
+{
+	$toolchain_file_content = @"
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR armv4)
+set(CMAKE_C_COMPILER $cross_compiler_prefix-gcc)
+set(CMAKE_CXX_COMPILER $cross_compiler_prefix-g++)
+"@
+}
+elseif ($IsWindows)
 {
 	$toolchain_file_content = @"
 set(CMAKE_SYSTEM_NAME Windows)
