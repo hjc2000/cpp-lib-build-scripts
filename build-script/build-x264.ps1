@@ -13,7 +13,7 @@ Set-Location $source_path
 
 run-bash-cmd.ps1 @"
 set -e
-cd $(cygpath.exe $source_path)
+cd $(Fix-Path.ps1 -path_to_fix $source_path)
 
 ./configure \
 --prefix="$(Fix-Path.ps1 -path_to_fix $install_path)" \

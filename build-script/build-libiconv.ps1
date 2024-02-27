@@ -14,10 +14,10 @@ $install_path = "$libs_path/libiconv"
 
 run-bash-cmd.ps1 -cmd @"
 set -e
-cd $(cygpath.exe $repos_path)/libiconv/libiconv-1.17/
+cd $(Fix-Path.ps1 -path_to_fix $repos_path)/libiconv/libiconv-1.17/
 
 ./configure \
---prefix=$(cygpath.exe $install_path)
+--prefix=$(Fix-Path.ps1 -path_to_fix $install_path)
 
 make -j12
 make install
