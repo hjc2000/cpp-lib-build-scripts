@@ -24,6 +24,7 @@ $configure = @"
 "@
 if ($cross_compile)
 {
+	$configure += " \"
 	$configure += @"
 --host=$cross_compiler_prefix \
 --cross-prefix=$cross_compiler_prefix-
