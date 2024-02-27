@@ -1,7 +1,8 @@
 param (
 	[string]$libs_path = $env:libs_path,
 	[string]$repos_path = $env:repos_path,
-	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
+	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path,
+	[switch]$cross_compile
 )
 $ErrorActionPreference = "Stop"
 
