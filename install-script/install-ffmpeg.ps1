@@ -21,6 +21,13 @@ else
 	# linux 平台
 	foreach ($lib in $libs_to_install)
 	{
-		"install-lib.ps1 -src_path $env:libs_path/$lib -dst_path /usr/" | sudo bash
+		$PATH = $env:PATH
+		run-bash-cmd.ps1 @"
+sudo su
+`$PATH=$PATH
+pwsh
+install-lib.ps1 -src_path $env:libs_path/$lib -dst_path /usr/
+exit
+"@
 	}
 }
