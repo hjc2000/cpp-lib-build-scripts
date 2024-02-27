@@ -48,6 +48,7 @@ set(CMAKE_SYSTEM_PROCESSOR armv4)
 set(CMAKE_OSX_ARCHITECTURES armv4)
 set(CMAKE_C_COMPILER $cross_compiler_prefix-gcc)
 set(CMAKE_CXX_COMPILER $cross_compiler_prefix-g++)
+set(CMAKE_OSX_SYSROOT /home/hjc/install/arm-none-linux-gnueabihf-v13/arm-none-linux-gnueabihf/libc/usr)
 "@
 }
 elseif ($IsWindows)
