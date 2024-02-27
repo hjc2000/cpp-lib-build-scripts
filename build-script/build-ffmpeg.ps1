@@ -65,7 +65,7 @@ if ($IsWindows)
 	Write-Host "正在复制 msys2 中的 dll 到 安装目录/bin"
 	foreach ($msys_dll in $msys_dlls)
 	{
-		Copy-Item -Path $(Fix-Path.ps1 -path_to_fix $msys_dll -w) `
+		Copy-Item -Path $(Fix-Path.ps1 -path_to_fix $msys_dll) `
 			-Destination "$install_path/bin/" `
 			-Force
 	}
