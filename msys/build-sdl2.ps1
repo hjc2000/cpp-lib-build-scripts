@@ -4,6 +4,7 @@ param (
 	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
 )
 $ErrorActionPreference = "Stop"
+. $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
 $source_path = "$repos_path/SDL/"
 $install_path = "$libs_path/SDL2/"
 $build_path = "$source_path/build/"

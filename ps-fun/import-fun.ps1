@@ -51,6 +51,7 @@ function Fix-PC-Config-PC-File
 		Write-Host "prefix line not found in file: $path_to_pc_file"
 		exit 1
 	}
+	
 	$old_prefix_path = $prefix_line -split "=" | Select-Object -Last 1
 	
 	# 使用 cygpath 转换旧的prefix路径

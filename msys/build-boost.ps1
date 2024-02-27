@@ -4,7 +4,7 @@ param (
 	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
 )
 $ErrorActionPreference = "Stop"
-
+. $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
 Push-Location $repos_path
 
 # 文件URL
