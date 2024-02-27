@@ -16,7 +16,7 @@ set -e
 cd $(cygpath.exe $source_path)
 
 ./configure \
---prefix="$(cygpath.exe $install_path)" \
+--prefix="$(Fix-Path.ps1 -path_to_fix $install_path)" \
 --enable-shared \
 --disable-opencl \
 --enable-pic
