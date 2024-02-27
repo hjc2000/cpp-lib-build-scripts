@@ -7,17 +7,20 @@ $ErrorActionPreference = "Stop"
 
 if ($IsLinux)
 {
-	# 通过 apt 安装依赖
+	# 通过 apt-get 安装依赖
 	$dependent_libs = @(
 		"libasound2-dev",
 		"libpulse-dev"
 	)
+
 	foreach ($lib in $dependent_libs)
 	{
-		if (-not (apt list --installed | grep "$lib"))
+		# 检查包是否已安装
+		$installed = $(dpkg -l | grep "$lib")
+		if (-not $installed)
 		{
-			# 如果此包没安装，安装。
-			sudo apt install $lib
+			# 如果此包没安装，使用 apt-get 安装。
+			sudo apt-get install $lib -y
 		}
 	}
 }
