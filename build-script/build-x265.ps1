@@ -2,7 +2,9 @@ param (
 	[string]$libs_path = $env:libs_path,
 	[string]$repos_path = $env:repos_path,
 	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path,
-	[bool]$cross_compile = $false
+	
+	[bool]$cross_compile = $false,
+	[string]$cross_compiler_prefix = "arm-none-linux-gnueabihf"
 )
 $ErrorActionPreference = "Stop"
 
@@ -26,8 +28,8 @@ set(CROSS_COMPILE_ARM 1)
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR armv4)
 
-set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
-set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
+set(CMAKE_C_COMPILER $cross_compiler_prefix-gcc)
+set(CMAKE_CXX_COMPILER $cross_compiler_prefix-g++)
 "@
 }
 # 创建文件 toolchain.cmake

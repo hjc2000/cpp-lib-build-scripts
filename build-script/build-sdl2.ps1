@@ -2,7 +2,9 @@ param (
 	[string]$libs_path = $env:libs_path,
 	[string]$repos_path = $env:repos_path,
 	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path,
-	[bool]$cross_compile = $env:cross_compile
+	
+	[bool]$cross_compile = $false,
+	[string]$cross_compiler_prefix = "arm-none-linux-gnueabihf"
 )
 $ErrorActionPreference = "Stop"
 
