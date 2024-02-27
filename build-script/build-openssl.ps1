@@ -10,16 +10,15 @@ get-git-repo.ps1 -git_url "https://gitee.com/hughpenn23/openssl.git"
 $source_path = "$repos_path/openssl"
 $install_path = "$libs_path/openssl"
 
-$cmd = @"
+run-bash-cmd.ps1 @"
 set -e
-cd $(cygpath.exe $source_path)
+cd $(Fix-Path.ps1 -path_to_fix $source_path)
 
 ./Configure shared \
---prefix="$(cygpath.exe $install_path)"
+--prefix="$(Fix-Path.ps1 -path_to_fix $install_path)"
 
 make -j12
 make install
 "@
 
-run-bash-cmd.ps1 $cmd
 Pop-Location
