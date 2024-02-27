@@ -23,7 +23,6 @@ try
 	ninja -j12
 	ninja install
 
-
 	# 修复 .pc 文件内的路径
 	update-pc-prefix.ps1 "${install_path}/lib/pkgconfig/liblzma.pc"
 }
