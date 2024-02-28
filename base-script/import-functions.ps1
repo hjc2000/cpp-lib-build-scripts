@@ -94,7 +94,11 @@ function Install-Lib
 
 	if ($IsWindows)
 	{
-		Copy-Item -Path "$src_path/bin/*" -Destination "$dst_path/bin/" -Force -Recurse
+		if (Test-Path "$src_path/bin/")
+		{
+			Copy-Item -Path "$src_path/bin/*" -Destination "$dst_path/bin/" -Force -Recurse
+		}
+
 		if (Test-Path "$src_path/lib/*")
 		{
 			Copy-Item -Path "$src_path/lib/*" -Destination "$dst_path/lib/" -Force -Recurse
@@ -108,23 +112,27 @@ function Install-Lib
 			Copy-Item -Path "$src_path/lib32/*" -Destination "$dst_path/lib/" -Force -Recurse
 		}
 
-		Copy-Item -Path "$src_path/include/*" -Destination "$dst_path/include/" -Force -Recurse
+		if (Test-Path "$src_path/include/")
+		{
+			Copy-Item -Path "$src_path/include/*" -Destination "$dst_path/include/" -Force -Recurse
+		}
 	}
 	else
 	{
 		# linux 平台
-		$copy_cmd = "cp -a -r"
+		$copy_cmd = "cp -a"
 		if ($sudo)
 		{
-			$copy_cmd = "sudo cp -a -r"
+			$copy_cmd = "sudo cp -a"
 		}
 
 		# 下面是 bash 脚本
 		run-bash-cmd.ps1 @"
 		set -e
 
-		# 复制并保留符号链接
-		$copy_cmd $src_path/bin/* $dst_path/bin/
+		if [ -d "$src_path/bin" ]; then
+			$copy_cmd $src_path/bin/* $dst_path/bin/
+		fi
 
 		if [ -d "$src_path/lib" ]; then
 			$copy_cmd "$src_path/lib/"* "$dst_path/lib/"
@@ -134,7 +142,9 @@ function Install-Lib
 			$copy_cmd "$src_path/lib32/"* "$dst_path/lib/"
 		fi
 
-		$copy_cmd $src_path/include/* $dst_path/include/
+		if [ -d "$src_path/include" ]; then
+			$copy_cmd $src_path/include/* $dst_path/include/
+		fi
 "@
 	}
 }
