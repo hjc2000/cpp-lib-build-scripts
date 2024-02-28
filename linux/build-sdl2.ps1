@@ -8,7 +8,7 @@ Push-Location $repos_path
 try
 {
 	# 通过 apt-get 安装依赖
-	$dependent_libs = @(
+	Apt-Install-Packet -packets @(
 		"libasound2-dev",
 		"libpulse-dev"
 	)
