@@ -1,20 +1,16 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../base-script/prepare-for-building.ps1
 
+$source_path = "$repos_path/json/"
 $install_path = "$libs_path/nlohmann-json/include/nlohmann"
 Push-Location $repos_path
 try
 {
-	Write-Host $install_path
-	New-Item -Path $install_path -ItemType Directory -Force
-	if (Test-Path -Path "$install_path/json.hpp")
-	{
-		Remove-Item -Path "$install_path/json.hpp" -Force
-	}
-	
-	
-	Invoke-WebRequest -Uri "https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp" `
-		-OutFile "$install_path/json.hpp"
+	get-git-repo.ps1 -git_url https://github.com/nlohmann/json.git
+	New-Empty-Dir -Path $install_path
+	Copy-Item -Path "$source_path/single_include/nlohmann/json.hpp" `
+		-Destination $install_path `
+		-Force -Recurse
 }
 catch
 {

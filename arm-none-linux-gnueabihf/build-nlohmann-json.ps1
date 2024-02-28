@@ -1,18 +1,22 @@
-param (
-	[string]$libs_path = $env:libs_path,
-	[string]$repos_path = $env:repos_path,
-	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
-)
-$ErrorActionPreference = "Stop"
+$build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+. $build_script_path/../base-script/prepare-for-building.ps1
 
+$source_path = "$repos_path/json/"
 $install_path = "$libs_path/nlohmann-json/include/nlohmann"
-Write-Host $install_path
-New-Item -Path $install_path -ItemType Directory -Force
-if (Test-Path -Path "$install_path/json.hpp")
+Push-Location $repos_path
+try
 {
-	Remove-Item -Path "$install_path/json.hpp" -Force
+	get-git-repo.ps1 -git_url https://github.com/nlohmann/json.git
+	New-Empty-Dir -Path $install_path
+	Copy-Item -Path "$source_path/single_include/nlohmann/json.hpp" `
+		-Destination $install_path `
+		-Force -Recurse
 }
-
-
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/nlohmann/json/develop/single_include/nlohmann/json.hpp" `
-	-OutFile "$install_path/json.hpp"
+catch
+{
+	throw
+}
+finally
+{
+	Pop-Location
+}
