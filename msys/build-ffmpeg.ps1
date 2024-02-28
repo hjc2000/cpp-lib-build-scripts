@@ -1,10 +1,6 @@
-param (
-	[string]$libs_path = $env:libs_path,
-	[string]$repos_path = $env:repos_path,
-	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
-)
-$ErrorActionPreference = "Stop"
-. $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
+$build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+. $build_script_path/../base-script/prepare-for-building.ps1
+
 $source_path = "$repos_path/FFmpeg/"
 $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
@@ -14,11 +10,11 @@ try
 		-branch_name release/6.1
 
 	# 编译依赖项
-	& $cpp_lib_build_scripts_path/msys/build-x264.ps1
-	& $cpp_lib_build_scripts_path/msys/build-x265.ps1
-	& $cpp_lib_build_scripts_path/msys/build-sdl2.ps1
-	& $cpp_lib_build_scripts_path/msys/build-amf.ps1
-	& $cpp_lib_build_scripts_path/msys/build-openssl.ps1
+	& $build_script_path/build-x264.ps1
+	& $build_script_path/build-x265.ps1
+	& $build_script_path/build-sdl2.ps1
+	& $build_script_path/build-amf.ps1
+	& $build_script_path/build-openssl.ps1
 
 	$env:PKG_CONFIG_PATH = 
 	"$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +

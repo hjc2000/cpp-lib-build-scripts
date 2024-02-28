@@ -1,10 +1,5 @@
-param (
-	[string]$repos_path = $env:repos_path
-)
-$ErrorActionPreference = "Stop"
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-. $build_script_path/../ps-fun/import-fun.ps1
-$libs_path = "$build_script_path/.libs"
+. $build_script_path/../base-script/prepare-for-building.ps1
 
 $source_path = "$repos_path/x264/"
 $install_path = "$libs_path/x264"
