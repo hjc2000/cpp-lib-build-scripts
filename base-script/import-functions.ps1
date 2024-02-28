@@ -150,7 +150,7 @@ function Install-Lib
 }
 
 
-function Apt-Install-Packet
+function Apt-Ensure-Packet
 {
 	param (
 		[Parameter(Mandatory = $true)]
