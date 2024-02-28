@@ -26,7 +26,10 @@ set(CMAKE_RC_COMPILER llvm-rc)
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DSDL_SHARED=ON `
-		-DSDL_STATIC=OFF
+		-DSDL_STATIC=OFF `
+		-DSDL_WAYLAND=OFF `
+		-DSDL_IBUS=OFF
+		
 
 	ninja -j12
 	ninja install

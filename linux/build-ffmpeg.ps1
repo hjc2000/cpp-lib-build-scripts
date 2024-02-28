@@ -29,8 +29,8 @@ set -e
 cd $source_path
 
 ./configure \
---prefix="$(cygpath.exe $install_path)" \
---extra-cflags="-I$(cygpath.exe $libs_path)/amf/include/ -DAMF_CORE_STATICTIC" \
+--prefix="$install_path" \
+--extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
 --enable-libx264 \
 --enable-libx265 \
 --enable-openssl \

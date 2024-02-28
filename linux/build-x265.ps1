@@ -1,57 +1,29 @@
-param (
-	[string]$libs_path = $env:libs_path,
-	[string]$repos_path = $env:repos_path,
-	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path,
+$build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+. $build_script_path/../base-script/prepare-for-building.ps1
 
-	[bool]$cross_compile = $false,
-	[string]$cross_compiler_prefix = "arm-none-linux-gnueabihf"
-)
-$ErrorActionPreference = "Stop"
-
-Push-Location $repos_path
-get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
 $source_path = "$repos_path/x265_git/source"
 $build_path = "$source_path/build/"
 $install_path = "$libs_path/x265/"
-
-# 创建 build 目录
-New-Item -Path $build_path -ItemType Directory -Force
-# 清空 build 目录里面的内容
-Remove-Item "$build_path/*" -Recurse -Force
-
-# 工具链文件的内容
-$toolchain_file_content = ""
-if ($cross_compile)
+Push-Location $repos_path
+try
 {
-	$toolchain_file_content = @"
-set(CROSS_COMPILE_ARM 1)
-set(CMAKE_SYSTEM_NAME Linux)
-set(CMAKE_SYSTEM_PROCESSOR armv4)
+	get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
 
-set(CMAKE_C_COMPILER $cross_compiler_prefix-gcc)
-set(CMAKE_CXX_COMPILER $cross_compiler_prefix-g++)
-"@
+	New-Empty-Dir $build_path
+	cmake -G "Ninja" $source_path `
+		-DCMAKE_INSTALL_PREFIX="${install_path}" `
+		-DENABLE_SHARED=on `
+		-DENABLE_PIC=on `
+		-DENABLE_ASSEMBLY=off
+
+	ninja -j12
+	ninja install
 }
-# 创建文件 toolchain.cmake
-New-Item -ItemType File -Path "$build_path/toolchain.cmake" -Force
-$toolchain_file_content | Out-File -FilePath "$build_path/toolchain.cmake" -Encoding UTF8
-
-# 切换到 build 目录开始构建
-Set-Location $build_path
-cmake -G "Ninja" $source_path `
-	-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-	-DCMAKE_INSTALL_PREFIX="${install_path}" `
-	-DENABLE_SHARED=on `
-	-DENABLE_PIC=on `
-	-DENABLE_ASSEMBLY=off
-
-ninja -j12
-ninja install
-
-if ($IsWindows)
+catch
 {
-	# 修复 .pc 文件内的路径
-	update-pc-prefix.ps1 "$install_path/lib/pkgconfig/x265.pc"
-}
 
-Pop-Location
+}
+finally
+{
+	Pop-Location
+}
