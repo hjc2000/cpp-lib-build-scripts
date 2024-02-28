@@ -1,10 +1,6 @@
-param (
-	[string]$libs_path = $env:libs_path,
-	[string]$repos_path = $env:repos_path,
-	[string]$cpp_lib_build_scripts_path = $env:cpp_lib_build_scripts_path
-)
-$ErrorActionPreference = "Stop"
-. $cpp_lib_build_scripts_path/ps-fun/import-fun.ps1
+$build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
+. $build_script_path/../base-script/prepare-for-building.ps1
+
 $install_path = "$libs_path/libiconv"
 Push-Location $repos_path
 try
