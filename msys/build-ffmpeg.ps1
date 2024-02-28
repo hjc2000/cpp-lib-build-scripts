@@ -6,9 +6,6 @@ $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
-		-branch_name release/6.1
-
 	# 编译依赖项
 	& $build_script_path/build-x264.ps1
 	& $build_script_path/build-x265.ps1
@@ -22,6 +19,10 @@ try
 	"$(cygpath.exe $libs_path)/openssl/lib64/pkgconfig:" +
 	"$(cygpath.exe $libs_path)/SDL2/lib/pkgconfig:"
 	Write-Host $env:PKG_CONFIG_PATH
+
+	Set-Location $repos_path
+	get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
+		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
 set -e
