@@ -148,3 +148,28 @@ function Install-Lib
 "@
 	}
 }
+
+
+function Apt-Install-Packet
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[array]$packets
+	)
+		
+	if (-not $IsLinux)
+	{
+		return
+	}
+
+	foreach ($packet in $packets)
+	{
+		# 检查包是否已安装
+		$installed = $(dpkg -l | grep "$packet")
+		if (-not $installed)
+		{
+			# 如果此包没安装，使用 apt-get 安装。
+			sudo apt-get install $packet -y
+		}
+	}	
+}

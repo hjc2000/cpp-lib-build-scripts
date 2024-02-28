@@ -7,6 +7,12 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	# 通过 apt-get 安装依赖
+	$dependent_libs = @(
+		"libasound2-dev",
+		"libpulse-dev"
+	)
+
 	get-git-repo.ps1 -git_url https://gitee.com/mycn027b/SDL.git `
 		-branch_name release-2.30.x
 
