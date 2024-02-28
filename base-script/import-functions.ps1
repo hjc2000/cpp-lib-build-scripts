@@ -108,7 +108,6 @@ function Install-Lib
 			Copy-Item -Path "$src_path/lib32/*" -Destination "$dst_path/lib/" -Force -Recurse
 		}
 
-
 		Copy-Item -Path "$src_path/include/*" -Destination "$dst_path/include/" -Force -Recurse
 	}
 	else
@@ -122,20 +121,20 @@ function Install-Lib
 
 		# 下面是 bash 脚本
 		run-bash-cmd.ps1 @"
-set -e
+		set -e
 
-# 复制并保留符号链接
-$copy_cmd $src_path/bin/* $dst_path/bin/
+		# 复制并保留符号链接
+		$copy_cmd $src_path/bin/* $dst_path/bin/
 
-if [ -d "$src_path/lib" ]; then
-	$copy_cmd "$src_path/lib/"* "$dst_path/lib/"
-elif [ -d "$src_path/lib64" ]; then
-	$copy_cmd "$src_path/lib64/"* "$dst_path/lib/"
-elif [ -d "$src_path/lib32" ]; then
-	$copy_cmd "$src_path/lib32/"* "$dst_path/lib/"
-fi
+		if [ -d "$src_path/lib" ]; then
+			$copy_cmd "$src_path/lib/"* "$dst_path/lib/"
+		elif [ -d "$src_path/lib64" ]; then
+			$copy_cmd "$src_path/lib64/"* "$dst_path/lib/"
+		elif [ -d "$src_path/lib32" ]; then
+			$copy_cmd "$src_path/lib32/"* "$dst_path/lib/"
+		fi
 
-$copy_cmd $src_path/include/* $dst_path/include/
+		$copy_cmd $src_path/include/* $dst_path/include/
 "@
 	}
 }
