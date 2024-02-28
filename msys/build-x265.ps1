@@ -25,7 +25,7 @@ try
 }
 catch
 {
-
+	throw
 }
 finally
 {

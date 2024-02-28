@@ -45,7 +45,7 @@ set(CMAKE_RC_COMPILER llvm-rc)
 }
 catch
 {
-	<#Do this if a terminating exception happens#>
+	throw
 }
 finally
 {

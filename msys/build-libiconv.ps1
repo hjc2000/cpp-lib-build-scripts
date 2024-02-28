@@ -22,7 +22,7 @@ make install
 }
 catch
 {
-
+	throw
 }
 finally
 {

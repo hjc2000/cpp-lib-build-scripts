@@ -178,7 +178,7 @@ function Apt-Ensure-Packets
 	}
 	catch
 	{
-		<#Do this if a terminating exception happens#>
+		throw
 	}
 	finally
 	{

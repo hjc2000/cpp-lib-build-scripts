@@ -48,7 +48,7 @@ make install
 }
 catch
 {
-	<#Do this if a terminating exception happens#>
+	throw
 }
 finally
 {
