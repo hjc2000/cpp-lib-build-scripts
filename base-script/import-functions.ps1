@@ -162,14 +162,26 @@ function Apt-Install-Packet
 		return
 	}
 
-	foreach ($packet in $packets)
+	Push-Location
+	try
 	{
-		# 检查包是否已安装
-		$installed = $(dpkg -l | grep "$packet")
-		if (-not $installed)
+		foreach ($packet in $packets)
 		{
-			# 如果此包没安装，使用 apt-get 安装。
-			sudo apt-get install $packet -y
-		}
-	}	
+			# 检查包是否已安装
+			$installed = $(dpkg -l | grep "$packet")
+			if (-not $installed)
+			{
+				# 如果此包没安装，使用 apt-get 安装。
+				sudo apt-get install $packet -y
+			}
+		}		
+	}
+	catch
+	{
+		<#Do this if a terminating exception happens#>
+	}
+	finally
+	{
+		Pop-Location	
+	}
 }
