@@ -12,6 +12,7 @@ try
 
 
 	New-Empty-Dir $build_path
+	Set-Location $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 set(CMAKE_SYSTEM_NAME Windows)

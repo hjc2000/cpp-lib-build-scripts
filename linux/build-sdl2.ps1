@@ -18,6 +18,7 @@ try
 
 
 	New-Empty-Dir $build_path
+	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `

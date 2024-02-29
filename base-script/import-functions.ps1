@@ -9,7 +9,6 @@ function New-Empty-Dir
 	# 创建 build 目录
 	New-Item -Path $Path -ItemType Directory -Force
 	Remove-Item "$Path/*" -Recurse -Force
-	Set-Location $Path
 }
 
 
