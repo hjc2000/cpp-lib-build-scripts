@@ -23,9 +23,6 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
 
-	$env:LDFLAGS = "-L$libs_path/libtool/lib/ltdl.so.7:$env:LDFLAGS"
-	$env:CFLAGS = "-I$libs_path/libtool/include:$env:CFLAGS"
-
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix=$install_path `
@@ -35,6 +32,10 @@ try
 	Set-Location $build_path
 	ninja -j12
 	ninja install
+
+	run-bash-cmd.ps1 @"
+	sudo chmod 777 -R $install_path
+"@
 }
 catch
 {
