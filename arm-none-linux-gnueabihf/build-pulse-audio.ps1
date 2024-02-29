@@ -14,9 +14,7 @@ try
 	# 构建依赖项
 	& $build_script_path/build-libsndfile.ps1
 
-	$PKG_CONFIG_PATH = "$libs_path/libsndfile/lib/pkgconfig:"
-	$env:PKG_CONFIG_PATH = $PKG_CONFIG_PATH
-	Write-Host $env:PKG_CONFIG_PATH
+	$env:PKG_CONFIG_PATH = "$libs_path/libsndfile/lib/pkgconfig:"
 
 	# 开始构建本体
 	Set-Location $repos_path
@@ -26,25 +24,24 @@ try
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
-	c = '$(which arm-none-linux-gnueabihf-gcc)'
-	cpp = '$(which arm-none-linux-gnueabihf-g++)'
-	ar = '$(which arm-none-linux-gnueabihf-ar)'
-	ld = '$(which arm-none-linux-gnueabihf-ld)'
-	strip = '$(which arm-none-linux-gnueabihf-strip)'
-	pkgconfig = '$(which /usr/bin/pkg-config)'
-	cmake = 'cmake'
+	c = 'arm-none-linux-gnueabihf-gcc'
+	cpp = 'arm-none-linux-gnueabihf-g++'
+	ar = 'arm-none-linux-gnueabihf-ar'
+	ld = 'arm-none-linux-gnueabihf-ld'
+	strip = 'arm-none-linux-gnueabihf-strip'
+	pkgconfig = 'pkg-config'
 	sys_root='$env:rootfs'
 
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7'
+	cpu = 'armv7-a'
 	endian = 'little'
 
 	[target_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7'
+	cpu = 'armv7-a'
 	endian = 'little'
 "@
 
