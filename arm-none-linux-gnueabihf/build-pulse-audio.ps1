@@ -34,8 +34,9 @@ try
 	pkgconfig = '$(which /usr/bin/pkg-config)'
 
 	[built-in options]
-	c_args = ['-march=armv7-a']
-	c_link_args = ['-march=armv7-a']
+	c_args = ['--sysroot=$env:rootfs']
+	cpp_args = ['--sysroot=$env:rootfs']
+	link_args = ['--sysroot=$env:rootfs', '-L$env:rootfs/usr/lib', '-L$env:rootfs/lib']
 
 	[properties]
 	needs_exe_wrapper = true
