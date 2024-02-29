@@ -38,13 +38,13 @@ try
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7-a'
+	cpu = 'armv7'
 	endian = 'little'
 
 	[target_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7-a'
+	cpu = 'armv7'
 	endian = 'little'
 "@
 
