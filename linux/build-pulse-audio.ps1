@@ -23,6 +23,9 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
 
+	$env:LDFLAGS = "-L$libs_path/libtool/lib/libltdl.so.7:$env:LDFLAGS"
+	$env:CFLAGS = "-I$libs_path/libtool/include:$env:CFLAGS"
+
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix=$install_path
