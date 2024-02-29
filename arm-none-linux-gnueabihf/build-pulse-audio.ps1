@@ -61,7 +61,7 @@ try
 		-Ddaemon=false \
 		-Dtests=false \
 		-Ddoxygen=false \
-		-Ddbus=false
+		-Ddbus=disabled
 
 	cd $build_path
 	ninja -j12
