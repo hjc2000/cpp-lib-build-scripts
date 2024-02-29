@@ -10,14 +10,14 @@ try
 		-out_dir_name libiconv
 
 	run-bash-cmd.ps1 -cmd @"
-set -e
-cd $(cygpath.exe $repos_path)/libiconv/libiconv-1.17/
+	set -e
+	cd $(cygpath.exe $repos_path)/libiconv/libiconv-1.17/
 
-./configure \
---prefix=$(cygpath.exe $install_path)
+	./configure \
+	--prefix=$(cygpath.exe $install_path)
 
-make -j12
-make install
+	make -j12
+	make install
 "@
 }
 catch
