@@ -48,6 +48,10 @@ try
 "@
 
 	run-bash-cmd.ps1 @"
+	set -e
+	export PATH=$env:PATH
+	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
+
 	cd $source_path
 
 	meson setup build/ \
