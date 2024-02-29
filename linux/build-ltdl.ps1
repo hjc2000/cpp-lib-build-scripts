@@ -8,6 +8,8 @@ Push-Location $repos_path
 try
 {
 	get-git-repo.ps1 -git_url "git://git.savannah.gnu.org/libtool.git"
+	Set-Location $source_path
+	run-bash-cmd.ps1 "$source_path/bootstrap"
 }
 catch
 {
