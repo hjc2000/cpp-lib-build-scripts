@@ -13,7 +13,7 @@ try
 
 	# 构建依赖项
 	& $build_script_path/build-libsndfile.ps1
-	& $build_script_path/build-ltdl.ps1
+	& $build_script_path/build-libtool.ps1
 
 	$env:PKG_CONFIG_PATH = 
 	"$libs_path/libsndfile/lib/pkgconfig:"
