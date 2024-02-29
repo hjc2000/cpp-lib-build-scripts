@@ -14,14 +14,15 @@ try
 	$env:Path = "C:\msys64\usr\bin\core_perl;" + $env:Path
 	
 	run-bash-cmd.ps1 @"
-set -e
-cd $source_path
+	set -e
+	cd $source_path
 
-./Configure shared \
---prefix="$install_path"
+	./Configure shared \
+	--prefix="$install_path" \
+	--cross-compile-prefix=arm-none-linux-gnueabihf-
 
-make -j12
-make install
+	make -j12
+	make install
 "@
 }
 catch
