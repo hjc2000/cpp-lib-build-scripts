@@ -5,7 +5,7 @@ Push-Location $repos_path
 try
 {
 	# 文件URL
-	$url = "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0_rc1.tar.gz"
+	$url = "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.bz2"
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url $url `
 		-out_dir_name boost
