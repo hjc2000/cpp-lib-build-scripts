@@ -32,12 +32,16 @@ try
 	ld = '$(which arm-none-linux-gnueabihf-ld)'
 	strip = '$(which arm-none-linux-gnueabihf-strip)'
 	pkgconfig = '$(which /usr/bin/pkg-config)'
+	cmake = 'cmake'
 	sys_root='$env:rootfs'
 
-	[properties]
-	needs_exe_wrapper = true
-
 	[host_machine]
+	system = 'linux'
+	cpu_family = 'arm'
+	cpu = 'armv7-a'
+	endian = 'little'
+
+	[target_machine]
 	system = 'linux'
 	cpu_family = 'arm'
 	cpu = 'armv7-a'
