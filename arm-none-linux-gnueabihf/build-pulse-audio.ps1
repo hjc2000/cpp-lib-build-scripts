@@ -31,6 +31,7 @@ try
 	ar = 'arm-none-linux-gnueabihf-ar'
 	ld = 'arm-none-linux-gnueabihf-ld'
 	strip = 'arm-none-linux-gnueabihf-strip'
+	pkgconfig = '/usr/bin/pkg-config'
 
 	[properties]
 	c_args = ['-march=armv7-a']
