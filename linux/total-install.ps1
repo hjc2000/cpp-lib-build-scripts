@@ -4,7 +4,7 @@ Push-Location
 try
 {
 	$build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-	. $build_script_path/../base-script/import-functions.ps1
+	. $build_script_path/../.base-script/import-functions.ps1
 
 	New-Item -Path "$build_script_path/.total-install/" -ItemType Directory -Force
 

@@ -1,5 +1,5 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-. $build_script_path/../base-script/prepare-for-building.ps1
+. $build_script_path/../.base-script/prepare-for-building.ps1
 
 Push-Location $repos_path
 try
@@ -12,8 +12,7 @@ try
 
 	Copy-Item -Path $repos_path/boost/boost_1_84_0/boost/ `
 		-Destination $libs_path/boost/include/boost/ `
-		-Force `
-		-Recurse
+		-Force -Recurse
 }
 catch
 {
