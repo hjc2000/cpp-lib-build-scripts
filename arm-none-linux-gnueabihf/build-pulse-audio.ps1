@@ -14,8 +14,7 @@ try
 	# 构建依赖项
 	& $build_script_path/build-libsndfile.ps1
 
-	$env:PKG_CONFIG_PATH = 
-	"$libs_path/libsndfile/lib/pkgconfig:"
+	$env:PKG_CONFIG_PATH = "$libs_path/libsndfile/lib/pkgconfig:"
 	Write-Host $env:PKG_CONFIG_PATH
 
 	# 开始构建本体
@@ -52,6 +51,7 @@ try
 	run-bash-cmd.ps1 @"
 	cd $source_path
 	export PATH=$PATH
+	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 
 	meson setup build/ \
 		--prefix="$install_path" \
