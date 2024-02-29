@@ -25,25 +25,25 @@ try
 		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
-set -e
-cd $source_path
+	set -e
+	cd $source_path
 
-./configure \
---prefix="$install_path" \
---extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
---enable-libx264 \
---enable-libx265 \
---enable-openssl \
---enable-version3 \
---enable-amf \
---enable-pic \
---enable-gpl \
---enable-shared \
---disable-static
+	./configure \
+	--prefix="$install_path" \
+	--extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
+	--enable-libx264 \
+	--enable-libx265 \
+	--enable-openssl \
+	--enable-version3 \
+	--enable-amf \
+	--enable-pic \
+	--enable-gpl \
+	--enable-shared \
+	--disable-static
 
-make clean
-make -j12
-make install
+	make clean
+	make -j12
+	make install
 "@
 }
 catch
