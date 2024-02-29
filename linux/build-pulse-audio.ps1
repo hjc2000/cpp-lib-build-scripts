@@ -12,7 +12,8 @@ try
 	)
 
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
-	meson setup $source_path/build/ `
+	Set-Location $source_path
+	meson setup build/ `
 		--prefix=$install_path
 
 	Set-Location $build_path
