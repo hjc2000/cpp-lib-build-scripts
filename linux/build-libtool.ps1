@@ -20,21 +20,25 @@ try
 		-out_dir_name libtool
 	Set-Location $source_path
 
-	# 	if (-not (Test-Path -Path $source_path/configure))
-	# 	{
-	# 		run-bash-cmd.ps1 "$source_path/bootstrap"
-	# 	}
+	if (Test-Path -Path $source_path/configure)
+	{
+		Write-Host "已经有 configure 了，不需要 bootstrap。"
+	}
+	else
+	{
+		run-bash-cmd.ps1 "$source_path/bootstrap"
+	}
 
-	# 	run-bash-cmd.ps1 @"
-	# 	set -e
-	# 	cd $source_path
+	run-bash-cmd.ps1 @"
+		set -e
+		cd $source_path
 	
-	# 	./configure \
-	# 	--prefix=$install_path
+		./configure \
+		--prefix=$install_path
 
-	# 	make -j12
-	# 	make install
-	# "@
+		make -j12
+		make install
+"@
 }
 catch
 {
