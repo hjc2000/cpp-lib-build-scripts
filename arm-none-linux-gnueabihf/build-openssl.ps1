@@ -8,10 +8,6 @@ Push-Location $repos_path
 try
 {
 	get-git-repo.ps1 -git_url "https://gitee.com/hughpenn23/openssl.git"
-
-	# 编译后安装阶段依赖 Perl 中的 pod2man，但是它比较不同寻常，
-	# 可执行文件不是在 bin 里面，而是在 bin 里面又创建了一个目录
-	$env:Path = "C:\msys64\usr\bin\core_perl;" + $env:Path
 	
 	run-bash-cmd.ps1 @"
 	set -e
