@@ -26,12 +26,12 @@ try
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
-	c = arm-none-linux-gnueabihf-gcc
-	cpp = arm-none-linux-gnueabihf-g++
-	ar = arm-none-linux-gnueabihf-ar
-	ld = arm-none-linux-gnueabihf-ld
-	strip = arm-none-linux-gnueabihf-strip
-	pkgconfig = /usr/bin/pkg-config
+	c = "arm-none-linux-gnueabihf-gcc"
+	cpp = "arm-none-linux-gnueabihf-g++"
+	ar = "arm-none-linux-gnueabihf-ar"
+	ld = "arm-none-linux-gnueabihf-ld"
+	strip = "arm-none-linux-gnueabihf-strip"
+	pkgconfig = "/usr/bin/pkg-config"
 
 	[built-in options]
 	c_args = ['-march=armv7-a']
