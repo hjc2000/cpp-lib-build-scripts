@@ -32,6 +32,9 @@ try
 	pkgconfig = 'pkg-config'
 	sys_root='$env:rootfs'
 
+	[properties]
+	sys_root='$env:rootfs'
+
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
