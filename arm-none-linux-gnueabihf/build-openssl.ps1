@@ -13,7 +13,9 @@ try
 	set -e
 	cd $source_path
 
-	./Configure shared \
+	./Configure \
+	linux-armv4 \
+	shared \
 	--prefix="$install_path" \
 	--cross-compile-prefix=arm-none-linux-gnueabihf-
 
