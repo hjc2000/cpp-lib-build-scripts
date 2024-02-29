@@ -29,7 +29,7 @@ try
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix=$install_path `
-		-Ddisable-daemon=true
+		-Ddaemon=false
 
 	Set-Location $build_path
 	ninja -j12
