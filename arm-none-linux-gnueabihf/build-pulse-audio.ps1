@@ -60,7 +60,8 @@ try
 		--cross-file="$build_path/cross_file.ini" \
 		-Ddaemon=false \
 		-Dtests=false \
-		-Ddoxygen=false
+		-Ddoxygen=false \
+		-Ddbus=false
 
 	cd $build_path
 	ninja -j12
