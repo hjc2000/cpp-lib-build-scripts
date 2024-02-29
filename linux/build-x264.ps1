@@ -10,18 +10,18 @@ try
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
-set -e
-cd $source_path
+	set -e
+	cd $source_path
 
-./configure \
---prefix="$install_path" \
---enable-shared \
---disable-opencl \
---enable-pic
+	./configure \
+	--prefix="$install_path" \
+	--enable-shared \
+	--disable-opencl \
+	--enable-pic
 
-make clean
-make -j12
-make install
+	make clean
+	make -j12
+	make install
 "@
 
 }
