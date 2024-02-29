@@ -7,6 +7,14 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	Apt-Ensure-Packets @(
+		"help2man",
+		"texinfo",
+		"autoconf",
+		"automake"
+	)
+
+	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "git://git.savannah.gnu.org/libtool.git"
 	Set-Location $source_path
 	run-bash-cmd.ps1 "$source_path/bootstrap"
