@@ -14,7 +14,7 @@ try
 	cd $source_path
 
 	./Configure \
-	linux-armv4 \
+	linux-armv7-a \
 	shared \
 	--prefix="$install_path" \
 	--cross-compile-prefix=arm-none-linux-gnueabihf-
