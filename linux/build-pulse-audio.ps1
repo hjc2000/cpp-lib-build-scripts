@@ -29,12 +29,14 @@ try
 		-Ddaemon=false `
 		-Dtests=false
 
-	Set-Location $build_path
-	ninja -j12
-	ninja install
-
 	run-bash-cmd.ps1 @"
-	sudo chmod 777 -R $install_path
+	cd $build_path
+	ninja -j12
+
+	sudo su
+	ninja install
+	chmod 777 -R $install_path
+	exit
 "@
 }
 catch
