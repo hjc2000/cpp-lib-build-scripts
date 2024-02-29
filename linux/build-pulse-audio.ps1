@@ -27,7 +27,8 @@ try
 	meson setup build/ `
 		--prefix=$install_path `
 		-Ddaemon=false `
-		-Dtests=false
+		-Dtests=false `
+		-Ddoxygen=false
 
 	run-bash-cmd.ps1 @"
 	cd $build_path
