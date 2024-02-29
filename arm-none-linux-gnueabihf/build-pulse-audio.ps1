@@ -53,7 +53,9 @@ try
 		-Dtests=false `
 		-Ddoxygen=false
 
+	$PATH = $env:PATH
 	run-bash-cmd.ps1 @"
+	export PATH=$PATH
 	cd $build_path
 	ninja -j12
 
