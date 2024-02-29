@@ -33,9 +33,11 @@ try
 	strip = 'arm-none-linux-gnueabihf-strip'
 	pkgconfig = '/usr/bin/pkg-config'
 
-	[properties]
+	[built-in options]
 	c_args = ['-march=armv7-a']
 	c_link_args = ['-march=armv7-a']
+
+	[properties]
 	needs_exe_wrapper = true
 
 	[host_machine]
