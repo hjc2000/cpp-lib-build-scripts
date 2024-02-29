@@ -47,6 +47,7 @@ try
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix=$install_path `
+		--cross-file=cross_file.ini `
 		-Ddaemon=false `
 		-Dtests=false `
 		-Ddoxygen=false
