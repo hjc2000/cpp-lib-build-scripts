@@ -32,10 +32,7 @@ try
 	ld = '$(which arm-none-linux-gnueabihf-ld)'
 	strip = '$(which arm-none-linux-gnueabihf-strip)'
 	pkgconfig = '$(which /usr/bin/pkg-config)'
-
-	[built-in options]
-	c_args = ['--sysroot=$env:rootfs']
-	cpp_args = ['--sysroot=$env:rootfs']
+	sys_root='$env:rootfs'
 
 	[properties]
 	needs_exe_wrapper = true
