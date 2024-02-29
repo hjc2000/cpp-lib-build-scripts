@@ -36,7 +36,6 @@ try
 	[built-in options]
 	c_args = ['--sysroot=$env:rootfs']
 	cpp_args = ['--sysroot=$env:rootfs']
-	link_args = ['--sysroot=$env:rootfs', '-L$env:rootfs/usr/lib', '-L$env:rootfs/lib']
 
 	[properties]
 	needs_exe_wrapper = true
