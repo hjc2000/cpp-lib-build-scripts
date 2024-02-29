@@ -17,7 +17,6 @@ try
 
 	$env:PKG_CONFIG_PATH = 
 	"$libs_path/libsndfile/lib/pkgconfig:"
-	"$libs_path/libtool/lib/pkgconfig:"
 	Write-Host $env:PKG_CONFIG_PATH
 
 	# 开始构建本体
