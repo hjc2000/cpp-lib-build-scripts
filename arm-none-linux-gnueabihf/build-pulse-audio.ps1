@@ -30,7 +30,6 @@ try
 	ld = 'arm-none-linux-gnueabihf-ld'
 	strip = 'arm-none-linux-gnueabihf-strip'
 	pkgconfig = 'pkg-config'
-	sys_root='$env:rootfs'
 
 	[properties]
 	sys_root='$env:rootfs'
@@ -48,12 +47,8 @@ try
 	endian = 'little'
 "@
 
-	$PATH = $env:PATH
-
 	run-bash-cmd.ps1 @"
 	cd $source_path
-	export PATH=$PATH
-	export PKG_CONFIG_PATH=$PKG_CONFIG_PATH
 
 	meson setup build/ \
 		--prefix="$install_path" \
