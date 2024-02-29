@@ -7,8 +7,17 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
+	Apt-Ensure-Packets @(
+		"meson"
+	)
 
+	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
+	meson setup $source_path/build/ `
+		--prefix=$install_path
+
+	Set-Location $build_path
+	ninja -j12
+	ninja install
 }
 catch
 {
