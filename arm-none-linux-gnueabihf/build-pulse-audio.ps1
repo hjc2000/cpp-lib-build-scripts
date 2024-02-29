@@ -47,17 +47,19 @@ try
 	endian = 'little'
 "@
 
-	Set-Location $source_path
-	meson setup build/ `
-		--prefix=$install_path `
-		--cross-file="$build_path/cross_file.ini" `
-		-Ddaemon=false `
-		-Dtests=false `
+	$PATH = $env:PATH
+
+	run-bash-cmd.ps1 @"
+	cd $source_path
+	export PATH=$PATH
+
+	meson setup build/ \
+		--prefix="$install_path" \
+		--cross-file="$build_path/cross_file.ini" \
+		-Ddaemon=false \
+		-Dtests=false \
 		-Ddoxygen=false
 
-	$PATH = $env:PATH
-	run-bash-cmd.ps1 @"
-	export PATH=$PATH
 	cd $build_path
 	ninja -j12
 
