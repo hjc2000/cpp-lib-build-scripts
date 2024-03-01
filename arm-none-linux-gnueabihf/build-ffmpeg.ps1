@@ -18,8 +18,7 @@ try
 		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
-	echo "666666666666666666666666666"
-	echo `$PKG_CONFIG_PATH
+	export SDL2_CONFIG=$libs_path/sdl2/bin/sdl2-config
 	cd $source_path
 
 	./configure \
