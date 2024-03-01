@@ -253,6 +253,6 @@ function Import-Lib
 		[string]$LibName
 	)
 	
-	# & "${build_script_path}/build-${LibName}.ps1"
+	& "${build_script_path}/build-${LibName}.ps1"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/${LibName}"
 }
