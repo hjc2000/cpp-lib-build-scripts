@@ -25,7 +25,7 @@ try
 
 	./configure \
 	--prefix=$install_path \
-	--host=arm-none-linux-gnueabihf
+	--host=arm-none-linux-gnueabihf \
 	--target=arm-none-linux-gnueabihf
 
 	make -j12
