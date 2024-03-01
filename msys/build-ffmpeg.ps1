@@ -7,17 +7,11 @@ Push-Location $repos_path
 try
 {
 	# 编译依赖项
-	& $build_script_path/build-x264.ps1
-	& $build_script_path/build-x265.ps1
-	& $build_script_path/build-sdl2.ps1
-	& $build_script_path/build-amf.ps1
-	& $build_script_path/build-openssl.ps1
-
-	$env:PKG_CONFIG_PATH = 
-	"$(cygpath.exe ${libs_path})/x264/lib/pkgconfig:" +
-	"$(cygpath.exe $libs_path)/x265/lib/pkgconfig:" +
-	"$(cygpath.exe $libs_path)/openssl/lib64/pkgconfig:" +
-	"$(cygpath.exe $libs_path)/SDL2/lib/pkgconfig:"
+	Import-Lib -LibName "x264"
+	Import-Lib -LibName "x265"
+	Import-Lib -LibName "sdl2"
+	Import-Lib -LibName "amf"
+	Import-Lib -LibName "openssl"
 	Write-Host $env:PKG_CONFIG_PATH
 
 	Set-Location $repos_path
