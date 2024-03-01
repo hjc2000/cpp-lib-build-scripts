@@ -24,7 +24,7 @@ try
 	ar = 'arm-none-linux-gnueabihf-ar'
 	ld = 'arm-none-linux-gnueabihf-ld'
 	strip = 'arm-none-linux-gnueabihf-strip'
-	pkg-config = 'pkg-config'
+	pkg-config = '$(which pkg-config)'
 
 	[host_machine]
 	system = 'linux'
