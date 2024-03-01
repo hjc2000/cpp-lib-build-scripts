@@ -25,7 +25,8 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=ON `
+		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig"
 
 	ninja -j12
 	ninja install
