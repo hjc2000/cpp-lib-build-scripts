@@ -52,7 +52,6 @@ try
 	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 
 	cd $source_path
-
 	meson setup build/ \
 		--prefix="$install_path" \
 		--cross-file="$build_path/cross_file.ini" \
