@@ -32,7 +32,12 @@ try
 	run-bash-cmd.ps1 @"
 	cd $source_path
 
-	./configure -h
+	./configure \
+	--prefix=$install_path \
+	--host=arm-none-linux-gnueabihf
+
+	make -j12
+	make install
 "@
 }
 catch
