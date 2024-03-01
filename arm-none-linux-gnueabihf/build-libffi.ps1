@@ -15,6 +15,7 @@ try
 
 	run-bash-cmd.ps1 @"
 	export LIBTOOL="$libs_path/libtool"
+	export LT_PATH_LD=$(which ld)
 
 	cd $source_path
 	autoreconf -i
