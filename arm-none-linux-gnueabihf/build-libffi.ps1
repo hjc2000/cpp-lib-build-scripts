@@ -22,6 +22,14 @@ try
 	aclocal
 	autoconf
 	autoreconf -i
+
+	./configure \
+	--prefix=$install_path \
+	--host=arm-none-linux-gnueabihf
+	--target=arm-none-linux-gnueabihf
+
+	make -j12
+	make install
 "@
 }
 catch
