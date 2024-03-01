@@ -13,7 +13,7 @@ try
 
 	$env:PKG_CONFIG_PATH = 
 	"$libs_path/libsndfile/lib/pkgconfig:" +
-	"$libs_path/glib/lib/pkgconfig:"
+	"$libs_path/glib/lib/x86_64-linux-gnu/pkgconfig:"
 	Write-Host $env:PKG_CONFIG_PATH
 
 	# 开始构建本体
