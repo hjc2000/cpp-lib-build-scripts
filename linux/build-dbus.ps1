@@ -11,7 +11,13 @@ try
 	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `
 		-branch_name dbus-1.14
 
-	Set-Location $source_path
+	New-Empty-Dir $build_path
+	Set-Location $build_path
+	cmake -G "Ninja" $source_path `
+		-DCMAKE_INSTALL_PREFIX="${install_path}"
+
+	ninja -j12
+	ninja install
 }
 catch
 {
