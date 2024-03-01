@@ -18,7 +18,7 @@ try
 		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
-	set -e
+	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 	cd $source_path
 
 	./configure \
