@@ -19,7 +19,7 @@ try
 	ninja -j12
 	ninja install
 
-	$env:PKG_CONFIG_PATH = "$libs_path/libsndfile/lib/pkgconfig:$env:PKG_CONFIG_PATH" 
+	$env:PKG_CONFIG_PATH = "$libs_path/libsndfile/lib/pkgconfig:$env:PKG_CONFIG_PATH"
 }
 catch
 {

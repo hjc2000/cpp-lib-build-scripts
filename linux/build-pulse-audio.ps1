@@ -10,6 +10,8 @@ try
 	# 构建依赖项
 	& $build_script_path/build-libsndfile.ps1
 	& $build_script_path/build-glib.ps1
+	Write-Host $env:PKG_CONFIG_PATH
+	return
 
 	# 开始构建本体
 	Set-Location $repos_path
