@@ -30,10 +30,9 @@ try
 	}
 
 	run-bash-cmd.ps1 @"
-		set -e
-		cd $source_path
-	
-		./configure -h
+	cd $source_path
+
+	./configure -h
 "@
 }
 catch
