@@ -51,7 +51,7 @@ try
 		-Ddaemon=false `
 		-Dtests=false `
 		-Ddoxygen=false `
-		-Ddbus=disabled
+		-Dglib=disabled
 
 	Set-Location $build_path
 	ninja -j12
