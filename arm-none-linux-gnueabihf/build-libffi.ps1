@@ -8,15 +8,16 @@ Push-Location $repos_path
 
 try
 {
-	& $build_script_path/build-libtool.ps1
+	Apt-Ensure-Packets @(
+		"autoconf",
+		"automake",
+		"libtool"
+	)
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://github.com/libffi/libffi.git
 
 	run-bash-cmd.ps1 @"
-	export LIBTOOL="$libs_path/libtool/lib"
-	export LT_PATH_LD=$(which ld)
-
 	cd $source_path
 	aclocal
 	autoconf
