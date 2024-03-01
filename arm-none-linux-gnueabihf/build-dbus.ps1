@@ -7,6 +7,10 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	& $build_script_path/build-libexpat.ps1
+	$env:PKG_CONFIG_PATH = ""
+	Append-Pkg-Config-Path -Path "$libs_path/libexpat/lib/pkgconfig"
+
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `
 		-branch_name dbus-1.14
