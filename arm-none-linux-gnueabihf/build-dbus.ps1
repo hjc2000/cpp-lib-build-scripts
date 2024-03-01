@@ -24,7 +24,8 @@ try
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_INSTALL_PREFIX="${install_path}"
+		-DCMAKE_INSTALL_PREFIX="${install_path}" `
+		-DDBUS_SESSION_SOCKET_DIR="/tmp"
 
 	ninja -j12
 	ninja install
