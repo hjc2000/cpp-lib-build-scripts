@@ -185,27 +185,6 @@ function Apt-Ensure-Packets
 	}
 }
 
-
-function Get-PkgConfigPaths
-{
-	param (
-		[string]$Directory
-	)
-
-	$pkgConfigPaths = @()
-
-	# 使用Get-ChildItem递归搜索目录，-Directory参数确保只返回目录
-	$directories = Get-ChildItem -Path $Directory -Recurse -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -eq 'pkgconfig' }
-
-	foreach ($dir in $directories)
-	{
-		# 将找到的目录的绝对路径添加到列表中
-		$pkgConfigPaths += $dir.FullName
-	}
-
-	return $pkgConfigPaths
-}
-
 # 递归收集指定路径下的所有 pkgconfig 目录，添加到 $env:PKG_CONFIG_PATH
 # 含有去重功能。
 function Append-Pkg-Config-Path-Recurse
@@ -215,9 +194,26 @@ function Append-Pkg-Config-Path-Recurse
 		[array]$Path
 	)
 	
+	function Get-PkgConfigPaths
+	{
+		param (
+			[string]$Directory
+		)
 
-	# 将指定的 pkgconfig 目录添加到 $env:PKG_CONFIG_PATH 中。
-	# 会先检查是否已经有了，有了就不会重复添加。
+		$pkgConfigPaths = @()
+
+		# 使用Get-ChildItem递归搜索目录，-Directory参数确保只返回目录
+		$directories = Get-ChildItem -Path $Directory -Recurse -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -eq 'pkgconfig' }
+
+		foreach ($dir in $directories)
+		{
+			# 将找到的目录的绝对路径添加到列表中
+			$pkgConfigPaths += $dir.FullName
+		}
+
+		return $pkgConfigPaths
+	}
+
 	function Append-Pkg-Config-Path
 	{
 		param (
@@ -225,13 +221,13 @@ function Append-Pkg-Config-Path-Recurse
 			[array]$Path
 		)
 
+		if ($IsWindows)
+		{
+			$Path = cygpath.exe $Path
+		}
+
 		if (-not "$env:PKG_CONFIG_PATH".Contains($Path))
 		{
-			if ($IsWindows)
-			{
-				$Path = cygpath.exe $Path
-			}
-
 			$env:PKG_CONFIG_PATH = "${Path}:$env:PKG_CONFIG_PATH"
 		}
 	}
