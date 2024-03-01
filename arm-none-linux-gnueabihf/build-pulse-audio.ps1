@@ -12,8 +12,15 @@ try
 	)
 
 	# 构建依赖项
+	Clear-Pkg-Config-Path
+
 	& $build_script_path/build-libsndfile.ps1
-	$env:PKG_CONFIG_PATH = "$libs_path/libsndfile/lib/pkgconfig:"
+	Append-Pkg-Config-Path -Path "$libs_path/libsndfile/lib/pkgconfig"
+
+	& $build_script_path/build-dbus.ps1
+	Append-Pkg-Config-Path -Path "$libs_path/dbus/lib/pkgconfig"
+
+
 
 	# 开始构建本体
 	Set-Location $repos_path
@@ -43,28 +50,18 @@ try
 	endian = 'little'
 "@
 
-	run-bash-cmd.ps1 @"
-	set -e
-	export PATH=$env:PATH
-	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
-
-	cd $source_path
-	meson setup build/ \
-		--prefix="$install_path" \
-		--cross-file="$build_path/cross_file.ini" \
-		-Ddaemon=false \
-		-Dtests=false \
-		-Ddoxygen=false \
+	Set-Location $source_path
+	meson setup build/ `
+		--prefix="$install_path" `
+		--cross-file="$build_path/cross_file.ini" `
+		-Ddaemon=false `
+		-Dtests=false `
+		-Ddoxygen=false `
 		-Ddbus=disabled
 
-	cd $build_path
+	Set-Location $build_path
 	ninja -j12
-
-	sudo su
 	ninja install
-	chmod 777 -R $install_path
-	exit
-"@
 }
 catch
 {
