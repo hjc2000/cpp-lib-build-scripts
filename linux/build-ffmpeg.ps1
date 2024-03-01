@@ -6,17 +6,11 @@ $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
 try
 {
-	# 编译依赖项
-	& $build_script_path/build-x264.ps1
-	& $build_script_path/build-x265.ps1
-	& $build_script_path/build-sdl2.ps1
-	& $build_script_path/build-amf.ps1
-	& $build_script_path/build-openssl.ps1
-	Clear-Pkg-Config-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x264"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x265"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/openssl"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/SDL2"
+	Import-Lib -LibName "x264"
+	Import-Lib -LibName "x265"
+	Import-Lib -LibName "sdl2"
+	Import-Lib -LibName "amf"
+	Import-Lib -LibName "openssl"
 	Write-Host $env:PKG_CONFIG_PATH
 
 	Set-Location $repos_path

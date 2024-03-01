@@ -186,12 +186,6 @@ function Apt-Ensure-Packets
 }
 
 
-
-function Clear-Pkg-Config-Path
-{
-	$env:PKG_CONFIG_PATH = ""	
-}
-
 function Get-PkgConfigPaths
 {
 	param (
@@ -243,4 +237,16 @@ function Append-Pkg-Config-Path-Recurse
 	{
 		Append-Pkg-Config-Path -Path $pkg
 	}
+}
+
+
+function Import-Lib
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[string]$LibName
+	)
+	
+	& "${build_script_path}/build-${LibName}.ps1"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/${LibName}"
 }

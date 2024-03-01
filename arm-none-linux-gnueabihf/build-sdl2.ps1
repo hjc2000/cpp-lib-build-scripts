@@ -8,11 +8,7 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	& $build_script_path/build-pulse-audio.ps1
-	Clear-Pkg-Config-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/build-pulse-audio"
-
-
+	Import-Lib -LibName "pulse-audio"
 
 	get-git-repo.ps1 -git_url https://gitee.com/mycn027b/SDL.git `
 		-branch_name release-2.30.x

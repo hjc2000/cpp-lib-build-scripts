@@ -8,13 +8,8 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	& $build_script_path/build-libsndfile.ps1
-	& $build_script_path/build-dbus.ps1
-	Clear-Pkg-Config-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libsndfile"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
-
-
+	Import-Lib -LibName "libsndfile"
+	Import-Lib -LibName "dbus"
 
 	# 开始构建本体
 	Set-Location $repos_path
