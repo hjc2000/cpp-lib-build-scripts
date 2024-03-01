@@ -21,6 +21,9 @@ try
 	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 	cd $source_path
 
+	echo "666666666666666666666666666"
+	echo `$PKG_CONFIG_PATH
+
 	./configure \
 	--prefix="$install_path" \
 	--extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
