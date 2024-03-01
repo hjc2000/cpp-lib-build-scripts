@@ -28,7 +28,7 @@ try
 	ar = 'arm-none-linux-gnueabihf-ar'
 	ld = 'arm-none-linux-gnueabihf-ld'
 	strip = 'arm-none-linux-gnueabihf-strip'
-	pkgconfig = 'pkg-config'
+	pkg-config = 'pkg-config'
 
 	[properties]
 	sys_root='$total_install_path'
