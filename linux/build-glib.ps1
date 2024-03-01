@@ -14,6 +14,9 @@ try
 	meson setup build/ `
 		--prefix=$install_path `
 
+	Set-Location $build_path
+	ninja -j12
+	ninja install
 }
 catch
 {
