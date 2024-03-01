@@ -29,7 +29,7 @@ try
 	pkg-config = 'pkg-config'
 
 	[properties]
-	sys_root='$total_install_path'
+	sys_root='.total-install'
 
 	[host_machine]
 	system = 'linux'
