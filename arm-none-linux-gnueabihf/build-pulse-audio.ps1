@@ -7,17 +7,11 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	Apt-Ensure-Packets @(
-		"meson"
-	)
-
 	# 构建依赖项
-	Clear-Pkg-Config-Path
-
 	& $build_script_path/build-libsndfile.ps1
-	Append-Pkg-Config-Path -Path "$libs_path/libsndfile/lib/pkgconfig"
-
 	& $build_script_path/build-dbus.ps1
+	Clear-Pkg-Config-Path
+	Append-Pkg-Config-Path -Path "$libs_path/libsndfile/lib/pkgconfig"
 	Append-Pkg-Config-Path -Path "$libs_path/dbus/lib/pkgconfig"
 
 
