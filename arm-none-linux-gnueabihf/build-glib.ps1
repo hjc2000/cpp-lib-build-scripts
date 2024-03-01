@@ -55,7 +55,7 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
-		-Dselinux=false
+		-Dselinux=disabled
 
 	Set-Location $build_path
 	ninja -j12
