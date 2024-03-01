@@ -8,7 +8,7 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Import-Lib -LibName "pulse-audio"
+	Import-Lib -LibName "pulseaudio"
 
 	get-git-repo.ps1 -git_url https://gitee.com/mycn027b/SDL.git `
 		-branch_name release-2.30.x
