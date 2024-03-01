@@ -30,6 +30,7 @@ try
 	--enable-version3 \
 	--enable-amf \
 	--enable-sdl \
+	--enable-sdl2 \
 	--enable-pic \
 	--enable-gpl \
 	--enable-shared \
@@ -38,7 +39,7 @@ try
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
 	--target-os="linux" \
-	--pkg-config="$(which pkg-config)"
+	--pkg-config="pkg-config"
 
 
 	make clean
