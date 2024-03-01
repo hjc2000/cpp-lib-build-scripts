@@ -1,13 +1,13 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/x265_git/source"
-$install_path = "$libs_path/x265/"
+$source_path = "$repos_path/pcre2/"
+$install_path = "$libs_path/pcre2/"
 $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
+	get-git-repo.ps1 -git_url https://github.com/PCRE2Project/pcre2.git
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
@@ -25,9 +25,7 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DENABLE_SHARED=on `
-		-DENABLE_PIC=on `
-		-DENABLE_ASSEMBLY=off
+		-DBUILD_SHARED_LIBS=ON
 
 	ninja -j12
 	ninja install
