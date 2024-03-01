@@ -2,7 +2,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
 $source_path = "$repos_path/SDL/"
-$install_path = "$libs_path/SDL2/"
+$install_path = "$libs_path/sdl2/"
 $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
