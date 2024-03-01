@@ -16,7 +16,7 @@ try
 	export PATH=$env:PATH
 
 	cd $source_path
-	autogen.sh
+	$source_path/autogen.sh
 "@
 }
 catch
