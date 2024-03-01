@@ -28,9 +28,6 @@ try
 	strip = 'arm-none-linux-gnueabihf-strip'
 	pkg-config = 'pkg-config'
 
-	[properties]
-	sys_root='.total-install'
-
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
