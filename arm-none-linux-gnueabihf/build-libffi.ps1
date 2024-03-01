@@ -8,13 +8,13 @@ Push-Location $repos_path
 
 try
 {
+	& $build_script_path/build-libtool.ps1
+	$env:LIBTOOL = "$libs_path/libtool"
+
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://github.com/libffi/libffi.git
 
 	run-bash-cmd.ps1 @"
-	set -e
-	export PATH=$env:PATH
-
 	cd $source_path
 	$source_path/autogen.sh
 "@
