@@ -18,6 +18,8 @@ try
 	export LT_PATH_LD=$(which ld)
 
 	cd $source_path
+	aclocal
+	autoconf
 	autoreconf -i
 "@
 }
