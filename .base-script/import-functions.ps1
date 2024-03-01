@@ -198,3 +198,9 @@ function Append-Pkg-Config-Path
 		$env:PKG_CONFIG_PATH = "${Path}:$env:PKG_CONFIG_PATH"
 	}
 }
+
+
+function Clear-Pkg-Config-Path
+{
+	$env:PKG_CONFIG_PATH = ""	
+}
