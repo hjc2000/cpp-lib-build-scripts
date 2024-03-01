@@ -14,7 +14,6 @@ try
 	New-Empty-Dir $build_path
 	Set-Location $source_path
 	meson setup build/ `
-		-Dbashcompletiondir="" `
 		--prefix="$install_path"
 
 	Set-Location $build_path
