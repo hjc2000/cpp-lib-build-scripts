@@ -240,6 +240,7 @@ function Append-Pkg-Config-Path-Recurse
 }
 
 
+# 导入使用 pkgconfig 作为分发方式的库。
 function Import-Lib
 {
 	param (
@@ -248,5 +249,12 @@ function Import-Lib
 	)
 	
 	& "${build_script_path}/build-${LibName}.ps1"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/${LibName}"
+	
+	$fix_pkgconfig_path = "$libs_path/${LibName}"
+	if ($IsWindows)
+	{
+		$fix_pkgconfig_path = cygpath.exe $fix_pkgconfig_path
+	}
+
+	Append-Pkg-Config-Path-Recurse -Path $fix_pkgconfig_path
 }
