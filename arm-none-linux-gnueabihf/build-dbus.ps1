@@ -7,8 +7,9 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	& $build_script_path/build-libexpat.ps1
 	Clear-Pkg-Config-Path
+
+	& $build_script_path/build-libexpat.ps1
 	Append-Pkg-Config-Path -Path "$libs_path/libexpat/lib/pkgconfig"
 
 	Set-Location $repos_path
@@ -29,7 +30,8 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
-		-DDBUS_SESSION_SOCKET_DIR="/tmp"
+		-DDBUS_SESSION_SOCKET_DIR="/tmp" `
+		-DDBUS_WITH_GLIB=OFF
 
 	ninja -j12
 	ninja install
