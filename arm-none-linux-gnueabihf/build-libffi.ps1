@@ -16,7 +16,7 @@ try
 
 	run-bash-cmd.ps1 @"
 	cd $source_path
-	$source_path/autogen.sh
+	autoreconf -i
 "@
 }
 catch
