@@ -18,29 +18,16 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
 
 	New-Empty-Dir $build_path
-	run-bash-cmd.ps1 @"
-	set -e
-	export PATH=$env:PATH
-	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
-
-	cd $source_path
-	meson setup build/ \
-		--prefix="$install_path" \
-		-Ddaemon=false \
-		-Dtests=false \
-		-Ddoxygen=false \
+	Set-Location $source_path
+	meson setup build/ `
+		--prefix="$install_path" `
+		-Ddaemon=false `
+		-Dtests=false `
+		-Ddoxygen=false `
 		-Ddbus=disabled
 
-	cd $build_path
 	ninja -j12
-
-	sudo su
-	export PATH=$env:PATH
-	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 	ninja install
-	chmod 777 -R $install_path
-	exit
-"@
 }
 catch
 {

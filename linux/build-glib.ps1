@@ -12,25 +12,13 @@ try
 	get-git-repo.ps1 -git_url https://github.com/GNOME/glib.git
 
 	New-Empty-Dir $build_path
-	run-bash-cmd.ps1 @"
-	set -e
-	export PATH=$env:PATH
-	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
-
-	cd $source_path
-	meson setup build/ \
+	Set-Location $source_path
+	meson setup build/ `
 		--prefix="$install_path"
 
-	cd $build_path
+	Set-Location $build_path
 	ninja -j12
-
-	sudo su
-	export PATH=$env:PATH
-	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 	ninja install
-	chmod 777 -R $install_path
-	exit
-"@
 	
 	$env:PKG_CONFIG_PATH = "$libs_path/glib/lib/x86_64-linux-gnu/pkgconfig:$env:PKG_CONFIG_PATH" 
 }
