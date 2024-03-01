@@ -14,7 +14,7 @@ try
 	get-git-repo.ps1 -git_url https://github.com/libffi/libffi.git
 
 	run-bash-cmd.ps1 @"
-	export LIBTOOL = "$libs_path/libtool"
+	export LIBTOOL="$libs_path/libtool"
 
 	cd $source_path
 	autoreconf -i
