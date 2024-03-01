@@ -7,7 +7,8 @@ $build_path = "$source_path/build" # cmake 项目才需要
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://gitee.com/hughpenn23/openssl.git"
+	get-git-repo.ps1 -git_url "https://gitee.com/hughpenn23/openssl.git" `
+		-branch_name openssl-3.1
 	
 	run-bash-cmd.ps1 @"
 	set -e
