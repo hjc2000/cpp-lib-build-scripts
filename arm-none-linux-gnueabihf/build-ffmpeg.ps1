@@ -24,14 +24,12 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
+	--extra-cflags="-I$libs_path/amf/include/" \
 	--enable-libx264 \
 	--enable-libx265 \
 	--enable-openssl \
 	--enable-version3 \
 	--enable-amf \
-	--enable-sdl \
-	--enable-sdl2 \
 	--enable-pic \
 	--enable-gpl \
 	--enable-shared \
@@ -40,7 +38,7 @@ try
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
 	--target-os="linux" \
-	--pkg-config="pkg-config"
+	--pkg-config="$(which pkg-config)"
 
 
 	make clean
