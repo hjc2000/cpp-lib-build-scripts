@@ -23,8 +23,7 @@ try
 		--prefix="$install_path" `
 		-Ddaemon=false `
 		-Dtests=false `
-		-Ddoxygen=false `
-		-Ddbus=disabled
+		-Ddoxygen=false
 
 	Set-Location $build_path
 	ninja -j12
