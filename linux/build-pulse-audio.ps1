@@ -27,6 +27,7 @@ try
 		-Ddoxygen=false `
 		-Ddbus=disabled
 
+	Set-Location $build_path
 	ninja -j12
 	ninja install
 }
