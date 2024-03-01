@@ -12,12 +12,11 @@ try
 	& $build_script_path/build-sdl2.ps1
 	& $build_script_path/build-amf.ps1
 	& $build_script_path/build-openssl.ps1
-
-	$env:PKG_CONFIG_PATH = 
-	"$libs_path/x264/lib/pkgconfig:" +
-	"$libs_path/x265/lib/pkgconfig:" +
-	"$libs_path/openssl/lib64/pkgconfig:" +
-	"$libs_path/SDL2/lib/pkgconfig:"
+	Clear-Pkg-Config-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x264"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x265"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/openssl"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/SDL2"
 	Write-Host $env:PKG_CONFIG_PATH
 
 	Set-Location $repos_path
