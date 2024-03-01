@@ -1,3 +1,10 @@
+###########################################################
+# 此脚本不可用。glib 这个屎山依赖乱七八糟的而且巨多。嵌入式系统中，
+# 凡是遇到使用 glib 统统裁剪掉。
+
+# 留着这个脚本是因为这里演示了如何 meson 交叉编译。
+###########################################################
+
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
