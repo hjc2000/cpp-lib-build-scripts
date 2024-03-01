@@ -20,7 +20,7 @@ try
 	ninja -j12
 	ninja install
 	
-	$env:PKG_CONFIG_PATH = "$libs_path/glib/lib/x86_64-linux-gnu/pkgconfig:$env:PKG_CONFIG_PATH" 
+	Append-Pkg-Config-Path -Path "$libs_path/glib/lib/x86_64-linux-gnu/pkgconfig"
 }
 catch
 {

@@ -8,7 +8,6 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	$env:PKG_CONFIG_PATH = ""
 	& $build_script_path/build-libsndfile.ps1
 	& $build_script_path/build-glib.ps1
 	Write-Host "pkg-config 路径：$env:PKG_CONFIG_PATH"

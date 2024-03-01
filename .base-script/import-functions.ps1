@@ -184,3 +184,17 @@ function Apt-Ensure-Packets
 		Pop-Location	
 	}
 }
+
+
+function Append-Pkg-Config-Path
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[array]$Path
+	)
+
+	if (-not "$env:PKG_CONFIG_PATH".Contains($Path))
+	{
+		$env:PKG_CONFIG_PATH = "${Path}:$env:PKG_CONFIG_PATH"
+	}
+}
