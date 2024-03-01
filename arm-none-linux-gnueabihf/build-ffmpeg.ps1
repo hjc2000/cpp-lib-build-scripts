@@ -18,11 +18,9 @@ try
 		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
-	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
-	cd $source_path
-
 	echo "666666666666666666666666666"
 	echo `$PKG_CONFIG_PATH
+	cd $source_path
 
 	./configure \
 	--prefix="$install_path" \
