@@ -10,10 +10,15 @@ try
 {
 	# 编译依赖
 	Clear-Pkg-Config-Path
+
 	& $build_script_path/build-pcre2.ps1
 	Append-Pkg-Config-Path -Path "$libs_path/pcre2/lib/pkgconfig"
+
 	& $build_script_path/build-libffi.ps1
 	Append-Pkg-Config-Path -Path "$libs_path/libffi/lib/pkgconfig"
+
+	& $build_script_path/build-zlib.ps1
+	Append-Pkg-Config-Path -Path "$libs_path/zlib/lib/pkgconfig"
 
 	# 克隆本体源码
 	Set-Location $repos_path
