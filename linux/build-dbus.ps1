@@ -18,8 +18,6 @@ try
 
 	ninja -j12
 	ninja install
-
-	Append-Pkg-Config-Path -Path "$libs_path/dbus/lib/pkgconfig"
 }
 catch
 {

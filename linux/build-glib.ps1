@@ -19,8 +19,6 @@ try
 	Set-Location $build_path
 	ninja -j12
 	ninja install
-	
-	Append-Pkg-Config-Path -Path "$libs_path/glib/lib/x86_64-linux-gnu/pkgconfig"
 }
 catch
 {
