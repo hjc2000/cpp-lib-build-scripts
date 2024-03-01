@@ -227,6 +227,11 @@ function Append-Pkg-Config-Path-Recurse
 
 		if (-not "$env:PKG_CONFIG_PATH".Contains($Path))
 		{
+			if ($IsWindows)
+			{
+				$Path = cygpath.exe $Path
+			}
+
 			$env:PKG_CONFIG_PATH = "${Path}:$env:PKG_CONFIG_PATH"
 		}
 	}
@@ -248,13 +253,6 @@ function Import-Lib
 		[string]$LibName
 	)
 	
-	& "${build_script_path}/build-${LibName}.ps1"
-	
-	$fix_pkgconfig_path = "$libs_path/${LibName}"
-	if ($IsWindows)
-	{
-		$fix_pkgconfig_path = cygpath.exe $fix_pkgconfig_path
-	}
-
-	Append-Pkg-Config-Path-Recurse -Path $fix_pkgconfig_path
+	# & "${build_script_path}/build-${LibName}.ps1"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/${LibName}"
 }
