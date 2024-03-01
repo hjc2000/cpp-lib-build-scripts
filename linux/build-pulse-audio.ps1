@@ -12,7 +12,6 @@ try
 	& $build_script_path/build-libsndfile.ps1
 	& $build_script_path/build-glib.ps1
 	Write-Host "pkg-config 路径：$env:PKG_CONFIG_PATH"
-	return
 
 	# 开始构建本体
 	Set-Location $repos_path
