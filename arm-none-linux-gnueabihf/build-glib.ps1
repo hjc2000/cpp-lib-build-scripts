@@ -8,11 +8,10 @@ Push-Location $repos_path
 
 try
 {
-	Clear-Pkg-Config-Path
 	& $build_script_path/build-pcre2.ps1
-	Append-Pkg-Config-Path -Path "$libs_path/pcre2/lib/pkgconfig"
-	& $build_script_path/total-install.ps1
 
+	Clear-Pkg-Config-Path
+	Append-Pkg-Config-Path -Path "$libs_path/pcre2/lib/pkgconfig"
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://github.com/GNOME/glib.git
