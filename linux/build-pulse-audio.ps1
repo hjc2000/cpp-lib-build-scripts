@@ -8,6 +8,7 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
+	sudo echo "触发一次输入密码，这样就不用一直重复输入了"
 	$env:PKG_CONFIG_PATH = ""
 	& $build_script_path/build-libsndfile.ps1
 	& $build_script_path/build-glib.ps1
