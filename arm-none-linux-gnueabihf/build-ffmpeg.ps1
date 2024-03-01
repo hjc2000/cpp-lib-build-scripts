@@ -29,6 +29,7 @@ try
 	--enable-openssl \
 	--enable-version3 \
 	--enable-amf \
+	--enable-sdl \
 	--enable-pic \
 	--enable-gpl \
 	--enable-shared \
