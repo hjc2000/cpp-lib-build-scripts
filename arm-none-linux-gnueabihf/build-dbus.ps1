@@ -12,8 +12,18 @@ try
 		-branch_name dbus-1.14
 
 	New-Empty-Dir $build_path
+	Create-Text-File -Path "$build_path/toolchain.cmake" `
+		-Content @"
+	set(CROSS_COMPILE_ARM 1)
+	set(CMAKE_SYSTEM_NAME Linux)
+	set(CMAKE_SYSTEM_PROCESSOR armv7-a)
+	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
+	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
+"@
+
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="${install_path}"
 
 	ninja -j12
