@@ -20,6 +20,8 @@ try
 	& $build_script_path/build-zlib.ps1
 	Append-Pkg-Config-Path -Path "$libs_path/zlib/lib/pkgconfig"
 
+
+
 	# 克隆本体源码
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://github.com/GNOME/glib.git
@@ -52,7 +54,8 @@ try
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix="$install_path" `
-		--cross-file="$build_path/cross_file.ini"
+		--cross-file="$build_path/cross_file.ini" `
+		-Dselinux=false
 
 	Set-Location $build_path
 	ninja -j12
