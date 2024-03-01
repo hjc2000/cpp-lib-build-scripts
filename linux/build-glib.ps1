@@ -25,6 +25,8 @@ try
 	ninja -j12
 
 	sudo su
+	export PATH=$env:PATH
+	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 	ninja install
 	chmod 777 -R $install_path
 	exit
