@@ -9,7 +9,7 @@ try
 {
 	& $build_script_path/build-libexpat.ps1
 	Clear-Pkg-Config-Path
-	Append-Pkg-Config-Path -Path "$libs_path/libexpat/lib/pkgconfig"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libexpat"
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `

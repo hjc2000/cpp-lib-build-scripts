@@ -11,8 +11,8 @@ try
 	& $build_script_path/build-libsndfile.ps1
 	& $build_script_path/build-dbus.ps1
 	Clear-Pkg-Config-Path
-	Append-Pkg-Config-Path -Path "$libs_path/libsndfile/lib/pkgconfig"
-	Append-Pkg-Config-Path -Path "$libs_path/dbus/lib/pkgconfig"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libsndfile"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
 
 
 
