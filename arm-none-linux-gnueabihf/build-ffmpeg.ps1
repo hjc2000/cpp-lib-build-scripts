@@ -18,7 +18,7 @@ try
 		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
-	export PATH=$libs_path/sdl2/bin/:PATH
+	export PATH=$libs_path/sdl2/bin/:$PATH
 	cd $source_path
 
 	./configure \
