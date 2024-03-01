@@ -246,9 +246,14 @@ function Import-Lib
 {
 	param (
 		[Parameter(Mandatory = $true)]
-		[string]$LibName
+		[string]$LibName,
+		[switch]$NotBuild
 	)
 	
-	& "${build_script_path}/build-${LibName}.ps1"
+	if (-not $NotBuild)
+	{
+		& "${build_script_path}/build-${LibName}.ps1"
+	}
+	
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/${LibName}"
 }
