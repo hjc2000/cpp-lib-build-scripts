@@ -212,22 +212,6 @@ function Get-PkgConfigPaths
 	return $pkgConfigPaths
 }
 
-# 将指定的 pkgconfig 目录添加到 $env:PKG_CONFIG_PATH 中。
-# 会先检查是否已经有了，有了就不会重复添加。
-function Append-Pkg-Config-Path
-{
-	param (
-		[Parameter(Mandatory = $true)]
-		[array]$Path
-	)
-
-	if (-not "$env:PKG_CONFIG_PATH".Contains($Path))
-	{
-		$env:PKG_CONFIG_PATH = "${Path}:$env:PKG_CONFIG_PATH"
-	}
-}
-
-
 # 递归收集指定路径下的所有 pkgconfig 目录，添加到 $env:PKG_CONFIG_PATH
 # 含有去重功能。
 function Append-Pkg-Config-Path-Recurse
@@ -237,6 +221,23 @@ function Append-Pkg-Config-Path-Recurse
 		[array]$Path
 	)
 	
+
+	# 将指定的 pkgconfig 目录添加到 $env:PKG_CONFIG_PATH 中。
+	# 会先检查是否已经有了，有了就不会重复添加。
+	function Append-Pkg-Config-Path
+	{
+		param (
+			[Parameter(Mandatory = $true)]
+			[array]$Path
+		)
+
+		if (-not "$env:PKG_CONFIG_PATH".Contains($Path))
+		{
+			$env:PKG_CONFIG_PATH = "${Path}:$env:PKG_CONFIG_PATH"
+		}
+	}
+
+
 	$pkgs = Get-PkgConfigPaths -Directory $Path
 	foreach ($pkg in $pkgs)
 	{

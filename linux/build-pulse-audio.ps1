@@ -11,10 +11,10 @@ try
 	& $build_script_path/build-libsndfile.ps1
 	& $build_script_path/build-glib.ps1
 	& $build_script_path/build-dbus.ps1
-	$env:PKG_CONFIG_PATH = ""
-	Append-Pkg-Config-Path -Path "$libs_path/glib/lib/x86_64-linux-gnu/pkgconfig"
-	Append-Pkg-Config-Path -Path "$libs_path/libsndfile/lib/pkgconfig"
-	Append-Pkg-Config-Path -Path "$libs_path/dbus/lib/pkgconfig"
+	Clear-Pkg-Config-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/glib"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libsndfile"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
 	Write-Host "pkg-config 路径：$env:PKG_CONFIG_PATH"
 
 	# 开始构建本体
