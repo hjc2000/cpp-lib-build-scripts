@@ -22,6 +22,9 @@ try
 
 	./configure \
 	--prefix="$install_path" \
+	--extra-cflags="-I/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/include/" \
+	--extra-ldflags="-L/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/lib/" \
+	--extra-libs="-lSDL2" \
 	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
