@@ -42,7 +42,8 @@ try
 		-DSDL_WAYLAND=OFF `
 		-DSDL_IBUS=OFF `
 		-DSDL_KMSDRM=OFF `
-		-DSDL_SNDIO=OFF
+		-DSDL_SNDIO=OFF `
+		-DSDL_ALSA=OFF
 		
 
 	ninja -j12
