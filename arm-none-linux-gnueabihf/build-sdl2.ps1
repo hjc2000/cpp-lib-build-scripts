@@ -9,7 +9,6 @@ try
 {
 	# 构建依赖项
 	Import-Lib -LibName "pulseaudio"
-	Total-Install
 
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name "SDL2"
