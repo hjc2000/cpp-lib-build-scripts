@@ -6,13 +6,12 @@ $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
 try
 {
-	Import-Lib -LibName "x264" -NotBuild
-	Import-Lib -LibName "x265" -NotBuild
-	Import-Lib -LibName "sdl2" -NotBuild
-	Import-Lib -LibName "amf" -NotBuild
-	Import-Lib -LibName "openssl" -NotBuild
+	Import-Lib -LibName "x264"
+	Import-Lib -LibName "x265"
+	Import-Lib -LibName "sdl2"
+	Import-Lib -LibName "amf"
+	Import-Lib -LibName "openssl"
 	Write-Host $env:PKG_CONFIG_PATH
-	Total-Install
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
