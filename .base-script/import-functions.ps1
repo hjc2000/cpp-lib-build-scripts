@@ -257,3 +257,9 @@ function Import-Lib
 	
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/${LibName}"
 }
+
+
+function Total-Install
+{
+	& $build_script_path/total-install.ps1
+}

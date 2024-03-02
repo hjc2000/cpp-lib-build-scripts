@@ -12,7 +12,7 @@ try
 	Import-Lib -LibName "amf"
 	Import-Lib -LibName "openssl"
 	Write-Host $env:PKG_CONFIG_PATH
-	& $build_script_path/total-install.ps1
+	Total-Install
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
