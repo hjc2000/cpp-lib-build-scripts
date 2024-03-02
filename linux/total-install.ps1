@@ -14,6 +14,7 @@ try
 	foreach ($lib in $libs)
 	{
 		stow -t "$HOME/install" $(Split-Path $lib -Leaf)
+		Install-Lib -src_path $lib -dst_path $build_script_path/.total-install/
 	}
 }
 catch

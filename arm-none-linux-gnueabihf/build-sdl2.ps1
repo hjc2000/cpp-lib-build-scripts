@@ -9,6 +9,8 @@ try
 {
 	# 构建依赖项
 	Import-Lib -LibName "pulseaudio"
+	Total-Install
+
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name "SDL2"
 
@@ -24,6 +26,8 @@ try
 
 	# 指定交叉编译环境的根目录，编译器将首先在这里查找头文件和库
 	set(CMAKE_SYSROOT "$total_install_path")
+	# 指定查找程序、库、头文件时的根路径，防止在默认系统路径中查找
+	set(CMAKE_FIND_ROOT_PATH "$total_install_path")
 	# 设置查找路径的模式，确保仅在指定的根路径中查找
 	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
