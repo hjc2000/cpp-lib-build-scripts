@@ -9,7 +9,8 @@ try
 {
 	# 构建依赖项
 	Import-Lib -LibName "pulseaudio"
-	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git#SDL2"
+	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
+		-branch_name "SDL2"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
