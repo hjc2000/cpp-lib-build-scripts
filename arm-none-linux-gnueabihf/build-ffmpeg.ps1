@@ -6,11 +6,11 @@ $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
 try
 {
-	Import-Lib -LibName "x264"
-	Import-Lib -LibName "x265"
-	Import-Lib -LibName "sdl2"
-	Import-Lib -LibName "amf"
-	Import-Lib -LibName "openssl"
+	Import-Lib -LibName "x264" -NotBuild
+	Import-Lib -LibName "x265" -NotBuild
+	Import-Lib -LibName "sdl2" -NotBuild
+	Import-Lib -LibName "amf" -NotBuild
+	Import-Lib -LibName "openssl" -NotBuild
 	Write-Host $env:PKG_CONFIG_PATH
 	Total-Install
 
@@ -38,8 +38,7 @@ try
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
 	--target-os="linux" \
-	--pkg-config="$(which pkg-config)" \
-	--sysroot="$total_install_path"
+	--pkg-config="$(which pkg-config)"
 
 	make clean
 	make -j12
