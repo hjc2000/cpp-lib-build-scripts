@@ -10,6 +10,7 @@ try
 	Import-Lib -LibName "x265" -NotBuild
 	Import-Lib -LibName "sdl2" -NotBuild
 	Import-Lib -LibName "openssl" -NotBuild
+	Total-Install
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
 	Set-Location $repos_path
@@ -31,9 +32,11 @@ try
 	--disable-static \
 	--enable-cross-compile \
 	--cross-prefix="arm-none-linux-gnueabihf-" \
-	--arch="arm" \
+	--arch="armv7-a" \
 	--target-os="linux" \
-	--pkg-config="$(which pkg-config)"
+	--pkg-config="$(which pkg-config)" \
+	--sysroot="$total_install_path" \
+	--sysinclude="$total_install_path/include"
 
 	make clean
 	make -j12
