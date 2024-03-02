@@ -6,11 +6,10 @@ $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
 try
 {
-	Import-Lib -LibName "x264" -NotBuild
-	Import-Lib -LibName "x265" -NotBuild
-	Import-Lib -LibName "sdl2" -NotBuild
-	Import-Lib -LibName "openssl" -NotBuild
-	Total-Install
+	Import-Lib -LibName "x264"
+	Import-Lib -LibName "x265"
+	Import-Lib -LibName "sdl2"
+	Import-Lib -LibName "openssl"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
 	Set-Location $repos_path
