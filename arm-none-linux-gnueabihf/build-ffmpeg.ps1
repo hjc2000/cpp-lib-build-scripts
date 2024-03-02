@@ -9,7 +9,6 @@ try
 	Import-Lib -LibName "x264" -NotBuild
 	Import-Lib -LibName "x265" -NotBuild
 	Import-Lib -LibName "sdl2" -NotBuild
-	Import-Lib -LibName "amf" -NotBuild
 	Import-Lib -LibName "openssl" -NotBuild
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
@@ -22,9 +21,6 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--extra-cflags="-I/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/include/" \
-	--extra-ldflags="-L/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/lib/" \
-	--extra-libs="-l/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/lib/libSDL2.so" \
 	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
