@@ -12,6 +12,7 @@ try
 	Import-Lib -LibName "amf" -NotBuild
 	Import-Lib -LibName "openssl" -NotBuild
 	Write-Host $env:PKG_CONFIG_PATH
+	& $build_script_path/total-install.ps1
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
@@ -22,7 +23,7 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--extra-cflags="-I$libs_path/amf/include/ -I$libs_path/sdl2/include/" \
+	--extra-cflags="-I$libs_path/amf/include/" \
 	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
@@ -32,13 +33,14 @@ try
 	--enable-pic \
 	--enable-gpl \
 	--enable-shared \
+	--disable-static \
 	--enable-cross-compile \
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
 	--cpu="armv7-a"
 	--target-os="linux" \
-	--pkg-config="$(which pkg-config)"
-
+	--pkg-config="$(which pkg-config)" \
+	--sysroot="$total_install_path"
 
 	make clean
 	make -j12
