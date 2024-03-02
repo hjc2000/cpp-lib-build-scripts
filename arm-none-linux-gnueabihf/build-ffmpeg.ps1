@@ -35,7 +35,6 @@ try
 	--arch="arm" \
 	--target-os="linux" \
 	--pkg-config="$(which pkg-config)" \
-	--sysroot="$total_install_path" \
 	--sysinclude="$total_install_path/include"
 
 	make clean
