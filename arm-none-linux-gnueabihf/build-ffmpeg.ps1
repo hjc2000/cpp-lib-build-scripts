@@ -34,6 +34,7 @@ try
 	--enable-gpl \
 	--enable-shared \
 	--disable-static \
+	--disable-autodetect \
 	--enable-cross-compile \
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
