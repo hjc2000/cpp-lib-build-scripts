@@ -22,9 +22,7 @@ try
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DSDL_SHARED=ON `
-		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=ON `
-		-DSDL_IBUS=OFF
+		-DSDL_STATIC=OFF
 		
 	ninja -j12
 	ninja install
