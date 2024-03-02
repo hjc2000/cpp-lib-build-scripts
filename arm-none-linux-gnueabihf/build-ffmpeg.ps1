@@ -18,12 +18,11 @@ try
 		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
-	export PATH=$libs_path/sdl2/bin/:`$PATH
 	cd $source_path
 
 	./configure \
 	--prefix="$install_path" \
-	--extra-cflags="-I$libs_path/amf/include/" \
+	--extra-cflags="-I$libs_path/amf/include/ -I$libs_path/sdl2/include/" \
 	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
@@ -36,6 +35,7 @@ try
 	--enable-cross-compile \
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
+	--cpu="armv7-a"
 	--target-os="linux" \
 	--pkg-config="$(which pkg-config)"
 
