@@ -16,15 +16,13 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
-	$env:PATH = "$libs_path/sdl2/bin:$env:PATH"
 	run-bash-cmd.ps1 @"
 	cd $source_path
-	echo "66666666666666666666666666666666"
-	echo `$PATH
 
 	./configure \
 	--prefix="$install_path" \
-	--extra-cflags="-I$libs_path/amf/include/" \
+	--extra-cflags="-I$libs_path/amf/include/ -I/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/include -I/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/include/SDL2" \
+	--extra-libs="-L/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/lib -Wl,-rpath,/home/hjc/cpp-lib-build-scripts/arm-none-linux-gnueabihf/.libs/sdl2/lib -Wl,--enable-new-dtags -lSDL2" \
 	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
