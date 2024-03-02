@@ -14,16 +14,15 @@ try
 	Write-Host $env:PKG_CONFIG_PATH
 
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitee.com/programmingwindows/FFmpeg.git" `
-		-branch_name release/6.1
+	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
 	run-bash-cmd.ps1 @"
-	set -e
 	cd $source_path
 
 	./configure \
 	--prefix="$install_path" \
 	--extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
+	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
 	--enable-openssl \
