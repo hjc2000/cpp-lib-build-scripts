@@ -37,7 +37,7 @@ try
 	--enable-cross-compile \
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
-	--cpu="armv7-a"
+	--cpu="armv7-a" \
 	--target-os="linux" \
 	--pkg-config="$(which pkg-config)" \
 	--sysroot="$total_install_path"
