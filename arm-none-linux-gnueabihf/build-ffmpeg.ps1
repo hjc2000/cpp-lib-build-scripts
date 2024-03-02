@@ -34,8 +34,7 @@ try
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
 	--target-os="linux" \
-	--pkg-config="$(which pkg-config)" \
-	--sysinclude="$total_install_path/include"
+	--pkg-config="$(which pkg-config)"
 
 	make clean
 	make -j12
