@@ -23,7 +23,7 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--extra-cflags="-I$libs_path/amf/include/" \
+	--extra-cflags="-I$libs_path/amf/include/ -I$libs_path/sdl2/include/" \
 	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
@@ -34,7 +34,6 @@ try
 	--enable-gpl \
 	--enable-shared \
 	--disable-static \
-	--disable-autodetect \
 	--enable-cross-compile \
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
