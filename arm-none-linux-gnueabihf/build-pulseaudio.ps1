@@ -52,6 +52,11 @@ try
 	Set-Location $build_path
 	ninja -j12
 	ninja install
+
+	Move-Item -Path "$install_path/lib/pulseaudio/*" `
+		-Destination "$install_path/lib/" `
+		-Force
+	Remove-Item -Path "$install_path/lib/pulseaudio/" -Force -Recurse
 }
 catch
 {
