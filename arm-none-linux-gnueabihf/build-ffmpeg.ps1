@@ -12,7 +12,7 @@ try
 	Import-Lib -LibName "sdl2"
 	Import-Lib -LibName "amf"
 	Import-Lib -LibName "openssl"
-	Write-Host $env:PKG_CONFIG_PATH
+	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
