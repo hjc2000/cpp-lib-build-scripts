@@ -9,7 +9,6 @@ try
 	Import-Lib -LibName "x264"
 	Import-Lib -LibName "x265"
 	Import-Lib -LibName "sdl2"
-	Import-Lib -LibName "amf"
 	Import-Lib -LibName "openssl"
 	Write-Host $env:PKG_CONFIG_PATH
 
@@ -21,13 +20,11 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--extra-cflags="-I$libs_path/amf/include/ -DAMF_CORE_STATICTIC" \
 	--enable-sdl \
 	--enable-libx264 \
 	--enable-libx265 \
 	--enable-openssl \
 	--enable-version3 \
-	--enable-amf \
 	--enable-pic \
 	--enable-gpl \
 	--enable-shared \
