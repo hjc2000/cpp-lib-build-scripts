@@ -10,6 +10,7 @@ try
 
 	# 使用Get-ChildItem获取所有子目录，-Directory参数确保只获取目录
 	$libs = Get-ChildItem -Path $build_script_path/.libs/ -Directory
+	Set-Location "$build_script_path/.libs/"
 	foreach ($lib in $libs)
 	{
 		stow -t "$HOME/install" $(Split-Path $lib -Leaf)
