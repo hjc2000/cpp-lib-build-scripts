@@ -32,7 +32,7 @@ try
 	--disable-static \
 	--enable-cross-compile \
 	--cross-prefix="arm-none-linux-gnueabihf-" \
-	--arch="armv7-a" \
+	--arch="arm" \
 	--target-os="linux" \
 	--pkg-config="$(which pkg-config)" \
 	--sysroot="$total_install_path" \
