@@ -6,7 +6,6 @@ $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
 try
 {
-	$env:PKG_CONFIG_PATH = ""
 	Import-Lib -LibName "x264"
 	Import-Lib -LibName "x265"
 	Import-Lib -LibName "sdl2"

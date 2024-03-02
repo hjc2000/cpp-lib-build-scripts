@@ -6,7 +6,6 @@ $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
 try
 {
-	$env:PKG_CONFIG_PATH = ""
 	Import-Lib -LibName "x264"
 	Import-Lib -LibName "x265"
 	Import-Lib -LibName "sdl2"
@@ -17,8 +16,11 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
+	$env:PATH = "$libs_path/sdl2/bin:$env:PATH"
 	run-bash-cmd.ps1 @"
 	cd $source_path
+	echo "66666666666666666666666666666666"
+	echo `$PATH
 
 	./configure \
 	--prefix="$install_path" \
