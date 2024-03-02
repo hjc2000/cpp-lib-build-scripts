@@ -9,7 +9,7 @@ try
 	$env:PKG_CONFIG_PATH = ""
 	Import-Lib -LibName "x264"
 	Import-Lib -LibName "x265"
-	#Import-Lib -LibName "sdl2"
+	Import-Lib -LibName "sdl2"
 	Import-Lib -LibName "amf"
 	Import-Lib -LibName "openssl"
 	Write-Host $env:PKG_CONFIG_PATH
