@@ -18,6 +18,7 @@ try
 
 	run-bash-cmd.ps1 @"
 	cd $source_path
+	echo arm-none-linux-gnueabihf-gcc -v
 
 	./configure \
 	--prefix="$install_path" \
