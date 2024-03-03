@@ -34,9 +34,9 @@ try
 	--enable-libx265 \
 	--enable-openssl \
 	--enable-sdl \
+	--enable-gpl \
 	--enable-version3 \
 	--enable-pic \
-	--enable-gpl \
 	--enable-shared \
 	--disable-static \
 	--enable-cross-compile \
