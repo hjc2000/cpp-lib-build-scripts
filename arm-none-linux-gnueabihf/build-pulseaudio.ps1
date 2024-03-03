@@ -8,9 +8,15 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Import-Lib -LibName "libsndfile"
-	Import-Lib -LibName "dbus"
+	& "${build_script_path}/build-libsndfile.ps1"
+	& "${build_script_path}/build-dbus.ps1"
+	# 设置依赖项的 pkg-config
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libsndfile"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
 
+
+	
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
