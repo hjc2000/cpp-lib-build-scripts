@@ -4,8 +4,6 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $source_path = "$repos_path/FFmpeg/"
 $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
-$ld_library_path = $env:LD_LIBRARY_PATH
-$env:LD_LIBRARY_PATH = ""
 try
 {
 	# 构建依赖项
@@ -22,12 +20,13 @@ try
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
 
-	
+
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
 	run-bash-cmd.ps1 @"
 	cd $source_path
+	export LD_LIBRARY_PATH=""
 
 	./configure \
 	--prefix="$install_path" \
@@ -57,6 +56,5 @@ catch
 }
 finally
 {
-	$env:LD_LIBRARY_PATH = $ld_library_path
 	Pop-Location
 }
