@@ -7,11 +7,11 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	# 构建依赖项
 	& "${build_script_path}/build-libexpat.ps1"
+	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libexpat"
-
-	Import-Lib -LibName "libexpat"
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `
