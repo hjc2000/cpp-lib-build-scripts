@@ -8,8 +8,13 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Import-Lib -LibName "pulseaudio"
+	& "${build_script_path}/build-pulseaudio.ps1"
+	# 设置依赖项的 pkg-config
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
 
+
+	
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name "SDL2"
 
