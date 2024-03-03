@@ -14,7 +14,7 @@ try
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
 
 
-	
+
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name "SDL2"
 
@@ -23,7 +23,7 @@ try
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
 	set(CMAKE_SYSTEM_NAME Linux)
-	set(CMAKE_SYSTEM_PROCESSOR armv7-a)
+	set(CMAKE_SYSTEM_PROCESSOR armv4)
 
 	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
