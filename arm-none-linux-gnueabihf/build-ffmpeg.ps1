@@ -8,12 +8,21 @@ $ld_library_path = $env:LD_LIBRARY_PATH
 $env:LD_LIBRARY_PATH = ""
 try
 {
-	Import-Lib -LibName "x264"
-	Import-Lib -LibName "x265"
-	Import-Lib -LibName "sdl2"
-	Import-Lib -LibName "openssl"
+	# 构建依赖项
+	& "${build_script_path}/build-x264.ps1"
+	& "${build_script_path}/build-x265.ps1"
+	& "${build_script_path}/build-sdl2.ps1"
+	& "${build_script_path}/build-openssl.ps1"
+	# 设置依赖项的 pkg-config
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x264"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x265"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/sdl2"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/openssl"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
+
+	
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
