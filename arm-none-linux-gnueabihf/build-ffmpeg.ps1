@@ -32,7 +32,7 @@ try
 	--enable-libx264 \
 	--enable-libx265 \
 	--enable-openssl \
-	--disable-sdl2=off \
+	--disable-sdl2=false \
 	--enable-gpl \
 	--enable-version3 \
 	--enable-pic \
