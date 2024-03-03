@@ -32,13 +32,6 @@ try
 		-Destination "$libs_path/sdl2/bin/arm-none-linux-gnueabihf-sdl2-config"
 
 
-
-	@"
-test_cpp_condition SDL.h "(SDL_MAJOR_VERSION<<16 | SDL_MINOR_VERSION<<8 | SDL_PATCHLEVEL) >= 0x020001" $sdl2_cflags &&
-test_cpp_condition SDL.h "(SDL_MAJOR_VERSION<<16 | SDL_MINOR_VERSION<<8 | SDL_PATCHLEVEL) < 0x030000" $sdl2_cflags &&
-check_func_headers SDL_events.h SDL_PollEvent $sdl2_extralibs $sdl2_cflags &&
-"@
-
 	run-bash-cmd.ps1 @"
 	cd $source_path
 
