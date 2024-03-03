@@ -4,6 +4,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $source_path = "$repos_path/FFmpeg/"
 $install_path = "$libs_path/ffmpeg/"
 Push-Location $repos_path
+$ld_library_path = $env:LD_LIBRARY_PATH
+$env:LD_LIBRARY_PATH = ""
 try
 {
 	Import-Lib -LibName "x264"
@@ -46,5 +48,6 @@ catch
 }
 finally
 {
+	$env:LD_LIBRARY_PATH = $ld_library_path
 	Pop-Location
 }
