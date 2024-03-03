@@ -26,7 +26,9 @@ try
 
 
 	$env:PATH = "$libs_path/sdl2/bin/:$env:PATH"
-	
+	Copy-Item -Path "$libs_path/sdl2/bin/sdl2-config" `
+		-Destination "$libs_path/sdl2/bin/arm-none-linux-gnueabihf-sdl2-config"
+
 	run-bash-cmd.ps1 @"
 	cd $source_path
 
