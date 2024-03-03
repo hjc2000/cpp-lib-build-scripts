@@ -17,6 +17,7 @@ try
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x265"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/openssl"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/sdl2"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
 
@@ -28,6 +29,14 @@ try
 	$env:PATH = "$libs_path/sdl2/bin/:$env:PATH"
 	Copy-Item -Path "$libs_path/sdl2/bin/sdl2-config" `
 		-Destination "$libs_path/sdl2/bin/arm-none-linux-gnueabihf-sdl2-config"
+
+
+
+	@"
+test_cpp_condition SDL.h "(SDL_MAJOR_VERSION<<16 | SDL_MINOR_VERSION<<8 | SDL_PATCHLEVEL) >= 0x020001" $sdl2_cflags &&
+test_cpp_condition SDL.h "(SDL_MAJOR_VERSION<<16 | SDL_MINOR_VERSION<<8 | SDL_PATCHLEVEL) < 0x030000" $sdl2_cflags &&
+check_func_headers SDL_events.h SDL_PollEvent $sdl2_extralibs $sdl2_cflags &&
+"@
 
 	run-bash-cmd.ps1 @"
 	cd $source_path
