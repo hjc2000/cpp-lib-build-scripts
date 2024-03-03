@@ -27,6 +27,7 @@ try
 	run-bash-cmd.ps1 @"
 	cd $source_path
 	export LD_LIBRARY_PATH=""
+	export PKG_CONFIG_PATH=$env:PKG_CONFIG_PATH
 
 	./configure \
 	--prefix="$install_path" \
