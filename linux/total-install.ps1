@@ -14,6 +14,7 @@ try
 		Install-Lib -src_path $lib -dst_path $total_install_path
 	}
 
+	Write-Host "正在 stow 安装到 $HOME/install"
 	Set-Location $build_script_path
 	stow -t "$HOME/install" $(Split-Path $total_install_path -Leaf)
 }
