@@ -19,7 +19,8 @@ try
 	
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
+	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git" `
+		-branch_name "stable-16.x"
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path $build_path/cross_file.ini `
