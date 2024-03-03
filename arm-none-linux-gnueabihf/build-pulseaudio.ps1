@@ -50,6 +50,7 @@ try
 		-Dbashcompletiondir="$build_path" `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
+		-Ddaemon=false `
 		-Dtests=false `
 		-Ddoxygen=false `
 		-Dglib=disabled
