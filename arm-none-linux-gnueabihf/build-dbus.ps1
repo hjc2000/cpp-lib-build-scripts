@@ -7,6 +7,10 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	& "${build_script_path}/build-libexpat.ps1"
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libexpat"
+
 	Import-Lib -LibName "libexpat"
 
 	Set-Location $repos_path

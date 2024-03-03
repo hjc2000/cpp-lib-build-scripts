@@ -240,24 +240,10 @@ function Append-Pkg-Config-Path-Recurse
 	}
 }
 
-
-# 导入使用 pkgconfig 作为分发方式的库。
-function Import-Lib
+function Clear-PkgConfig-Path
 {
-	param (
-		[Parameter(Mandatory = $true)]
-		[string]$LibName,
-		[switch]$NotBuild
-	)
-	
-	if (-not $NotBuild)
-	{
-		& "${build_script_path}/build-${LibName}.ps1"
-	}
-	
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/${LibName}"
+	$env:PKG_CONFIG_PATH = ""
 }
-
 
 function Total-Install
 {
