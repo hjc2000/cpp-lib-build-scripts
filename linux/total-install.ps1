@@ -14,11 +14,11 @@ try
 	$libs = Get-ChildItem -Path $build_script_path/.libs/ -Directory
 	foreach ($lib in $libs)
 	{
-		Install-Lib -src_path $lib -dst_path "$build_script_path/.total-install/"
+		Install-Lib -src_path $lib -dst_path $total_install_path
 	}
 
 	Set-Location $build_script_path
-	stow -t "$HOME/install" ".total-install"
+	stow -t "$HOME/install" $(Split-Path $total_install_path -Leaf)
 }
 catch
 {
