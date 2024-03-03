@@ -10,14 +10,15 @@ try
 	# & "${build_script_path}/build-x264.ps1"
 	# & "${build_script_path}/build-x265.ps1"
 	# & "${build_script_path}/build-openssl.ps1"
+	# & "${build_script_path}/build-pulseaudio.ps1"
 	# & "${build_script_path}/build-sdl2.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x264"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x265"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/openssl"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/sdl2"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/sdl2"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 
 
@@ -46,6 +47,7 @@ check_func_headers SDL_events.h SDL_PollEvent $sdl2_extralibs $sdl2_cflags &&
 	--enable-libx264 \
 	--enable-libx265 \
 	--enable-openssl \
+	--enable-libpulse \
 	--enable-sdl \
 	--enable-gpl \
 	--enable-version3 \
