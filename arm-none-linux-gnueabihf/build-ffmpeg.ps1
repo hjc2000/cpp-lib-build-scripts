@@ -10,7 +10,7 @@ try
 	& "${build_script_path}/build-x264.ps1"
 	& "${build_script_path}/build-x265.ps1"
 	& "${build_script_path}/build-sdl2.ps1"
-	& "${build_script_path}/build-openssl.ps1"
+	#& "${build_script_path}/build-openssl.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x264"
