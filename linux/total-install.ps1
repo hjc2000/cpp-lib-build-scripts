@@ -3,6 +3,7 @@ $ErrorActionPreference = "Stop"
 Push-Location
 try
 {
+	Apt-Ensure-Packets @("stow")
 	$build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 	. $build_script_path/../.base-script/import-functions.ps1
 
