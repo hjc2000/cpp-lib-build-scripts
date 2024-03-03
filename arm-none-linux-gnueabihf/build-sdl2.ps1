@@ -53,12 +53,6 @@ try
 
 	ninja -j12
 	ninja install
-
-	# 将头文件移出来，不然它是处于 include/SDL2/ 内
-	Move-Item -Path "$install_path/include/SDL2/*" `
-		-Destination "$install_path/include/" `
-		-Force
-	Remove-Item "$install_path/include/SDL2/"
 }
 catch
 {
