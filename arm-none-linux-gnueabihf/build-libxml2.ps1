@@ -10,10 +10,12 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-libiconv.ps1"
 	& "${build_script_path}/build-zlib.ps1"
+	& "${build_script_path}/build-xz.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libiconv"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/xz"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 
