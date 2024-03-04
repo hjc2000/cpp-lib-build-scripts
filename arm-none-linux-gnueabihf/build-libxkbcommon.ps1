@@ -7,6 +7,8 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	Apt-Ensure-Packets @("wayland-protocols")
+
 	# 构建依赖项
 	& "${build_script_path}/build-wayland"
 	# 设置依赖项的 pkg-config
