@@ -27,8 +27,7 @@ try
 
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git" `
-		-branch_name "1.20.0"
+	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git"
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path $build_path/cross_file.ini `
@@ -56,7 +55,7 @@ try
 	[built-in options]
 	c_args = ['-I$total_install_path/include']
 	cpp_args = ['-I$total_install_path/include']
-	c_link_args = ['/home/hjc/install/arm-none-linux-gnueabihf-v13/arm-none-linux-gnueabihf/libc/lib/librt.so.1' , '$total_install_path/lib/libxml2.so.2', '$total_install_path/lib/liblzma.so.5']
+	c_link_args = ['$total_install_path/lib/libxml2.so.2', '$total_install_path/lib/liblzma.so.5']
 	cpp_link_args = []
 "@
 
