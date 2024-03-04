@@ -53,7 +53,7 @@ try
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=ON `
 		-DSDL_PULSEAUDIO=OFF `
-		-DCMAKE_PREFIX_PATH="$libs_path/alsa-lib/"
+		-DCMAKE_PREFIX_PATH="$libs_path/alsa-lib"
 		
 
 	ninja -j12
