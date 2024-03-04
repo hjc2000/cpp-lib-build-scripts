@@ -8,7 +8,8 @@ Push-Location $repos_path
 try
 {
 	Apt-Ensure-Packets @(
-		"doxygen"
+		"xsltproc", "xmlto",
+		"xmlto", "graphviz", "doxygen"
 	)
 
 	# 构建依赖项
