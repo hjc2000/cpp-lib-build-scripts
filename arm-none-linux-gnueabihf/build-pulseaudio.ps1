@@ -20,7 +20,7 @@ try
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git" `
-		-branch_name "stable-14.x"
+		-branch_name "stable-16.x"
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path $build_path/cross_file.ini `
@@ -52,7 +52,10 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
-		-Dglib=disabled
+		-Dglib=disabled `
+		-Ddaemon=false `
+		-Ddoxygen=false
+
 
 	Set-Location $build_path
 	ninja -j12
