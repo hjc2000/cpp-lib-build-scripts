@@ -39,6 +39,8 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 "@
 	
+
+	$env:ALSA_LIBRARY = "$libs_path/alsa-lib"
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
