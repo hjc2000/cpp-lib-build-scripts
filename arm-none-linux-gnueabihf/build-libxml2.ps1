@@ -46,7 +46,8 @@ try
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DLIBXML2_WITH_PYTHON=OFF `
-		-DLIBXML2_WITH_LZMA=OFF
+		-DLIBXML2_WITH_LZMA=OFF `
+		-DLIBXML2_WITH_TESTS=OFF
 
 	ninja -j12
 	ninja install
