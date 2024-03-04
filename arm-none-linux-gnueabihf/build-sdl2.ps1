@@ -7,14 +7,6 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	# 构建依赖项
-	& "${build_script_path}/build-pulseaudio.ps1"
-	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
-
-
-
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name SDL2
 
@@ -49,7 +41,7 @@ try
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=OFF `
-		-DSDL_PULSEAUDIO=ON
+		-DSDL_PULSEAUDIO=OFF
 		
 
 	ninja -j12
