@@ -8,7 +8,7 @@ Push-Location $repos_path
 try
 {
 	get-git-repo.ps1 -git_url "https://github.com/tukaani-project/xz.git" `
-		-branch_name "v5.4"
+		-branch_name "v5.0"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
