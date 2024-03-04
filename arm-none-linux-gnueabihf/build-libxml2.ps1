@@ -9,9 +9,11 @@ try
 {
 	# 构建依赖项
 	& "${build_script_path}/build-libiconv.ps1"
+	& "${build_script_path}/build-xz.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libiconv"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/xz"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 
@@ -42,11 +44,12 @@ try
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+		-DCMAKE_LIBRARY_PATH="$total_install_path/lib" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DLIBXML2_WITH_PYTHON=OFF `
 		-DLIBXML2_WITH_TESTS=OFF `
-		-DLIBXML2_WITH_LZMA=OFF `
+		-DLIBXML2_WITH_LZMA=ON `
 		-DLIBXML2_WITH_ZLIB=OFF
 
 	ninja -j12
