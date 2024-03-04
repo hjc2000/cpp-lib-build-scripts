@@ -15,7 +15,7 @@ try
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
 	set(CMAKE_SYSTEM_NAME Linux)
-	set(CMAKE_SYSTEM_PROCESSOR armv4)
+	set(CMAKE_SYSTEM_PROCESSOR armv7-a)
 
 	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
@@ -35,7 +35,8 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_SHARED_LIBS=ON `
+		-DENABLE_NLS=OFF
 
 	ninja -j12
 	ninja install
