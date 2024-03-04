@@ -18,6 +18,7 @@ try
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libsndfile"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
+	Total-Install
 
 
 	
