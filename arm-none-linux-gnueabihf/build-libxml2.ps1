@@ -47,7 +47,7 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DCMAKE_LIBRARY_PATH="$total_install_path" `
+		-DCMAKE_LIBRARY_PATH="$total_install_path/lib" `
 		-DLIBXML2_WITH_PYTHON=OFF `
 		-DLIBXML2_WITH_TESTS=OFF
 
