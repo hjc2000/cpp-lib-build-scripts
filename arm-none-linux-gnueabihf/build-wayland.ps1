@@ -56,8 +56,8 @@ try
 	[built-in options]
 	c_args = ['-I$total_install_path/include']
 	cpp_args = ['-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib', 'librt.so.1' , '$total_install_path/lib/libxml2.so.2', '$total_install_path/lib/liblzma.so.5']
-	cpp_link_args = ['-L$total_install_path/lib']
+	c_link_args = ['librt.so.1' , '$total_install_path/lib/libxml2.so.2', '$total_install_path/lib/liblzma.so.5']
+	cpp_link_args = []
 "@
 
 	Set-Location $source_path
