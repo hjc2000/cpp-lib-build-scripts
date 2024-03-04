@@ -52,7 +52,8 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
-		-Denable-x11=false
+		-Denable-x11=false `
+		-Denable-wayland=false
 
 
 	Set-Location $build_path
