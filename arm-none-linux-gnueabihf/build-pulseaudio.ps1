@@ -7,6 +7,10 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	Apt-Ensure-Packets @(
+		"doxygen"
+	)
+
 	# 构建依赖项
 	& "${build_script_path}/build-libsndfile.ps1"
 	& "${build_script_path}/build-dbus.ps1"
@@ -59,8 +63,7 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
 		-Dglib=disabled `
-		-Ddaemon=false `
-		-Ddoxygen=false
+		-Ddaemon=false
 
 
 	Set-Location $build_path
