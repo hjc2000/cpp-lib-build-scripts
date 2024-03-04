@@ -7,6 +7,16 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	# 构建依赖项
+	& "${build_script_path}/build-alsa-lib.ps1"
+	# 设置依赖项的 pkg-config
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/alsa-lib"
+	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
+
+
+
+
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name SDL2
 
@@ -40,7 +50,7 @@ try
 		-DSDL_IBUS=OFF `
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
-		-DSDL_ALSA=OFF `
+		-DSDL_ALSA=ON `
 		-DSDL_PULSEAUDIO=OFF
 		
 
