@@ -21,7 +21,7 @@ try
 
 
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/libxml2.git" `
-		-branch_name "2.12"
+		-branch_name "2.10"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
