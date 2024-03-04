@@ -31,15 +31,13 @@ try
 
 	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
-
-	set(CMAKE_LIBRARY_PATH "$total_install_path/lib")
-	set(CMAKE_INCLUDE_PATH "$total_install_path/include")
 "@
 	
 
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+		-DCMAKE_PREFIX_PATH="$total_install_path" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DLIBXML2_WITH_PYTHON=OFF `
