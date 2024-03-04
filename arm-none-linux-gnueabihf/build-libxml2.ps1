@@ -32,7 +32,7 @@ try
 	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
-	set(CMAKE_PREFIX_PATH "$total_install_path")
+	set(CMAKE_LIBRARY_PATH "$total_install_path/lib")
 "@
 	
 
