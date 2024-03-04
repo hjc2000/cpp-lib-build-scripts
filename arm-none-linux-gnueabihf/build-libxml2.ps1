@@ -10,18 +10,16 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-libiconv.ps1"
 	& "${build_script_path}/build-zlib.ps1"
-	& "${build_script_path}/build-xz.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libiconv"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/xz"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 
 
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/libxml2.git" `
-		-branch_name "2.10"
+		-branch_name "2.12"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
@@ -49,7 +47,8 @@ try
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DLIBXML2_WITH_PYTHON=OFF `
-		-DLIBXML2_WITH_TESTS=OFF
+		-DLIBXML2_WITH_TESTS=OFF `
+		-DLIBXML2_WITH_LZMA=OFF
 
 	ninja -j12
 	ninja install
