@@ -49,7 +49,7 @@ try
 	--arch="arm" \
 	--target-os="linux" \
 	--pkg-config="pkg-config" \
-	--sysroot="$total_install_path"
+	--sysroot="/"
 
 	make clean
 	make -j12
