@@ -48,7 +48,8 @@ try
 	--cross-prefix="arm-none-linux-gnueabihf-" \
 	--arch="arm" \
 	--target-os="linux" \
-	--pkg-config="pkg-config"
+	--pkg-config="pkg-config" \
+	--sysroot="$total_install_path"
 
 	make clean
 	make -j12
