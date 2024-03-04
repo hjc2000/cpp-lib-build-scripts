@@ -21,6 +21,7 @@ try
 	--host=arm-none-linux-gnueabihf \
 	--target=arm-none-linux-gnueabihf
 
+	make clean
 	make -j12
 	make install
 "@
