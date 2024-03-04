@@ -7,6 +7,15 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	# 构建依赖项
+	& "${build_script_path}/build-libiconv.ps1"
+	# 设置依赖项的 pkg-config
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libiconv"
+	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
+	Total-Install
+
+
 	get-git-repo.ps1 -git_url "https://github.com/GNOME/libxml2.git"
 
 	New-Empty-Dir $build_path
