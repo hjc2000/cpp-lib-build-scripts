@@ -15,7 +15,8 @@ try
 
 
 
-	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git"
+	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
+		-branch_name SDL2
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
