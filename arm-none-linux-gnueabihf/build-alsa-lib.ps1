@@ -16,10 +16,12 @@ try
 	run-bash-cmd.ps1 @"
 	cd $source_path
 
+	export CC=arm-none-linux-gnueabihf-gcc
+	export CPP=arm-none-linux-gnueabihf-g++
+
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
-	--cross-prefix=arm-none-linux-gnueabihf- \
 	--with-softfloat
 
 	make clean
