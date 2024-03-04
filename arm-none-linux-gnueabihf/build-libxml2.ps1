@@ -33,7 +33,6 @@ try
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
 	# 指定查找程序、库、头文件时的根路径，防止在默认系统路径中查找
-	set(CMAKE_BUILD_RPATH "$total_install_path/lib;`${CMAKE_BUILD_RPATH}")
 	set(CMAKE_FIND_ROOT_PATH "$total_install_path")
 	# 设置查找路径的模式，确保仅在指定的根路径中查找
 	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
@@ -48,6 +47,7 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
+		-DCMAKE_LIBRARY_PATH="$total_install_path" `
 		-DLIBXML2_WITH_PYTHON=OFF `
 		-DLIBXML2_WITH_TESTS=OFF
 
