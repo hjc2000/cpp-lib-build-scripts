@@ -7,7 +7,10 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	Apt-Ensure-Packets @("xsltproc", "xmlto", "graphviz", "doxygen")
+	Apt-Ensure-Packets @(
+		"xsltproc", "xmlto",
+		"xmlto", "graphviz", "doxygen"
+	)
 
 	# 构建依赖项
 	& "${build_script_path}/build-libffi.ps1"
