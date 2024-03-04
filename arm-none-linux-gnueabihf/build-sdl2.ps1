@@ -40,7 +40,8 @@ try
 "@
 	
 
-	$env:ALSA_LIBRARY = "$libs_path/alsa-lib"
+	$env:ALSA_LIBRARY = "$libs_path/alsa-lib/lib"
+	$env:ALSA_INCLUDE_DIR = "$libs_path/alsa-lib/include"
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
