@@ -53,8 +53,7 @@ try
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=ON `
 		-DSDL_PULSEAUDIO=OFF `
-		-DALSA_LIBRARY = "$libs_path/alsa-lib/lib" `
-		-DALSA_INCLUDE_DIR = "$libs_path/alsa-lib/include"
+		-DCMAKE_PREFIX_PATH="$libs_path/alsa-lib/"
 		
 
 	ninja -j12
