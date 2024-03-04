@@ -43,7 +43,8 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DLIBXML2_WITH_PYTHON=OFF
+		-DLIBXML2_WITH_PYTHON=OFF `
+		-LIBXML2_WITH_LZMA=OFF
 
 	ninja -j12
 	ninja install
