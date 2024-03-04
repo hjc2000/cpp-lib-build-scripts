@@ -40,8 +40,6 @@ try
 "@
 	
 
-	$env:ALSA_LIBRARY = "$libs_path/alsa-lib/lib"
-	$env:ALSA_INCLUDE_DIR = "$libs_path/alsa-lib/include"
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
@@ -54,7 +52,9 @@ try
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=ON `
-		-DSDL_PULSEAUDIO=OFF
+		-DSDL_PULSEAUDIO=OFF `
+		-DALSA_LIBRARY = "$libs_path/alsa-lib/lib" `
+		-DALSA_INCLUDE_DIR = "$libs_path/alsa-lib/include"
 		
 
 	ninja -j12
