@@ -9,6 +9,15 @@ try
 {
 	Apt-Ensure-Packets @("xsltproc", "xmlto")
 
+	# 构建依赖项
+	& "${build_script_path}/build-libffi.ps1"
+	# 设置依赖项的 pkg-config
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libffi"
+	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
+	Total-Install
+	
+
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git" `
@@ -41,8 +50,7 @@ try
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix="$install_path" `
-		--cross-file="$build_path/cross_file.ini" `
-		-Dscanner=false
+		--cross-file="$build_path/cross_file.ini"
 
 
 	Set-Location $build_path
