@@ -17,7 +17,6 @@ try
 	cd $source_path
 
 	export CC=arm-none-linux-gnueabihf-gcc
-	export CPP=arm-none-linux-gnueabihf-g++
 
 	./configure \
 	--prefix="$install_path" \
