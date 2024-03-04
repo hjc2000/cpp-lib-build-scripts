@@ -7,7 +7,7 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	Apt-Ensure-Packets @("xsltproc")
+	Apt-Ensure-Packets @("xsltproc", "xmlto")
 
 	# 开始构建本体
 	Set-Location $repos_path
