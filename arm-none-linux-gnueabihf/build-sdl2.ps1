@@ -9,9 +9,11 @@ try
 {
 	# 构建依赖项
 	& "${build_script_path}/build-alsa-lib.ps1"
+	& "${build_script_path}/build-pulseaudio"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/alsa-lib"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 
@@ -53,7 +55,7 @@ try
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=ON `
-		-DSDL_PULSEAUDIO=OFF		
+		-DSDL_PULSEAUDIO=ON
 
 	ninja -j12
 	ninja install
