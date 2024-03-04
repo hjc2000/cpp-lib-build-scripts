@@ -52,9 +52,7 @@ try
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=ON `
-		-DSDL_PULSEAUDIO=OFF `
-		-DCMAKE_PREFIX_PATH="$libs_path/alsa-lib"
-		
+		-DSDL_PULSEAUDIO=OFF		
 
 	ninja -j12
 	ninja install
