@@ -6,6 +6,8 @@ $install_path = "$libs_path/icu"
 Push-Location $repos_path
 try
 {
+	& $project_root_path/linux/build-icu.ps1
+
 	get-git-repo.ps1 -git_url "https://github.com/unicode-org/icu.git"
 
 	# 执行命令进行构建
@@ -18,7 +20,8 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf
+	--host=arm-none-linux-gnueabihf \
+	--with-cross-build="$project_root_path/linux/.libs/icu"
 
 	make -j12
 	make install
