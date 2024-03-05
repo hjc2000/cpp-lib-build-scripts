@@ -64,8 +64,8 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
-		-Dglib=disabled `
-		-Ddaemon=false
+		-Dglib=disabled
+	#-Ddaemon=false
 
 
 	Set-Location $build_path
