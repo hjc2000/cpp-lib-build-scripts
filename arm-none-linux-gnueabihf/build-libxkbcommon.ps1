@@ -18,6 +18,7 @@ try
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/icu"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libxml2"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/xz"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libffi"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 
