@@ -16,11 +16,13 @@ try
 	& "${build_script_path}/build-libsndfile.ps1"
 	& "${build_script_path}/build-dbus.ps1"
 	& "${build_script_path}/build-libtool.ps1"
+	& "${build_script_path}/build-gdbm.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libsndfile"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libtool"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/gdbm"
 	Total-Install
 
 
