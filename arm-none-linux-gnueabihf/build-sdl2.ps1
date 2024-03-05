@@ -11,11 +11,13 @@ try
 	& "${build_script_path}/build-alsa-lib.ps1"
 	& "${build_script_path}/build-pulseaudio.ps1"
 	& "${build_script_path}/build-wayland.ps1"
+	& "${build_script_path}/build-libxkbcommon.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/alsa-lib"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/wayland"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libxkbcommon"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	# 这是一定要的。一定要全部安装到 .total-install 目录中，等会 
 	# set(CMAKE_FIND_ROOT_PATH "$total_install_path")
