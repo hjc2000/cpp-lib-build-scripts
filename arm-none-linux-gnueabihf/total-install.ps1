@@ -4,7 +4,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 Push-Location
 try
 {
-	New-Item -Path $total_install_path -ItemType Directory -Force
+	New-Item -Path $total_install_path -ItemType Directory -Force | Out-Null
 
 	# 使用Get-ChildItem获取所有子目录，-Directory参数确保只获取目录
 	$libs = Get-ChildItem -Path $libs_path -Directory

@@ -35,7 +35,7 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git" `
 		-branch_name "1.20.0"
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 
 	$c_link_args = @"
 	[
@@ -85,8 +85,7 @@ try
 
 
 	Set-Location $build_path
-	ninja clean
-	ninja -j12
+	ninja -j12 | Out-Null
 	ninja install
 }
 catch
