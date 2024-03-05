@@ -71,7 +71,8 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
 		-Dglib=disabled `
-		-Ddatabase="gdbm"
+		-Ddatabase="gdbm" `
+		-Datomic-arm-linux-helpers=true
 	#-Ddaemon=false
 
 
