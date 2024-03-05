@@ -75,14 +75,13 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
-		-Dglib=disabled `
 		-Ddatabase="gdbm" `
 		-Dudev=disabled `
 		-Dgstreamer=disabled `
 		-Dopenssl=disabled `
 		-Dsystemd=disabled
-	#-Ddaemon=false
-
+	# -Ddaemon=false
+	# -Dglib=disabled `
 
 	Set-Location $build_path
 	ninja -j12
