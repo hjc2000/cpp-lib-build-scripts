@@ -58,8 +58,7 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
-		-Denable-x11=false `
-		-Denable-xkbregistry=false
+		-Denable-x11=false
 
 
 	Set-Location $build_path
