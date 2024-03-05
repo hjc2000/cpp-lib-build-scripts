@@ -35,6 +35,7 @@ try
 	[
 		'-L$total_install_path/lib',
 		'$total_install_path/lib/liblzma.so.5',
+		'$total_install_path/lib/libffi.so.8',
 		'$total_install_path/lib/libz.so.1',
 		'$total_install_path/lib/libiconv.so.2',
 		'$total_install_path/lib/libxml2.so.2',
