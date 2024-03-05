@@ -67,7 +67,7 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
 		-Dglib=disabled `
-		-Ddatabase=false
+		-Ddatabase="gdbm"
 	#-Ddaemon=false
 
 
