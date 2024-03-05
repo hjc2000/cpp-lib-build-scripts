@@ -45,7 +45,7 @@ try
 		'$total_install_path/lib/libiconv.so.2',
 		'$total_install_path/lib/libxml2.so.2',
 		'$total_install_path/lib/liblzma.so.5',
-		'-llibexpat',
+		'$total_install_path/lib/libexpat.so.1',
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
