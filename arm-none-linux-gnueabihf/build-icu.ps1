@@ -21,7 +21,7 @@ try
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
-	--with-cross-build="$project_root_path/linux/.libs/icu"
+	--with-cross-build="$project_root_path/linux/.repos/icu/icu4c/source"
 
 	make -j12
 	make install
