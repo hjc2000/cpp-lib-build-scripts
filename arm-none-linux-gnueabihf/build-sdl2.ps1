@@ -64,6 +64,7 @@ try
 		-DSDL_ALSA=ON `
 		-DSDL_PULSEAUDIO=ON
 
+	ninja clean
 	ninja -j12
 	ninja install
 }

@@ -35,6 +35,7 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON
 
+	ninja clean
 	ninja -j12
 	ninja install
 }

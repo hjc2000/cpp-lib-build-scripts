@@ -20,6 +20,7 @@ try
 	--prefix="$install_path" \
 	--cross-compile-prefix=arm-none-linux-gnueabihf-
 
+	make clean
 	make -j12
 	make install
 "@

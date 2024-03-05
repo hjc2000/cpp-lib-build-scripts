@@ -9,7 +9,7 @@ try
 {
 	get-git-repo.ps1 -git_url https://github.com/madler/zlib.git
 
-	New-Item -Path $build_path -ItemType Directory -Force
+	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -38,6 +38,7 @@ try
 		-DBUILD_SHARED_LIBS=ON `
 		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig"
 
+	ninja clean
 	ninja -j12
 	ninja install
 }

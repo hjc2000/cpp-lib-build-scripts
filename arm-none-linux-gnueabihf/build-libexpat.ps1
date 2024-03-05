@@ -34,6 +34,7 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="${install_path}"
 
+	ninja clean
 	ninja -j12
 	ninja install
 }

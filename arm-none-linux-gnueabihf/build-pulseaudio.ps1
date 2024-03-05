@@ -83,6 +83,7 @@ try
 		-Dhal-compat=false
 
 	Set-Location $build_path
+	ninja clean
 	ninja -j12
 	ninja install
 }

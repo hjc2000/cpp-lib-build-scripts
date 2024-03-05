@@ -17,7 +17,7 @@ try
 	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `
 		-branch_name dbus-1.14
 
-	New-Item -Path $build_path -ItemType Directory -Force
+	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -35,6 +35,7 @@ try
 		-DDBUS_SESSION_SOCKET_DIR="/tmp" `
 		-DDBUS_WITH_GLIB=OFF
 
+	ninja clean
 	ninja -j12
 	ninja install
 }

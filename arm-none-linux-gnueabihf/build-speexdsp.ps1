@@ -19,6 +19,7 @@ try
 	./configure \
 	--prefix="$install_path"
 
+	make clean
 	make -j12
 	make install
 "@
