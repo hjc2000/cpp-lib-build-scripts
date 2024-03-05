@@ -9,11 +9,13 @@ try
 {
 	# 构建依赖项
 	& "${build_script_path}/build-alsa-lib.ps1"
-	& "${build_script_path}/build-pulseaudio"
+	& "${build_script_path}/build-pulseaudio.ps1"
+	& "${build_script_path}/build-wayland.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/alsa-lib"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/wayland"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	# 这是一定要的。一定要全部安装到 .total-install 目录中，等会 
 	# set(CMAKE_FIND_ROOT_PATH "$total_install_path")
@@ -53,7 +55,7 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DSDL_SHARED=ON `
 		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=OFF `
+		-DSDL_WAYLAND=ON `
 		-DSDL_IBUS=OFF `
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
