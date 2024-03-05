@@ -72,7 +72,7 @@ try
 		-Dtests=false `
 		-Dglib=disabled `
 		-Ddatabase="gdbm" `
-		-Datomic-arm-linux-helpers=true
+		-Datomic-arm-linux-helpers=false
 	#-Ddaemon=false
 
 
