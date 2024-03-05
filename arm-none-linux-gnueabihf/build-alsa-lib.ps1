@@ -21,7 +21,7 @@ try
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
-	--with-softfloat > /dev/null
+	--with-softfloat
 
 	make clean > /dev/null
 	make -j12 > make > /dev/null
