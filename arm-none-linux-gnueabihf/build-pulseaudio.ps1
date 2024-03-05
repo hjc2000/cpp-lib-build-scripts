@@ -81,8 +81,6 @@ try
 		-Dopenssl=disabled `
 		-Dsystemd=disabled `
 		-Dhal-compat=disabled
-	# -Ddaemon=false
-	# -Dglib=disabled `
 
 	Set-Location $build_path
 	ninja -j12
