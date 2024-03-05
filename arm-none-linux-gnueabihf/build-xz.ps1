@@ -36,11 +36,10 @@ try
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
-		-DENABLE_NLS=OFF
+		-DENABLE_NLS=OFF | Out-Null
 
-	ninja clean
-	ninja -j12
-	ninja install
+	ninja -j12 | Out-Null
+	ninja install | Out-Null
 }
 catch
 {
