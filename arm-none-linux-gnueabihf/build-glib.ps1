@@ -7,6 +7,8 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	pip install packaging
+
 	# 构建依赖项
 	& "${build_script_path}/build-pcre2.ps1"
 	& "${build_script_path}/build-libffi.ps1"
