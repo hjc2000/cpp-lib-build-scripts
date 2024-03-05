@@ -20,7 +20,6 @@ try
 	--host=arm-none-linux-gnueabihf \
 	--with-cross-build="$project_root_path/linux/.repos/icu/icu4c/source" > /dev/null
 
-	make clean > /dev/null
 	make -j12 > /dev/null
 	make install > /dev/null
 "@

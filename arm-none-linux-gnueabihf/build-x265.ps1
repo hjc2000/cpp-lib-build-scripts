@@ -9,7 +9,7 @@ try
 {
 	get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -37,7 +37,6 @@ try
 		-DENABLE_PIC=on `
 		-DENABLE_ASSEMBLY=off
 
-	ninja clean
 	ninja -j12
 	ninja install
 }
