@@ -45,6 +45,7 @@ try
 "@
 	$c_link_args = $c_link_args.Replace("\r", " ")
 	$c_link_args = $c_link_args.Replace("\n", " ")
+	$c_link_args = $c_link_args.Replace("\t", " ")
 	$c_link_args = $c_link_args.Trim()
 
 	Create-Text-File -Path $build_path/cross_file.ini `
