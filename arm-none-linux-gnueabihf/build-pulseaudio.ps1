@@ -80,7 +80,7 @@ try
 		-Dgstreamer=disabled `
 		-Dopenssl=disabled `
 		-Dsystemd=disabled `
-		-Dhal-compat=disabled
+		-Dhal-compat=false
 
 	Set-Location $build_path
 	ninja -j12
