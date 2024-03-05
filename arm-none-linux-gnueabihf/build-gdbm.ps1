@@ -14,13 +14,9 @@ try
 	set -e
 	cd $source_path
 
-	./configure -h
-	exit
-
 	./configure \
 	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf \
-	--enable-ltdl-install
+	--host=arm-none-linux-gnueabihf
 
 	make -j12
 	make install
