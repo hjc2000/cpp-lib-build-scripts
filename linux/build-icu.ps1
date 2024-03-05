@@ -17,7 +17,8 @@ try
 	./configure -h > configure-help.txt
 
 	./configure \
-	--prefix="$install_path"
+	--prefix="$install_path" \
+	--enable-icu-config
 
 	make -j12
 	make install
