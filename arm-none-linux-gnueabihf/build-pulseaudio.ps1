@@ -31,8 +31,7 @@ try
 	
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git" `
-		-branch_name "stable-16.x"
+	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path $build_path/cross_file.ini `
@@ -48,13 +47,13 @@ try
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv4'
+	cpu = 'armv7-a'
 	endian = 'little'
 
 	[target_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv4'
+	cpu = 'armv7-a'
 	endian = 'little'
 
 	[built-in options]
