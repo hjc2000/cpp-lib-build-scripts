@@ -1,3 +1,6 @@
+# 需要将构建脚本的
+# error('clock_gettime not found')
+# 注释掉
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
