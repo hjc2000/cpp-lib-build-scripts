@@ -15,4 +15,3 @@ New-Item -Path $libs_path -ItemType Directory -Force | Out-Null
 New-Item -Path $total_install_path -ItemType Directory -Force | Out-Null
 
 $env:LIBRARY_PATH = "$total_install_path/lib"
-$env:LD_LIBRARY_PATH = "$total_install_path/lib"
