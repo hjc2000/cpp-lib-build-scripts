@@ -10,10 +10,12 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-pcre2.ps1"
 	& "${build_script_path}/build-libffi.ps1"
+	& "${build_script_path}/build-zlib.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pcre2"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libffi"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
 	Total-Install
 
 	# 开始构建本体
