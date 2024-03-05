@@ -42,10 +42,7 @@ try
 		'$total_install_path/lib/libiconv.so.2',
 		'$total_install_path/lib/libxml2.so.2'
 	]
-"@
-	$c_link_args = $c_link_args.Replace("`r", " ")
-	$c_link_args = $c_link_args.Replace("`n", " ")
-	$c_link_args = $c_link_args.Replace("`t", " ")
+"@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
