@@ -7,6 +7,13 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	# 构建依赖项
+	& "${build_script_path}/build-pcre2.ps1"
+	# 设置依赖项的 pkg-config
+	Clear-PkgConfig-Path
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pcre2"
+	Total-Install
+
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/glib.git"

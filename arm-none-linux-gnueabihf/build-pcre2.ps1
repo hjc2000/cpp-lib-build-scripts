@@ -7,7 +7,7 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://github.com/PCRE2Project/pcre2.git
+	get-git-repo.ps1 -git_url "https://github.com/PCRE2Project/pcre2.git"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
