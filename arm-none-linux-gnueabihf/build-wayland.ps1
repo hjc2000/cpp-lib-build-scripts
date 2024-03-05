@@ -34,14 +34,18 @@ try
 
 	New-Empty-Dir -Path $build_path
 
-	$c_link_args = "[ `
-		'-L$total_install_path/lib', `
-		'$total_install_path/lib/liblzma.so.5', `
-		'$total_install_path/lib/libz.so.1', `
-		'$total_install_path/lib/libiconv.so.2', `
-		'$total_install_path/lib/libxml2.so.2' `
-	]"
-	
+	$c_link_args = @"
+	[
+		'-L$total_install_path/lib',
+		'$total_install_path/lib/liblzma.so.5',
+		'$total_install_path/lib/libz.so.1',
+		'$total_install_path/lib/libiconv.so.2',
+		'$total_install_path/lib/libxml2.so.2'
+	]
+"@
+	$c_link_args = "$c_link_args".Replace("\r", " ")
+	$c_link_args = "$c_link_args".Replace("\n", " ")
+
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
