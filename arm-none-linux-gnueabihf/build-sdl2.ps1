@@ -47,6 +47,8 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+	include_directories("$total_install_path/include")
 "@
 	
 
