@@ -41,13 +41,10 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma")
-
 	include_directories("$total_install_path/include")
-	link_libraries("$total_install_path/lib/liblzma.so.5")
-	link_libraries("$total_install_path/lib/libiconv.so.2")
-	link_libraries("$total_install_path/lib/libz.so.1")
+	link_libraries(PUBLIC "$total_install_path/lib/liblzma.so.5")
+	link_libraries(PUBLIC "$total_install_path/lib/libiconv.so.2")
+	link_libraries(PUBLIC "$total_install_path/lib/libz.so.1")
 "@
 	
 
@@ -59,8 +56,7 @@ try
 		-DLIBXML2_WITH_PYTHON=OFF `
 		-DLIBXML2_WITH_TESTS=OFF `
 		-DLIBXML2_WITH_LZMA=ON `
-		-DLIBXML2_WITH_ZLIB=ON `
-		-DCMAKE_SHARED_LINKER_FLAGS="`${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma"
+		-DLIBXML2_WITH_ZLIB=ON
 
 	ninja clean
 	ninja -j12
