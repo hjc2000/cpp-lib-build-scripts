@@ -71,7 +71,8 @@ try
 		-Dtests=false `
 		-Dglib=disabled `
 		-Ddatabase="gdbm" `
-		-Dudev=false
+		-Dudev=false `
+		-Dopenssl=false
 	#-Ddaemon=false
 
 
