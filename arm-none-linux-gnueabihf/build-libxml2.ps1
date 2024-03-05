@@ -41,10 +41,10 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
-	set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma")
+	set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma")
 
 	include_directories("$total_install_path/include")
 	link_libraries("$total_install_path/lib/liblzma.so.5")
