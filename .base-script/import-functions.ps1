@@ -7,7 +7,7 @@ function New-Empty-Dir
 	)
 	
 	# 创建 build 目录
-	New-Item -Path $Path -ItemType Directory -Force
+	New-Item -Path $Path -ItemType Directory -Force | Out-Null
 	Remove-Item "$Path/*" -Recurse -Force
 }
 
@@ -23,7 +23,7 @@ function Create-Text-File
 	)
 	
 	# 创建文件 toolchain.cmake
-	New-Item -Path $Path -ItemType File -Force
+	New-Item -Path $Path -ItemType File -Force | Out-Null
 	$Content | Out-File -FilePath $Path -Encoding UTF8	
 }
 
