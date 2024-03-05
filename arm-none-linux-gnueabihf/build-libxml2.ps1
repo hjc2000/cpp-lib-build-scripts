@@ -43,8 +43,8 @@ try
 
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
-	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed")
-	set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-as-needed")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
+	set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,--no-as-needed -l$total_install_path/lib/liblzma.so.5")
 
 	include_directories("$total_install_path/include")
 	link_libraries("$total_install_path/lib/liblzma.so.5")
