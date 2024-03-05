@@ -11,11 +11,13 @@ try
 	& "${build_script_path}/build-pcre2.ps1"
 	& "${build_script_path}/build-libffi.ps1"
 	& "${build_script_path}/build-zlib.ps1"
+	& "${build_script_path}/build-libiconv.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pcre2"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libffi"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libiconv"
 	Total-Install
 
 	# 开始构建本体
@@ -24,16 +26,12 @@ try
 
 	New-Empty-Dir -Path $build_path
 
+	# '$total_install_path/lib/libiconv.so.2',
 	$c_link_args = @"
 	[
 		'-L$total_install_path/lib',
-		'$total_install_path/lib/libiconv.so.2',
 	]
-"@
-	$c_link_args = $c_link_args.Replace("`r", " ")
-	$c_link_args = $c_link_args.Replace("`n", " ")
-	$c_link_args = $c_link_args.Replace("`t", " ")
-
+"@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
