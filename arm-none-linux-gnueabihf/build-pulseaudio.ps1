@@ -60,8 +60,8 @@ try
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
-	c_link_args = ['$total_install_path/lib/libgdbm.so.6', '$total_install_path/lib/libltdl.so.7']
-	cpp_link_args = ['$total_install_path/lib/libltdl.so.7']
+	c_link_args = ['$total_install_path/lib/libgdbm.so.6', '$total_install_path/lib/libltdl.so.7', '$total_install_path/lib/ltdl.so.7']
+	cpp_link_args = ['$total_install_path/lib/libltdl.so.7', '$total_install_path/lib/ltdl.so.7']
 "@
 
 	Set-Location $source_path
