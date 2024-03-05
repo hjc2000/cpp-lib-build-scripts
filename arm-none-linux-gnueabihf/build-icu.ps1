@@ -15,17 +15,14 @@ try
 	set -e
 	cd $source_path
 
-	touch configure-help.txt
-	./configure -h > configure-help.txt
-
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
-	--with-cross-build="$project_root_path/linux/.repos/icu/icu4c/source"
+	--with-cross-build="$project_root_path/linux/.repos/icu/icu4c/source" > /dev/null
 
-	make clean
-	make -j12
-	make install
+	make clean > /dev/null
+	make -j12 > /dev/null
+	make install > /dev/null
 "@
 }
 catch

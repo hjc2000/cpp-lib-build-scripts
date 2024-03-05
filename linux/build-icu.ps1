@@ -13,15 +13,12 @@ try
 	set -e
 	cd $source_path
 
-	touch configure-help.txt
-	./configure -h > configure-help.txt
-
 	./configure \
 	--prefix="$install_path" \
-	--enable-icu-config
+	--enable-icu-config > /dev/null
 
-	make -j12
-	make install
+	make -j12 > /dev/null
+	make install > /dev/null
 "@
 }
 catch
