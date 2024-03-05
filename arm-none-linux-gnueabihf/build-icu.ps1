@@ -13,18 +13,13 @@ try
 	set -e
 	cd $source_path
 
-	./configure -h
-	exit
+	touch configure-help.txt
+	./configure -h > configure-help.txt
 
 	./configure \
 	--prefix="$install_path" \
-	--enable-shared \
-	--disable-opencl \
-	--enable-pic \
-	--host=arm-none-linux-gnueabihf \
-	--cross-prefix=arm-none-linux-gnueabihf-
+	--host=arm-none-linux-gnueabihf
 
-	make clean
 	make -j12
 	make install
 "@
