@@ -71,8 +71,7 @@ try
 		-Dtests=false `
 		-Dglib=disabled `
 		-Ddatabase="gdbm" `
-		-Datomic-arm-memory-barrier=false `
-		-Datomic-arm-linux-helpers=false
+		-Dudev=false
 	#-Ddaemon=false
 
 
