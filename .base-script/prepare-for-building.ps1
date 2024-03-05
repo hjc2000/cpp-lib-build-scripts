@@ -13,5 +13,3 @@ $total_install_path = "$build_script_path/.total-install"
 New-Item -Path $repos_path -ItemType Directory -Force | Out-Null
 New-Item -Path $libs_path -ItemType Directory -Force | Out-Null
 New-Item -Path $total_install_path -ItemType Directory -Force | Out-Null
-
-$env:LIBRARY_PATH = "$total_install_path/lib"
