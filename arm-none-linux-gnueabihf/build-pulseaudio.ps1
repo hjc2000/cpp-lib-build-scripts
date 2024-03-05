@@ -48,13 +48,13 @@ try
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7-a'
+	cpu = 'armv4'
 	endian = 'little'
 
 	[target_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7-a'
+	cpu = 'armv4'
 	endian = 'little'
 
 	[built-in options]
@@ -71,8 +71,7 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
 		-Dglib=disabled `
-		-Ddatabase="gdbm" `
-		-Datomic-arm-linux-helpers=false
+		-Ddatabase="gdbm"
 	#-Ddaemon=false
 
 
