@@ -28,7 +28,7 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/xkbcommon/libxkbcommon.git"
 
-	New-Empty-Dir -Path $build_path
+	New-Item -Path $build_path -ItemType Directory -Force
 
 	$c_link_args = @"
 	[
@@ -37,6 +37,7 @@ try
 		'$total_install_path/lib/libz.so.1',
 		'$total_install_path/lib/libiconv.so.2',
 		'$total_install_path/lib/libxml2.so.2'
+		'$total_install_path/lib/libffi.so.8'
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
