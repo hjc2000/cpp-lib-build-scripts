@@ -17,11 +17,10 @@ try
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
-	--enable-ltdl-install
+	--enable-ltdl-install > /dev/null
 
-	make clean
-	make -j12
-	make install
+	make -j12 > /dev/null
+	make install > /dev/null
 "@
 }
 catch
