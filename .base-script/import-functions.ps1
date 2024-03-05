@@ -249,3 +249,11 @@ function Total-Install
 {
 	& $build_script_path/total-install.ps1
 }
+
+
+function Auto-Make
+{
+	aclocal
+	autoconf
+	automake --add-missing
+}
