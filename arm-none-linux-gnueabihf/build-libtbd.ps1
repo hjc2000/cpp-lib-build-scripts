@@ -19,9 +19,6 @@ try
 	--cross-compile \
 	--cross-execute=arm-none-linux-gnueabihf- \
 	--disable-python
-
-	make -j12
-	make install
 "@
 }
 catch
