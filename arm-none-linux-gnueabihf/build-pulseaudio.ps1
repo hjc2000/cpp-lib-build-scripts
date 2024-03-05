@@ -66,7 +66,8 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=false `
-		-Dglib=disabled
+		-Dglib=disabled `
+		-Ddatabase=false
 	#-Ddaemon=false
 
 
