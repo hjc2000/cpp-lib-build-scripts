@@ -73,7 +73,7 @@ try
 		-Dglib=disabled `
 		-Ddatabase="gdbm" `
 		-Dudev=disabled `
-		-Dgstreamer=false `
+		-Dgstreamer=disabled `
 		-Dopenssl=disabled
 	#-Ddaemon=false
 
