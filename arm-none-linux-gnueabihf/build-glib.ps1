@@ -31,7 +31,7 @@ try
 	$c_link_args = @"
 	[
 		'-L$total_install_path/lib',
-		'-Wl,--no-as-needed'
+		'-Wl,--no-as-needed',
 		'$total_install_path/lib/libiconv.so.2',
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
