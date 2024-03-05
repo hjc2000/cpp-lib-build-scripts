@@ -10,7 +10,7 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/tukaani-project/xz.git" `
 		-branch_name "v5.6"
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
