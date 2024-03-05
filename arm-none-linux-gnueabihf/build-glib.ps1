@@ -26,10 +26,10 @@ try
 
 	New-Empty-Dir -Path $build_path
 
-	# '$total_install_path/lib/libiconv.so.2',
 	$c_link_args = @"
 	[
 		'-L$total_install_path/lib',
+		'$total_install_path/lib/libiconv.so.2',
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 	Create-Text-File -Path $build_path/cross_file.ini `
