@@ -16,7 +16,8 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--cross-compile=arm-none-linux-gnueabihf-gcc \
+	--cross-compile \
+	--cross-execute=arm-none-linux-gnueabihf-gcc \
 	--disable-python
 
 	make -j12
