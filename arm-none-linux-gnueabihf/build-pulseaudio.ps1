@@ -62,9 +62,6 @@ try
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
-
-	# '-L$total_install_path/lib' 是一定要的，否则等不到你强制链接库文件，meson.build
-	# 脚本的依赖检查先报错了，没机会强制链接。
 	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libgdbm.so.6', '$total_install_path/lib/libltdl.so.7']
 	cpp_link_args = ['-L$total_install_path/lib']
 "@
