@@ -22,7 +22,7 @@ try
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 
-
+	$env:LIBRARY_PATH = "$total_install_path/lib"
 
 
 	# 开始构建本体
@@ -34,7 +34,6 @@ try
 	$c_link_args = @"
 	[
 		'-L$total_install_path/lib',
-		'$total_install_path/lib/liblzma.so.5',
 		'$total_install_path/lib/libffi.so.8',
 		'$total_install_path/lib/libz.so.1',
 		'$total_install_path/lib/libiconv.so.2',
