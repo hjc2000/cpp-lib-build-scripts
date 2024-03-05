@@ -47,18 +47,18 @@ try
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7-a'
+	cpu = 'armv4'
 	endian = 'little'
 
 	[target_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv7-a'
+	cpu = 'armv4'
 	endian = 'little'
 
 	[built-in options]
-	c_args = ['-march=armv7-a', '-I$total_install_path/include']
-	cpp_args = ['-march=armv7-a', '-I$total_install_path/include']
+	c_args = ['-march=armv4', '-I$total_install_path/include']
+	cpp_args = ['-march=armv4', '-I$total_install_path/include']
 	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libltdl.so.7']
 	cpp_link_args = ['-L$total_install_path/lib']
 "@
