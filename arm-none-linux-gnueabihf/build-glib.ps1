@@ -57,7 +57,8 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
-		-Dselinux=disabled
+		-Dselinux=disabled `
+		-Dlibmount=disabled
 
 
 	Set-Location $build_path
