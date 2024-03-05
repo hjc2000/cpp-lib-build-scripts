@@ -79,7 +79,8 @@ try
 		-Dudev=disabled `
 		-Dgstreamer=disabled `
 		-Dopenssl=disabled `
-		-Dsystemd=disabled
+		-Dsystemd=disabled `
+		-Dhal-compat=disabled
 	# -Ddaemon=false
 	# -Dglib=disabled `
 
