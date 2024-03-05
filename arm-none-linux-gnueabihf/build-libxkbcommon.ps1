@@ -29,6 +29,17 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/xkbcommon/libxkbcommon.git"
 
 	New-Empty-Dir -Path $build_path
+
+	$c_link_args = @"
+	[
+		'-L$total_install_path/lib',
+		'$total_install_path/lib/liblzma.so.5',
+		'$total_install_path/lib/libz.so.1',
+		'$total_install_path/lib/libiconv.so.2',
+		'$total_install_path/lib/libxml2.so.2'
+	]
+"@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
+
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
@@ -54,7 +65,7 @@ try
 	[built-in options]
 	c_args = ['-I$total_install_path/include']
 	cpp_args = ['-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib']
+	c_link_args = $c_link_args
 	cpp_link_args = ['-L$total_install_path/lib']
 "@
 
