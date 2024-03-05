@@ -20,13 +20,13 @@ try
 	& "${build_script_path}/build-libxml2.ps1"
 	& "${build_script_path}/build-libexpat.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libffi"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libxml2"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libexpat"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/xz"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
-	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
+	# Clear-PkgConfig-Path
+	# Append-Pkg-Config-Path-Recurse -Path "$libs_path/libffi"
+	# Append-Pkg-Config-Path-Recurse -Path "$libs_path/libxml2"
+	# Append-Pkg-Config-Path-Recurse -Path "$libs_path/libexpat"
+	# Append-Pkg-Config-Path-Recurse -Path "$libs_path/xz"
+	# Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
+	# Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 	
 
