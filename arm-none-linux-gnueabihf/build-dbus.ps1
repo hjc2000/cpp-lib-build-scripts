@@ -17,7 +17,7 @@ try
 	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `
 		-branch_name dbus-1.14
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)

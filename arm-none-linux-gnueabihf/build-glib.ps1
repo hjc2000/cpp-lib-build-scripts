@@ -24,7 +24,7 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/glib.git"
 
-	New-Empty-Dir -Path $build_path
+	New-Item -Path $build_path -ItemType Directory -Force
 
 	$c_link_args = @"
 	[
