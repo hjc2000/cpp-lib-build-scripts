@@ -74,7 +74,8 @@ try
 		-Ddatabase="gdbm" `
 		-Dudev=disabled `
 		-Dgstreamer=disabled `
-		-Dopenssl=disabled
+		-Dopenssl=disabled `
+		-Dsystemd=disabled
 	#-Ddaemon=false
 
 
