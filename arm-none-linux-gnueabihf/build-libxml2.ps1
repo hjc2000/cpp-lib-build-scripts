@@ -60,7 +60,6 @@ try
 		-DLIBXML2_WITH_TESTS=OFF `
 		-DLIBXML2_WITH_LZMA=ON `
 		-DLIBXML2_WITH_ZLIB=ON `
-		-DCMAKE_EXE_LINKER_FLAGS="`${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma" `
 		-DCMAKE_SHARED_LINKER_FLAGS="`${CMAKE_EXE_LINKER_FLAGS} -Wl,--no-as-needed -L$total_install_path/lib/ -lliblzma"
 
 	ninja clean
