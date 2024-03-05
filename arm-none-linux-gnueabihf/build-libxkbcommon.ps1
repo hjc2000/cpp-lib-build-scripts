@@ -11,9 +11,11 @@ try
 
 	# 构建依赖项
 	& "${build_script_path}/build-wayland"
+	& "${build_script_path}/build-icu"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/wayland"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/icu"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
 	Total-Install
 
