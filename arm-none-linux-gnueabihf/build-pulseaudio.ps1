@@ -56,6 +56,7 @@ try
 	cpu = 'armv4'
 	endian = 'little'
 
+	# 如果不设置低于 avmv6 的版本，编译时就会报内联汇编有不可能的约束。
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
@@ -71,8 +72,8 @@ try
 		-Dtests=false `
 		-Dglib=disabled `
 		-Ddatabase="gdbm" `
-		-Dudev=false `
-		-Dopenssl=false
+		-Dudev=disabled `
+		-Dopenssl=disabled
 	#-Ddaemon=false
 
 
