@@ -206,7 +206,7 @@ function Get-Meson-Cross-File-Binaries
 	)
 	
 	# 这些内容暂时不设置
-	@"
+	$unset = @"
 	addr2line = '${toolchain_prefix}addr2line'
 	gcc_ar = '${toolchain_prefix}gcc-ar'
 	gcc_nm = '${toolchain_prefix}gcc-nm'
