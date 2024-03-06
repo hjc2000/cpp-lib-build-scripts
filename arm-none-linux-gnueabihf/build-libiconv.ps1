@@ -18,8 +18,8 @@ try
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf
 
-	make -j12
-	make install
+	make -j12 > /dev/null
+	make install > /dev/null
 "@
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
