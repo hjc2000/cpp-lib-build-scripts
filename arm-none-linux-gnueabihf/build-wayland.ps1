@@ -16,9 +16,7 @@ try
 	& "${build_script_path}/build-libffi.ps1"
 	& "${build_script_path}/build-libxml2.ps1"
 	& "${build_script_path}/build-libexpat.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
+
 	
 
 	# 开始构建本体
@@ -26,7 +24,9 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git" `
 		-branch_name "1.20.0"
 
-	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	New-Item -Path $build_path -ItemType Directory -Force
+	Remove-Item "$build_path/*" -Recurse -Force
+
 
 	$c_link_args = @"
 	[
@@ -65,8 +65,8 @@ try
 	[built-in options]
 	c_args = ['-I$total_install_path/include']
 	cpp_args = ['-I$total_install_path/include']
-	c_link_args = $c_link_args
-	cpp_link_args = $c_link_args
+	c_link_args = ['-L$total_install_path/lib']
+	cpp_link_args = ['-L$total_install_path/lib']
 "@
 
 	Set-Location $source_path
