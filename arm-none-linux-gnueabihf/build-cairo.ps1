@@ -7,6 +7,8 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	Apt-Ensure-Packets @("docbook-utils")
+
 	# 构建依赖项
 	& "${build_script_path}/build-zlib.ps1"
 	& "${build_script_path}/build-libexpat.ps1"
