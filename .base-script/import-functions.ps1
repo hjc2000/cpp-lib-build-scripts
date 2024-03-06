@@ -205,12 +205,8 @@ function Get-Meson-Cross-File-Binaries
 		[string]$toolchain_prefix
 	)
 	
-	return @"
-	c = '${toolchain_prefix}gcc'
-	cpp = '${toolchain_prefix}g++'
-	ar = '${toolchain_prefix}ar'
-	ld = '${toolchain_prefix}ld'
-	strip = '${toolchain_prefix}strip'
+	# 这些内容暂时不设置
+	@"
 	addr2line = '${toolchain_prefix}addr2line'
 	gcc_ar = '${toolchain_prefix}gcc-ar'
 	gcc_nm = '${toolchain_prefix}gcc-nm'
@@ -222,6 +218,14 @@ function Get-Meson-Cross-File-Binaries
 	readelf = '${toolchain_prefix}readelf'
 	size = '${toolchain_prefix}size'
 	strings = '${toolchain_prefix}strings'
+"@
+
+	return @"
+	c = '${toolchain_prefix}gcc'
+	cpp = '${toolchain_prefix}g++'
+	ar = '${toolchain_prefix}ar'
+	ld = '${toolchain_prefix}ld'
+	strip = '${toolchain_prefix}strip'
 	pkg-config = 'pkg-config'
 "@
 }
