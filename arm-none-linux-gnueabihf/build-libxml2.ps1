@@ -35,6 +35,7 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 	include_directories("$total_install_path/include")
+	link_directories("$total_install_path/lib")
 	link_libraries(
 		# "$total_install_path/lib/liblzma.so.5"
 		"$total_install_path/lib/libiconv.so.2"
