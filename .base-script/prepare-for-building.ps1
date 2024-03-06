@@ -11,7 +11,6 @@ $libs_path = "$build_script_path/.libs"
 $total_install_path = "$build_script_path/.total-install"
 
 $env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
-$env:LIBRARY_PATH = "$total_install_path/lib"
 
 New-Item -Path $repos_path -ItemType Directory -Force | Out-Null
 New-Item -Path $libs_path -ItemType Directory -Force | Out-Null
