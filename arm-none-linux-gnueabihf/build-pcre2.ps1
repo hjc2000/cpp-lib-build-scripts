@@ -26,10 +26,6 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-
-	[properties]
-	sys_root = '$total_install_path'
-	pkg_config_path = '$total_install_path/lib/pkgconfig'
 "@
 
 	# 切换到 build 目录开始构建

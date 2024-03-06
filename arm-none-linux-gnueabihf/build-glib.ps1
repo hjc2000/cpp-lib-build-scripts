@@ -61,6 +61,10 @@ try
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
 	c_link_args = ['-L$total_install_path/lib']
 	cpp_link_args = ['-L$total_install_path/lib']
+
+	[properties]
+	sys_root = '$total_install_path'
+	pkg_config_path = '$total_install_path/lib/pkgconfig'
 "@
 
 	Set-Location $source_path
