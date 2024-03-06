@@ -16,7 +16,9 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/libxml2.git" `
 		-branch_name "2.12"
 
-	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	New-Item -Path $build_path -ItemType Directory -Force
+	Remove-Item "$build_path/*" -Recurse -Force
+
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -37,7 +39,7 @@ try
 	include_directories(BEFORE "$total_install_path/include")
 	link_directories(BEFORE "$total_install_path/lib")
 	link_libraries(
-		# "$total_install_path/lib/libz.so.1"
+		"$total_install_path/lib/libz.so.1"
 		"$total_install_path/lib/liblzma.so.5"
 		"$total_install_path/lib/libiconv.so.2"
 	)
