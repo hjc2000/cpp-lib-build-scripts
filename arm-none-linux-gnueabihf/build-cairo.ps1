@@ -59,8 +59,7 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=disabled `
-		-Dxlib=disabled `
-		-Dgtk_doc=false
+		-Dxlib=disabled
 
 	Set-Location $build_path
 	ninja -j12
