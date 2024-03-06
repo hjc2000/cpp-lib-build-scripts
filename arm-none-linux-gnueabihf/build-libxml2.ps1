@@ -37,8 +37,8 @@ try
 	include_directories(BEFORE "$total_install_path/include")
 	link_directories(BEFORE "$total_install_path/lib")
 	link_libraries(
-		# "$total_install_path/lib/liblzma.so.5"
 		# "$total_install_path/lib/libz.so.1"
+		"$total_install_path/lib/liblzma.so.5"
 		"$total_install_path/lib/libiconv.so.2"
 	)
 "@
