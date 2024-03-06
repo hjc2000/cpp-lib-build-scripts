@@ -16,7 +16,7 @@ try
 	& "${build_script_path}/build-libpng.ps1"
 
 
-	
+
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/cairo/cairo.git"
@@ -57,7 +57,8 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=disabled `
-		-Dxlib=disabled
+		-Dxlib=disabled `
+		-Dgtk_doc=false
 
 	Set-Location $build_path
 	ninja clean
