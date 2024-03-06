@@ -197,3 +197,31 @@ function Auto-Make
 	autoconf
 	automake --add-missing
 }
+
+function Get-Meson-Cross-File-Binaries
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[string]$toolchain_prefix
+	)
+	
+	return @"
+	c = '${toolchain_prefix}gcc'
+	cpp = '${toolchain_prefix}g++'
+	ar = '${toolchain_prefix}ar'
+	ld = '${toolchain_prefix}ld'
+	strip = '${toolchain_prefix}strip'
+	addr2line = '${toolchain_prefix}addr2line'
+	gcc_ar = '${toolchain_prefix}gcc-ar'
+	gcc_nm = '${toolchain_prefix}gcc-nm'
+	gcc_ranlib = '${toolchain_prefix}gcc-ranlib'
+	nm = '${toolchain_prefix}nm'
+	objcopy = '${toolchain_prefix}objcopy'
+	objdump = '${toolchain_prefix}objdump'
+	ranlib = '${toolchain_prefix}ranlib'
+	readelf = '${toolchain_prefix}readelf'
+	size = '${toolchain_prefix}size'
+	strings = '${toolchain_prefix}strings'
+	pkg-config = 'pkg-config'
+"@
+}
