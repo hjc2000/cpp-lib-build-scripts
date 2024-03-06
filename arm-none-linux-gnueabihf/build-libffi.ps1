@@ -17,10 +17,11 @@ try
 	cd $source_path
 
 	./configure \
-	--prefix=$install_path \
+	--prefix=$total_install_path \
 	--host=arm-none-linux-gnueabihf \
 	--target=arm-none-linux-gnueabihf > /dev/null
 
+	make clean > /dev/null
 	make -j12 > /dev/null
 	make install > /dev/null
 "@
