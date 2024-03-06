@@ -10,10 +10,12 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-wayland.ps1"
 	& "${build_script_path}/build-dbus.ps1"
+	& "${build_script_path}/build-cairo.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/wayland"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/cairo"
 	Total-Install
 
 
