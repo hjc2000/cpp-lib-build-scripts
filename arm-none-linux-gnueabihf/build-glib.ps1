@@ -63,7 +63,6 @@ try
 	cpp_link_args = ['-L$total_install_path/lib']
 
 	[properties]
-	sys_root = '$total_install_path'
 	pkg_config_path = '$total_install_path/lib/pkgconfig'
 "@
 
