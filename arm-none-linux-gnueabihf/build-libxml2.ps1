@@ -17,7 +17,7 @@ try
 		-branch_name "2.12"
 
 	New-Item -Path $build_path -ItemType Directory -Force
-	Remove-Item "$build_path/*" -Recurse -Force
+	# Remove-Item "$build_path/*" -Recurse -Force
 
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"

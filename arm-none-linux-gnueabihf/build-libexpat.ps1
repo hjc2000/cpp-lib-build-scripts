@@ -10,7 +10,9 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://github.com/libexpat/libexpat.git
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	# Remove-Item "$build_path/*" -Recurse -Force
+
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -27,6 +29,9 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+	include_directories(BEFORE "$total_install_path/include")
+	link_directories(BEFORE "$total_install_path/lib")
 "@
 
 	Set-Location $build_path
@@ -35,7 +40,6 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DEXPAT_BUILD_DOCS=OFF
 
-	ninja clean
 	ninja -j12
 	ninja install
 
