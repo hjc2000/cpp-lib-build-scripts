@@ -9,7 +9,9 @@ try
 {
 	get-git-repo.ps1 -git_url https://github.com/madler/zlib.git
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	# Remove-Item "$build_path/*" -Recurse -Force
+
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -36,11 +38,10 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
-		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig"
+		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig" | Out-Null
 
-	ninja clean
-	ninja -j12
-	ninja install
+	ninja -j12 | Out-Null
+	ninja install | Out-Null
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
