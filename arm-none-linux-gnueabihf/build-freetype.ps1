@@ -41,7 +41,7 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DBUILD_SHARED_LIBS
+		-DBUILD_SHARED_LIBS=ON
 
 	ninja -j12
 	ninja install | Out-Null
