@@ -12,7 +12,7 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/util-linux/util-linux.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	# Remove-Item "$build_path/*" -Recurse -Force
+	Remove-Item "$build_path/*" -Recurse -Force
 
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
