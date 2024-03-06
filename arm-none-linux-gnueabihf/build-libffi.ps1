@@ -3,7 +3,6 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 $source_path = "$repos_path/libffi/libffi-3.4.6"
 $install_path = "$libs_path/libffi/"
-$build_path = "$source_path/build/"
 Push-Location $repos_path
 
 try
@@ -19,11 +18,13 @@ try
 	./configure \
 	--prefix=$install_path \
 	--host=arm-none-linux-gnueabihf \
-	--target=arm-none-linux-gnueabihf > /dev/null
+	--target=arm-none-linux-gnueabihf
 
-	make -j12 > /dev/null
-	make install > /dev/null
+	make -j12
+	make install
 "@
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {

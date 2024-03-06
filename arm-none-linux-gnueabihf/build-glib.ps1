@@ -14,24 +14,14 @@ try
 	& "${build_script_path}/build-libffi.ps1"
 	& "${build_script_path}/build-zlib.ps1"
 	& "${build_script_path}/build-libiconv.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
 
+	
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/glib.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
-
-	$c_link_args = @"
-	[
-		'-L$total_install_path/lib',
-		'-Wl,--no-as-needed',
-		'$total_install_path/lib/libiconv.so.2',
-	]
-"@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
@@ -62,7 +52,7 @@ try
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib']
+	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libiconv.so.2']
 	cpp_link_args = ['-L$total_install_path/lib']
 "@
 
@@ -77,6 +67,8 @@ try
 	Set-Location $build_path
 	ninja -j12
 	ninja install
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {
