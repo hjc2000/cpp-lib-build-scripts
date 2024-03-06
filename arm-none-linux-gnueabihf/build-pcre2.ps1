@@ -32,7 +32,7 @@ try
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
+		-DCMAKE_INSTALL_PREFIX="$total_install_path" `
 		-DBUILD_SHARED_LIBS=ON
 
 	ninja clean
