@@ -19,9 +19,6 @@ try
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/wayland"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libxkbcommon"
 	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
-	# 这是一定要的。一定要全部安装到 .total-install 目录中，等会 
-	# set(CMAKE_FIND_ROOT_PATH "$total_install_path")
-	# 后 cmake 才能找到库。
 	Total-Install
 
 
