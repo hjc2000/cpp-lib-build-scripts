@@ -15,6 +15,7 @@ try
 	& "${build_script_path}/build-glib.ps1"
 	& "${build_script_path}/build-libpng.ps1"
 	& "${build_script_path}/build-freetype.ps1"
+	& "${build_script_path}/build-libiconv.ps1"
 
 
 
@@ -51,8 +52,8 @@ try
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libz.so.1']
-	cpp_link_args = ['-L$total_install_path/lib']
+	c_link_args = ['-L$total_install_path/lib/', '$total_install_path/lib/libiconv.so.2', '$total_install_path/lib/libz.so.1']
+	cpp_link_args = ['-L$total_install_path/lib/']
 "@
 
 	Set-Location $source_path
