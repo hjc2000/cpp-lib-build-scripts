@@ -15,12 +15,12 @@ try
 	cd $source_path
 
 	./configure \
-	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf > /dev/null
+	--prefix="$total_install_path" \
+	--host=arm-none-linux-gnueabihf
 
-	make clean > /dev/null
-	make -j12 > /dev/null
-	make install > /dev/null
+	make clean
+	make -j12
+	make install
 "@
 }
 catch

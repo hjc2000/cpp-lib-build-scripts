@@ -43,6 +43,9 @@ try
 	strip = 'arm-none-linux-gnueabihf-strip'
 	pkg-config = 'pkg-config'
 
+	[properties]
+	pkg_config_path = '$total_install_path/lib/pkgconfig'
+
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
@@ -61,9 +64,6 @@ try
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
 	c_link_args = ['-L$total_install_path/lib']
 	cpp_link_args = ['-L$total_install_path/lib']
-
-	[properties]
-	pkg_config_path = '$total_install_path/lib/pkgconfig'
 "@
 
 	Set-Location $source_path
