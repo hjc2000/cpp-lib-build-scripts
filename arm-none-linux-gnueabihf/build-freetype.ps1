@@ -29,7 +29,7 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 	include_directories("$total_install_path/include")
-	link_directories(BEFORE "$total_install_path/lib")
+	link_directories("$total_install_path/lib")
 	link_libraries(
 
 	)
