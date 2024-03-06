@@ -1,13 +1,15 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/libpng/"
+$source_path = "$repos_path/libpng/libpng-1.6.43"
 $install_path = "$libs_path/libpng/"
 $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "http://prdownloads.sourceforge.net/libpng/libpng-1.6.43.tar.gz?download"
+	wget-repo.ps1 -workspace_dir $repos_path `
+		-repo_url "http://prdownloads.sourceforge.net/libpng/libpng-1.6.43.tar.gz?download" `
+		-out_dir_name "libpng"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
