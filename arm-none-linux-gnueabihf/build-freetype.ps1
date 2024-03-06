@@ -21,16 +21,17 @@ try
 	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
-	# set(CMAKE_PREFIX_PATH "$total_install_path")
+	set(CMAKE_PREFIX_PATH "$total_install_path")
 	set(CMAKE_FIND_ROOT_PATH "$total_install_path")
 	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-	include_directories(BEFORE "$total_install_path/include")
-	link_directories(BEFORE "$total_install_path/lib")
+	include_directories("$total_install_path/include")
+	link_directories("$total_install_path/lib")
 	link_libraries(
+		m
 		$total_install_path/lib/libz.so.1
 		$total_install_path/lib/libpng.so
 	)
