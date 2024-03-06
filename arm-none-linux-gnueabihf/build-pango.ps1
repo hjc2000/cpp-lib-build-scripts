@@ -9,16 +9,14 @@ try
 {
 	# 构建依赖项
 	& "${build_script_path}/build-cairo.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
-
 	
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/pango.git"
 
-	New-Empty-Dir -Path $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	Remove-Item "$build_path/*" -Recurse -Force
+
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
@@ -55,9 +53,10 @@ try
 		--cross-file="$build_path/cross_file.ini"
 
 	Set-Location $build_path
-	ninja clean
 	ninja -j12
 	ninja install
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {
