@@ -18,7 +18,9 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/neonkore/libdecor.git"
 
-	New-Empty-Dir -Path $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	Remove-Item "$build_path/*" -Recurse -Force
+
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
@@ -55,7 +57,6 @@ try
 		--cross-file="$build_path/cross_file.ini"
 
 	Set-Location $build_path
-	ninja clean
 	ninja -j12
 	ninja install
 
