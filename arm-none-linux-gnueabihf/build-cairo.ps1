@@ -14,6 +14,7 @@ try
 	& "${build_script_path}/build-libexpat.ps1"
 	& "${build_script_path}/build-glib.ps1"
 	& "${build_script_path}/build-libpng.ps1"
+	& "${build_script_path}/build-freetype.ps1"
 
 
 
