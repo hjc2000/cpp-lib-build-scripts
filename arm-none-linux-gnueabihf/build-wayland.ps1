@@ -76,8 +76,10 @@ try
 
 
 	Set-Location $build_path
-	ninja -j12 | Out-Null
+	ninja -j12
 	ninja install
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {

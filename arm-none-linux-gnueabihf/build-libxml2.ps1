@@ -11,8 +11,6 @@ try
 	& "${build_script_path}/build-libiconv.ps1"
 	& "${build_script_path}/build-xz.ps1"
 	& "${build_script_path}/build-zlib.ps1"
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
 
 
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/libxml2.git" `
@@ -38,9 +36,9 @@ try
 
 	include_directories("$total_install_path/include")
 	link_libraries(
-		"$total_install_path/lib/liblzma.so.5"
+		# "$total_install_path/lib/liblzma.so.5"
 		"$total_install_path/lib/libiconv.so.2"
-		"$total_install_path/lib/libz.so.1"
+		# "$total_install_path/lib/libz.so.1"
 	)
 "@
 	
@@ -57,6 +55,8 @@ try
 
 	ninja -j12
 	ninja install
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {

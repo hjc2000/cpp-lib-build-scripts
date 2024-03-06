@@ -11,9 +11,6 @@ try
 	& "${build_script_path}/build-wayland.ps1"
 	& "${build_script_path}/build-dbus.ps1"
 	& "${build_script_path}/build-cairo.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
 
 
 	
@@ -61,6 +58,8 @@ try
 	ninja clean
 	ninja -j12
 	ninja install
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {
