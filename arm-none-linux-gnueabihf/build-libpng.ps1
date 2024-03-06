@@ -12,6 +12,8 @@ try
 		-out_dir_name "libpng"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	# Remove-Item "$build_path/*" -Recurse -Force
+
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
