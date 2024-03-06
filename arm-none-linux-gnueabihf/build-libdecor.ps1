@@ -16,6 +16,7 @@ try
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/wayland"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
 	Append-Pkg-Config-Path-Recurse -Path "$libs_path/cairo"
+	Append-Pkg-Config-Path-Recurse -Path "$libs_path/build-libpng"
 	Total-Install
 
 
