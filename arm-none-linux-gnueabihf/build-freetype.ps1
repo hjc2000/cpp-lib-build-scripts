@@ -28,10 +28,11 @@ try
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-	include_directories("$total_install_path/include")
-	link_directories("$total_install_path/lib")
+	include_directories(BEFORE "$total_install_path/include")
+	link_directories(BEFORE "$total_install_path/lib")
 	link_libraries(
-
+		$total_install_path/lib/libz.so.1
+		$total_install_path/lib/libpng.so
 	)
 "@
 	
