@@ -41,17 +41,8 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DSDL_SHARED=ON `
-		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=ON `
-		-DSDL_IBUS=OFF `
-		-DSDL_KMSDRM=OFF `
-		-DSDL_SNDIO=OFF `
-		-DSDL_ALSA=ON `
-		-DSDL_PULSEAUDIO=ON
+		-DCMAKE_INSTALL_PREFIX="$install_path"
 
-	ninja clean
 	ninja -j12
 	ninja install
 }
