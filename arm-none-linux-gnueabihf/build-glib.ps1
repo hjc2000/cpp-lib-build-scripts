@@ -19,7 +19,7 @@ try
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/glib.git" `
-		-branch_name "2.79.3"
+		-branch_name "2.78.4"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
