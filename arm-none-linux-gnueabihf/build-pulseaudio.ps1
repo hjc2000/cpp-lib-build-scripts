@@ -20,13 +20,7 @@ try
 	& "${build_script_path}/build-alsa-lib.ps1"
 	& "${build_script_path}/build-glib.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libsndfile"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/dbus"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libtool"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/gdbm"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/alsa-lib"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/glib"
+	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
 	Total-Install
 
 

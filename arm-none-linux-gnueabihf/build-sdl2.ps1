@@ -13,12 +13,7 @@ try
 	& "${build_script_path}/build-wayland.ps1"
 	& "${build_script_path}/build-libxkbcommon.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/alsa-lib"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pulseaudio"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/wayland"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libxkbcommon"
-	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
+	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
 	Total-Install
 
 

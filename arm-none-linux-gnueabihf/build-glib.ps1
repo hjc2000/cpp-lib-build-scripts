@@ -15,11 +15,7 @@ try
 	& "${build_script_path}/build-zlib.ps1"
 	& "${build_script_path}/build-libiconv.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/pcre2"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libffi"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libiconv"
+	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
 	Total-Install
 
 	# 开始构建本体

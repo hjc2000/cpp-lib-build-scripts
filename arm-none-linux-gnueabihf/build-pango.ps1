@@ -10,8 +10,7 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-cairo.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$total_install_path/lib"
+	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
 	Total-Install
 
 	

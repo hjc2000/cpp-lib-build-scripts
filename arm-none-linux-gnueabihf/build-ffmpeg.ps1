@@ -12,12 +12,7 @@ try
 	& "${build_script_path}/build-openssl.ps1"
 	& "${build_script_path}/build-sdl2.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x264"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/x265"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/openssl"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/sdl2"
-	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
+	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
 	Total-Install
 
 

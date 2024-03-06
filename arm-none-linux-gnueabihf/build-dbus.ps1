@@ -10,8 +10,8 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-libexpat.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libexpat"
+	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
+	Total-Install
 
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `

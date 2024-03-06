@@ -13,12 +13,7 @@ try
 	& "${build_script_path}/build-glib.ps1"
 	& "${build_script_path}/build-libpng.ps1"
 	# 设置依赖项的 pkg-config
-	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/zlib"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libexpat"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/glib"
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/libpng"
-	Write-Host "PKG_CONFIG_PATH 的值：$env:PKG_CONFIG_PATH"
+	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
 	Total-Install
 
 	# 开始构建本体
