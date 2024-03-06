@@ -14,9 +14,9 @@ try
 	& "${build_script_path}/build-libexpat.ps1"
 	& "${build_script_path}/build-glib.ps1"
 	& "${build_script_path}/build-libpng.ps1"
-	# 设置依赖项的 pkg-config
-	Total-Install
 
+
+	
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/cairo/cairo.git"
@@ -63,6 +63,8 @@ try
 	ninja clean
 	ninja -j12
 	ninja install
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {
