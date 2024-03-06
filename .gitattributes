@@ -42,6 +42,7 @@
 *.hxx 		text eol=crlf
 *.cc 		text eol=crlf
 *.cs		text eol=crlf
+*.ps1		text eol=crlf
 
 # 将 JavaScript 文件及相关前端文件标记为文本，并使用 LF 作为行结束符
 *.js 		text eol=crlf
