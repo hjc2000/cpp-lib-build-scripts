@@ -23,6 +23,7 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/glib.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	Remove-Item "$build_path/*" -Recurse -Force
 
 	$c_link_args = @"
 	[
@@ -31,6 +32,7 @@ try
 		'$total_install_path/lib/libiconv.so.2',
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
+
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
@@ -57,8 +59,8 @@ try
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
-	c_link_args = $c_link_args
-	cpp_link_args = ['-L$total_install_path/lib', '-Wl,--no-as-needed']
+	c_link_args = []
+	cpp_link_args = []
 "@
 
 	Set-Location $source_path

@@ -15,7 +15,6 @@ try
 	& "${build_script_path}/build-glib.ps1"
 	& "${build_script_path}/build-libpng.ps1"
 	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
 	Total-Install
 
 	# 开始构建本体
