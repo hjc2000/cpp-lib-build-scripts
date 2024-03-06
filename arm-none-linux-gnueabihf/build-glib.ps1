@@ -36,19 +36,19 @@ try
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv4'
+	cpu = 'armv7-a'
 	endian = 'little'
 
 	[target_machine]
 	system = 'linux'
 	cpu_family = 'arm'
-	cpu = 'armv4'
+	cpu = 'armv7-a'
 	endian = 'little'
 
 	# 如果不设置低于 avmv6 的版本，编译时就会报内联汇编有不可能的约束。
 	[built-in options]
-	c_args = ['-march=armv4', '-I$total_install_path/include']
-	cpp_args = ['-march=armv4', '-I$total_install_path/include']
+	c_args = ['-march=armv7-a', '-I$total_install_path/include']
+	cpp_args = ['-march=armv7-a', '-I$total_install_path/include']
 	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libiconv.so.2']
 	cpp_link_args = ['-L$total_install_path/lib']
 "@
