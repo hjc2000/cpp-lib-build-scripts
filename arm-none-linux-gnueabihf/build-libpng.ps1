@@ -38,10 +38,10 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path" | Out-Null
+		-DCMAKE_INSTALL_PREFIX="$install_path"
 
-	ninja -j12 | Out-Null
-	ninja install | Out-Null
+	ninja -j12
+	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
