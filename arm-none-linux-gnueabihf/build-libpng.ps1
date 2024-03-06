@@ -8,7 +8,7 @@ Push-Location $repos_path
 try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
-		-repo_url "http://prdownloads.sourceforge.net/libpng/libpng-1.6.43.tar.gz" `
+		-repo_url "http://prdownloads.sourceforge.net/libpng/libpng-1.6.43.tar.gz?download" `
 		-out_dir_name "libpng"
 
 	New-Empty-Dir $build_path
