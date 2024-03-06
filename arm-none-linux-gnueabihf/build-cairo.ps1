@@ -46,7 +46,8 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
-		-Dtests=disabled
+		-Dtests=disabled `
+		-Dxlib=disabled
 
 	Set-Location $build_path
 	ninja clean
