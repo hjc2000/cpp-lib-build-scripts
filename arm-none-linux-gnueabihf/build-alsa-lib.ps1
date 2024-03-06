@@ -24,7 +24,7 @@ try
 	--with-softfloat > /dev/null
 
 	make clean > /dev/null
-	make -j12 > make > /dev/null
+	make -j12 > /dev/null
 	make install > /dev/null
 "@
 }

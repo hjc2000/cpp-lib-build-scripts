@@ -7,46 +7,24 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	& "${build_script_path}/build-zlib.ps1"
+	& "${build_script_path}/build-libpng.ps1"
+
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://download.savannah.gnu.org/releases/freetype/freetype-2.7.tar.gz" `
 		-out_dir_name "freetype"
 
-	New-Empty-Dir $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
-		-Content @"
-	set(CROSS_COMPILE_ARM 1)
-	set(CMAKE_SYSTEM_NAME Linux)
-	set(CMAKE_SYSTEM_PROCESSOR armv7-a)
+	run-bash-cmd.ps1 @"
+	cd $source_path
 
-	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
-	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
+	./configure \
+	--prefix="$install_path" \
+	--host=arm-none-linux-gnueabihf
 
-	set(CMAKE_FIND_ROOT_PATH "$total_install_path")
-	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
-
-	include_directories("$total_install_path/include")
-	link_directories("$total_install_path/lib")
-	link_libraries(
-		m
-		$total_install_path/lib/libz.so.1
-		$total_install_path/lib/libpng.so
-	)
+	make -j12
+	make install
 "@
 	
-
-	Set-Location $build_path
-	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DBUILD_SHARED_LIBS=ON
-
-	ninja -j12
-	ninja install | Out-Null
-
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
