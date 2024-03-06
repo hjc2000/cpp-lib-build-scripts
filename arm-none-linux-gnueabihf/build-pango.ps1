@@ -11,9 +11,9 @@ try
 	& "${build_script_path}/build-cairo.ps1"
 	# 设置依赖项的 pkg-config
 	Clear-PkgConfig-Path
-	Append-Pkg-Config-Path-Recurse -Path "$libs_path/cairo"
+	Append-Pkg-Config-Path-Recurse -Path "$total_install_path/lib"
 	Total-Install
-	
+
 	
 	# 开始构建本体
 	Set-Location $repos_path
