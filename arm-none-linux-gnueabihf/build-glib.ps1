@@ -45,7 +45,6 @@ try
 	cpu = 'armv7-a'
 	endian = 'little'
 
-	# 如果不设置低于 avmv6 的版本，编译时就会报内联汇编有不可能的约束。
 	[built-in options]
 	c_args = ['-march=armv7-a', '-I$total_install_path/include']
 	cpp_args = ['-march=armv7-a', '-I$total_install_path/include']
