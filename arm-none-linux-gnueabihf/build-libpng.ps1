@@ -8,7 +8,7 @@ Push-Location $repos_path
 try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
-		-repo_url "http://prdownloads.sourceforge.net/libpng/libpng-1.6.43.tar.gz?download" `
+		-repo_url "https://zenlayer.dl.sourceforge.net/project/libpng/libpng16/1.6.43/libpng-1.6.43.tar.gz" `
 		-out_dir_name "libpng"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
