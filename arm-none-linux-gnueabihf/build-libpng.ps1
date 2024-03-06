@@ -11,7 +11,7 @@ try
 		-repo_url "http://prdownloads.sourceforge.net/libpng/libpng-1.6.43.tar.gz?download" `
 		-out_dir_name "libpng"
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -38,11 +38,10 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path"
+		-DCMAKE_INSTALL_PREFIX="$install_path" | Out-Null
 
-	ninja clean
-	ninja -j12
-	ninja install
+	ninja -j12 | Out-Null
+	ninja install | Out-Null
 }
 catch
 {
