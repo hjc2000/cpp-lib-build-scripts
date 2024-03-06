@@ -7,7 +7,7 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	Apt-Ensure-Packets @("docbook-utils")
+	Apt-Ensure-Packets @("docbook-utils", "docbook", "docbook-to-man", "docbook-xml")
 
 	# 构建依赖项
 	& "${build_script_path}/build-zlib.ps1"
@@ -48,8 +48,8 @@ try
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
-	c_link_args = []
-	cpp_link_args = []
+	c_link_args = ['-L$total_install_path/lib']
+	cpp_link_args = ['-L$total_install_path/lib']
 "@
 
 	Set-Location $source_path
