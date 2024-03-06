@@ -62,8 +62,8 @@ try
 		-Dxlib=disabled
 
 	Set-Location $build_path
-	ninja -j12
-	ninja install
+	ninja -j12 | Out-Null
+	ninja install | Out-Null
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
