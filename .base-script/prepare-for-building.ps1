@@ -9,7 +9,7 @@ $project_root_path = "$build_script_path/../"
 $repos_path = "$build_script_path/.repos"
 $libs_path = "$build_script_path/.libs"
 $total_install_path = "$build_script_path/.total-install"
-$env:PKG_CONFIG_PATH = "$total_install_path/lib"
+$env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
 
 New-Item -Path $repos_path -ItemType Directory -Force | Out-Null
 New-Item -Path $libs_path -ItemType Directory -Force | Out-Null
