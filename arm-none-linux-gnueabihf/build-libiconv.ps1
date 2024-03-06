@@ -16,8 +16,7 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf \
-	--with-libintl-prefix
+	--host=arm-none-linux-gnueabihf
 
 	make -j12
 	make install
