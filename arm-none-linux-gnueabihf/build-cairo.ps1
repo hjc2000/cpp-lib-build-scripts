@@ -47,7 +47,7 @@ try
 	[built-in options]
 	c_args = ['-march=armv4', '-I$total_install_path/include']
 	cpp_args = ['-march=armv4', '-I$total_install_path/include']
-	c_link_args = ['$total_install_path/lib/libz.so.1']
+	c_link_args = []
 	cpp_link_args = []
 "@
 
