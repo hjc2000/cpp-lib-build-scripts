@@ -87,9 +87,10 @@ function Install-Lib
 
 	Write-Host "将 $src_path 安装到 $dst_path"
 
-	New-Item -Path $dst_path/bin/ -ItemType Directory -Force
-	New-Item -Path $dst_path/lib/ -ItemType Directory -Force
-	New-Item -Path $dst_path/include/ -ItemType Directory -Force
+	New-Item -Path $dst_path/bin/ -ItemType Directory -Force | Out-Null
+	New-Item -Path $dst_path/lib/ -ItemType Directory -Force | Out-Null
+	New-Item -Path $dst_path/include/ -ItemType Directory -Force | Out-Null
+	New-Item -Path $dst_path/share/ -ItemType Directory -Force | Out-Null
 
 	if ($IsWindows)
 	{
@@ -114,6 +115,11 @@ function Install-Lib
 		if (Test-Path "$src_path/include/")
 		{
 			Copy-Item -Path "$src_path/include/*" -Destination "$dst_path/include/" -Force -Recurse
+		}
+
+		if (Test-Path "$src_path/share/")
+		{
+			Copy-Item -Path "$src_path/share/*" -Destination "$dst_path/share/" -Force -Recurse
 		}
 	}
 	else
@@ -143,6 +149,10 @@ function Install-Lib
 
 		if [ -d "$src_path/include" ]; then
 			$copy_cmd $src_path/include/* $dst_path/include/
+		fi
+
+		if [ -d "$src_path/share" ]; then
+			$copy_cmd $src_path/share/* $dst_path/share/
 		fi
 "@
 	}
