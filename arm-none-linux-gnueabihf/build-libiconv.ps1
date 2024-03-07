@@ -6,7 +6,7 @@ $install_path = "$libs_path/libiconv/"
 Push-Location $repos_path
 try
 {
-	if (-not (Test-Path -Path "$source_path/Makefile"))
+	if (-not (Test-Path -Path "$source_path/Makefile" || Test-Path -Path "$source_path/makefile"))
 	{
 		wget-repo.ps1 -workspace_dir $repos_path `
 			-repo_url "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz" `
