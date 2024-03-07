@@ -4,6 +4,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $source_path = "$repos_path/icu/icu4c/source/"
 $install_path = "$libs_path/icu"
 Push-Location $repos_path
+
 try
 {
 	get-git-repo.ps1 -git_url "https://github.com/unicode-org/icu.git"
@@ -15,15 +16,18 @@ try
 
 	./configure \
 	--prefix="$install_path" \
-	--enable-icu-config > /dev/null
+	--enable-icu-config
 
-	make -j12 > /dev/null
-	make install > /dev/null
+	make -j12
+	make install
 "@
-}
-catch
-{
-	throw
+
+	if ($LASTEXITCODE)
+	{
+		throw "$source_path 编译失败"
+	}
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
