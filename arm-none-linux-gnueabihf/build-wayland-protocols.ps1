@@ -1,17 +1,14 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/wayland/"
-$install_path = "$libs_path/wayland/"
+$source_path = "$repos_path/wayland-protocols/"
+$install_path = "$libs_path/wayland-protocols/"
 $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
 	# 构建依赖项
 	& "${build_script_path}/build-wayland.ps1"
-	& "${build_script_path}/build-dbus.ps1"
-	& "${build_script_path}/build-cairo.ps1"
-
 
 	
 	# 开始构建本体
@@ -32,6 +29,7 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
