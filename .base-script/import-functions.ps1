@@ -244,7 +244,7 @@ function New-Meson-Cross-File
 	$pkg_config_path_array = "["
 	foreach ($path in $pkg_config_paths)
 	{
-		$pkg_config_path_array += " '$path', "
+		$pkg_config_path_array += "'$path',"
 	}
 
 	$pkg_config_path_array += "]"
@@ -262,6 +262,7 @@ function New-Meson-Cross-File
 	strip = '${toolchain_prefix}strip'
 	pkg-config = 'pkg-config'
 	cmake = 'cmake'
+	ninja = 'ninja'
 
 	[properties]
 	pkg_config_libdir = $pkg_config_path_array
