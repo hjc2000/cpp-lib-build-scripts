@@ -185,6 +185,7 @@ function Get-Cmake-Set-Find-Lib-Path-String
 function New-Meson-Cross-File
 {
 	param (
+		[string]$link_flags = "['-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib',]",
 		[string]$arch = "armv7-a",
 		[string]$toolchain_prefix = "arm-none-linux-gnueabihf-"
 	)
@@ -223,9 +224,9 @@ function New-Meson-Cross-File
 	endian = 'little'
 
 	[built-in options]
-	c_args = ['-march=$arch', '-I$total_install_path/include']
-	cpp_args = ['-march=$arch', '-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib',]
-	cpp_link_args = ['-std=c++20', '-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib',]
+	c_args = ['-march=$arch', '-I$total_install_path/include', ]
+	cpp_args = ['-march=$arch', '-I$total_install_path/include', '-std=c++20']
+	c_link_args = $link_flags
+	cpp_link_args = $link_flags
 "@
 }
