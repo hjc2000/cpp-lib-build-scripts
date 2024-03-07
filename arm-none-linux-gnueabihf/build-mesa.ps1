@@ -22,10 +22,11 @@ try
 		-Dgallium-vdpau=disabled `
 		-Dgallium-omx=disabled `
 		-Dgallium-va=disabled `
-		-Dgallium-xa=disabled
+		-Dgallium-xa=disabled `
+		-Dgallium-opencl=disabled
+
 
 	# -Dgallium-nine=disabled
-	# -Dgallium-opencl=disabled `
 	# -Dgallium-rusticl=disabled `
 	# -Dgallium-extra-hud=disabled `
 	# -Dgallium-drivers=disabled `
