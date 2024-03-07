@@ -248,9 +248,9 @@ function New-Meson-Cross-File
 	ar = '${toolchain_prefix}ar'
 	ld = '${toolchain_prefix}ld'
 	strip = '${toolchain_prefix}strip'
-	pkg-config = 'pkg-config'
-	cmake = 'cmake'
-	wayland-scanner = 'wayland-scanner'
+	pkg-config = '$(which pkg-config)'
+	cmake = '$(which cmake)'
+	wayland-scanner = '$(which wayland-scanner)'
 
 	[host_machine]
 	system = 'linux'
