@@ -13,11 +13,11 @@ try
 			-out_dir_name "libiconv"
 
 		run-bash-cmd.ps1 -cmd @"
-			cd $source_path
-		
-			./configure \
-			--prefix="$install_path" \
-			--host=arm-none-linux-gnueabihf
+		cd $source_path
+	
+		./configure \
+		--prefix="$install_path" \
+		--host=arm-none-linux-gnueabihf
 "@					
 	}
 
