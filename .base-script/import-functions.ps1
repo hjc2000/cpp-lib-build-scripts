@@ -258,7 +258,7 @@ function New-Meson-Cross-File
 	[built-in options]
 	c_args = ['-march=$arch', '-I$total_install_path/include']
 	cpp_args = ['-march=$arch', '-I$total_install_path/include']
-	c_link_args = $c_link_args
-	cpp_link_args = $c_link_args
+	c_link_args = $link_flags
+	cpp_link_args = $link_flags
 "@
 }
