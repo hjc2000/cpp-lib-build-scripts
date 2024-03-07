@@ -30,7 +30,7 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
 
-	New-Meson-Cross-File -arch "armv5"
+	New-Meson-Cross-File -arch "armv4"
 	Set-Location $source_path
 	meson setup build/ `
 		-Dbashcompletiondir="$build_path" `
