@@ -72,7 +72,11 @@ try
 		-Dopenssl=disabled `
 		-Dsystemd=disabled `
 		-Dhal-compat=false
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	Set-Location $build_path
 	ninja clean
 	ninja -j12

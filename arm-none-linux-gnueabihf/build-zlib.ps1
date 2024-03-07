@@ -39,7 +39,11 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
 		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig" | Out-Null
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	ninja -j12 | Out-Null
 	if ($LASTEXITCODE)
 	{

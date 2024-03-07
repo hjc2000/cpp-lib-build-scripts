@@ -37,7 +37,11 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
 		-DENABLE_NLS=OFF
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

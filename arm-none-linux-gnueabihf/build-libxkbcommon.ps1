@@ -71,7 +71,10 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Denable-x11=false
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}	
 
 	Set-Location $build_path
 	ninja clean

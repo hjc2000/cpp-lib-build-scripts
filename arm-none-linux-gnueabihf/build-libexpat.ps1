@@ -39,7 +39,11 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DEXPAT_BUILD_DOCS=OFF
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

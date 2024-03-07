@@ -36,7 +36,11 @@ try
 		-DENABLE_SHARED=on `
 		-DENABLE_PIC=on `
 		-DENABLE_ASSEMBLY=off
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

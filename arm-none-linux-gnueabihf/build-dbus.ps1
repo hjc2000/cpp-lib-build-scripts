@@ -48,7 +48,11 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DDBUS_SESSION_SOCKET_DIR="/tmp" `
 		-DDBUS_WITH_GLIB=OFF
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

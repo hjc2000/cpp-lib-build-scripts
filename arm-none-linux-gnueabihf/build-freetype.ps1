@@ -51,7 +51,11 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	Set-Location $build_path
 	ninja -j12 | Out-Null
 	if ($LASTEXITCODE)

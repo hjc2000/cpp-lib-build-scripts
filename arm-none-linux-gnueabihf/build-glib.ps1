@@ -58,7 +58,10 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		-Dselinux=disabled `
 		-Dlibmount=disabled
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}	
 
 	Set-Location $build_path
 	ninja -j12 | Out-Null

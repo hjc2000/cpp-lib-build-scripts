@@ -55,7 +55,11 @@ try
 		-DLIBXML2_WITH_TESTS=OFF `
 		-DLIBXML2_WITH_LZMA=ON `
 		-DLIBXML2_WITH_ZLIB=ON
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

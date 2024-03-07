@@ -66,7 +66,11 @@ try
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=ON `
 		-DSDL_PULSEAUDIO=ON
-
+	if ($LASTEXITCODE)
+	{
+		throw "配置失败"
+	}
+	
 	ninja clean
 	ninja -j12
 	if ($LASTEXITCODE)
