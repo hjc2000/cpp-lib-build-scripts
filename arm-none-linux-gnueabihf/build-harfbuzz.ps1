@@ -26,6 +26,7 @@ try
 		'$total_install_path/lib/libpng16.so.16',
 		'$total_install_path/lib/libiconv.so.2',
 		'$total_install_path/lib/libpcre2-8.so.0',
+		'$total_install_path/lib/libglib-2.0.so',
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
