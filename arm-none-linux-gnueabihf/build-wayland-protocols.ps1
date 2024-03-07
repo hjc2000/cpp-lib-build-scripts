@@ -44,6 +44,8 @@ try
 
 	ninja install
 
+	# 因为 wayland-protocols 把 pkgconfig 目录放到 share 里面了，所以要
+	# 把它复制到 lib 目录。
 	New-Item -Path "$install_path/lib/pkgconfig" -ItemType Directory -Force
 	Copy-Item -Path "$install_path/share/pkgconfig/*" `
 		-Destination "$install_path/lib/pkgconfig" `
