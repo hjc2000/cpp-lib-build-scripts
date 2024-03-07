@@ -244,12 +244,12 @@ function New-Meson-Cross-File
 	$pkg_config_path_array = "["
 	foreach ($path in $pkg_config_paths)
 	{
-		$pkg_config_path_array += "'$path', "
+		$pkg_config_path_array += " '$path', "
 	}
 
 	$pkg_config_path_array += "]"
 	Write-Host "==============================================================================="
-	Write-Host $pkg_config_path_array
+	Write-Host "pkg_config_path_array - $pkg_config_path_array"
 	Write-Host "-------------------------------------------------------------------------------"
 
 	Create-Text-File -Path $build_path/cross_file.ini `
