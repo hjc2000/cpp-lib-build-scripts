@@ -37,6 +37,11 @@ try
 
 	ninja clean
 	ninja -j12
+	if ($LASTEXITCODE)
+	{
+		throw "编译失败"
+	}
+
 	ninja install
 }
 catch

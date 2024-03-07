@@ -50,6 +50,11 @@ try
 		-DDBUS_WITH_GLIB=OFF
 
 	ninja -j12
+	if ($LASTEXITCODE)
+	{
+		throw "编译失败"
+	}
+
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path

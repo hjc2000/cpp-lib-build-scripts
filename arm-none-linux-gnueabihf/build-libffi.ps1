@@ -23,6 +23,10 @@ try
 	make -j12
 	make install
 "@
+	if ($LASTEXITCODE)
+	{
+		throw "编译失败"
+	}
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
