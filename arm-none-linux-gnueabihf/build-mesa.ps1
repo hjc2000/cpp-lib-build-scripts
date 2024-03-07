@@ -19,7 +19,7 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
-		-Dgallium-vdpau=disable
+		-Dgallium-vdpau=disabled
 		
 	if ($LASTEXITCODE)
 	{
