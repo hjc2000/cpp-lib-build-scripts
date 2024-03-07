@@ -41,6 +41,7 @@ try
 		-DLIBXML2_WITH_TESTS=OFF `
 		-DLIBXML2_WITH_LZMA=ON `
 		-DLIBXML2_WITH_ZLIB=ON
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
@@ -55,10 +56,6 @@ try
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-}
-catch
-{
-	throw
 }
 finally
 {
