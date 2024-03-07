@@ -20,11 +20,11 @@ try
 	$c_link_args = @"
 	[
 		'-L$total_install_path/lib',
-		'$total_install_path/lib/libz.so.1'
-		'$total_install_path/lib/libbz2.so.1'
-		'$total_install_path/lib/libpng16.so.16'
-		'$total_install_path/lib/libiconv.so.2'
-		'$total_install_path/lib/libpcre2-8.so.0'
+		'$total_install_path/lib/libz.so.1',
+		'$total_install_path/lib/libbz2.so.1',
+		'$total_install_path/lib/libpng16.so.16',
+		'$total_install_path/lib/libiconv.so.2',
+		'$total_install_path/lib/libpcre2-8.so.0',
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
