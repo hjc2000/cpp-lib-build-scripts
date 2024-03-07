@@ -30,6 +30,9 @@ try
 	[binaries]
 	$(Get-Meson-Cross-File-Binaries -toolchain_prefix "arm-none-linux-gnueabihf-")
 
+	[properties]
+	pkg_config_libdir = '$total_install_path/lib/pkgconfig'
+
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
