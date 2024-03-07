@@ -250,6 +250,9 @@ function New-Meson-Cross-File
 	pkg-config = 'pkg-config'
 	cmake = 'cmake'
 
+	[properties]
+	pkg_config_libdir = '$env:PKG_CONFIG_PATH'
+
 	[host_machine]
 	system = 'linux'
 	cpu_family = 'arm'
