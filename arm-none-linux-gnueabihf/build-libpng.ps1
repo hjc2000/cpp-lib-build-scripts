@@ -29,10 +29,10 @@ try
 	# 指定查找程序、库、头文件时的根路径，防止在默认系统路径中查找
 	set(CMAKE_FIND_ROOT_PATH "$total_install_path")
 	# 设置查找路径的模式，确保仅在指定的根路径中查找
-	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER CACHE FORCE)
-	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY CACHE FORCE)
-	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY CACHE FORCE)
-	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY CACHE FORCE)
+	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+	set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 	include_directories("$total_install_path/include")
 	link_directories("$total_install_path/lib")
