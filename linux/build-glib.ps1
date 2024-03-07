@@ -20,10 +20,6 @@ try
 	ninja -j12
 	ninja install
 }
-catch
-{
-	throw
-}
 finally
 {
 	Pop-Location
