@@ -9,7 +9,7 @@ try
 {
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/Mesa3D/mesa.git"
+	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/mesa/mesa.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
