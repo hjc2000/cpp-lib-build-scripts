@@ -197,8 +197,6 @@ function New-Meson-Cross-File
 		$c_args = "['-march=$arch', '-I$total_install_path/include']"
 	}
 
-	throw $c_args
-
 	if ($cpp_args -eq "")
 	{
 		$cpp_args = "['-march=$arch', '-I$total_install_path/include']"
