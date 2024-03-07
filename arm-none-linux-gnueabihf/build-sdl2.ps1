@@ -32,10 +32,6 @@ try
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
 	$(Get-Cmake-Set-Find-Lib-Path-String)
-
-	# link_libraries("$total_install_path/lib/liblzma.so.5")
-	# link_libraries("$total_install_path/lib/libiconv.so.2")
-	# link_libraries("$total_install_path/lib/libz.so.1")
 "@
 	
 
@@ -47,6 +43,8 @@ try
 		-DSDL_SHARED=ON `
 		-DSDL_STATIC=OFF `
 		-DSDL_WAYLAND=ON `
+		-DSDL_WAYLAND_LIBDECOR=OFF `
+		-DSDL_WAYLAND_QT_TOUCH=OFF `
 		-DSDL_IBUS=OFF `
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
