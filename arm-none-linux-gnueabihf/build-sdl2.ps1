@@ -32,6 +32,9 @@ try
 	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-rpath-link,$total_install_path/lib" CACHE STRING "Linker flags for executables" FORCE)
+	set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -Wl,-rpath-link,$total_install_path/lib" CACHE STRING "Linker flags for shared libraries" FORCE)
+
 	# 指定查找程序、库、头文件时的根路径，防止在默认系统路径中查找
 	set(CMAKE_FIND_ROOT_PATH "$total_install_path")
 	# 设置查找路径的模式，确保仅在指定的根路径中查找
