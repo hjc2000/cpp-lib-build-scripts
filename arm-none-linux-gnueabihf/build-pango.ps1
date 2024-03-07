@@ -18,7 +18,7 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
 
-	New-Meson-Cross-File -cpp_std "c++20" -c_std "c17"
+	New-Meson-Cross-File -c_std "c17" -cpp_std "c++20"
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix="$install_path" `
