@@ -33,7 +33,9 @@ try
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix="$install_path" `
-		--cross-file="$build_path/cross_file.ini"
+		--cross-file="$build_path/cross_file.ini" `
+		-Diconv=true
+		
 	if ($LASTEXITCODE)
 	{
 		throw "配置失败"
