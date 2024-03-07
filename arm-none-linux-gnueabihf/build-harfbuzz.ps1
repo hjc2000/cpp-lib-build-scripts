@@ -9,6 +9,7 @@ try
 {
 	& "${build_script_path}/build-glib.ps1"
 	& "${build_script_path}/build-pcre2.ps1"
+	& "${build_script_path}/build-icu.ps1"
 
 	# 开始构建本体
 	Set-Location $repos_path
