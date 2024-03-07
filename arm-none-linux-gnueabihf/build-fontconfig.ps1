@@ -8,6 +8,7 @@ Push-Location $repos_path
 try
 {
 	pip install pytest
+	Apt-Ensure-Packets @("gperf ")
 
 	& "${build_script_path}/build-libpng.ps1"
 	& "${build_script_path}/build-freetype.ps1"
