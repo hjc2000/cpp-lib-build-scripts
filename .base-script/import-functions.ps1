@@ -240,9 +240,6 @@ function New-Meson-Cross-File
 	$link_flags = $link_flags.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
 
-	# [properties]
-	# pkg_config_libdir = ['$total_install_path/lib/pkgconfig', '$total_install_path/share/pkgconfig']
-
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
@@ -253,6 +250,9 @@ function New-Meson-Cross-File
 	strip = '${toolchain_prefix}strip'
 	pkg-config = 'pkg-config'
 	cmake = 'cmake'
+
+	[properties]
+	pkg_config_libdir = ['$total_install_path/lib/pkgconfig', '$total_install_path/share/pkgconfig']
 
 	[host_machine]
 	system = 'linux'
