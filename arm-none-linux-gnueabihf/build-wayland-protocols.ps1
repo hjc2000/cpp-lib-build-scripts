@@ -44,10 +44,12 @@ try
 
 	ninja install
 
-	Install-Lib -src_path $install_path -dst_path $total_install_path
+	New-Item -Path "$install_path/lib/pkgconfig" -ItemType Directory -Force
 	Copy-Item -Path "$install_path/share/pkgconfig/*" `
-		-Destination "$total_install_path/lib/pkgconfig" `
+		-Destination "$install_path/lib/pkgconfig" `
 		-Force -Recurse
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
