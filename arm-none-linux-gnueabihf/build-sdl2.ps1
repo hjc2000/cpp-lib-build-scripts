@@ -12,6 +12,7 @@ try
 	# & "${build_script_path}/build-pulseaudio.ps1"
 	# & "${build_script_path}/build-wayland.ps1"
 	# & "${build_script_path}/build-libxkbcommon.ps1"
+	# & "${build_script_path}/build-libdecor.ps1"
 
 
 
@@ -41,7 +42,7 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DSDL_SHARED=ON `
 		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=ON `
+		-DSDL_WAYLAND=OFF `
 		-DSDL_IBUS=OFF `
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
