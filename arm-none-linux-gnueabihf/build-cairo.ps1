@@ -32,9 +32,6 @@ try
 		'-Wl,-rpath-link,$total_install_path/lib',
 	]
 "@
-	# '$total_install_path/lib/libiconv.so.2',
-	# '$total_install_path/lib/libz.so.1',
-
 
 	Set-Location $source_path
 	meson setup build/ `

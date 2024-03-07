@@ -23,33 +23,11 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	# Remove-Item "$build_path/*" -Recurse -Force
 
-	Create-Text-File -Path $build_path/cross_file.ini `
-		-Content @"
-	[binaries]
-	c = 'arm-none-linux-gnueabihf-gcc'
-	cpp = 'arm-none-linux-gnueabihf-g++'
-	ar = 'arm-none-linux-gnueabihf-ar'
-	ld = 'arm-none-linux-gnueabihf-ld'
-	strip = 'arm-none-linux-gnueabihf-strip'
-	pkg-config = 'pkg-config'
-
-	[host_machine]
-	system = 'linux'
-	cpu_family = 'arm'
-	cpu = 'armv7-a'
-	endian = 'little'
-
-	[target_machine]
-	system = 'linux'
-	cpu_family = 'arm'
-	cpu = 'armv7-a'
-	endian = 'little'
-
-	[built-in options]
-	c_args = ['-march=armv7-a', '-I$total_install_path/include']
-	cpp_args = ['-march=armv7-a', '-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libiconv.so.2']
-	cpp_link_args = ['-L$total_install_path/lib']
+	New-Meson-Cross-File -link_flags @"
+	[
+		'-L$total_install_path/lib',
+		'-Wl,-rpath-link,$total_install_path/lib',
+	]
 "@
 
 	Set-Location $source_path

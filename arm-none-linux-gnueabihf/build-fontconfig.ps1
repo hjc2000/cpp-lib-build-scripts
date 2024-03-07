@@ -28,7 +28,6 @@ try
 		'-Wl,-rpath-link,$total_install_path/lib',
 	]
 "@
-	#		'$total_install_path/lib/libpng16.so.16',
 
 	Set-Location $source_path
 	meson setup build/ `
