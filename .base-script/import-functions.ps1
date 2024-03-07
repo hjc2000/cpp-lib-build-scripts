@@ -238,6 +238,15 @@ function New-Meson-Cross-File
 	)
 
 	$link_flags = $link_flags.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
+
+	# meson 的
+	#
+	# [properties]
+	# pkg_config_libdir = '$env:PKG_CONFIG_PATH'
+	#
+	# 会在调用 pkg-config 时传入 PKG_CONFIG_LIBDIR 环境变量，并设置为 pkg_config_libdir
+	# 的值，这可以让 pkg-config 的默认查找目录，例如 /usr/lib/pkgconfig 被覆盖，从而在交叉
+	# 编译时不会使用宿主机的库。
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
