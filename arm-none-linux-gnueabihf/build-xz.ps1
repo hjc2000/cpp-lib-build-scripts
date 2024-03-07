@@ -10,7 +10,9 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/tukaani-project/xz.git" `
 		-branch_name "v5.6"
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	# Remove-Item "$build_path/*" -Recurse -Force
+
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -31,6 +33,7 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
 		-DENABLE_NLS=OFF
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"

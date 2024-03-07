@@ -248,8 +248,10 @@ function New-Meson-Cross-File
 	}
 
 	$pkg_config_path_array += "]"
+	Write-Host "==============================================================================="
+	Write-Host $pkg_config_path_array
+	Write-Host "-------------------------------------------------------------------------------"
 
-	
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
