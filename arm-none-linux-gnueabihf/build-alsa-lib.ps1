@@ -5,27 +5,32 @@ $source_path = "$repos_path/alsa-lib/alsa-lib-1.2.7.2"
 $install_path = "$libs_path/alsa-lib/"
 $build_path = "$source_path/build/"
 Push-Location $repos_path
+
 try
 {
 	# 开始构建本体
-	Set-Location $repos_path
-	wget-repo.ps1 -workspace_dir $repos_path `
-		-repo_url "https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.2.tar.bz2" `
-		-out_dir_name "alsa-lib"
+	if (-not (Test-Path -Path "$source_path/Makefile" || Test-Path -Path "$source_path/makefile"))
+	{
+		wget-repo.ps1 -workspace_dir $repos_path `
+			-repo_url "https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.2.tar.bz2" `
+			-out_dir_name "alsa-lib"
+
+		run-bash-cmd.ps1 @"
+		cd $source_path
+		export CC=arm-none-linux-gnueabihf-gcc
+	
+		./configure \
+		--prefix="$install_path" \
+		--host=arm-none-linux-gnueabihf \
+		--with-softfloat
+"@
+	}
 
 	run-bash-cmd.ps1 @"
 	cd $source_path
-
 	export CC=arm-none-linux-gnueabihf-gcc
-
-	./configure \
-	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf \
-	--with-softfloat > /dev/null
-
-	make clean > /dev/null
-	make -j12 > /dev/null
-	make install > /dev/null
+	make -j12
+	make install
 "@
 
 	if ($LASTEXITCODE)
