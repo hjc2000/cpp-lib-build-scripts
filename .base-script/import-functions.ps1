@@ -198,38 +198,6 @@ function Auto-Make
 	automake --add-missing
 }
 
-function Get-Meson-Cross-File-Binaries
-{
-	param (
-		[Parameter(Mandatory = $true)]
-		[string]$toolchain_prefix
-	)
-	
-	# 这些内容暂时不设置
-	$unset = @"
-	addr2line = '${toolchain_prefix}addr2line'
-	gcc_ar = '${toolchain_prefix}gcc-ar'
-	gcc_nm = '${toolchain_prefix}gcc-nm'
-	gcc_ranlib = '${toolchain_prefix}gcc-ranlib'
-	nm = '${toolchain_prefix}nm'
-	objcopy = '${toolchain_prefix}objcopy'
-	objdump = '${toolchain_prefix}objdump'
-	ranlib = '${toolchain_prefix}ranlib'
-	readelf = '${toolchain_prefix}readelf'
-	size = '${toolchain_prefix}size'
-	strings = '${toolchain_prefix}strings'
-"@
-
-	return @"
-	c = '${toolchain_prefix}gcc'
-	cpp = '${toolchain_prefix}g++'
-	ar = '${toolchain_prefix}ar'
-	ld = '${toolchain_prefix}ld'
-	strip = '${toolchain_prefix}strip'
-	pkg-config = 'pkg-config'
-	cmake = 'cmake'
-"@
-}
 
 function Get-Cmake-Set-Find-Lib-Path-String
 {
@@ -247,5 +215,50 @@ function Get-Cmake-Set-Find-Lib-Path-String
 
 	include_directories(BEFORE "$total_install_path/include")
 	link_directories(BEFORE "$total_install_path/lib")
+"@
+}
+
+function New-Meson-Cross-File
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[string]$link_flags,
+		[string]$arch = "armv7-a",
+		[string]$toolchain_prefix = "arm-none-linux-gnueabihf-"
+	)
+	
+	$link_flags = $link_flags.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
+
+	Create-Text-File -Path $build_path/cross_file.ini `
+		-Content @"
+	[binaries]
+	c = '${toolchain_prefix}gcc'
+	cpp = '${toolchain_prefix}g++'
+	ar = '${toolchain_prefix}ar'
+	ld = '${toolchain_prefix}ld'
+	strip = '${toolchain_prefix}strip'
+	pkg-config = 'pkg-config'
+	cmake = 'cmake'
+
+	[properties]
+	pkg_config_libdir = '$total_install_path/lib/pkgconfig'
+
+	[host_machine]
+	system = 'linux'
+	cpu_family = 'arm'
+	cpu = '$arch'
+	endian = 'little'
+
+	[target_machine]
+	system = 'linux'
+	cpu_family = 'arm'
+	cpu = '$arch'
+	endian = 'little'
+
+	[built-in options]
+	c_args = ['-march=$arch', '-I$total_install_path/include']
+	cpp_args = ['-march=$arch', '-I$total_install_path/include']
+	c_link_args = $c_link_args
+	cpp_link_args = $c_link_args
 "@
 }

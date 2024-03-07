@@ -22,39 +22,12 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
 
-	$c_link_args = @"
+	New-Meson-Cross-File -link_flags @"
 	[
 		'-L$total_install_path/lib',
 		'-Wl,-rpath-link,$total_install_path/lib',
 		'$total_install_path/lib/libpng16.so.16',
 	]
-"@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
-
-	Create-Text-File -Path $build_path/cross_file.ini `
-		-Content @"
-	[binaries]
-	$(Get-Meson-Cross-File-Binaries -toolchain_prefix "arm-none-linux-gnueabihf-")
-
-	[properties]
-	pkg_config_libdir = '$total_install_path/lib/pkgconfig'
-
-	[host_machine]
-	system = 'linux'
-	cpu_family = 'arm'
-	cpu = 'armv7-a'
-	endian = 'little'
-
-	[target_machine]
-	system = 'linux'
-	cpu_family = 'arm'
-	cpu = 'armv7-a'
-	endian = 'little'
-
-	[built-in options]
-	c_args = ['-march=armv7-a', '-I$total_install_path/include']
-	cpp_args = ['-march=armv7-a', '-I$total_install_path/include']
-	c_link_args = $c_link_args
-	cpp_link_args = $c_link_args
 "@
 
 	Set-Location $source_path
