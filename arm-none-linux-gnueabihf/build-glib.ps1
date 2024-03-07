@@ -23,13 +23,7 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	# Remove-Item "$build_path/*" -Recurse -Force
 
-	New-Meson-Cross-File -link_flags @"
-	[
-		'-L$total_install_path/lib',
-		'-Wl,-rpath-link,$total_install_path/lib',
-	]
-"@
-
+	New-Meson-Cross-File
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix="$install_path" `

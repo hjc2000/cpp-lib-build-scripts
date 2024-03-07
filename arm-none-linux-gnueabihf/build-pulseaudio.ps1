@@ -31,13 +31,7 @@ try
 
 	New-Empty-Dir -Path $build_path
 
-	New-Meson-Cross-File -arch "armv4" -link_flags @"
-	[
-		'-L$total_install_path/lib',
-		'-Wl,-rpath-link,$total_install_path/lib',
-	]
-"@
-
+	New-Meson-Cross-File
 	Set-Location $source_path
 	meson setup build/ `
 		-Dbashcompletiondir="$build_path" `
