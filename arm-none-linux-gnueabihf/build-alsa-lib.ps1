@@ -30,7 +30,7 @@ try
 	cd $source_path
 	export CC=arm-none-linux-gnueabihf-gcc
 	make -j12
-	make install
+	make install > /dev/null
 "@
 
 	if ($LASTEXITCODE)
