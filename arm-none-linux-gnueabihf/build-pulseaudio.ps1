@@ -52,7 +52,7 @@ try
 		-Dhal-compat=false
 	if ($LASTEXITCODE)
 	{
-		throw "配置失败"
+		throw "$source_path 配置失败"
 	}
 	
 	Set-Location $build_path
@@ -60,7 +60,7 @@ try
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
-		throw "编译失败"
+		throw "$source_path 编译失败"
 	}
 
 	ninja install

@@ -33,13 +33,13 @@ try
 		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig" | Out-Null
 	if ($LASTEXITCODE)
 	{
-		throw "配置失败"
+		throw "$source_path 配置失败"
 	}
 	
 	ninja -j12 | Out-Null
 	if ($LASTEXITCODE)
 	{
-		throw "编译失败"
+		throw "$source_path 编译失败"
 	}
 
 	ninja install | Out-Null
