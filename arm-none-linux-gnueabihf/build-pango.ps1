@@ -18,7 +18,7 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
 
-	New-Meson-Cross-File -c_args "[`'-march=$arch`', `'-I$total_install_path/include`']"
+	New-Meson-Cross-File -c_args "['-march=$arch', '-I$total_install_path/include']"
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix="$install_path" `
