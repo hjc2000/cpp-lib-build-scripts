@@ -188,19 +188,9 @@ function New-Meson-Cross-File
 		[string]$arch = "armv7-a",
 		[string]$toolchain_prefix = "arm-none-linux-gnueabihf-",
 		[string]$link_flags = "['-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib',]",
-		[string]$c_args = "",
-		[string]$cpp_args = ""
+		[string]$c_std = "",
+		[string]$cpp_std = ""
 	)
-
-	if ($c_args -eq "")
-	{
-		$c_args = "['-march=$arch', '-I$total_install_path/include']"
-	}
-
-	if ($cpp_args -eq "")
-	{
-		$cpp_args = "['-march=$arch', '-I$total_install_path/include']"
-	}
 
 	# meson 的
 	#
@@ -236,8 +226,8 @@ function New-Meson-Cross-File
 	endian = 'little'
 
 	[built-in options]
-	c_args = $c_args
-	cpp_args = $cpp_args
+	c_args = 	"['-march=$arch', '-I$total_install_path/include', $($c_std ? "'-std=$c_std'," : "")]"
+	cpp_args = 	"['-march=$arch', '-I$total_install_path/include', $($cpp_std ? "'-std=$cpp_std'," : "")]"
 	c_link_args = $link_flags
 	cpp_link_args = $link_flags
 "@
