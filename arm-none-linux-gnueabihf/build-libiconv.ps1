@@ -6,21 +6,27 @@ $install_path = "$libs_path/libiconv/"
 Push-Location $repos_path
 try
 {
-	wget-repo.ps1 -workspace_dir $repos_path `
-		-repo_url "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz" `
-		-out_dir_name "libiconv"
+	if (-not (Test-Path -Path "$source_path/Makefile"))
+	{
+		wget-repo.ps1 -workspace_dir $repos_path `
+			-repo_url "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz" `
+			-out_dir_name "libiconv"
+
+		run-bash-cmd.ps1 -cmd @"
+			cd $source_path
+		
+			./configure \
+			--prefix="$install_path" \
+			--host=arm-none-linux-gnueabihf
+"@					
+	}
 
 	run-bash-cmd.ps1 -cmd @"
-	set -e
 	cd $source_path
-
-	./configure \
-	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf > /dev/null
-
 	make -j12 > /dev/null
 	make install > /dev/null
 "@
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
