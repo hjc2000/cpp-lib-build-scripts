@@ -7,6 +7,8 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	pip install pytest
+	
 	& "${build_script_path}/build-libpng.ps1"
 	& "${build_script_path}/build-freetype.ps1"
 
