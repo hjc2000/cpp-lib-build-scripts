@@ -13,6 +13,8 @@ try
 	Copy-Item -Path $repos_path/boost/boost_1_84_0/boost/ `
 		-Destination $libs_path/boost/include/boost/ `
 		-Force -Recurse
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {

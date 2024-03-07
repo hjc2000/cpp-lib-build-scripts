@@ -5,6 +5,7 @@ $source_path = "$repos_path/pulseaudio/"
 $install_path = "$libs_path/pulseaudio/"
 $build_path = "$source_path/build/"
 Push-Location $repos_path
+
 try
 {
 	Apt-Ensure-Packets @(
@@ -19,9 +20,6 @@ try
 	& "${build_script_path}/build-gdbm.ps1"
 	& "${build_script_path}/build-alsa-lib.ps1"
 	& "${build_script_path}/build-glib.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
 
 
 	
@@ -29,7 +27,8 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
 
-	New-Empty-Dir -Path $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	# Remove-Item "$build_path/*" -Recurse -Force
 
 	New-Meson-Cross-File
 	Set-Location $source_path
@@ -44,13 +43,13 @@ try
 		-Dopenssl=disabled `
 		-Dsystemd=disabled `
 		-Dhal-compat=false
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
 	
 	Set-Location $build_path
-	ninja clean
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
@@ -58,6 +57,8 @@ try
 	}
 
 	ninja install
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {

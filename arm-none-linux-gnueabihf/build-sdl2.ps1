@@ -12,17 +12,15 @@ try
 	& "${build_script_path}/build-pulseaudio.ps1"
 	& "${build_script_path}/build-wayland.ps1"
 	& "${build_script_path}/build-libxkbcommon.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
-
 
 
 
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name SDL2
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	# Remove-Item "$build_path/*" -Recurse -Force
+	
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -53,12 +51,12 @@ try
 		-DSDL_SNDIO=OFF `
 		-DSDL_ALSA=ON `
 		-DSDL_PULSEAUDIO=ON
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
 	
-	ninja clean
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
