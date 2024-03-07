@@ -7,6 +7,8 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	& "${build_script_path}/build-zlib.ps1"
+
 	get-git-repo.ps1 -git_url "https://github.com/pnggroup/libpng.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
@@ -41,6 +43,11 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 
 	ninja -j12
+	if ($?)
+	{
+		throw "编译失败"
+	}
+
 	ninja install | Out-Null
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
