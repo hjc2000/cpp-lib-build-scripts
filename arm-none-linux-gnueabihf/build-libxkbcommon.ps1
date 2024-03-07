@@ -11,6 +11,7 @@ try
 
 	# 构建依赖项
 	& "${build_script_path}/build-wayland.ps1"
+	& "${build_script_path}/build-wayland-protocols.ps1"
 	& "${build_script_path}/build-icu.ps1"
 
 

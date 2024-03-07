@@ -239,6 +239,7 @@ function New-Meson-Cross-File
 	
 	$link_flags = $link_flags.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
+
 	$pkg_config_paths = "$env:PKG_CONFIG_PATH".Split(':')
 	$pkg_config_path_array = "["
 	foreach ($path in $pkg_config_paths)
@@ -248,6 +249,7 @@ function New-Meson-Cross-File
 
 	$pkg_config_path_array += "]"
 
+	
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
