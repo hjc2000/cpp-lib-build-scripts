@@ -31,7 +31,6 @@ try
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
 	$(Get-Cmake-Set-Find-Lib-Path-String)
-	link_libraries(m)
 "@
 	
 
@@ -42,8 +41,8 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DSDL_SHARED=ON `
 		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=ON `
-		-DSDL_WAYLAND_SHARED=ON `
+		-DSDL_WAYLAND=OFF `
+		-DSDL_WAYLAND_SHARED=OFF `
 		-DSDL_WAYLAND_LIBDECOR=OFF `
 		-DSDL_WAYLAND_QT_TOUCH=OFF `
 		-DSDL_IBUS=OFF `
