@@ -8,10 +8,10 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	& "${build_script_path}/build-alsa-lib.ps1"
-	& "${build_script_path}/build-pulseaudio.ps1"
-	& "${build_script_path}/build-wayland.ps1"
-	& "${build_script_path}/build-libxkbcommon.ps1"
+	# & "${build_script_path}/build-alsa-lib.ps1"
+	# & "${build_script_path}/build-pulseaudio.ps1"
+	# & "${build_script_path}/build-wayland.ps1"
+	# & "${build_script_path}/build-libxkbcommon.ps1"
 
 
 
@@ -31,6 +31,7 @@ try
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
 	$(Get-Cmake-Set-Find-Lib-Path-String)
+	link_libraries(m)
 "@
 	
 
