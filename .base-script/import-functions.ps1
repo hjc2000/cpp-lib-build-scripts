@@ -185,8 +185,7 @@ function Get-Cmake-Set-Find-Lib-Path-String
 function New-Meson-Cross-File
 {
 	param (
-		[Parameter(Mandatory = $true)]
-		[string]$link_flags,
+		[string]$link_flags = "['-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib',]",
 		[string]$arch = "armv7-a",
 		[string]$toolchain_prefix = "arm-none-linux-gnueabihf-"
 	)
