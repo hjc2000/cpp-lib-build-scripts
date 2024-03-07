@@ -7,6 +7,9 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	& "${build_script_path}/build-libpng.ps1"
+
+
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/fontconfig/fontconfig.git"
@@ -34,7 +37,7 @@ try
 	[built-in options]
 	c_args = ['-march=armv7-a', '-I$total_install_path/include']
 	cpp_args = ['-march=armv7-a', '-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib/', ]
+	c_link_args = ['-L$total_install_path/lib/', '$total_install_path/lib/libpng16.so.16']
 	cpp_link_args = ['-L$total_install_path/lib/']
 "@
 
