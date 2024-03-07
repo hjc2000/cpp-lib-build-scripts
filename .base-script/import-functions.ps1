@@ -237,8 +237,6 @@ function New-Meson-Cross-File
 		[string]$toolchain_prefix = "arm-none-linux-gnueabihf-"
 	)
 	
-	$env:PKG_CONFIG_LIBDIR = "$env:PKG_CONFIG_PATH"
-
 	$link_flags = $link_flags.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
@@ -250,7 +248,6 @@ function New-Meson-Cross-File
 	strip = '${toolchain_prefix}strip'
 	pkg-config = '$(which pkg-config)'
 	cmake = '$(which cmake)'
-	wayland-scanner = '$(which wayland-scanner)'
 
 	[host_machine]
 	system = 'linux'
