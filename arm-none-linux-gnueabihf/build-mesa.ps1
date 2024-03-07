@@ -22,14 +22,15 @@ try
 		-Dgallium-vdpau=disabled `
 		-Dgallium-omx=disabled `
 		-Dgallium-va=disabled `
-		-Dgallium-xa=disabled
+		-Dgallium-xa=disabled `
+		-Dgallium-d3d10umd=disabled `
+		-Dgallium-d3d12-video=disabled
+
 	# -Dgallium-nine=disabled
-	# -Dgallium-d3d10umd=disabled `
 	# -Dgallium-opencl=disabled `
 	# -Dgallium-rusticl=disabled `
 	# -Dgallium-extra-hud=disabled `
 	# -Dgallium-drivers=disabled `
-	# -Dgallium-d3d12-video=disabled
 		
 	if ($LASTEXITCODE)
 	{
