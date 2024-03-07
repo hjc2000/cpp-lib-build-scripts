@@ -29,7 +29,7 @@ try
 	run-bash-cmd.ps1 @"
 	cd $source_path
 	export CC=arm-none-linux-gnueabihf-gcc
-	make -j12
+	make -j12 > /dev/null
 	make install > /dev/null
 "@
 
