@@ -1,25 +1,15 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/libdecor/"
-$install_path = "$libs_path/libdecor/"
+$source_path = "$repos_path/mesa/"
+$install_path = "$libs_path/mesa/"
 $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	# 构建依赖项
-	& "${build_script_path}/build-wayland-protocols.ps1"
-	& "${build_script_path}/build-dbus.ps1"
-	& "${build_script_path}/build-cairo.ps1"
-	& "${build_script_path}/build-libxkbcommon.ps1"
-	& "${build_script_path}/build-pango.ps1"
-	& "${build_script_path}/build-mesa.ps1"
-
-
-	
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/neonkore/libdecor.git"
+	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/mesa/mesa.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
