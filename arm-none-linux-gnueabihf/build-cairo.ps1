@@ -33,6 +33,7 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		-Dtests=disabled `
 		-Dxlib=disabled
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
