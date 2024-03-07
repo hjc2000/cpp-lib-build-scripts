@@ -21,12 +21,7 @@ try
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
-	c = 'arm-none-linux-gnueabihf-gcc'
-	cpp = 'arm-none-linux-gnueabihf-g++'
-	ar = 'arm-none-linux-gnueabihf-ar'
-	ld = 'arm-none-linux-gnueabihf-ld'
-	strip = 'arm-none-linux-gnueabihf-strip'
-	pkg-config = 'pkg-config'
+	$(Get-Meson-Cross-File-Binaries -toolchain_prefix "arm-none-linux-gnueabihf-")
 
 	[host_machine]
 	system = 'linux'

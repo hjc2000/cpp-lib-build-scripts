@@ -8,6 +8,7 @@ Push-Location $repos_path
 try
 {
 	& "${build_script_path}/build-glib.ps1"
+	& "${build_script_path}/build-pcre2.ps1"
 
 	# 开始构建本体
 	Set-Location $repos_path
@@ -16,15 +17,21 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
 	Remove-Item "$build_path/*" -Recurse -Force
 
+	$c_link_args = @"
+	[
+		'-L$total_install_path/lib',
+		'$total_install_path/lib/libz.so.1'
+		'$total_install_path/lib/libbz2.so.1'
+		'$total_install_path/lib/libpng16.so.16'
+		'$total_install_path/lib/libiconv.so.2'
+		'$total_install_path/lib/libpcre2-8.so.0'
+	]
+"@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
+
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
-	c = 'arm-none-linux-gnueabihf-gcc'
-	cpp = 'arm-none-linux-gnueabihf-g++'
-	ar = 'arm-none-linux-gnueabihf-ar'
-	ld = 'arm-none-linux-gnueabihf-ld'
-	strip = 'arm-none-linux-gnueabihf-strip'
-	pkg-config = 'pkg-config'
+	$(Get-Meson-Cross-File-Binaries -toolchain_prefix "arm-none-linux-gnueabihf-")
 
 	[host_machine]
 	system = 'linux'
@@ -41,8 +48,8 @@ try
 	[built-in options]
 	c_args = ['-march=armv7-a', '-I$total_install_path/include']
 	cpp_args = ['-march=armv7-a', '-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib/']
-	cpp_link_args = ['-L$total_install_path/lib/']
+	c_link_args = $c_link_args
+	cpp_link_args = $c_link_args
 "@
 
 	Set-Location $source_path
