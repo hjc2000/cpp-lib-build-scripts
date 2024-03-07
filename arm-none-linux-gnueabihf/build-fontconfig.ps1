@@ -34,8 +34,8 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
-		-Diconv=true
-		
+		-Diconv=enabled
+
 	if ($LASTEXITCODE)
 	{
 		throw "配置失败"
