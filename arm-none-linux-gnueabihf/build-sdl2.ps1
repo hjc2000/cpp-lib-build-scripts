@@ -12,6 +12,7 @@ try
 	& "${build_script_path}/build-pulseaudio.ps1"
 	& "${build_script_path}/build-wayland.ps1"
 	& "${build_script_path}/build-libxkbcommon.ps1"
+	& "${build_script_path}/build-libdecor.ps1"
 
 
 
