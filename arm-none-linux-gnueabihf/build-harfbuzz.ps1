@@ -53,7 +53,7 @@ try
 	}
 	
 	Set-Location $build_path
-	ninja -j12 | Out-Null
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "编译失败"
