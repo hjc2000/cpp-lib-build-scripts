@@ -20,15 +20,15 @@ try
 		-branch_name "2.15.0"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	Remove-Item "$build_path/*" -Recurse -Force
+	# Remove-Item "$build_path/*" -Recurse -Force
 
 	New-Meson-Cross-File -link_flags @"
 	[
 		'-L$total_install_path/lib',
 		'-Wl,-rpath-link,$total_install_path/lib',
-		'$total_install_path/lib/libpng16.so.16',
 	]
 "@
+	#		'$total_install_path/lib/libpng16.so.16',
 
 	Set-Location $source_path
 	meson setup build/ `
