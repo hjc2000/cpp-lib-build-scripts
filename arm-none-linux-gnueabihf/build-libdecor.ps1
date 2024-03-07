@@ -12,6 +12,7 @@ try
 	& "${build_script_path}/build-dbus.ps1"
 	& "${build_script_path}/build-cairo.ps1"
 	& "${build_script_path}/build-libxkbcommon.ps1"
+	& "${build_script_path}/build-pango.ps1"
 
 
 	
