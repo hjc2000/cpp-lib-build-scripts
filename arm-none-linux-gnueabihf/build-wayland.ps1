@@ -55,13 +55,6 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
-catch
-{
-	Write-Host @"
-	需要将构建脚本的 error('clock_gettime not found') 注释掉
-"@
-	throw
-}
 finally
 {
 	Pop-Location

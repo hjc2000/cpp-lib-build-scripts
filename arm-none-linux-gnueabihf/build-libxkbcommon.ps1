@@ -19,7 +19,7 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/xkbcommon/libxkbcommon.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	# Remove-Item "$build_path/*" -Recurse -Force
+	Remove-Item "$build_path/*" -Recurse -Force
 
 	New-Meson-Cross-File -link_flags @"
 	[
