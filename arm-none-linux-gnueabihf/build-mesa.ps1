@@ -23,11 +23,10 @@ try
 		-Dgallium-omx=disabled `
 		-Dgallium-va=disabled `
 		-Dgallium-xa=disabled `
-		-Dgallium-opencl=disabled
-
+		-Dgallium-opencl=disabled `
+		-Dgallium-rusticl=disabled
 
 	# -Dgallium-nine=disabled
-	# -Dgallium-rusticl=disabled `
 	# -Dgallium-extra-hud=disabled `
 	# -Dgallium-drivers=disabled `
 		
