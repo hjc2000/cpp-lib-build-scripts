@@ -24,7 +24,7 @@ try
 	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
 
 	$(Get-Cmake-Set-Find-Lib-Path-String)
-	# link_libraries(m)
+	link_libraries(m)
 "@
 	
 
