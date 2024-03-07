@@ -21,7 +21,8 @@ try
 
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git"
+	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git" `
+		-branch_name "1.20.0"
 
 	New-Item -Path $build_path -ItemType Directory -Force
 	# Remove-Item "$build_path/*" -Recurse -Force
