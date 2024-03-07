@@ -94,33 +94,7 @@ function Install-Lib
 
 	if ($IsWindows)
 	{
-		if (Test-Path "$src_path/bin/")
-		{
-			Copy-Item -Path "$src_path/bin/*" -Destination "$dst_path/bin/" -Force -Recurse
-		}
-
-		if (Test-Path "$src_path/lib/*")
-		{
-			Copy-Item -Path "$src_path/lib/*" -Destination "$dst_path/lib/" -Force -Recurse
-		}
-		elseif (Test-Path -Path "$src_path/lib64")
-		{
-			Copy-Item -Path "$src_path/lib64/*" -Destination "$dst_path/lib/" -Force -Recurse
-		}
-		elseif (Test-Path -Path "$src_path/lib32")
-		{
-			Copy-Item -Path "$src_path/lib32/*" -Destination "$dst_path/lib/" -Force -Recurse
-		}
-
-		if (Test-Path "$src_path/include/")
-		{
-			Copy-Item -Path "$src_path/include/*" -Destination "$dst_path/include/" -Force -Recurse
-		}
-
-		if (Test-Path "$src_path/share/")
-		{
-			Copy-Item -Path "$src_path/share/*" -Destination "$dst_path/share/" -Force -Recurse
-		}
+		Copy-Item -Path "$src_path/*" -Destination "$dst_path/" -Force -Recurse
 	}
 	else
 	{
@@ -131,29 +105,9 @@ function Install-Lib
 			$copy_cmd = "sudo cp -a"
 		}
 
-		# 下面是 bash 脚本
 		run-bash-cmd.ps1 @"
 		set -e
-
-		if [ -d "$src_path/bin" ]; then
-			$copy_cmd $src_path/bin/* $dst_path/bin/
-		fi
-
-		if [ -d "$src_path/lib" ]; then
-			$copy_cmd "$src_path/lib/"* "$dst_path/lib/"
-		elif [ -d "$src_path/lib64" ]; then
-			$copy_cmd "$src_path/lib64/"* "$dst_path/lib/"
-		elif [ -d "$src_path/lib32" ]; then
-			$copy_cmd "$src_path/lib32/"* "$dst_path/lib/"
-		fi
-
-		if [ -d "$src_path/include" ]; then
-			$copy_cmd $src_path/include/* $dst_path/include/
-		fi
-
-		if [ -d "$src_path/share" ]; then
-			$copy_cmd $src_path/share/* $dst_path/share/
-		fi
+		$copy_cmd $src_path/* $dst_path/
 "@
 	}
 }
