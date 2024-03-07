@@ -37,6 +37,7 @@ try
 
 	[properties]
 	PKG_CONFIG_LIBDIR = '$total_install_path/lib/pkgconfig'
+	root = '$total_install_path'
 
 	[host_machine]
 	system = 'linux'

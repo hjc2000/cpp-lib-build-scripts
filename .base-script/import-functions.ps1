@@ -227,5 +227,6 @@ function Get-Meson-Cross-File-Binaries
 	ld = '${toolchain_prefix}ld'
 	strip = '${toolchain_prefix}strip'
 	pkg-config = 'pkg-config'
+	cmake = 'cmake'
 "@
 }
