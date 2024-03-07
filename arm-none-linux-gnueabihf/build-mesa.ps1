@@ -22,9 +22,7 @@ try
 		-Dgallium-vdpau=disabled `
 		-Dgallium-omx=disabled `
 		-Dgallium-va=disabled `
-		-Dgallium-xa=disabled `
-		-Dgallium-d3d10umd=false `
-		-Dgallium-d3d12-video=false
+		-Dgallium-xa=disabled
 
 	# -Dgallium-nine=disabled
 	# -Dgallium-opencl=disabled `
