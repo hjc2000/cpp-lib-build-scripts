@@ -8,6 +8,7 @@ Push-Location $repos_path
 try
 {
 	& "${build_script_path}/build-libpng.ps1"
+	& "${build_script_path}/build-freetype.ps1"
 
 
 	# 开始构建本体
