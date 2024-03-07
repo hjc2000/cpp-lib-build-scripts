@@ -12,18 +12,14 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-wayland.ps1"
 	& "${build_script_path}/build-icu.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
-
-	$env:LIBRARY_PATH = "$total_install_path/lib"
 
 
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/xkbcommon/libxkbcommon.git"
 
-	New-Empty-Dir $build_path
+	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
+	# Remove-Item "$build_path/*" -Recurse -Force
 
 	New-Meson-Cross-File -link_flags @"
 	[
@@ -38,13 +34,13 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Denable-x11=false
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}	
 
 	Set-Location $build_path
-	ninja clean
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
@@ -54,10 +50,6 @@ try
 	ninja install
 	
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-}
-catch
-{
-	throw
 }
 finally
 {

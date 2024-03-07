@@ -11,6 +11,7 @@ try
 	& "${build_script_path}/build-wayland-protocols.ps1"
 	& "${build_script_path}/build-dbus.ps1"
 	& "${build_script_path}/build-cairo.ps1"
+	& "${build_script_path}/build-libxkbcommon.ps1"
 
 
 	
@@ -47,10 +48,6 @@ try
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-}
-catch
-{
-	throw
 }
 finally
 {
