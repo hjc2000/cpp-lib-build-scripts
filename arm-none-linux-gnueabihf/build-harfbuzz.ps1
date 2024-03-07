@@ -7,6 +7,8 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
+	& "${build_script_path}/build-glib.ps1"
+
 	# 开始构建本体
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/harfbuzz/harfbuzz.git"
