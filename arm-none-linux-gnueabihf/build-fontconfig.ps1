@@ -25,7 +25,8 @@ try
 	$c_link_args = @"
 	[
 		'-L$total_install_path/lib',
-		'$total_install_path/lib/libpng16.so.16'
+		'-Wl,-rpath-link,$total_install_path/lib',
+		'$total_install_path/lib/libpng16.so.16',
 	]
 "@.Replace("`r", " ").Replace("`n", " ").Replace("`t", " ")
 
@@ -33,6 +34,9 @@ try
 		-Content @"
 	[binaries]
 	$(Get-Meson-Cross-File-Binaries -toolchain_prefix "arm-none-linux-gnueabihf-")
+
+	[properties]
+	pkg_config_libdir = '$total_install_path/lib/pkgconfig'
 
 	[host_machine]
 	system = 'linux'
