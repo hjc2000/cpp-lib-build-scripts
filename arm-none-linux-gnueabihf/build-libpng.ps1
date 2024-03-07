@@ -43,7 +43,7 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 
 	ninja -j12
-	if ($?)
+	if ($? -ne 0)
 	{
 		throw "编译失败"
 	}
