@@ -21,6 +21,9 @@ try
 
 	# 开始构建本体
 	Set-Location $repos_path
+
+	# 使用 1.20.0 版本是因为交叉编译时需要宿主机的 wayland-scanner 可执行文件
+	# 而 ubuntu22.04 的 apt 安装的最高只能到 1.20.0 版本。
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git" `
 		-branch_name "1.20.0"
 
