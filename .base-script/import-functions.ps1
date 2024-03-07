@@ -224,8 +224,8 @@ function New-Meson-Cross-File
 	endian = 'little'
 
 	[built-in options]
-	c_args = ['-march=$arch', '-I$total_install_path/include', ]
-	cpp_args = ['-march=$arch', '-I$total_install_path/include', '-std=c++20']
+	c_args = ['-std=c17', '-march=$arch', '-I$total_install_path/include', ]
+	cpp_args = ['-std=c++20', '-march=$arch', '-I$total_install_path/include', '-std=c++20']
 	c_link_args = $link_flags
 	cpp_link_args = $link_flags
 "@

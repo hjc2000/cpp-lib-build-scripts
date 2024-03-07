@@ -23,6 +23,7 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
