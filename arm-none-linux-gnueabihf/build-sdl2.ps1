@@ -19,7 +19,7 @@ try
 		-branch_name SDL2
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	Remove-Item "$build_path/*" -Recurse -Force
+	# Remove-Item "$build_path/*" -Recurse -Force
 	
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
@@ -42,9 +42,6 @@ try
 		-DSDL_SHARED=ON `
 		-DSDL_STATIC=OFF `
 		-DSDL_WAYLAND=ON `
-		-DSDL_WAYLAND_SHARED=OFF `
-		-DSDL_WAYLAND_LIBDECOR=OFF `
-		-DSDL_WAYLAND_QT_TOUCH=OFF `
 		-DSDL_IBUS=OFF `
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
