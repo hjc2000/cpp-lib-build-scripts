@@ -9,6 +9,7 @@ try
 {
 	# 构建依赖项
 	& "${build_script_path}/build-cairo.ps1"
+	Clear-Host
 	
 	# 开始构建本体
 	Set-Location $repos_path
@@ -22,7 +23,7 @@ try
 	meson setup build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
