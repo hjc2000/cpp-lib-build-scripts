@@ -25,6 +25,7 @@ try
 	[
 		'-L$total_install_path/lib',
 		'-Wl,-rpath-link,$total_install_path/lib',
+		'$total_install_path/lib/libxml2.so'
 	]
 "@
 
