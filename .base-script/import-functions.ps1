@@ -255,11 +255,10 @@ function New-Meson-Cross-File
 	ar = '${toolchain_prefix}ar'
 	ld = '${toolchain_prefix}ld'
 	strip = '${toolchain_prefix}strip'
-	pkg-config = '$(which pkg-config)'
-	cmake = '$(which cmake)'
+	pkg-config = 'pkg-config'
 
 	[properties]
-	pkg_config_libdir = '$env:PKG_CONFIG_PATH'
+	pkg_config_libdir = '$total_install_path/lib/pkgconfig'
 
 	[host_machine]
 	system = 'linux'
