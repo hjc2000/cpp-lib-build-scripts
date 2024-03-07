@@ -21,6 +21,7 @@ try
 	$c_link_args = @"
 	[
 		'-L$total_install_path/lib',
+		'-Wl,-rpath-link,$total_install_path/lib',
 		'$total_install_path/lib/libz.so.1',
 		'$total_install_path/lib/libbz2.so.1',
 		'$total_install_path/lib/libpng16.so.16',
@@ -36,8 +37,7 @@ try
 	$(Get-Meson-Cross-File-Binaries -toolchain_prefix "arm-none-linux-gnueabihf-")
 
 	[properties]
-	PKG_CONFIG_LIBDIR = '$total_install_path/lib/pkgconfig'
-	root = '$total_install_path'
+	pkg_config_libdir = '$total_install_path/lib/pkgconfig'
 
 	[host_machine]
 	system = 'linux'
