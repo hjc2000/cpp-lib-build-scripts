@@ -192,15 +192,13 @@ function New-Meson-Cross-File
 		[string]$cpp_args = ""
 	)
 
-	if (-not $c_args)
+	if ($c_args -eq "")
 	{
-		Write-Host "6666666666666666666666666666666666"
 		$c_args = "['-march=$arch', '-I$total_install_path/include']"
 	}
 
-	if (-not $cpp_args)
+	if ($cpp_args -eq "")
 	{
-		Write-Host "7877777777777777777777777777777777"
 		$cpp_args = "['-march=$arch', '-I$total_install_path/include']"
 	}
 
