@@ -24,7 +24,7 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/cairo/cairo.git"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	# Remove-Item "$build_path/*" -Recurse -Force
+	Remove-Item "$build_path/*" -Recurse -Force
 
 	New-Meson-Cross-File
 	Set-Location $source_path
