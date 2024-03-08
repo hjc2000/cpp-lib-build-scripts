@@ -25,7 +25,7 @@ try
 		-Dgallium-xa=disabled `
 		-Dgallium-opencl=disabled `
 		-Dgallium-rusticl=false `
-		-Dopengl=disabled
+		-Dopengl=false
 
 	# -Dgallium-nine=disabled
 	# -Dgallium-extra-hud=disabled `
