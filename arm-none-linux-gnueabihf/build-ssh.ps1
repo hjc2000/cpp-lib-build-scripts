@@ -13,6 +13,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-openssl.ps1"
+	Build-Dependency "build-zlib.ps1"
+
 	get-git-repo.ps1 -git_url "https://github.com/openssh/openssh-portable.git"
 	Set-Location $source_path
 	Auto-Make
@@ -21,20 +24,13 @@ try
 	run-bash-cmd.ps1 @"
 	cd $source_path
 
-	./configure -h
-	exit
-
 	./configure \
 	--prefix="$install_path" \
-	--enable-shared \
-	--disable-opencl \
-	--enable-pic \
-	--host=arm-none-linux-gnueabihf \
-	--cross-prefix=arm-none-linux-gnueabihf- > /dev/null
+	--host=arm-none-linux-gnueabihf
 
 	make clean
-	make -j12 > /dev/null
-	make install > /dev/null
+	make -j12
+	make install
 "@
 	if ($LASTEXITCODE)
 	{
