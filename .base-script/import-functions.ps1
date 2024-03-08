@@ -246,4 +246,8 @@ function Build-Dependency
 	& "$build_script_path/$script_name"
 "@ | pwsh
 
+	if ($LASTEXITCODE)
+	{
+		throw "$script_name 执行失败"
+	}
 }
