@@ -159,6 +159,7 @@ function Auto-Make
 {
 	aclocal
 	autoconf
+	autoheader 
 	automake --add-missing
 }
 
