@@ -16,7 +16,7 @@ try
 		-branch_name "dbus-1.14"
 
 	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	# Remove-Item "$build_path/*" -Recurse -Force
+	Remove-Item "$build_path/*" -Recurse -Force
 	
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
@@ -36,6 +36,7 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DDBUS_SESSION_SOCKET_DIR="/tmp" `
 		-DDBUS_WITH_GLIB=OFF
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
