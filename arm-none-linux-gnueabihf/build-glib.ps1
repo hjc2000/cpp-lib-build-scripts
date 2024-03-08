@@ -26,7 +26,7 @@ try
 	
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitee.com/lihlster/glib.git"
+	get-git-repo.ps1 -git_url "https://github.com/GNOME/glib.git"
 
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File
@@ -36,6 +36,7 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		-Dselinux=disabled `
 		-Dlibmount=disabled
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
@@ -51,10 +52,6 @@ try
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-}
-catch
-{
-	throw
 }
 finally
 {
