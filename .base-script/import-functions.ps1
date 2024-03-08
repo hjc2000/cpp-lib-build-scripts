@@ -241,6 +241,7 @@ function Build-Dependency
 		[string]$script_name
 	)
 
+	# 启用另一个进程，不要让依赖项的构建脚本破坏当前环境的环境变量
 	@"
 	& "$build_script_path/$script_name"
 "@ | pwsh
