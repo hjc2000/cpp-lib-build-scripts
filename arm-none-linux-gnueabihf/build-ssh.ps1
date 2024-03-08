@@ -31,7 +31,7 @@ try
 	--with-ssl-dir="$total_install_path"
 
 	sudo su
-	export PATH=$env:PATH:/usr/bin:/bin
+	export PATH=$env:PATH
 
 	make clean
 	make -j12
