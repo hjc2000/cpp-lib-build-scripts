@@ -23,10 +23,12 @@ try
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
 	cd $source_path
-
+	
 	./configure \
 	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf
+	--host=arm-none-linux-gnueabihf \
+	--with-zlib="$total_install_path" \
+	--with-ssl-dir="$total_install_path"
 
 	make clean
 	make -j12
