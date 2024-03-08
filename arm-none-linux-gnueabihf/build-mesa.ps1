@@ -27,11 +27,11 @@ try
 		-Dgallium-xa=disabled `
 		-Dgallium-opencl=disabled `
 		-Dgallium-rusticl=false `
+		-Dgallium-drivers=disabled `
 		-Dopengl=false
 
 	# -Dgallium-nine=disabled
 	# -Dgallium-extra-hud=disabled `
-	# -Dgallium-drivers=disabled `
 		
 	if ($LASTEXITCODE)
 	{
