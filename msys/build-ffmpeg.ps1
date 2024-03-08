@@ -12,10 +12,6 @@ try
 	& "${build_script_path}/build-openssl.ps1"
 	& "${build_script_path}/build-sdl2.ps1"
 	& "${build_script_path}/build-amf.ps1"
-	# 设置依赖项的 pkg-config
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib"
-	Total-Install
-
 
 	
 	Set-Location $repos_path
@@ -23,7 +19,6 @@ try
 		-branch_name release/6.1
 
 	run-bash-cmd.ps1 @"
-	set -e
 	cd $(cygpath.exe $source_path)
 
 	./configure \
@@ -39,12 +34,14 @@ try
 	--enable-shared \
 	--disable-static
 
-	make clean
 	make -j12
 	make install
 "@
 
-
+	if ($LASTEXITCODE)
+	{
+		throw "$source_path 编译失败"
+	}
 
 	# 将 msys2 中的 dll 复制到安装目录
 	# 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
@@ -64,10 +61,8 @@ try
 			-Destination "$install_path/bin/" `
 			-Force
 	}
-}
-catch
-{
-	throw
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {

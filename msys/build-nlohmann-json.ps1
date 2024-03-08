@@ -11,10 +11,8 @@ try
 	Copy-Item -Path "$source_path/single_include/nlohmann/json.hpp" `
 		-Destination $install_path `
 		-Force -Recurse
-}
-catch
-{
-	throw
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {

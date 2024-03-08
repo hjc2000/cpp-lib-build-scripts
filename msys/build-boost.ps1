@@ -14,6 +14,8 @@ try
 		-Destination $libs_path/boost/include/boost/ `
 		-Force `
 		-Recurse
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {

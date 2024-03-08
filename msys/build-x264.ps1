@@ -10,24 +10,25 @@ try
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
-set -e
-cd $(cygpath.exe $source_path)
+	set -e
+	cd $(cygpath.exe $source_path)
 
-./configure \
---prefix="$(cygpath.exe $install_path)" \
---enable-shared \
---disable-opencl \
---enable-pic
+	./configure \
+	--prefix="$(cygpath.exe $install_path)" \
+	--enable-shared \
+	--disable-opencl \
+	--enable-pic
 
-make clean
-make -j12
-make install
+	make -j12
+	make install
 "@
 
-}
-catch
-{
-	throw
+	if ($LASTEXITCODE)
+	{
+		throw "$source_path 配置失败"
+	}
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {

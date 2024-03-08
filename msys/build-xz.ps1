@@ -16,11 +16,23 @@ try
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
 		-DBUILD_SHARED_LIBS=ON
 
+	if ($LASTEXITCODE)
+	{
+		throw "$source_path 配置失败"
+	}
+	
 	ninja -j12
+	if ($LASTEXITCODE)
+	{
+		throw "$source_path 编译失败"
+	}
+
 	ninja install
 
 	# 修复 .pc 文件内的路径
 	Fix-PC-Config-PC-File "${install_path}/lib/pkgconfig/liblzma.pc"
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
 {

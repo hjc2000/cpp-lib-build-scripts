@@ -14,19 +14,22 @@ try
 	$env:Path = "C:\msys64\usr\bin\core_perl;" + $env:Path
 	
 	run-bash-cmd.ps1 @"
-set -e
-cd $(cygpath.exe $source_path)
+	set -e
+	cd $(cygpath.exe $source_path)
 
-./Configure shared \
---prefix="$(cygpath.exe $install_path)"
+	./Configure shared \
+	--prefix="$(cygpath.exe $install_path)"
 
-make -j12
-make install
+	make -j12
+	make install
 "@
-}
-catch
-{
-	throw
+
+	if ($LASTEXITCODE)
+	{
+		throw "$source_path 编译失败"
+	}
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
