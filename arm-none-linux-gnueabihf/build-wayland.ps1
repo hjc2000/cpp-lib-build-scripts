@@ -28,7 +28,7 @@ try
 		-branch_name "1.20.0"
 
 	New-Item -Path $build_path -ItemType Directory -Force
-	# Remove-Item "$build_path/*" -Recurse -Force
+	Remove-Item "$build_path/*" -Recurse -Force
 	
 
 	# 不能设置
