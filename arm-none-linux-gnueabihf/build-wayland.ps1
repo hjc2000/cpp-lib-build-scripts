@@ -35,10 +35,10 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland.git" `
 		-branch_name "1.20.0"
 
-	New-Empty-Dir -Path $build_path
-	
 	# meson 里面会利用 pkg-config 查找宿主机的 wayland-scanner 可执行文件。
 	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${override_pkg_config_libdir}"
+
+	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File
 	Set-Location $source_path
 	meson setup build/ `

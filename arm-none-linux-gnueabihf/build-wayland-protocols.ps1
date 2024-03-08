@@ -22,6 +22,8 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
 
+	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${override_pkg_config_libdir}"
+
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File
 	Set-Location $source_path
