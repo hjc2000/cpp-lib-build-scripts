@@ -8,11 +8,6 @@ $libs_path = "$build_script_path/.libs"
 $total_install_path = "$build_script_path/.total-install"
 
 $env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
-
-$default_pkg_config_libdir = "/usr/local/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig"
-$override_pkg_config_libdir = $env:PKG_CONFIG_PATH
-$env:PKG_CONFIG_LIBDIR = $override_pkg_config_libdir
-
 $env:LIBRARY_PATH = "$total_install_path/lib/"
 
 New-Item -Path $repos_path -ItemType Directory -Force | Out-Null

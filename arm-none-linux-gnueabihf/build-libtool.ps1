@@ -1,5 +1,6 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
+. $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
 $source_path = "$repos_path/libtool/libtool-2.4.7"
 $install_path = "$libs_path/libtool"

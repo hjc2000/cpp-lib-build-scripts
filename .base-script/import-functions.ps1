@@ -233,3 +233,16 @@ function New-Meson-Cross-File
 	cpp_link_args = $link_flags
 "@
 }
+
+function Build-Dependency
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[string]$script_name
+	)
+
+	@"
+	& "$build_script_path/$script_name"
+"@ | pwsh
+
+}
