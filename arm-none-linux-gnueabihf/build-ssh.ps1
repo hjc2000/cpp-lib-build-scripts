@@ -31,8 +31,8 @@ try
 	--with-ssl-dir="$total_install_path"
 
 	make clean
-	make -j12
-	make install
+	sudo make -j12
+	sudo make install
 "@
 	if ($LASTEXITCODE)
 	{
