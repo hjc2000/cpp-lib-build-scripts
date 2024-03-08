@@ -14,9 +14,10 @@ try
 	)
 
 	# 构建依赖项
-	& "${build_script_path}/build-libffi.ps1"
-	& "${build_script_path}/build-libxml2.ps1"
-	& "${build_script_path}/build-libexpat.ps1"
+	Build-Dependency "build-libffi.ps1"
+	Build-Dependency "build-libxml2.ps1"
+	Build-Dependency "build-libexpat.ps1"
+
 
 	
 

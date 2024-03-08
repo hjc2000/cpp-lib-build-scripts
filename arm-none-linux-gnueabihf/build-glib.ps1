@@ -11,10 +11,11 @@ try
 	pip install packaging
 
 	# 构建依赖项
-	& "${build_script_path}/build-pcre2.ps1"
-	& "${build_script_path}/build-libffi.ps1"
-	& "${build_script_path}/build-zlib.ps1"
-	& "${build_script_path}/build-libiconv.ps1"
+	Build-Dependency "build-pcre2.ps1"
+	Build-Dependency "build-libffi.ps1"
+	Build-Dependency "build-zlib.ps1"
+	Build-Dependency "build-libiconv.ps1"
+
 
 	
 	# 开始构建本体

@@ -8,7 +8,8 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	& "${build_script_path}/build-zlib.ps1"
+	Build-Dependency "build-zlib.ps1"
+
 
 	get-git-repo.ps1 -git_url "https://github.com/pnggroup/libpng.git"
 

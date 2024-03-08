@@ -9,8 +9,8 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	& "${build_script_path}/build-cairo.ps1"
-	Clear-Host
+	Build-Dependency "build-cairo.ps1"
+
 	
 	# 开始构建本体
 	Set-Location $repos_path

@@ -11,13 +11,12 @@ try
 	Apt-Ensure-Packets @("docbook-utils", "docbook", "docbook-to-man", "docbook-xml")
 
 	# 构建依赖项
-	& "${build_script_path}/build-zlib.ps1"
-	& "${build_script_path}/build-libexpat.ps1"
-	& "${build_script_path}/build-glib.ps1"
-	& "${build_script_path}/build-libpng.ps1"
-	& "${build_script_path}/build-freetype.ps1"
-	& "${build_script_path}/build-libiconv.ps1"
-
+	Build-Dependency "build-zlib.ps1"
+	Build-Dependency "build-libexpat.ps1"
+	Build-Dependency "build-glib.ps1"
+	Build-Dependency "build-libpng.ps1"
+	Build-Dependency "build-freetype.ps1"
+	Build-Dependency "build-libiconv.ps1"
 
 
 	# 开始构建本体

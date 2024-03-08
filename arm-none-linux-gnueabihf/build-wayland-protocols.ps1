@@ -9,7 +9,7 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	& "${build_script_path}/build-wayland.ps1"
+	Build-Dependency "build-wayland.ps1"
 
 	
 	# 开始构建本体

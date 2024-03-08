@@ -8,9 +8,10 @@ $build_path = "$source_path/build/"
 Push-Location $repos_path
 try
 {
-	& "${build_script_path}/build-bzip2.ps1"
-	& "${build_script_path}/build-libpng.ps1"
-	& "${build_script_path}/build-zlib.ps1"
+	Build-Dependency "build-bzip2.ps1"
+	Build-Dependency "build-libpng.ps1"
+	Build-Dependency "build-zlib.ps1"
+
 
 	# 开始构建本体
 	Set-Location $repos_path

@@ -9,9 +9,10 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	& "${build_script_path}/build-libiconv.ps1"
-	& "${build_script_path}/build-xz.ps1"
-	& "${build_script_path}/build-zlib.ps1"
+	Build-Dependency "build-libiconv.ps1"
+	Build-Dependency "build-xz.ps1"
+	Build-Dependency "build-zlib.ps1"
+
 
 
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/libxml2.git" `

@@ -9,7 +9,8 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	& "${build_script_path}/build-libexpat.ps1"
+	Build-Dependency "build-libexpat.ps1"
+
 
 
 	Set-Location $repos_path

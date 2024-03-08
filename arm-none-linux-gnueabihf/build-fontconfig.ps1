@@ -11,8 +11,9 @@ try
 	pip install pytest
 	Apt-Ensure-Packets @("gperf ")
 
-	& "${build_script_path}/build-libpng.ps1"
-	& "${build_script_path}/build-freetype.ps1"
+	Build-Dependency "build-libpng.ps1"
+	Build-Dependency "build-freetype.ps1"
+
 
 
 	# 开始构建本体
