@@ -10,8 +10,8 @@ try
 	# 构建依赖项
 	& "${build_script_path}/build-alsa-lib.ps1"
 	& "${build_script_path}/build-pulseaudio.ps1"
-	# & "${build_script_path}/build-wayland.ps1"
-	# & "${build_script_path}/build-libxkbcommon.ps1"
+	& "${build_script_path}/build-wayland.ps1"
+	& "${build_script_path}/build-libxkbcommon.ps1"
 	# & "${build_script_path}/build-libdecor.ps1"
 
 
@@ -42,7 +42,8 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DSDL_SHARED=ON `
 		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=OFF `
+		-DSDL_WAYLAND=ON `
+		-DSDL_WAYLAND_LIBDECOR=OFF `
 		-DSDL_IBUS=OFF `
 		-DSDL_KMSDRM=OFF `
 		-DSDL_SNDIO=OFF `
