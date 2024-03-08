@@ -35,9 +35,7 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
 
-	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	# Remove-Item "$build_path/*" -Recurse -Force
-
+	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File -arch "armv4"
 	Set-Location $source_path
 	meson setup build/ `

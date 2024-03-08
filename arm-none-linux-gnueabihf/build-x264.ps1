@@ -28,6 +28,7 @@ try
 	--host=arm-none-linux-gnueabihf \
 	--cross-prefix=arm-none-linux-gnueabihf- > /dev/null
 
+	make clean
 	make -j12 > /dev/null
 	make install > /dev/null
 "@

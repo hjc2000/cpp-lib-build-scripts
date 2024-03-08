@@ -26,9 +26,7 @@ try
 	Set-Location $repos_path
 	get-git-repo.ps1 -git_url "https://github.com/xkbcommon/libxkbcommon.git"
 
-	New-Item -Path $build_path -ItemType Directory -Force | Out-Null
-	Remove-Item "$build_path/*" -Recurse -Force
-
+	New-Empty-Dir -Path $build_path
 	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${override_pkg_config_libdir}"
 	New-Meson-Cross-File
 	Set-Location $source_path

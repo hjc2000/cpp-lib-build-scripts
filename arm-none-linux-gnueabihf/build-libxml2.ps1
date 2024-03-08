@@ -24,9 +24,7 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/libxml2.git" `
 		-branch_name "2.12"
 
-	New-Item -Path $build_path -ItemType Directory -Force
-	Remove-Item "$build_path/*" -Recurse -Force
-
+	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)

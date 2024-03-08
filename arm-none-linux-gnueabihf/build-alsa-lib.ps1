@@ -16,26 +16,20 @@ Push-Location $repos_path
 try
 {
 	# 开始构建本体
-	if (-not (Test-Path -Path "$source_path/Makefile" || Test-Path -Path "$source_path/makefile"))
-	{
-		wget-repo.ps1 -workspace_dir $repos_path `
-			-repo_url "https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.2.tar.bz2" `
-			-out_dir_name "alsa-lib"
-
-		run-bash-cmd.ps1 @"
-		cd $source_path
-		export CC=arm-none-linux-gnueabihf-gcc
-	
-		./configure \
-		--prefix="$install_path" \
-		--host=arm-none-linux-gnueabihf \
-		--with-softfloat
-"@
-	}
+	wget-repo.ps1 -workspace_dir $repos_path `
+		-repo_url "https://www.alsa-project.org/files/pub/lib/alsa-lib-1.2.7.2.tar.bz2" `
+		-out_dir_name "alsa-lib"
 
 	run-bash-cmd.ps1 @"
 	cd $source_path
 	export CC=arm-none-linux-gnueabihf-gcc
+
+	./configure \
+	--prefix="$install_path" \
+	--host=arm-none-linux-gnueabihf \
+	--with-softfloat
+
+	make clean
 	make -j12 > /dev/null
 	make install > /dev/null
 "@

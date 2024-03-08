@@ -24,6 +24,7 @@ try
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf
 
+	make clean
 	make -j12 > /dev/null
 	make install > /dev/null
 "@					

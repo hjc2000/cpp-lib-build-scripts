@@ -26,6 +26,7 @@ try
 	--host=arm-none-linux-gnueabihf \
 	--enable-ltdl-install > /dev/null
 
+	make clean
 	make -j12 > /dev/null
 	make install > /dev/null
 "@

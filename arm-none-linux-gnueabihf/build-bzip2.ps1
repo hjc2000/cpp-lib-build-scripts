@@ -16,9 +16,7 @@ try
 {
 	get-git-repo.ps1 -git_url "https://gitlab.com/bzip2/bzip2.git"
 
-	New-Item -Path $build_path -ItemType Directory -Force
-	# Remove-Item "$build_path/*" -Recurse -Force
-
+	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -37,6 +35,7 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" | Out-Null
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
