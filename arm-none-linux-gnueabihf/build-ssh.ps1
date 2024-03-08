@@ -30,9 +30,12 @@ try
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path"
 
+	sudo su
+	export PATH=$env:PAHT
+
 	make clean
-	sudo make -j12
-	sudo make install
+	make -j12
+	make install
 "@
 	if ($LASTEXITCODE)
 	{
