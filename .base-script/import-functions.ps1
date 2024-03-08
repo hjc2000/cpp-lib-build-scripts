@@ -187,11 +187,12 @@ function New-Meson-Cross-File
 	param (
 		[string]$arch = "armv7-a",
 		[string]$toolchain_prefix = "arm-none-linux-gnueabihf-",
+		[string]$pkg_config_libdir = "",
 		[string]$link_flags = "['-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib',]",
 		[string]$c_std = "",
 		[string]$cpp_std = ""
 	)
-
+	
 	# meson 的
 	#
 	# [properties]
@@ -211,7 +212,7 @@ function New-Meson-Cross-File
 	pkg-config = 'pkg-config'
 
 	[properties]
-	pkg_config_libdir = '$total_install_path/lib/pkgconfig'
+	pkg_config_libdir = $($pkg_config_libdir ? $pkg_config_libdir : "'$total_install_path/lib/pkgconfig'")
 
 	[host_machine]
 	system = 'linux'
