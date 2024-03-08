@@ -30,7 +30,8 @@ try
 	New-Item -Path $build_path -ItemType Directory -Force
 	Remove-Item "$build_path/*" -Recurse -Force
 	
-	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${env:PKG_CONFIG_LIBDIR}"
+	# meson 里面会利用 pkg-config 查找宿主机的 wayland-scanner 可执行文件。
+	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${override_pkg_config_libdir}"
 	New-Meson-Cross-File
 	Set-Location $source_path
 	meson setup build/ `
@@ -55,6 +56,5 @@ try
 }
 finally
 {
-	$env:PKG_CONFIG_LIBDIR = $default_pkg_config_libdir
 	Pop-Location
 }

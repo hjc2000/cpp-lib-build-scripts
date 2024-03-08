@@ -9,10 +9,9 @@ $total_install_path = "$build_script_path/.total-install"
 
 $env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
 
-# PKG_CONFIG_LIBDIR 默认值是
 $default_pkg_config_libdir = "/usr/local/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig"
-# 覆盖默认值
-$env:PKG_CONFIG_LIBDIR = "$total_install_path/lib/pkgconfig"
+$override_pkg_config_libdir = $env:PKG_CONFIG_PATH
+$env:PKG_CONFIG_LIBDIR = $override_pkg_config_libdir
 
 $env:LIBRARY_PATH = "$total_install_path/lib/"
 
