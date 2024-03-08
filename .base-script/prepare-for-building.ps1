@@ -11,6 +11,10 @@ $libs_path = "$build_script_path/.libs"
 $total_install_path = "$build_script_path/.total-install"
 
 $env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
+# 默认值是
+# /usr/local/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig
+$env:PKG_CONFIG_LIBDIR = "$total_install_path/lib/pkgconfig"
+
 $env:LIBRARY_PATH = "$total_install_path/lib/"
 
 New-Item -Path $repos_path -ItemType Directory -Force | Out-Null
