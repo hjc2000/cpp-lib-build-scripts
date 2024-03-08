@@ -14,7 +14,7 @@ try
 	& "${build_script_path}/build-libxkbcommon.ps1"
 	# & "${build_script_path}/build-libdecor.ps1"
 
-
+	$env:PKG_CONFIG_LIBDIR = "$total_install_path/lib/pkgconfig"
 
 	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name SDL2
