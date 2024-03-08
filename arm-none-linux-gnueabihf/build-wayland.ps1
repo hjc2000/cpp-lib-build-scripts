@@ -35,7 +35,7 @@ try
 	# $env:PKG_CONFIG_LIBDIR = "$env:PKG_CONFIG_PATH"
 	# 因为它编译时要用宿主机的 wayland-scanner 可执行文件，而且是通过 pkg-config
 	# 来找到的。
-	New-Meson-Cross-File -pkg_config_libdir "$env:PKG_CONFIG_LIBDIR:$default_pkg_config_libdir"
+	New-Meson-Cross-File -pkg_config_libdir "${default_pkg_config_libdir}:${env:PKG_CONFIG_LIBDIR}"
 	Set-Location $source_path
 	meson setup build/ `
 		--prefix="$install_path" `
