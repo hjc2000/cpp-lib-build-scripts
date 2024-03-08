@@ -42,13 +42,13 @@ try
 	}	
 
 	Set-Location $build_path
-	ninja -j12 | Out-Null
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install | Out-Null
+	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }

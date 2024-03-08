@@ -30,8 +30,8 @@ try
 	--with-softfloat
 
 	make clean
-	make -j12 > /dev/null
-	make install > /dev/null
+	make -j12
+	make install
 "@
 
 	if ($LASTEXITCODE)

@@ -35,19 +35,19 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
-		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig" | Out-Null
+		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig"
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
 	
-	ninja -j12 | Out-Null
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install | Out-Null
+	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
