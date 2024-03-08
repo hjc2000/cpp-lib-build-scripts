@@ -27,7 +27,6 @@ try
 		-Dgallium-xa=disabled `
 		-Dgallium-opencl=disabled `
 		-Dgallium-rusticl=false `
-		-Dgallium-drivers=kmsro `
 		-Dopengl=false
 
 	# -Dgallium-nine=disabled
