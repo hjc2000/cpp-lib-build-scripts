@@ -212,7 +212,7 @@ function New-Meson-Cross-File
 	pkg-config = 'pkg-config'
 
 	[properties]
-	pkg_config_libdir = $($pkg_config_libdir ? $pkg_config_libdir : "'$total_install_path/lib/pkgconfig'")
+	pkg_config_libdir = '$($pkg_config_libdir ? $pkg_config_libdir : "$total_install_path/lib/pkgconfig")'
 
 	[host_machine]
 	system = 'linux'
