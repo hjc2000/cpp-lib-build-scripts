@@ -30,8 +30,7 @@ try
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path"
 
-	sudo su
-	export PATH=$env:PATH
+	mkdir /var/empty
 
 	make clean
 	make -j12
