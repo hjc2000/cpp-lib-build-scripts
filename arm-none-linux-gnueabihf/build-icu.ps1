@@ -14,7 +14,7 @@ Push-Location $repos_path
 try
 {	
 	@"
-	& $project_root_path/linux/build-icu.ps1
+	$project_root_path/linux/build-icu.ps1
 "@ | pwsh
 
 	get-git-repo.ps1 -git_url "https://github.com/unicode-org/icu.git"
