@@ -13,10 +13,6 @@ try
 		Install-Lib -src_path $lib -dst_path $total_install_path
 	}
 }
-catch
-{
-	throw
-}
 finally
 {
 	Pop-Location
