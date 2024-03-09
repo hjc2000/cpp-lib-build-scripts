@@ -12,7 +12,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://github.com/nlohmann/json.git
+	get-git-repo.ps1 -git_url "https://github.com/nlohmann/json.git"
 	New-Empty-Dir -Path $install_path
 	Copy-Item -Path "$source_path/single_include/nlohmann/json.hpp" `
 		-Destination $install_path `
