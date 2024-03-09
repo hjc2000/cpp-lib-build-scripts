@@ -32,6 +32,8 @@ try
 		
 	ninja -j12
 	ninja install
+		
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {

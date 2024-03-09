@@ -17,6 +17,8 @@ try
 	Copy-Item -Path "$source_path/amf/public/include/*" `
 		-Destination $amf_include_install_path `
 		-Force -Recurse
+
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {

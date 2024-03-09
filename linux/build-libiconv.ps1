@@ -26,10 +26,8 @@ try
 	make -j12
 	make install
 "@
-}
-catch
-{
-	throw
+		
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
