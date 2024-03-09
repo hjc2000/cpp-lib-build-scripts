@@ -26,10 +26,6 @@ try
 	make install
 "@
 }
-catch
-{
-	throw
-}
 finally
 {
 	Pop-Location

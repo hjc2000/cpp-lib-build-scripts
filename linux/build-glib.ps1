@@ -15,7 +15,7 @@ Push-Location $repos_path
 try
 {
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url https://github.com/GNOME/glib.git
+	get-git-repo.ps1 -git_url "https://github.com/GNOME/glib.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $source_path

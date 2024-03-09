@@ -13,7 +13,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://github.com/tukaani-project/xz.git `
+	get-git-repo.ps1 -git_url "https://github.com/tukaani-project/xz.git" `
 		-branch_name v5.6
 
 	New-Empty-Dir $build_path
@@ -25,10 +25,6 @@ try
 
 	ninja -j12
 	ninja install
-}
-catch
-{
-	throw
 }
 finally
 {

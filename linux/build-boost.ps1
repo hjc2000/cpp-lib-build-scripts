@@ -15,10 +15,6 @@ try
 		-Force `
 		-Recurse
 }
-catch
-{
-	throw
-}
 finally
 {
 	Pop-Location

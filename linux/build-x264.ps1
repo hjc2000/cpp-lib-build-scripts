@@ -31,10 +31,6 @@ try
 "@
 
 }
-catch
-{
-	throw
-}
 finally
 {
 	Pop-Location
