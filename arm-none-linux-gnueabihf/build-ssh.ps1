@@ -32,7 +32,8 @@ try
 
 	make clean
 	make -j12
-	chroot $total_install_path make install
+	sudo chroot $total_install_path
+	make install
 "@
 	if ($LASTEXITCODE)
 	{
