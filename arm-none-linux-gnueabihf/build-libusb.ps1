@@ -22,7 +22,6 @@ try
 	cd $source_path
 	
 	./configure -h
-	exit
 
 	./configure \
 	--prefix="$install_path" \
