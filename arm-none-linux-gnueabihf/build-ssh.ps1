@@ -28,12 +28,14 @@ try
 	--prefix="" \
 	--host=arm-none-linux-gnueabihf \
 	--with-zlib="$total_install_path" \
-	--with-ssl-dir="$total_install_path"
+	--with-ssl-dir="$total_install_path" \
+	--with-privsep-path="$install_path/var/empty"
 
 	make clean
 	make -j12
-	sudo $(which make) install
+	make install
 "@
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
