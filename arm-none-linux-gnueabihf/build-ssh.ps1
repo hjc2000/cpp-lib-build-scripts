@@ -18,12 +18,12 @@ try
 
 	get-git-repo.ps1 -git_url "https://github.com/openssh/openssh-portable.git"
 	Set-Location $source_path
-	Auto-Make
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
 	cd $source_path
-	
+	autoreconf -fi
+
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \

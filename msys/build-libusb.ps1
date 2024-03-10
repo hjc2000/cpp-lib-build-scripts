@@ -1,6 +1,5 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
 $source_path = "$repos_path/libusb/"
 $install_path = "$libs_path/libusb"
@@ -18,14 +17,13 @@ try
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
-	cd $source_path
+	cd $(cygpath.exe $source_path)
 	autoreconf -fi
 
 	./configure -h
 
 	./configure \
-	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf \
+	--prefix="$(cygpath.exe $install_path)" \
 	--enable-udev=no
 
 	make clean

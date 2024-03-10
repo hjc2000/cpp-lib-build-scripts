@@ -155,11 +155,6 @@ function Total-Install
 }
 
 
-function Auto-Make
-{
-	autoreconf -fi
-}
-
 
 function Get-Cmake-Set-Find-Lib-Path-String
 {
