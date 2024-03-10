@@ -30,7 +30,8 @@ try
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path" \
 	--with-privsep-path="$install_path/var/empty" \
-	--disable-strip
+	--disable-strip \
+	--disable-pkcs11
 
 	make clean
 	make -j12
