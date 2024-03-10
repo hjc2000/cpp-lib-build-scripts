@@ -13,6 +13,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-zlib.ps1"
+
 	get-git-repo.ps1 -git_url "https://github.com/mkj/dropbear.git"
 
 	# 执行命令进行构建
@@ -20,13 +22,10 @@ try
 	cd $source_path
 	autoreconf -fi
 
-	./configure -h
-	exit
-
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
-	--enable-udev=no
+	--with-zlib="$install_path/zlib"
 
 	make clean
 	make -j12
