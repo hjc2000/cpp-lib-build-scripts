@@ -157,10 +157,7 @@ function Total-Install
 
 function Auto-Make
 {
-	aclocal
-	autoconf
-	autoheader 
-	automake --add-missing
+	autoreconf -fi
 }
 
 
