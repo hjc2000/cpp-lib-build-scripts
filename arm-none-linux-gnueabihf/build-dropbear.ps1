@@ -25,7 +25,7 @@ try
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
-	--with-zlib="$install_path/zlib"
+	--with-zlib="$total_install_path"
 
 	make clean
 	make -j12
