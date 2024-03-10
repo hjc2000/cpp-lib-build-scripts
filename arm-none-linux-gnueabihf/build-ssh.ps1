@@ -29,7 +29,9 @@ try
 	--host=arm-none-linux-gnueabihf \
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path" \
-	--with-privsep-path="$install_path/var/empty"
+	--with-privsep-path="$install_path/var/empty" \
+	--with-libs \
+	--disable-etc-default-login
 
 	make clean
 	make -j12
