@@ -26,6 +26,7 @@ try
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
+	--enable-udev=no
 
 	make clean
 	make -j12
