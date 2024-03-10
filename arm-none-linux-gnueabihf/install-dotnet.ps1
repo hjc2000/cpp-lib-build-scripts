@@ -3,7 +3,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
 $source_path = "$repos_path/aspnetcore-8.0.2/"
-$install_path = "$libs_path/aspnetcore-8.0.2/bin"
+$install_path = "$libs_path/aspnetcore-8.0.2/"
 
 Push-Location $repos_path
 try
@@ -17,7 +17,7 @@ try
 	
 	# 将头文件复制到安装目录
 	Copy-Item -Path "$source_path/*" `
-		-Destination $install_path `
+		-Destination "$install_path/bin" `
 		-Force -Recurse
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
