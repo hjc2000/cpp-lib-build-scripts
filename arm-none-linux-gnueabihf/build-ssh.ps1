@@ -29,11 +29,12 @@ try
 	--host=arm-none-linux-gnueabihf \
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path" \
-	--with-privsep-path="$install_path/var/empty"
+	--with-privsep-path="$install_path/var/empty" \
+	--disable-strip
 
 	make clean
-	strip=arm-none-linux-gnueabihf-strip make -j12
-	strip=arm-none-linux-gnueabihf-strip make install
+	make -j12
+	make install
 "@
 
 	New-Item -Path "$install_path/$install_path" -ItemType Directory -Force
