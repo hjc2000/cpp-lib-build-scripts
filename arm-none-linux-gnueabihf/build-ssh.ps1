@@ -24,7 +24,7 @@ try
 	run-bash-cmd.ps1 @"
 	cd $source_path
 
-	export STRIP=arm-none-linux-gnueabihf-strip
+	export strip=arm-none-linux-gnueabihf-strip
 	
 	./configure \
 	--prefix="$install_path" \
