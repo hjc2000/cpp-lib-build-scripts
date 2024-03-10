@@ -23,6 +23,8 @@ try
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
 	cd $source_path
+
+	export STRIP=arm-none-linux-gnueabihf-strip
 	
 	./configure \
 	--prefix="$install_path" \
