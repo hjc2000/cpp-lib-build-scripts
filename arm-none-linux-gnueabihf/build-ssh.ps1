@@ -25,7 +25,7 @@ try
 	cd $source_path
 	
 	./configure \
-	--prefix="$install_path" \
+	--prefix="/" \
 	--host=arm-none-linux-gnueabihf \
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path"
@@ -34,7 +34,7 @@ try
 
 	make clean
 	make -j12
-	make install
+	chroot $install_path make install
 "@
 	if ($LASTEXITCODE)
 	{
