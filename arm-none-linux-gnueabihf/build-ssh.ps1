@@ -24,8 +24,6 @@ try
 	cd $source_path
 	autoreconf -fi
 
-	./configure -h
-	
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
@@ -46,6 +44,15 @@ try
 	}
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+}
+catch
+{
+	run-bash-cmd.ps1 @"
+	cd $source_path
+	./configure -h
+"@
+	
+	throw
 }
 finally
 {
