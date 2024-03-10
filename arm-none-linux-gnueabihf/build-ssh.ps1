@@ -31,7 +31,8 @@ try
 	--with-ssl-dir="$total_install_path" \
 	--with-privsep-path="$install_path/var/empty" \
 	--with-libs \
-	--disable-etc-default-login
+	--disable-etc-default-login \
+	--disable-strip
 
 	make clean
 	make -j12
