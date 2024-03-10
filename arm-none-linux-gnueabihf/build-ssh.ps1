@@ -36,7 +36,6 @@ try
 	make install
 "@
 
-	New-Item -Path "$install_path/$install_path" -ItemType Directory -Force
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
