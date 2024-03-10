@@ -30,8 +30,6 @@ try
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path"
 
-	mkdir /var/empty
-
 	make clean
 	make -j12
 	chroot $install_path make install
