@@ -24,6 +24,8 @@ try
 	cd $source_path
 	autoreconf -fi
 
+	./configure -h
+	
 	./configure \
 	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
