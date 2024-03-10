@@ -33,6 +33,7 @@ try
 	make clean
 	make -j12
 	sudo chroot $total_install_path
+	export $PATH=$env:PATH
 	make install
 "@
 	if ($LASTEXITCODE)
