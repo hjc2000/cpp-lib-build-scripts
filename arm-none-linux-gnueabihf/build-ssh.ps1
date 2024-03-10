@@ -23,8 +23,6 @@ try
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
 	cd $source_path
-
-	export strip=arm-none-linux-gnueabihf-strip
 	
 	./configure \
 	--prefix="$install_path" \
@@ -34,8 +32,8 @@ try
 	--with-privsep-path="$install_path/var/empty"
 
 	make clean
-	make -j12
-	make install
+	strip=arm-none-linux-gnueabihf-strip make -j12
+	strip=arm-none-linux-gnueabihf-strip make install
 "@
 
 	New-Item -Path "$install_path/$install_path" -ItemType Directory -Force
