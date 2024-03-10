@@ -33,7 +33,14 @@ try
 	--with-libs \
 	--disable-etc-default-login \
 	--disable-strip
+"@
 
+	$makefile_content = Get-Content -Path "$source_path/Makefile"
+	$makefile_content.Replace("./ssh-keygen", "ssh-keygen")
+	$makefile_content | Out-File -FilePath "$source_path/Makefile" -Force
+
+	run-bash-cmd.ps1 @"
+	cd $source_path
 	make clean
 	make -j12
 	make install
