@@ -55,10 +55,10 @@ try
 }
 catch
 {
-	run-bash-cmd.ps1 @"
-	cd $source_path
-	./configure -h
-"@
+	# 	run-bash-cmd.ps1 @"
+	# 	cd $source_path
+	# 	./configure -h
+	# "@
 	
 	throw
 }
