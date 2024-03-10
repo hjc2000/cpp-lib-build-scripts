@@ -25,7 +25,7 @@ try
 	cd $source_path
 	
 	./configure \
-	--prefix="" \
+	--prefix="$install_path" \
 	--host=arm-none-linux-gnueabihf \
 	--with-zlib="$total_install_path" \
 	--with-ssl-dir="$total_install_path" \
