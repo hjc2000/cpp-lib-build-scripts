@@ -16,8 +16,8 @@ try
 	Build-Dependency "build-openssl.ps1"
 	Build-Dependency "build-zlib.ps1"
 
-	get-git-repo.ps1 -git_url "https://github.com/openssh/openssh-portable.git"
-	Set-Location $source_path
+	get-git-repo.ps1 -git_url "https://github.com/openssh/openssh-portable.git" `
+		-branch_name "V_8_0"
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
@@ -54,12 +54,7 @@ try
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
-{
-	# 	run-bash-cmd.ps1 @"
-	# 	cd $source_path
-	# 	./configure -h
-	# "@
-	
+{	
 	throw
 }
 finally
