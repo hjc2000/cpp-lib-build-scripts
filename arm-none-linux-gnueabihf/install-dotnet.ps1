@@ -3,7 +3,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
 $source_path = "$repos_path/aspnetcore-8.0.2/"
-$install_path = "$libs_path/aspnetcore-8.0.2/"
+$install_path = "$libs_path/aspnetcore-8.0.2/bin"
 
 Push-Location $repos_path
 try
@@ -12,16 +12,15 @@ try
 		-repo_url "https://download.visualstudio.microsoft.com/download/pr/272dbea2-057e-4032-9857-7e00b476ceec/3c472df94b1c3f5e0d009cbccc9256a6/aspnetcore-runtime-8.0.2-linux-arm.tar.gz" `
 		-out_dir_name "aspnetcore-8.0.2"
 
-	# # 准备好安装目录
-	# $amf_include_install_path = "$install_path/include/AMF/"
-	# New-Item -Path $amf_include_install_path -ItemType Directory -Force
+	# 准备好安装目录
+	New-Item -Path $install_path -ItemType Directory -Force
 	
-	# # 将头文件复制到安装目录
-	# Copy-Item -Path "$source_path/amf/public/include/*" `
-	# 	-Destination $amf_include_install_path `
-	# 	-Force -Recurse
+	# 将头文件复制到安装目录
+	Copy-Item -Path "$source_path/*" `
+		-Destination $install_path `
+		-Force -Recurse
 
-	# Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
