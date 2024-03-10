@@ -13,7 +13,7 @@ try
 		-out_dir_name "aspnetcore-8.0.2"
 
 	# 准备好安装目录
-	New-Item -Path $install_path -ItemType Directory -Force
+	New-Item -Path "$install_path/bin" -ItemType Directory -Force
 	
 	# 将头文件复制到安装目录
 	Copy-Item -Path "$source_path/*" `
