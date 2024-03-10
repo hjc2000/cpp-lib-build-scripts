@@ -32,10 +32,7 @@ try
 
 	make clean
 	make -j12
-
-	sudo su
-	export PATH=$PATH
-	make install
+	sudo $(which make) install
 "@
 	if ($LASTEXITCODE)
 	{
