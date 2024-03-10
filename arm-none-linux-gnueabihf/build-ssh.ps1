@@ -36,7 +36,7 @@ try
 "@
 
 	$makefile_content = Get-Content -Path "$source_path/Makefile"
-	$makefile_content.Replace("./ssh-keygen", "ssh-keygen")
+	$makefile_content = $makefile_content.Replace("./ssh-keygen", "ssh-keygen")
 	$makefile_content | Out-File -FilePath "$source_path/Makefile" -Force
 
 	run-bash-cmd.ps1 @"
