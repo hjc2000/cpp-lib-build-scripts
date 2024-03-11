@@ -10,7 +10,7 @@ try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/13.2.rel1/binrel/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-linux-gnueabihf.tar.xz" `
-		-out_dir_name "./"
+		-out_dir_name "arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-linux-gnueabihf"
 
 	# # 准备好安装目录
 	# New-Item -Path "$install_path/bin" -ItemType Directory -Force
