@@ -22,7 +22,7 @@ try
 	cp -a $source_path/libc/usr/lib/*so* 	$install_path/usr/lib
 "@
 
-	# Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
