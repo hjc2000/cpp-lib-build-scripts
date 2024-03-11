@@ -19,7 +19,7 @@ try
 	run-bash-cmd.ps1 @"
 	cp -a $source_path/libc/lib/*so* 		$install_path/lib
 	cp -a $source_path/lib/*so* 			$install_path/lib
-	cp -a $source_path/libc/usr/lib/*so* 	$install_path/lib
+	cp -a $source_path/libc/usr/lib/*so* 	$install_path/usr/lib
 "@
 
 	# Install-Lib -src_path $install_path -dst_path $total_install_path
