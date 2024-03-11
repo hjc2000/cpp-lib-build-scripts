@@ -181,7 +181,7 @@ function New-Meson-Cross-File
 		[string]$arch = "armv7-a",
 		[string]$toolchain_prefix = "arm-none-linux-gnueabihf-",
 		[string]$pkg_config_libdir = "",
-		[string]$link_flags = "['-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib',]",
+		[string]$link_flags = "['-L$total_install_path/lib', '-Wl,-rpath-link,$total_install_path/lib:$total_install_path/usr/lib',]",
 		[string]$c_std = "",
 		[string]$cpp_std = ""
 	)
