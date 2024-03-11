@@ -22,10 +22,6 @@ try
 	cp -a $source_path/libc/usr/lib/*so* 	$install_path/lib
 "@
 
-	Copy-Item -Path "$source_path/libc/lib/*so*" `
-		-Destination "$install_path/lib" `
-		-Force -Recurse
-
 	# Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
