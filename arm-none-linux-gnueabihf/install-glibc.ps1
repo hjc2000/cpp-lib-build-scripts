@@ -2,7 +2,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
-$source_path = "$repos_path/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-linux-gnueabihf/"
+$source_path = "$repos_path/arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-linux-gnueabihf/arm-gnu-toolchain-13.2.Rel1-x86_64-arm-none-linux-gnueabihf/arm-none-linux-gnueabihf"
 $install_path = "$libs_path/glibc/"
 
 Push-Location $repos_path
@@ -13,12 +13,18 @@ try
 		-out_dir_name "arm-gnu-toolchain-13.2.rel1-x86_64-arm-none-linux-gnueabihf"
 
 	# # 准备好安装目录
-	# New-Item -Path "$install_path/bin" -ItemType Directory -Force
+	New-Item -Path "$install_path/lib" -ItemType Directory -Force
+	New-Item -Path "$install_path/usr/lib" -ItemType Directory -Force
 	
-	# # 将头文件复制到安装目录
-	# Copy-Item -Path "$source_path/*" `
-	# 	-Destination "$install_path/bin" `
-	# 	-Force -Recurse
+	run-bash-cmd.ps1 @"
+	cp -a $source_path/libc/lib/*so* 		$install_path/lib
+	cp -a $source_path/lib/*so* 			$install_path/lib
+	cp -a $source_path/libc/usr/lib/*so* 	$install_path/lib
+"@
+
+	Copy-Item -Path "$source_path/libc/lib/*so*" `
+		-Destination "$install_path/lib" `
+		-Force -Recurse
 
 	# Install-Lib -src_path $install_path -dst_path $total_install_path
 }
