@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
 $source_path = "$repos_path/x265_git/source"
-$build_path = "$source_path/build/"
 $install_path = "$libs_path/x265/"
+$build_path = "$source_path/build/"
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -13,7 +13,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://gitee.com/Qianshunan/x265_git.git
+	get-git-repo.ps1 -git_url "https://bitbucket.org/multicoreware/x265_git.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
