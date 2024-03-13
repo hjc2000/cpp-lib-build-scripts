@@ -39,7 +39,7 @@ function Fix-PC-Config-PC-File
 	if (-Not (Test-Path -Path $path_to_pc_file))
 	{
 		Write-Host "File not found: $path_to_pc_file"
-		exit 1
+		return 1
 	}
 	
 	# 读取prefix行并提取prefix路径
@@ -47,7 +47,7 @@ function Fix-PC-Config-PC-File
 	if (-not $prefix_line)
 	{
 		Write-Host "prefix line not found in file: $path_to_pc_file"
-		exit 1
+		return 1
 	}
 	
 	$old_prefix_path = $prefix_line -split "=" | Select-Object -Last 1
