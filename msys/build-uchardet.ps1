@@ -34,7 +34,7 @@ try
 
 	ninja install
 
-	Fix-PC-Config-PC-File "$install_path/lib/pkgconfig/uchardet.pc"
+	cygpath-pkg-config-pc-path.exe "$install_path/lib/pkgconfig/uchardet.pc"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
