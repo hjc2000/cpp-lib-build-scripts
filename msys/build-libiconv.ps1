@@ -1,6 +1,7 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
+$source_path = "$repos_path/libiconv/libiconv-1.17/"
 $install_path = "$libs_path/libiconv"
 if (Test-Path -Path $install_path)
 {
@@ -16,8 +17,7 @@ try
 		-out_dir_name libiconv
 
 	run-bash-cmd.ps1 -cmd @"
-	set -e
-	cd $(cygpath.exe $repos_path)/libiconv/libiconv-1.17/
+	cd $(cygpath.exe $source_path)
 
 	./configure \
 	--prefix=$(cygpath.exe $install_path)
