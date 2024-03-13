@@ -36,10 +36,8 @@ try
 
 	ninja install
 
-
 	# 修复 .pc 文件内的路径
 	cygpath-pkg-config-pc-path.exe "$install_path/lib/pkgconfig/x265.pc"
-
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
