@@ -19,6 +19,7 @@ try
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
+		-DCMAKE_BUILD_TYPE=Release `
 		-DENABLE_SHARED=on `
 		-DENABLE_PIC=on `
 		-DENABLE_ASSEMBLY=off
