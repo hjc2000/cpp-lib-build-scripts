@@ -1,8 +1,8 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/SDL/"
-$install_path = "$libs_path/sdl2/"
+$source_path = "$repos_path/eigen/"
+$install_path = "$libs_path/eigen/"
 $build_path = "$source_path/build/"
 if (Test-Path -Path $install_path)
 {
@@ -13,9 +13,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://gitee.com/mycn027b/SDL.git" `
-		-branch_name "release-2.30.x"
-
+	get-git-repo.ps1 -git_url "https://gitlab.com/libeigen/eigen.git"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
@@ -32,10 +30,7 @@ try
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DSDL_SHARED=ON `
-		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=OFF `
-		-DSDL_IBUS=OFF
+		-DEIGEN_BUILD_PKGCONFIG=ON
 		
 	if ($LASTEXITCODE)
 	{
