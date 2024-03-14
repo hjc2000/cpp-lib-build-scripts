@@ -50,13 +50,7 @@ try
 
 	ninja install
 
-	# 修复 .pc 文件内的路径
-	$pc_files = Get-ChildItem -Path "$install_path/lib/pkgconfig/*.pc" -File -Recurse
-	foreach ($pc_file in $pc_files)
-	{
-		cygpath-pkg-config-pc-path.exe $pc_file.FullName
-	}
-
+	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

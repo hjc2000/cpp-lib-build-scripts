@@ -203,3 +203,12 @@ function Build-Dependency
 		throw "$script_name 执行失败"
 	}
 }
+
+function Fix-Pck-Config-Pc-Path
+{
+	$pc_files = Get-ChildItem -Path "$install_path/lib/pkgconfig/*.pc" -File -Recurse
+	foreach ($pc_file in $pc_files)
+	{
+		cygpath-pkg-config-pc-path.exe $pc_file.FullName
+	}
+}
