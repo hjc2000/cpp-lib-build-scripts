@@ -34,7 +34,12 @@ try
 
 	ninja install
 
-	cygpath-pkg-config-pc-path.exe "$install_path/lib/pkgconfig/uchardet.pc"
+	$pc_files = Get-ChildItem -Path "$install_path/lib/pkgconfig/*.pc" -File -Recurse
+	foreach ($pc_file in $pc_files)
+	{
+		cygpath-pkg-config-pc-path.exe $pc_file.FullName
+	}
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

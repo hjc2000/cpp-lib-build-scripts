@@ -1,8 +1,8 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/SDL/"
-$install_path = "$libs_path/sdl2/"
+$source_path = "$repos_path/zlib/"
+$install_path = "$libs_path/zlib/"
 $build_path = "$source_path/build/"
 if (Test-Path -Path $install_path)
 {
@@ -13,30 +13,15 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://gitee.com/mycn027b/SDL.git `
-		-branch_name release-2.30.x
+	get-git-repo.ps1 -git_url "https://github.com/madler/zlib.git"
 
-
-	New-Empty-Dir $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
-		-Content @"
-	set(CMAKE_SYSTEM_NAME Windows)
-	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER clang)
-	set(CMAKE_CXX_COMPILER clang++)
-	set(CMAKE_RC_COMPILER llvm-rc)
-"@
-
+	New-Empty-Dir -Path $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DSDL_SHARED=ON `
-		-DSDL_STATIC=OFF `
-		-DSDL_WAYLAND=OFF `
-		-DSDL_IBUS=OFF
-		
+		-DBUILD_SHARED_LIBS=ON `
+		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig"
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
@@ -50,7 +35,6 @@ try
 
 	ninja install
 
-	# 修复 .pc 文件内的路径
 	$pc_files = Get-ChildItem -Path "$install_path/lib/pkgconfig/*.pc" -File -Recurse
 	foreach ($pc_file in $pc_files)
 	{
