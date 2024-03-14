@@ -18,10 +18,10 @@ try
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
 	set -e
-	cd $source_path
+	cd $(cygpath.exe $source_path)
 
 	./configure \
-	--prefix="$install_path"
+	--prefix="$(cygpath.exe $install_path)"
 
 	make clean
 	make -j12
