@@ -1,9 +1,8 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
-$source_path = "$repos_path/zlib/"
-$install_path = "$libs_path/zlib/"
+$source_path = "$repos_path/Bento4/"
+$install_path = "$libs_path/bento4/"
 $build_path = "$source_path/jc_build/"
 if (Test-Path -Path $install_path)
 {
@@ -14,28 +13,24 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://github.com/madler/zlib.git
+	get-git-repo.ps1 -git_url "https://github.com/axiomatic-systems/Bento4.git"
 
-	New-Empty-Dir -Path $build_path
+	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
-	set(CROSS_COMPILE_ARM 1)
-	set(CMAKE_SYSTEM_NAME Linux)
-	set(CMAKE_SYSTEM_PROCESSOR armv7-a)
-
-	set(CMAKE_C_COMPILER arm-none-linux-gnueabihf-gcc)
-	set(CMAKE_CXX_COMPILER arm-none-linux-gnueabihf-g++)
-
-	$(Get-Cmake-Set-Find-Lib-Path-String)
+	set(CMAKE_SYSTEM_NAME Windows)
+	set(CMAKE_SYSTEM_PROCESSOR x64)
+	set(CMAKE_C_COMPILER clang)
+	set(CMAKE_CXX_COMPILER clang++)
+	set(CMAKE_RC_COMPILER llvm-rc)
 "@
-
-	# 切换到 build 目录开始构建
+	
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DBUILD_SHARED_LIBS=ON `
-		-DINSTALL_PKGCONFIG_DIR="$install_path/lib/pkgconfig"
+		-DCMAKE_BUILD_TYPE=Release `
+		-DCMAKE_INSTALL_PREFIX="$install_path"
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
@@ -49,11 +44,8 @@ try
 
 	ninja install
 
+	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-}
-catch
-{
-	throw
 }
 finally
 {
