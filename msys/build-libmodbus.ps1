@@ -13,15 +13,11 @@ Push-Location $repos_path
 try
 {
 	get-git-repo.ps1 -git_url "https://github.com/stephane/libmodbus.git"
-	Set-Location $source_path
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
 	cd $(cygpath.exe $source_path)
 	autoreconf -fi
-
-	./configure -h
-	# exit
 
 	./configure \
 	--prefix="$(cygpath.exe $install_path)" \

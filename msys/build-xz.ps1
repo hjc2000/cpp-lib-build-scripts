@@ -13,8 +13,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://github.com/tukaani-project/xz.git `
-		-branch_name v5.6
+	get-git-repo.ps1 -git_url "https://github.com/tukaani-project/xz.git" `
+		-branch_name "v5.6"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path

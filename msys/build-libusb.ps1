@@ -13,7 +13,6 @@ Push-Location $repos_path
 try
 {
 	get-git-repo.ps1 -git_url "https://github.com/libusb/libusb.git"
-	Set-Location $source_path
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
