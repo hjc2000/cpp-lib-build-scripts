@@ -195,7 +195,7 @@ function Build-Dependency
 
 	# 启用另一个进程，不要让依赖项的构建脚本破坏当前环境的环境变量
 	@"
-	& "$build_script_path/$script_name"
+	$build_script_path/$script_name
 "@ | pwsh
 
 	if ($LASTEXITCODE)
@@ -217,5 +217,20 @@ function Fix-Pck-Config-Pc-Path
 	catch
 	{
 		Write-Host "cygpath-pkg-config-pc-path 失败。"
+	}
+}
+
+
+function Install-Dependent-Dlls-From-Dir
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[string]$dll_dir
+	)
+	
+	$dlls = Get-ChildItem -Path "$dll_dir/*.dll" -File
+	foreach ($dll in $dlls)
+	{
+		Copy-Item -Path $dll.FullName -Destination "$install_path/bin/" -Force
 	}
 }

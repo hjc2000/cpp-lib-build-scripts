@@ -68,6 +68,12 @@ try
 			-Force
 	}
 
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/sdl2/bin"
+
+	# 将自己安装到 .total-install 目录中
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
