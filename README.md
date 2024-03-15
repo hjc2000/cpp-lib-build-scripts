@@ -62,6 +62,20 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 这样才能执行 ps1 脚本，否则会被以安全为理由阻止执行。
 
+## 安装 cygpath-pkg-config-pc-path 可执行文件
+
+克隆仓库
+
+```
+https://github.com/hjc2000/video.git
+```
+
+里面有一个 C# 的控制台项目，名为 cygpath-pkg-config-pc-path。编译后发布到一个你喜欢的目录下。记得将该目录添加到环境变量 `Path` 中。
+
+
+
+需要 `cygpath-pkg-config-pc-path` 这个命令是因为在 msys2 中编译 cmake 的项目时，如果这些项目生成 pkg-config 的 .pc 文件，它里面的路径的是 windows 风格的。这会导致其他项目，例如使用 configure 的项目无法解析这种路径。所以需要修复这种风格的路径，将它变成 msys2 风格的。
+
 # linux 环境搭建
 
 首先要安装 powershell7，可以参考微软的文档。其他软件在使用过程中逐渐安装就行了。缺啥补啥。
