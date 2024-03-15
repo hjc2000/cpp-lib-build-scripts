@@ -1,7 +1,7 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/AMF_1/"
+$source_path = "$repos_path/AMF/"
 $install_path = "$libs_path/amf/"
 if (Test-Path -Path $install_path)
 {
@@ -12,7 +12,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://gitee.com/mirrors_GPUOpen-LibrariesAndSDKs/AMF_1.git
+	get-git-repo.ps1 -git_url "https://github.com/GPUOpen-LibrariesAndSDKs/AMF.git"
 
 	# 准备好安装目录
 	$amf_include_install_path = "$install_path/include/AMF/"
