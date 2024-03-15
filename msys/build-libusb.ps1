@@ -19,8 +19,6 @@ try
 	cd $(cygpath.exe $source_path)
 	autoreconf -fi
 
-	./configure -h
-
 	./configure \
 	--prefix="$(cygpath.exe $install_path)" \
 	--enable-udev=no

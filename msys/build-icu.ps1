@@ -17,7 +17,6 @@ try
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
-	set -e
 	cd $(cygpath.exe $source_path)
 
 	./configure \
