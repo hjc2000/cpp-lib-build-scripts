@@ -20,7 +20,8 @@ try
 	cd $(cygpath.exe $source_path)
 
 	./configure \
-	--prefix=$(cygpath.exe $install_path)
+	--prefix=$(cygpath.exe $install_path) \
+	--enable-static=no
 
 	make clean
 	make -j12
