@@ -98,15 +98,35 @@ function Apt-Ensure-Packets
 			}
 		}		
 	}
-	catch
-	{
-		throw
-	}
 	finally
 	{
 		Pop-Location	
 	}
 }
+
+function Pacman-Ensure-Packages
+{
+	param(
+		[Parameter(Mandatory = $true)]
+		[string[]]$RequiredPackages
+	)
+    
+	foreach ($pkg in $RequiredPackages)
+	{
+		Write-Output "Checking for package: $pkg"
+		$installed = pacman -Q $pkg
+		if ($installed -match 'is not installed')
+		{
+			Write-Output "$pkg is not installed. Installing..."
+			pacman -S $pkg --noconfirm
+		}
+		else
+		{
+			Write-Output "$pkg is already installed."
+		}
+	}
+}
+
 
 function Total-Install
 {

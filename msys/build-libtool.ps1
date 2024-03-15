@@ -1,6 +1,5 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
 $source_path = "$repos_path/libtool/libtool-2.4.7"
 $install_path = "$libs_path/libtool"
@@ -18,12 +17,11 @@ try
 		-out_dir_name "libtool"
 
 	run-bash-cmd.ps1 -cmd @"
-	cd $source_path
+	cd $(cygpath.exe $source_path)
 	autoreconf -fi
 
 	./configure \
-	--prefix="$install_path" \
-	--host=arm-none-linux-gnueabihf \
+	--prefix="$(cygpath.exe $install_path)" \
 	--enable-ltdl-install
 
 	make clean
