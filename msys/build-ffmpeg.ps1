@@ -49,9 +49,7 @@ try
 		throw "$source_path 编译失败"
 	}
 
-	# 将 msys2 中的 dll 复制到安装目录
-	# 可以用 ldd ffmpeg.exe | grep ucrt64 命令来查看有哪些依赖是来自 ucrt64 的
-	$msys_dlls = @(
+	Install-Msys-Dlls @(
 		"/ucrt64/bin/libgcc_s_seh-1.dll",
 		"/ucrt64/bin/libbz2-1.dll",
 		"/ucrt64/bin/libiconv-2.dll",
@@ -60,14 +58,6 @@ try
 		"/ucrt64/bin/libwinpthread-1.dll",
 		"/ucrt64/bin/zlib1.dll"
 	)
-	Write-Host "正在复制 msys2 中的 dll 到 安装目录/bin"
-	foreach ($msys_dll in $msys_dlls)
-	{
-		Copy-Item -Path $(cygpath.exe $msys_dll -w) `
-			-Destination "$install_path/bin/" `
-			-Force
-	}
-
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"

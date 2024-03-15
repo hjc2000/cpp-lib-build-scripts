@@ -220,17 +220,33 @@ function Fix-Pck-Config-Pc-Path
 	}
 }
 
-
+# 从指定路径安装依赖的 dll 到自己的 $install_path 中。
+# 会收集指定目录下的 dll 然后安装。收集过程是不递归的。
 function Install-Dependent-Dlls-From-Dir
 {
 	param (
 		[Parameter(Mandatory = $true)]
-		[string]$dll_dir
+		[string]$dll_dir	# dll 所在的路径。将从这里以非递归的方式收集 dll 文件。
 	)
 	
 	$dlls = Get-ChildItem -Path "$dll_dir/*.dll" -File
 	foreach ($dll in $dlls)
 	{
 		Copy-Item -Path $dll.FullName -Destination "$install_path/bin/" -Force
+	}
+}
+
+function Install-Msys-Dlls
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		[array]$msys_dlls	# msys 的 dll 的路径。需要使用 msys 的路径，而不是 windows 路径。
+	)
+	
+	foreach ($msys_dll in $msys_dlls)
+	{
+		Copy-Item -Path $(cygpath.exe $msys_dll -w) `
+			-Destination "$install_path/bin/" `
+			-Force
 	}
 }
