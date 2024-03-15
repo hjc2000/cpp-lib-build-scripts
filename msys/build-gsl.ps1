@@ -13,7 +13,7 @@ Push-Location $repos_path
 try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
-		-repo_url "https://mirror.ibcp.fr/pub/gnu/gsl/gsl-2.7.1.tar.gz" `
+		-repo_url "https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz" `
 		-out_dir_name "gsl"
 
 	run-bash-cmd.ps1 -cmd @"
