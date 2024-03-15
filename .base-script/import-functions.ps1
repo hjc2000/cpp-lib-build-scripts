@@ -76,7 +76,7 @@ function Apt-Ensure-Packets
 {
 	param (
 		[Parameter(Mandatory = $true)]
-		[array]$packets
+		[string[]]$packets
 	)
 		
 	if (-not $IsLinux)
