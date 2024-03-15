@@ -61,3 +61,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
 这样才能执行 ps1 脚本，否则会被以安全为理由阻止执行。
+
+# linux 环境搭建
+
+首先要安装 powershell7，可以参考微软的文档。其他软件在使用过程中逐渐安装就行了。缺啥补啥。
