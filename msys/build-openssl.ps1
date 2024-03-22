@@ -36,6 +36,7 @@ try
 		throw "$source_path 编译失败"
 	}
 
+	Copy-Item -Path $install_path/lib64 -Destination $install_path/lib -Force -Recurse
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
