@@ -114,8 +114,10 @@ function Pacman-Ensure-Packages
 	foreach ($pkg in $RequiredPackages)
 	{
 		Write-Output "Checking for package: $pkg"
-		$installed = pacman -Q $pkg
-		if ($installed -match 'is not installed')
+		run-bash-cmd.ps1 @"
+		pacman -Q $pkg
+"@
+		if ($LASTEXITCODE)
 		{
 			Write-Output "$pkg is not installed. Installing..."
 			run-bash-cmd.ps1 @"
