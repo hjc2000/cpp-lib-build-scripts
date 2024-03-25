@@ -18,6 +18,9 @@ try
 	Build-Dependency "build-openssl.ps1"
 	Build-Dependency "build-sdl2.ps1"
 	Build-Dependency "build-amf.ps1"
+	Build-Dependency "build-xz.ps1"
+	Build-Dependency "build-zlib.ps1"
+	Build-Dependency "build-bzip2.ps1"
 
 	
 	Set-Location $repos_path
