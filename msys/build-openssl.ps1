@@ -3,7 +3,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 $source_path = "$repos_path/openssl"
 $install_path = "$libs_path/openssl"
-$build_path = "$source_path/build" # cmake 项目才需要
+$build_path = "$source_path/build"
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
