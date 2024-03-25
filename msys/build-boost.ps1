@@ -14,7 +14,7 @@ Push-Location $repos_path
 try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
-		-repo_url "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.bz2" `
+		-repo_url "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.zip" `
 		-out_dir_name "boost"
 
 	Copy-Item -Path $source_path `
