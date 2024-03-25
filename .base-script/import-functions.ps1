@@ -269,8 +269,16 @@ function Install-Msys-Dlls
 	
 	foreach ($msys_dll in $msys_dlls)
 	{
-		Copy-Item -Path $(cygpath.exe $msys_dll -w) `
-			-Destination "$install_path/bin/" `
-			-Force
+		$win_path = cygpath.exe $msys_dll -w
+		if (Test-Path $win_path)
+		{
+			Copy-Item -Path $(cygpath.exe $msys_dll -w) `
+				-Destination "$install_path/bin/" `
+				-Force
+		}
+		else
+		{
+			Write-Host "$msys_dll 不存在"
+		}
 	}
 }
