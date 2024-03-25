@@ -20,19 +20,21 @@ try
 		-Content @"
 	set(CMAKE_SYSTEM_NAME Windows)
 	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER clang)
-	set(CMAKE_CXX_COMPILER clang++)
-	set(CMAKE_RC_COMPILER llvm-rc)
+	set(CMAKE_C_COMPILER gcc)
+	set(CMAKE_CXX_COMPILER g++)
+	SET(CMAKE_RC_COMPILER windres)
+	SET(CMAKE_RANLIB ranlib)
+	SET(CMAKE_ASM_YASM_COMPILER nasm)
 "@
-	
+
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DENABLE_SHARED=on `
-		-DENABLE_PIC=on `
-		-DENABLE_ASSEMBLY=off
+		-DENABLE_SHARED=ON `
+		-DENABLE_PIC=ON `
+		-DENABLE_ASSEMBLY=OFF
 		
 	if ($LASTEXITCODE)
 	{
