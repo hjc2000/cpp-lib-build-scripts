@@ -21,6 +21,7 @@ try
 	Build-Dependency "build-xz.ps1"
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-bzip2.ps1"
+	Build-Dependency "build-libiconv.ps1"
 
 	
 	Set-Location $repos_path
@@ -54,17 +55,18 @@ try
 
 	Install-Msys-Dlls @(
 		"/ucrt64/bin/libgcc_s_seh-1.dll",
-		"/ucrt64/bin/libbz2-1.dll",
-		"/ucrt64/bin/libiconv-2.dll",
-		"/ucrt64/bin/liblzma-5.dll",
 		"/ucrt64/bin/libstdc++-6.dll",
-		"/ucrt64/bin/libwinpthread-1.dll",
-		"/ucrt64/bin/zlib1.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+		# "/ucrt64/bin/zlib1.dll"
 	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/sdl2/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/xz/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bzip2/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
 
 	# 将自己安装到 .total-install 目录中
 	Install-Lib -src_path $install_path -dst_path $total_install_path
