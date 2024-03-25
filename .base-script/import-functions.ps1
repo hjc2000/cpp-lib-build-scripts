@@ -118,7 +118,9 @@ function Pacman-Ensure-Packages
 		if ($installed -match 'is not installed')
 		{
 			Write-Output "$pkg is not installed. Installing..."
+			run-bash-cmd.ps1 @"
 			pacman -S $pkg --noconfirm
+"@
 		}
 		else
 		{
