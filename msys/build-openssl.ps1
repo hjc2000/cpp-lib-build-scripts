@@ -3,7 +3,6 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 $source_path = "$repos_path/openssl"
 $install_path = "$libs_path/openssl"
-$build_path = "$source_path/build"
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -40,6 +39,7 @@ try
 	
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 }
 finally
 {

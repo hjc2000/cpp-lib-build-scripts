@@ -15,7 +15,6 @@ try
 {
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-libiconv.ps1"
-	Build-Dependency "build-libunistring.ps1"
 
 	get-git-repo.ps1 -git_url "https://github.com/curl/curl.git"
 
@@ -28,9 +27,6 @@ try
 	set(CMAKE_CXX_COMPILER g++)
 	set(CMAKE_RC_COMPILER windres)
 	set(CMAKE_RANLIB ranlib)
-
-	include_directories(BEFORE "$total_install_path/include")
-	link_directories(BEFORE "$total_install_path/lib")
 "@
 
 	Set-Location $build_path
@@ -59,13 +55,14 @@ try
 		"/ucrt64/bin/libidn2-0.dll"
 		"/ucrt64/bin/libcrypto-3-x64.dll"
 		"/ucrt64/bin/libintl-8.dll"
+		"/ucrt64/bin/libunistring-5.dll"
 	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libunistring/bin"
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 
 	ldd $install_path/bin/curl.exe
 }
