@@ -53,6 +53,13 @@ try
 
 	ninja install
 
+	Install-Msys-Dlls @(
+		"/ucrt64/bin/libssh2-1.dll"
+		"/ucrt64/bin/libpsl-5.dll"
+		"/ucrt64/bin/libidn2-0.dll"
+		"/ucrt64/bin/libcrypto-3-x64.dll"
+		"/ucrt64/bin/libintl-8.dll"
+	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libunistring/bin"
