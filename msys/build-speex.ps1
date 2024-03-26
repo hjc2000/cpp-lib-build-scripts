@@ -25,12 +25,6 @@ try
 	ld = 'ld'
 	strip = 'strip'
 	pkg-config = 'pkg-config'
-
-	[built-in options]
-	c_args = 	['-I$total_install_path/include']
-	cpp_args = 	['-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib']
-	cpp_link_args = ['-L$total_install_path/lib']
 "@
 	
 	Set-Location $source_path

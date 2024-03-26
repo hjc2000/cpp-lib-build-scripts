@@ -25,9 +25,6 @@ try
 	set(CMAKE_C_COMPILER clang)
 	set(CMAKE_CXX_COMPILER clang++)
 	set(CMAKE_RC_COMPILER llvm-rc)
-
-	include_directories(BEFORE "$total_install_path/include")
-	link_directories(BEFORE "$total_install_path/lib")
 "@
 
 	Set-Location $build_path
