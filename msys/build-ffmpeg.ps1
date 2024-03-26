@@ -24,6 +24,7 @@ try
 	Build-Dependency "build-libiconv.ps1"
 	Build-Dependency "build-webp.ps1"
 	Build-Dependency "build-srt.ps1"
+	Build-Dependency "build-librist.ps1"
 
 	
 	Set-Location $repos_path
@@ -40,6 +41,7 @@ try
 	--enable-libx265 \
 	--enable-libwebp \
 	--enable-libsrt \
+	--enable-librist \
 	--enable-openssl \
 	--enable-version3 \
 	--enable-amf \
@@ -73,6 +75,7 @@ try
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/webp/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/srt/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/librist/bin"
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
