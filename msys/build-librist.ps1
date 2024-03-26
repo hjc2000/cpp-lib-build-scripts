@@ -16,10 +16,26 @@ try
 	get-git-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
 
 	New-Empty-Dir -Path $build_path
+	Create-Text-File -Path $build_path/cross_file.ini `
+		-Content @"
+	[binaries]
+	c = 'gcc'
+	cpp = 'g++'
+	ar = 'ar'
+	ld = 'ld'
+	strip = 'strip'
+	pkg-config = 'pkg-config'
+
+	[built-in options]
+	c_args = 	['-I$total_install_path/include']
+	cpp_args = 	['-I$total_install_path/include']
+	c_link_args = ['-L$total_install_path/lib']
+	cpp_link_args = ['-L$total_install_path/lib']
+"@
+
 	Set-Location $source_path
-	$env:CC = "gcc"
-	$env:CXX = "g++"
 	meson setup jc_build/ `
+		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path"
 		
 	if ($LASTEXITCODE)
