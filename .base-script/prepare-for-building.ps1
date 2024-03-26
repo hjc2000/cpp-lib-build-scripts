@@ -1,6 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 # 本项目的根路径，也即 cpp-lib-build-scripts 这个目录的路径
+$build_script_path = $build_script_path.Replace("\", "/")
 $project_root_path = "$build_script_path/../"
 
 $repos_path = "$build_script_path/.repos"
