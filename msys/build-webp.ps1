@@ -19,12 +19,15 @@ try
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
-		set(CMAKE_SYSTEM_NAME Windows)
-		set(CMAKE_SYSTEM_PROCESSOR x64)
-		set(CMAKE_C_COMPILER gcc)
-		set(CMAKE_CXX_COMPILER g++)
-		set(CMAKE_RC_COMPILER windres)
-		set(CMAKE_RANLIB ranlib)
+	set(CMAKE_SYSTEM_NAME Windows)
+	set(CMAKE_SYSTEM_PROCESSOR x64)
+	set(CMAKE_C_COMPILER gcc)
+	set(CMAKE_CXX_COMPILER g++)
+	set(CMAKE_RC_COMPILER windres)
+	set(CMAKE_RANLIB ranlib)
+
+	include_directories(BEFORE "$total_install_path/include")
+	link_directories(BEFORE "$total_install_path/lib")	
 "@
 
 	Set-Location $build_path
