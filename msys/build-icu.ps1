@@ -19,6 +19,9 @@ try
 	run-bash-cmd.ps1 @"
 	cd $(cygpath.exe $source_path)
 
+	export CC=clang
+	export CXX=clang++
+
 	./configure \
 	--prefix="$(cygpath.exe $install_path)"
 
