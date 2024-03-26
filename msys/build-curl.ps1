@@ -13,6 +13,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-zlib.ps1"
+	Build-Dependency "build-libiconv.ps1"
+
 	get-git-repo.ps1 -git_url "https://github.com/curl/curl.git"
 
 	New-Empty-Dir $build_path
@@ -46,8 +49,13 @@ try
 
 	ninja install
 
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
+
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+
+	ldd $install_path/bin/curl.exe
 }
 finally
 {
