@@ -1,9 +1,8 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
-$source_path = "$repos_path/pango/"
-$install_path = "$libs_path/pango/"
+$source_path = "$repos_path/librist/"
+$install_path = "$libs_path/librist/"
 $build_path = "$source_path/jc_build/"
 if (Test-Path -Path $install_path)
 {
@@ -14,21 +13,15 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	# 构建依赖项
-	Build-Dependency "build-cairo.ps1"
-
-	
-	# 开始构建本体
-	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/pango.git"
+	get-git-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
 
 	New-Empty-Dir -Path $build_path
-	New-Meson-Cross-File -c_std "c17" -cpp_std "c++20"
 	Set-Location $source_path
+	$env:CC = "gcc"
+	$env:CXX = "g++"
 	meson setup jc_build/ `
-		--prefix="$install_path" `
-		--cross-file="$build_path/cross_file.ini"
-
+		--prefix="$install_path"
+		
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
@@ -43,6 +36,7 @@ try
 
 	ninja install
 
+	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

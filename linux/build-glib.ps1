@@ -19,7 +19,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $source_path
-	meson setup build/ `
+	meson setup jc_build/ `
 		--prefix="$install_path"
 
 	Set-Location $build_path

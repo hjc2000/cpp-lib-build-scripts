@@ -30,7 +30,7 @@ try
 	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${override_pkg_config_libdir}"
 	New-Meson-Cross-File
 	Set-Location $source_path
-	meson setup build/ `
+	meson setup jc_build/ `
 		-Denable-bash-completion=false `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `

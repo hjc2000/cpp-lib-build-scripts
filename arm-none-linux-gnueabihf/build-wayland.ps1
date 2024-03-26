@@ -41,7 +41,7 @@ try
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File
 	Set-Location $source_path
-	meson setup build/ `
+	meson setup jc_build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
 		
