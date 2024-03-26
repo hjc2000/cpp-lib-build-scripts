@@ -26,6 +26,9 @@ try
 	set(CMAKE_CXX_COMPILER g++)
 	set(CMAKE_RC_COMPILER windres)
 	set(CMAKE_RANLIB ranlib)
+
+	include_directories(BEFORE "$total_install_path/include")
+	link_directories(BEFORE "$total_install_path/lib")
 "@
 
 	Set-Location $build_path
@@ -51,6 +54,7 @@ try
 	
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 }
 finally
 {

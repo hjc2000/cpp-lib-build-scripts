@@ -34,14 +34,9 @@ try
 	run-bash-cmd.ps1 @"
 	cd $(cygpath.exe $source_path)
 
-	export CFLAGS = "-I$(cygpath.exe $total_install_path)/include"
-	export CXXFLAGS = "-I$(cygpath.exe $total_install_path)/include"
-	export LDFLAGS = "-L$(cygpath.exe $total_install_path)/lib"
-
 	./configure \
 	--prefix="$(cygpath.exe $install_path)" \
-	--extra-cflags="-I$(cygpath.exe $total_install_path)/include -DAMF_CORE_STATICTIC" \
-	--extra-libs="-L$(cygpath.exe $total_install_path)/lib" \
+	--extra-cflags="-DAMF_CORE_STATICTIC" \
 	--enable-libx264 \
 	--enable-libx265 \
 	--enable-libwebp \
@@ -86,6 +81,7 @@ try
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 
 	ldd $install_path/bin/ffmpeg.exe
 }

@@ -16,9 +16,6 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/Haivision/srt.git"
 
 	New-Empty-Dir $build_path
-	# 突发情况：
-	# windows 更新了还是怎么着，fopen 函数被弃用了，然后就导致编译失败。
-	# 必须使用 gcc 编译器，使用 msys 提供的 SDK 才能编译通过。
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CMAKE_SYSTEM_NAME Windows)
@@ -53,6 +50,7 @@ try
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 }
 finally
 {
