@@ -37,6 +37,7 @@ try
 	}
 
 	Copy-Item -Path $install_path/lib64 -Destination $install_path/lib -Force -Recurse
+	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

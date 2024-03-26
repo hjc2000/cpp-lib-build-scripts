@@ -49,6 +49,7 @@ try
 
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	
+	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

@@ -67,7 +67,7 @@ try
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bzip2/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
 
-	# 将自己安装到 .total-install 目录中
+	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
