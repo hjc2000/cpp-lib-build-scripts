@@ -1,9 +1,8 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/../.base-script/prepare-for-cross-building.ps1
 
-$source_path = "$repos_path/freetype/"
-$install_path = "$libs_path/freetype/"
+$source_path = "$repos_path/gstreamer/"
+$install_path = "$libs_path/gstreamer/"
 $build_path = "$source_path/jc_build/"
 if (Test-Path -Path $install_path)
 {
@@ -13,28 +12,19 @@ if (Test-Path -Path $install_path)
 
 Push-Location $repos_path
 try
-{
-	Build-Dependency "build-bzip2.ps1"
-	Build-Dependency "build-libpng.ps1"
-	Build-Dependency "build-zlib.ps1"
-
-
-	# 开始构建本体
-	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/freetype/freetype.git"
+{	
+	get-git-repo.ps1 -git_url "https://github.com/GStreamer/gstreamer.git"
 
 	New-Empty-Dir -Path $build_path
-	New-Meson-Cross-File
 	Set-Location $source_path
 	meson setup build/ `
-		--prefix="$install_path" `
-		--cross-file="$build_path/cross_file.ini"
-		
+		--prefix="$install_path"
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
-	}
-	
+	}	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)
