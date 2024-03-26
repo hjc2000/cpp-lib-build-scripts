@@ -27,8 +27,8 @@ try
 	set(CMAKE_RC_COMPILER windres)
 	set(CMAKE_RANLIB ranlib)
 
-	# include_directories(BEFORE "$total_install_path/include")
-	# link_directories(BEFORE "$total_install_path/lib")
+	include_directories(BEFORE "$total_install_path/include")
+	link_directories(BEFORE "$total_install_path/lib")
 "@
 
 	Set-Location $build_path

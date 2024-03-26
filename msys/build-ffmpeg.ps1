@@ -34,6 +34,10 @@ try
 	run-bash-cmd.ps1 @"
 	cd $(cygpath.exe $source_path)
 
+	export CFLAGS = "-I$(cygpath.exe $total_install_path)/include"
+	export CXXFLAGS = "-I$(cygpath.exe $total_install_path)/include"
+	export LDFLAGS = "-L$(cygpath.exe $total_install_path)/lib"
+
 	./configure \
 	--prefix="$(cygpath.exe $install_path)" \
 	--extra-cflags="-I$(cygpath.exe $total_install_path)/include -DAMF_CORE_STATICTIC" \
