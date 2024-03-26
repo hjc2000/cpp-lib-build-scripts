@@ -33,7 +33,7 @@ try
 	./configure \
 	--prefix="$(cygpath.exe $install_path)" \
 	--extra-cflags="-I$(cygpath.exe $total_install_path)/include -DAMF_CORE_STATICTIC" \
-	--extra-libs="-L$(cygpath.exe $total_install_path)/lib"
+	--extra-libs="-L$(cygpath.exe $total_install_path)/lib" \
 	--enable-libx264 \
 	--enable-libx265 \
 	--enable-openssl \

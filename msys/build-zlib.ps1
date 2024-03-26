@@ -45,12 +45,6 @@ try
 	}
 
 	ninja install
-	if (Test-Path $install_path/bin/libzlib1.dll)
-	{
-		# Copy-Item -Path "$install_path/bin/libzlib1.dll" `
-		# 	-Destination "$install_path/bin/zlib1.dll" `
-		# 	-Force
-	}
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
