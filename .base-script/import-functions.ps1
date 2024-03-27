@@ -121,7 +121,7 @@ function Pacman-Ensure-Packages
 		{
 			Write-Output "$pkg is not installed. Installing..."
 			run-bash-cmd.ps1 @"
-			pacman -S $pkg --noconfirm
+			pacman -S $pkg --noconfirm --overwrite '*'
 "@
 		}
 		else
