@@ -58,9 +58,9 @@ try
 	ninja install | Out-Null
 
 	Install-Msys-Dlls @(
-		"/ucrt64/bin/libidn2-0.dll"
-		"/ucrt64/bin/libintl-8.dll"
-		"/ucrt64/bin/libunistring-5.dll"
+		"/ucrt64/bin/libgcc_s_seh-1.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+		"/ucrt64/bin/libstdc++-6.dll"
 	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
