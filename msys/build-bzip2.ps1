@@ -29,6 +29,23 @@ try
 		throw "$source_path 编译失败"
 	}
 
+	$pc_file = @"
+prefix=$install_path
+exec_prefix=`${prefix}
+bindir=`${exec_prefix}/bin
+libdir=`${exec_prefix}/lib
+includedir=`${prefix}/include
+
+Name: bzip2
+Description: Lossless, block-sorting data compression
+Version: 1.0.6
+Libs: -L`${libdir} -lbz2
+Cflags: -I`${includedir}
+"@
+
+	New-Item -Path $install_path/lib/pkgconfig/bzip2.pc -ItemType File -Force
+	$pc_file | Out-File -FilePath $install_path/lib/pkgconfig/bzip2.pc
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
