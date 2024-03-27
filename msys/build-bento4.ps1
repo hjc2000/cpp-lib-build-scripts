@@ -38,13 +38,13 @@ try
 		throw "$source_path 配置失败"
 	}
 	
-	ninja -j12
+	ninja -j12 | Out-Null
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install
+	ninja install | Out-Null
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
