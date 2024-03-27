@@ -9,14 +9,7 @@ $libs_path = "$build_script_path/.libs"
 $total_install_path = "$build_script_path/.total-install"
 
 # 设置环境变量
-if ($IsWindows)
-{
-	$env:PKG_CONFIG_PATH = cygpath.exe "$total_install_path/lib/pkgconfig"
-}
-else
-{
-	$env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
-}
+$env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
 $env:LIBRARY_PATH = "$total_install_path/lib/"
 
 New-Item -Path $repos_path -ItemType Directory -Force | Out-Null
