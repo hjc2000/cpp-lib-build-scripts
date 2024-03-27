@@ -1,8 +1,8 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/cJSON"
-$install_path = "$libs_path/cJSON"
+$source_path = "$repos_path/libzip"
+$install_path = "$libs_path/libzip"
 $build_path = "$source_path/jc_build/"
 if (Test-Path -Path $install_path)
 {
@@ -13,7 +13,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://github.com/DaveGamble/cJSON.git"
+	get-git-repo.ps1 -git_url "https://github.com/nih-at/libzip.git"
+
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
@@ -31,8 +32,8 @@ try
 	run-bash-cmd.ps1 @"
 	cmake -G "Ninja" $source_path \
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
-		-DCMAKE_INSTALL_PREFIX="${install_path}" \
-		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX="$install_path"
 "@
 		
 	if ($LASTEXITCODE)
