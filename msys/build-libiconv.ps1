@@ -32,7 +32,6 @@ try
 		throw "$source_path 编译失败"
 	}
 
-	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 }

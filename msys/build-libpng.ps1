@@ -29,12 +29,10 @@ try
 "@
 
 	Set-Location $build_path
-	run-bash-cmd.ps1 @"
-	cmake -G "Ninja" $source_path \
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
-		-DCMAKE_BUILD_TYPE=Release \
+	cmake -G "Ninja" $source_path `
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-"@
 		
 	if ($LASTEXITCODE)
 	{
@@ -51,7 +49,6 @@ try
 
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	
-	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 }
