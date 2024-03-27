@@ -12,6 +12,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-libiconv.ps1"
+
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://ftp.gnu.org/gnu/libunistring/libunistring-1.2.tar.gz" `
 		-out_dir_name "libunistring"
@@ -31,6 +33,8 @@ try
 	{
 		throw "$source_path 编译失败"
 	}
+
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
