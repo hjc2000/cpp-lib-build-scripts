@@ -14,6 +14,9 @@ Clear-Host
 Push-Location $repos_path
 try
 {
+	Pacman-Ensure-Packages @(
+		"libpsl-devel"
+	)
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-libiconv.ps1"
 	Build-Dependency "build-openssl.ps1"
@@ -46,13 +49,13 @@ try
 		throw "$source_path 配置失败"
 	}
 	
-	ninja -j12
+	ninja -j12 | Out-Null
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install
+	ninja install | Out-Null
 
 	Install-Msys-Dlls @(
 		"/ucrt64/bin/libssh2-1.dll"
