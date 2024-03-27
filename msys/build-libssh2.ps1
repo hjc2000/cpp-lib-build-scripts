@@ -1,8 +1,8 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
-$source_path = "$repos_path/curl"
-$install_path = "$libs_path/curl"
+$source_path = "$repos_path/libssh2"
+$install_path = "$libs_path/libssh2"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
@@ -14,14 +14,7 @@ Clear-Host
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-zlib.ps1"
-	Build-Dependency "build-libiconv.ps1"
-	Build-Dependency "build-openssl.ps1"
-	Build-Dependency "build-icu.ps1"
-	Build-Dependency "build-libpsl.ps1"
-	Build-Dependency "build-libssh2.ps1"
-
-	get-git-repo.ps1 -git_url "https://github.com/curl/curl.git"
+	get-git-repo.ps1 -git_url "https://github.com/libssh2/libssh2.git"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
@@ -40,8 +33,7 @@ try
 	cmake -G "Ninja" $source_path \
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX="$install_path" \
-		-DBUILD_SHARED_LIBS=ON
+		-DCMAKE_INSTALL_PREFIX="$install_path"
 "@
 		
 	if ($LASTEXITCODE)
@@ -49,31 +41,17 @@ try
 		throw "$source_path 配置失败"
 	}
 	
-	ninja -j12 | Out-Null
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install | Out-Null
-
-	Install-Msys-Dlls @(
-		"/ucrt64/bin/libidn2-0.dll"
-		"/ucrt64/bin/libintl-8.dll"
-		"/ucrt64/bin/libunistring-5.dll"
-	)
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/icu/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libpsl/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libssh2/bin"
+	ninja install
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
-
-	ldd $install_path/bin/curl.exe
 }
 finally
 {
