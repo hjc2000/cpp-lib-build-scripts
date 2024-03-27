@@ -19,12 +19,15 @@ try
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
-	c = 'gcc'
-	cpp = 'g++'
-	ar = 'ar'
-	ld = 'ld'
-	strip = 'strip'
+	c = 'clang'
+	cpp = 'clang++'
 	pkg-config = 'pkg-config'
+
+	[built-in options]
+	c_args = 	['-I$total_install_path/include']
+	cpp_args = 	['-I$total_install_path/include']
+	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libunistring.dll.a']
+	cpp_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libunistring.dll.a']
 "@
 
 	Set-Location $source_path

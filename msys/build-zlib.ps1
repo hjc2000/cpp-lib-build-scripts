@@ -65,7 +65,6 @@ try
 		-Force
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-	Install-Lib -src_path $install_path -dst_path $(cygpath.exe "/ucrt64" -w)
 }
 finally
 {
