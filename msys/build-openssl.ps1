@@ -9,6 +9,7 @@ if (Test-Path -Path $install_path)
 	return 0
 }
 
+Clear-Host
 Push-Location $repos_path
 try
 {

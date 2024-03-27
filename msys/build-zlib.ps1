@@ -20,11 +20,9 @@ try
 		-Content @"
 	set(CMAKE_SYSTEM_NAME Windows)
 	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-	set(CMAKE_RC_COMPILER windres)
-	set(CMAKE_RANLIB ranlib)
-	set(CMAKE_STRIP strip)
+	set(CMAKE_C_COMPILER clang)
+	set(CMAKE_CXX_COMPILER clang++)
+	set(CMAKE_RC_COMPILER llvm-rc)
 "@
 	
 	Set-Location $build_path
@@ -47,11 +45,6 @@ try
 	}
 
 	ninja install
-	if (Test-Path $install_path/lib/libzlib1.dll)
-	{
-		Move-Item -Path $install_path/lib/libzlib1.dll `
-			-Destination $install_path/lib/zlib1.dll
-	}
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
