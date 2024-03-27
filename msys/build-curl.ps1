@@ -20,6 +20,7 @@ try
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-libiconv.ps1"
 	Build-Dependency "build-openssl.ps1"
+	Build-Dependency "build-icu.ps1"
 
 	get-git-repo.ps1 -git_url "https://github.com/curl/curl.git"
 
@@ -68,6 +69,7 @@ try
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/icu/bin"
 
 	Fix-Pck-Config-Pc-Path
 	Install-Lib -src_path $install_path -dst_path $total_install_path
