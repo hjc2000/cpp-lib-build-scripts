@@ -26,11 +26,13 @@ try
 "@
 
 	Set-Location $build_path
-	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
+	run-bash-cmd.ps1 @"
+	cmake -G "Ninja" $source_path \
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX="$install_path" \
 		-DEIGEN_BUILD_PKGCONFIG=ON
+"@
 		
 	if ($LASTEXITCODE)
 	{

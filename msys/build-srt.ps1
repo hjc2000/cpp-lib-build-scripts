@@ -27,10 +27,12 @@ try
 "@
 
 	Set-Location $build_path
-	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_BUILD_TYPE=Release `
+	run-bash-cmd.ps1 @"
+	cmake -G "Ninja" $source_path \
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="$install_path"
+"@
 		
 	if ($LASTEXITCODE)
 	{
