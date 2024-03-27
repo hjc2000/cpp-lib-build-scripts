@@ -21,6 +21,8 @@ try
 	run-bash-cmd.ps1 -cmd @"
 	cd $(cygpath.exe $source_path)
 
+	./autogen.sh
+	
 	./configure \
 	--prefix=$(cygpath.exe $install_path)
 
