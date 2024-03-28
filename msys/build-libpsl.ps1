@@ -28,6 +28,7 @@ try
 "@
 
 	Set-Location $source_path
+	# meson设置库的默认查找路径
 	meson setup jc_build/ `
 		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path" `
