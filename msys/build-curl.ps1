@@ -1,5 +1,6 @@
 $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
+. $build_script_path/../.base-script/prepare-for-msys.ps1
 
 $source_path = "$repos_path/curl"
 $install_path = "$libs_path/curl"
@@ -13,11 +14,7 @@ if (Test-Path -Path $install_path)
 Clear-Host
 Push-Location $repos_path
 try
-{
-	# 需要执行一下，设置msys环境变量，这样 pkg-config 才能识别出这是 msys ucrt64
-	# 环境，这样才能找得到库。
-	run-bash-cmd.ps1 "true"
-	
+{	
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-libiconv.ps1"
 	Build-Dependency "build-icu.ps1"
