@@ -45,6 +45,7 @@ try
 	ninja install | Out-Null
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Auto-Ldd -bin_dir $install_path/bin
 }
 finally
 {

@@ -56,6 +56,10 @@ Cflags: -I`${includedir}
 	New-Item -Path $install_path/lib/pkgconfig/bzip2.pc -ItemType File -Force
 	$pc_file_content | Out-File -FilePath $install_path/lib/pkgconfig/bzip2.pc
 
+	Copy-Item -Path $install_path/lib/libbz2.a -Destination $install_path/lib/libbz2.lib
+	Copy-Item -Path $install_path/lib/libbz2.a -Destination $install_path/lib/libbz2.dll.a
+	Copy-Item -Path $install_path/lib/libbz2.a -Destination $install_path/lib/libbz2.dll.lib
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }

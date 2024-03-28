@@ -13,6 +13,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-zlib.ps1"
+	Build-Dependency "build-bzip2.ps1"
+	Build-Dependency "build-xz.ps1"
 	get-git-repo.ps1 -git_url "https://github.com/nih-at/libzip.git"
 
 
@@ -46,7 +49,12 @@ try
 
 	ninja install | Out-Null
 
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bzip2/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/xz/bin"
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Auto-Ldd -bin_dir $install_path/bin
 }
 finally
 {
