@@ -19,6 +19,11 @@ try
 	run-bash-cmd.ps1 -cmd @"
 	cd $(cygpath.exe $source_path)
 
+	alias gcc="clang"
+	alias ar="llvm-ar"
+	alias ranlib="llvm-ranlib"
+
+	gcc -v
 	make PREFIX=$(cygpath.exe $install_path) clean
 	make PREFIX=$(cygpath.exe $install_path) -j12
 	make PREFIX=$(cygpath.exe $install_path) install

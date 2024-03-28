@@ -45,25 +45,6 @@ try
 	}
 
 	ninja install
-	
-	# 复制 pc 文件
-	Copy-Item -Path $install_path/lib/pkgconfig/zlib.pc `
-		-Destination $install_path/lib/pkgconfig/libz.pc `
-		-Force
-	# 复制静态库文件
-	Copy-Item -Path $install_path/lib/zlib.lib `
-		-Destination $install_path/lib/libz.lib `
-		-Force
-	Copy-Item -Path $install_path/lib/zlib.lib `
-		-Destination $install_path/lib/libz.dll.lib `
-		-Force
-	Copy-Item -Path $install_path/lib/zlib.lib `
-		-Destination $install_path/lib/libz.dll.a `
-		-Force
-	Copy-Item -Path $install_path/lib/zlib.lib `
-		-Destination $install_path/lib/libzlib.lib `
-		-Force
-
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
