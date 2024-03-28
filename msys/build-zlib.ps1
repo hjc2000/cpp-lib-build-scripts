@@ -22,7 +22,6 @@ try
 	set(CMAKE_SYSTEM_PROCESSOR x64)
 	set(CMAKE_C_COMPILER clang)
 	set(CMAKE_CXX_COMPILER clang++)
-	set(CMAKE_RC_COMPILER llvm-rc)
 "@
 	
 	Set-Location $build_path
