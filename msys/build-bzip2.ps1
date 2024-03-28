@@ -29,7 +29,7 @@ try
 		throw "$source_path 编译失败"
 	}
 
-	$pc_file = @"
+	$pc_file_content = @"
 prefix=$install_path
 exec_prefix=`${prefix}
 bindir=`${exec_prefix}/bin
@@ -42,9 +42,8 @@ Version: 1.0.6
 Libs: -L`${libdir} -lbz2
 Cflags: -I`${includedir}
 "@
-
 	New-Item -Path $install_path/lib/pkgconfig/bzip2.pc -ItemType File -Force
-	$pc_file | Out-File -FilePath $install_path/lib/pkgconfig/bzip2.pc
+	$pc_file_content | Out-File -FilePath $install_path/lib/pkgconfig/bzip2.pc
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
