@@ -29,11 +29,9 @@ try
 "@
 
 	Set-Location $source_path
-	run-bash-cmd.ps1 @"
-	meson setup jc_build/ \
-		--cross-file="$build_path/cross_file.ini" \
+	meson setup jc_build/ `
+		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path"
-"@
 		
 	if ($LASTEXITCODE)
 	{

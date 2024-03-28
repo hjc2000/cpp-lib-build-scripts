@@ -17,26 +17,19 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/uchardet/uchardet.git"
 
 	New-Empty-Dir $build_path
-	# 突发情况：
-	# windows 更新了还是怎么着，fopen 函数被弃用了，然后就导致编译失败。
-	# 必须使用 gcc 编译器，使用 msys 提供的 SDK 才能编译通过。
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CMAKE_SYSTEM_NAME Windows)
 	set(CMAKE_SYSTEM_PROCESSOR x64)
 	set(CMAKE_C_COMPILER gcc)
 	set(CMAKE_CXX_COMPILER g++)
-	set(CMAKE_RC_COMPILER windres)
-	set(CMAKE_RANLIB ranlib)
 "@
 	
 	Set-Location $build_path
-	run-bash-cmd.ps1 @"
-	cmake -G "Ninja" $source_path \
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
-		-DCMAKE_INSTALL_PREFIX="${install_path}" \
+	cmake -G "Ninja" $source_path `
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+		-DCMAKE_INSTALL_PREFIX="${install_path}" `
 		-DCMAKE_BUILD_TYPE=Release
-"@
 		
 	if ($LASTEXITCODE)
 	{
@@ -51,6 +44,11 @@ try
 
 	ninja install
 
+	Install-Msys-Dlls @(
+		"/ucrt64/bin/libgcc_s_seh-1.dll"
+		"/ucrt64/bin/libstdc++-6.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+	)
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin

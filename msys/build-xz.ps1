@@ -48,7 +48,7 @@ try
 
 	ninja install
 
-	Install-Dependent-Dlls-From-Dir -dll_dir $libs_path/libiconv/bin
+	Install-Dependent-Dlls-From-Dir "$libs_path/libiconv/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin

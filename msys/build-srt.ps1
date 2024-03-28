@@ -14,6 +14,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-openssl.ps1"
+
 	get-git-repo.ps1 -git_url "https://github.com/Haivision/srt.git"
 
 	New-Empty-Dir $build_path
@@ -23,8 +25,6 @@ try
 	set(CMAKE_SYSTEM_PROCESSOR x64)
 	set(CMAKE_C_COMPILER gcc)
 	set(CMAKE_CXX_COMPILER g++)
-	set(CMAKE_RC_COMPILER windres)
-	set(CMAKE_RANLIB ranlib)
 "@
 
 	Set-Location $build_path
@@ -46,6 +46,12 @@ try
 
 	ninja install
 
+	Install-Msys-Dlls @(
+		"/ucrt64/bin/libgcc_s_seh-1.dll"
+		"/ucrt64/bin/libstdc++-6.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+	)
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin
