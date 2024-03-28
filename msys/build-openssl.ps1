@@ -36,13 +36,16 @@ try
 		throw "$source_path 编译失败"
 	}
 
+	# openssl 的 pc 文件没有使用 prefix，这会导致库无法移动，因为路径都是写死的。
+	# 使用了 prefix 后，pkg-config 会对路径的符合 prefix 的部分进行替换。
 	$pc_files = Get-ChildItem -Path $install_path/lib64/pkgconfig/*.pc -Recurse
 	foreach ($pc_file in $pc_files)
 	{
+		$prefix = "prefix=$(cygpath.exe $install_path)"
 		$content = Get-Content -Path "$($pc_file.FullName)"
-		$prefix = "prefix=${install_path}`n"
-		$content = $prefix + $content
-		$content | Set-Content -Path "$($pc_file.FullName)"
+		
+		$prefix | Set-Content -Path "$($pc_file.FullName)"
+		$content | Add-Content -Path "$($pc_file.FullName)"
 	}
 
 	Copy-Item -Path $install_path/lib64 -Destination $install_path/lib -Force -Recurse
