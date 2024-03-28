@@ -68,8 +68,8 @@ try
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libssh2/bin"
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-
-	ldd $install_path/bin/curl.exe
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
+	Auto-Ldd $install_path/bin
 }
 finally
 {

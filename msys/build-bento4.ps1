@@ -45,7 +45,8 @@ try
 	ninja install | Out-Null
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
-	Auto-Ldd -bin_dir $install_path/bin
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
+	Auto-Ldd $install_path/bin
 }
 finally
 {
