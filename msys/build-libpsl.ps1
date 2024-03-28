@@ -22,18 +22,14 @@ try
 	c = 'clang'
 	cpp = 'clang++'
 	pkg-config = 'pkg-config'
-
-	[built-in options]
-	c_args = 	['-I$total_install_path/include']
-	cpp_args = 	['-I$total_install_path/include']
-	c_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libunistring.dll.a']
-	cpp_link_args = ['-L$total_install_path/lib', '$total_install_path/lib/libunistring.dll.a']
 "@
 
 	Set-Location $source_path
 	meson setup jc_build/ `
 		--cross-file="$build_path/cross_file.ini" `
-		--prefix="$install_path"
+		--prefix="$install_path" `
+		--libdir="$total_install_path/lib" `
+		--includedir="$total_install_path/include"
 		
 	if ($LASTEXITCODE)
 	{

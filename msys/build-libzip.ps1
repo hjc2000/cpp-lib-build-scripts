@@ -21,11 +21,13 @@ try
 		-Content @"
 	set(CMAKE_SYSTEM_NAME Windows)
 	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-	set(CMAKE_RC_COMPILER windres)
-	set(CMAKE_RANLIB ranlib)
-	set(CMAKE_STRIP strip)
+	set(CMAKE_C_COMPILER clang)
+	set(CMAKE_CXX_COMPILER clang++)
+
+	set(ZLIB_INCLUDE_DIR $total_install_path/include)
+	set(ZLIB_LIBRARY $total_install_path/lib/zlib.lib)
+	set(BZIP2_INCLUDE_DIR $total_install_path/include)
+	set(BZIP2_LIBRARY $total_install_path/lib/libbz2.a)
 "@
 
 	Set-Location $build_path
