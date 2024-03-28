@@ -57,6 +57,7 @@ Cflags: -I`${includedir}
 	$pc_file_content | Out-File -FilePath $install_path/lib/pkgconfig/bzip2.pc
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }
 finally
 {
