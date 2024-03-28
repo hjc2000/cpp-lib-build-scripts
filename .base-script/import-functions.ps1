@@ -290,6 +290,11 @@ function Auto-Ldd
 		$bin_dir
 	)
 	
+	if (-not (Test-Path $bin_dir))
+	{
+		return 0
+	}
+
 	Push-Location $bin_dir
 	try
 	{
