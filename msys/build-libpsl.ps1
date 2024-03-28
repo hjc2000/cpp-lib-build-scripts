@@ -33,7 +33,8 @@ try
 		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path" `
 		--libdir="$total_install_path/lib" `
-		--includedir="$total_install_path/include"
+		--includedir="$total_install_path/include" `
+		-Dbuiltin=true
 		
 	if ($LASTEXITCODE)
 	{
