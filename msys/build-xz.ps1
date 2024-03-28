@@ -13,6 +13,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-libiconv.ps1"
+
 	get-git-repo.ps1 -git_url "https://github.com/tukaani-project/xz.git" `
 		-branch_name "v5.6"
 
@@ -45,8 +47,10 @@ try
 
 	ninja install
 
+	Install-Dependent-Dlls-From-Dir -dll_dir $libs_path/libiconv/bin
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
+	Auto-Ldd $install_path/bin
 }
 finally
 {

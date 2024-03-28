@@ -23,9 +23,6 @@ try
 	set(CMAKE_SYSTEM_PROCESSOR x64)
 	set(CMAKE_C_COMPILER gcc)
 	set(CMAKE_CXX_COMPILER g++)
-	set(CMAKE_RC_COMPILER windres)
-	set(CMAKE_RANLIB ranlib)
-	set(CMAKE_STRIP strip)
 "@
 
 	Set-Location $build_path

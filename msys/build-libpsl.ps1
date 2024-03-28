@@ -13,14 +13,17 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-icu.ps1"
+
 	get-git-repo.ps1 -git_url "https://github.com/rockdaboot/libpsl.git"
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
-	c = 'clang'
-	cpp = 'clang++'
+	c = 'gcc'
+	cpp = 'g++'
+	strip = 'strip'
 	pkg-config = 'pkg-config'
 "@
 
@@ -45,6 +48,12 @@ try
 
 	ninja install
 
+	Install-Msys-Dlls @(
+		"/ucrt64/bin/libgcc_s_seh-1.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+		"/ucrt64/bin/libstdc++-6.dll"
+	)
+	Install-Dependent-Dlls-From-Dir $libs_path/icu/bin
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin
