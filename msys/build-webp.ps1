@@ -14,8 +14,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://github.com/webmproject/libwebp.git"
+	Build-Dependency "build-libpng.ps1"
 
+	get-git-repo.ps1 -git_url "https://github.com/webmproject/libwebp.git"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
@@ -24,18 +25,14 @@ try
 	set(CMAKE_SYSTEM_PROCESSOR x64)
 	set(CMAKE_C_COMPILER gcc)
 	set(CMAKE_CXX_COMPILER g++)
-	set(CMAKE_RC_COMPILER windres)
-	set(CMAKE_RANLIB ranlib)
 "@
 
 	Set-Location $build_path
-	run-bash-cmd.ps1 @"
-	cmake -G "Ninja" $source_path \
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX="$install_path" \
+	cmake -G "Ninja" $source_path `
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+		-DCMAKE_BUILD_TYPE=Release `
+		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON
-"@
 		
 	if ($LASTEXITCODE)
 	{
@@ -50,6 +47,7 @@ try
 
 	ninja install
 
+	Install-Dependent-Dlls-From-Dir "$libs_path/libpng/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin
