@@ -31,7 +31,9 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path"
+		-DCMAKE_INSTALL_PREFIX="$install_path" `
+		-DPNG_SHARED=ON `
+		-DPNG_STATIC=OFF
 		
 	if ($LASTEXITCODE)
 	{
