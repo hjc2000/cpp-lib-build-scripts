@@ -26,10 +26,12 @@ try
 "@
 
 	Set-Location $build_path
-	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
-		-DCMAKE_BUILD_TYPE=Release `
+	run-bash-cmd.ps1 @"
+	cmake -G "Ninja" $source_path \
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
+		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="$install_path"
+"@
 		
 	if ($LASTEXITCODE)
 	{
@@ -42,7 +44,7 @@ try
 		throw "$source_path 编译失败"
 	}
 
-	ninja install
+	ninja install | Out-Null
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }

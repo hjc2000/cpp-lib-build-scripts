@@ -44,6 +44,11 @@ try
 	}
 
 	ninja install
+	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.lib -Force
+	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.a -Force
+	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.dll.lib -Force
+	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.dll.a -Force
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
