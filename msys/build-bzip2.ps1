@@ -19,10 +19,16 @@ try
 	run-bash-cmd.ps1 -cmd @"
 	cd $(cygpath.exe $source_path)
 
+	# 通过设置别名来替换编译器
 	alias gcc="clang"
+	alias g++="clang++"
+	alias cpp="clang -E" # 预处理器
+	alias ld="lld" # 链接器
 	alias ar="llvm-ar"
+	alias nm="llvm-nm" # 显示符号信息
 	alias ranlib="llvm-ranlib"
-
+	alias strip="llvm-strip" # 移除符号
+	
 	gcc -v
 	make PREFIX=$(cygpath.exe $install_path) clean
 	make PREFIX=$(cygpath.exe $install_path) -j12
