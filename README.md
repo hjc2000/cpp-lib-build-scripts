@@ -76,7 +76,7 @@ C:\msys64\msys2_shell.cmd -ucrt64 -defterm -no-start -here
 
 如图所示：
 
-![image-20240329082827329](./README.assets/image-20240329082827329.png)
+![image-20240329082827329](./README.assets/image-20240329082827329.jpg)
 
 # linux 环境搭建
 
