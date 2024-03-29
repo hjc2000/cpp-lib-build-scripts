@@ -21,19 +21,16 @@ try
 		-Content @"
 	set(CMAKE_SYSTEM_NAME Windows)
 	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER clang)
-	set(CMAKE_CXX_COMPILER clang++)
-	set(CMAKE_RC_COMPILER llvm-rc)
+	set(CMAKE_C_COMPILER gcc)
+	set(CMAKE_CXX_COMPILER g++)
 "@
 
 	Set-Location $build_path
-	run-bash-cmd.ps1 @"
-	cmake -G "Ninja" $source_path \
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_INSTALL_PREFIX="$install_path" \
+	cmake -G "Ninja" $source_path `
+		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+		-DCMAKE_BUILD_TYPE=Release `
+		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DEIGEN_BUILD_PKGCONFIG=ON
-"@
 		
 	if ($LASTEXITCODE)
 	{
@@ -46,7 +43,7 @@ try
 		throw "$source_path 编译失败"
 	}
 
-	ninja install
+	ninja install | Out-Null
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
