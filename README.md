@@ -66,19 +66,17 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 
 这样才能执行 ps1 脚本，否则会被以安全为理由阻止执行。
 
-## 安装 cygpath-pkg-config-pc-path 可执行文件
+## 在 Windows 终端中使用 msys2 ucrt64
 
-克隆仓库
+点击设置，添加配置文件，在 ”命令行“ 输入框中输入如下内容：
 
+```cmd
+C:\msys64\msys2_shell.cmd -ucrt64 -defterm -no-start -here
 ```
-https://github.com/hjc2000/video.git
-```
 
-里面有一个 C# 的控制台项目，名为 cygpath-pkg-config-pc-path。编译后发布到一个你喜欢的目录下。记得将该目录添加到环境变量 `Path` 中。
+如图所示：
 
-
-
-需要 `cygpath-pkg-config-pc-path` 这个命令是因为在 msys2 中编译 cmake 的项目时，如果这些项目生成 pkg-config 的 .pc 文件，它里面的路径的是 windows 风格的。这会导致其他项目，例如使用 configure 的项目无法解析这种路径。所以需要修复这种风格的路径，将它变成 msys2 风格的。
+![image-20240329082827329](./README.assets/image-20240329082827329.png)
 
 # linux 环境搭建
 
