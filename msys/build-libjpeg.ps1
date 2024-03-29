@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/../.base-script/prepare-for-msys.ps1
 
-$source_path = "$repos_path/libwebp/"
-$install_path = "$libs_path/webp/"
+$source_path = "$repos_path/libjpeg/"
+$install_path = "$libs_path/libjpeg/"
 $build_path = "$source_path/jc_build/"
 if (Test-Path -Path $install_path)
 {
@@ -14,12 +14,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-libpng.ps1"
-	Build-Dependency "build-libjpeg.ps1"
+	get-git-repo.ps1 -git_url "https://github.com/winlibs/libjpeg.git"
 
-	get-git-repo.ps1 -git_url "https://github.com/webmproject/libwebp.git"
-
-	New-Empty-Dir $build_path
+	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CMAKE_SYSTEM_NAME Windows)
@@ -32,8 +29,7 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DBUILD_SHARED_LIBS=ON
+		-DCMAKE_INSTALL_PREFIX="$install_path"
 		
 	if ($LASTEXITCODE)
 	{
@@ -48,8 +44,10 @@ try
 
 	ninja install
 
-	Install-Dependent-Dlls-From-Dir "$libs_path/libpng/bin"
-	Install-Dependent-Dlls-From-Dir "$libs_path/libjpeg/bin"
+	Install-Msys-Dlls @(
+		"/ucrt64/bin/libgcc_s_seh-1.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+	)
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin
