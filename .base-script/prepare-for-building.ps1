@@ -11,6 +11,7 @@ $total_install_path = "$build_script_path/.total-install"
 # 设置环境变量
 $env:PKG_CONFIG_PATH = "$total_install_path/lib/pkgconfig"
 $env:LIBRARY_PATH = "$total_install_path/lib/"
+$env:CMAKE_PREFIX_PATH = $total_install_path
 
 New-Item -Path $repos_path -ItemType Directory -Force | Out-Null
 New-Item -Path $libs_path -ItemType Directory -Force | Out-Null

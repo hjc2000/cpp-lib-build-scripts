@@ -23,6 +23,9 @@ try
 	set(CMAKE_SYSTEM_PROCESSOR x64)
 	set(CMAKE_C_COMPILER gcc)
 	set(CMAKE_CXX_COMPILER g++)
+
+	set(CMAKE_PREFIX_PATH ${total_install_path};`${CMAKE_PREFIX_PATH})
+	set(FFTW_LIBRARIES ${total_install_path})
 "@
 
 	Set-Location $build_path

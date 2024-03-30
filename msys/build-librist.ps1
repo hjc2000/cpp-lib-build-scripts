@@ -26,6 +26,9 @@ try
 	ld = 'ld'
 	strip = 'strip'
 	pkg-config = 'pkg-config'
+
+	[paths]
+	cmake_prefix_path = ['$total_install_path']
 "@
 
 	Set-Location $source_path
