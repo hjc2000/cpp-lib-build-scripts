@@ -22,7 +22,7 @@ if(1)
 		APPEND CMAKE_MODULE_PATH 
 		$ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
 	)
-	include(import-src)
+	include(target_import_src)
 endif()
 
 

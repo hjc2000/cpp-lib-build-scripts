@@ -1,0 +1,5 @@
+function(target_import_sdl2 target_name)
+    add_and_install_third_party_include_dir(${target_name} ${libs_path}/sdl2/include/SDL2)
+    target_auto_link_lib(${target_name} SDL2 ${libs_path}/sdl2/lib/)
+    install_dll_from_dir(${libs_path}/sdl2/bin/)
+endfunction()
