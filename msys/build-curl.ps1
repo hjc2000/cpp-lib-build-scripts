@@ -24,17 +24,10 @@ try
 	get-git-repo.ps1 -git_url "https://github.com/curl/curl.git"
 
 	New-Empty-Dir $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
-		-Content @"
-	set(CMAKE_SYSTEM_NAME Windows)
-	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-"@
-
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
+		-DCMAKE_C_COMPILER="gcc" `
+		-DCMAKE_CXX_COMPILER="g++" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
