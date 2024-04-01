@@ -21,21 +21,12 @@ try
 
 
 	New-Empty-Dir $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
-		-Content @"
-	set(CMAKE_SYSTEM_NAME Windows)
-	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-"@
-
 	Set-Location $build_path
-	run-bash-cmd.ps1 @"
-	cmake -G "Ninja" $source_path \
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" \
-		-DCMAKE_BUILD_TYPE=Release \
+	cmake -G "Ninja" $source_path `
+		-DCMAKE_C_COMPILER="gcc" `
+		-DCMAKE_CXX_COMPILER="g++" `
+		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-"@
 		
 	if ($LASTEXITCODE)
 	{
