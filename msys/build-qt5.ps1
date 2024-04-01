@@ -4,7 +4,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 $source_path = "$repos_path/qt5/"
 $install_path = "$libs_path/qt5/"
-$build_path = "$source_path/build"
+$build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -14,23 +14,16 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://github.com/qt/qt5.git"
+	get-git-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
+		-branch_name "6.7.0"
 
 	New-Empty-Dir $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
-		-Content @"
-	set(CMAKE_SYSTEM_NAME Windows)
-	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-"@
-
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
-		-DBUILD_SHARED_LIBS=ON
+		-DCMAKE_C_COMPILER="clang" `
+		-DCMAKE_CXX_COMPILER="clang++"
 
 	if ($LASTEXITCODE)
 	{
