@@ -64,4 +64,3 @@ elseif(UNIX AND NOT APPLE)
 		FORCE
 	)
 endif()
-message(STATUS "库仓库路径：${libs_path}")
