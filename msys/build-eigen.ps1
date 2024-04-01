@@ -17,21 +17,12 @@ try
 	get-git-repo.ps1 -git_url "https://gitlab.com/libeigen/eigen.git"
 
 	New-Empty-Dir $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
-		-Content @"
-	set(CMAKE_SYSTEM_NAME Windows)
-	set(CMAKE_SYSTEM_PROCESSOR x64)
-	set(CMAKE_C_COMPILER gcc)
-	set(CMAKE_CXX_COMPILER g++)
-
-	list(APPEND CMAKE_PREFIX_PATH ${total_install_path})
-"@
-
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
+		-DCMAKE_C_COMPILER="gcc" `
+		-DCMAKE_CXX_COMPILER="g++" `
 		-DEIGEN_BUILD_PKGCONFIG=ON
 		
 	if ($LASTEXITCODE)
