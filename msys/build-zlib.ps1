@@ -19,8 +19,8 @@ try
 	New-Empty-Dir -Path $build_path	
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_C_COMPILER="clang" `
-		-DCMAKE_CXX_COMPILER="clang++" `
+		-DCMAKE_C_COMPILER="gcc" `
+		-DCMAKE_CXX_COMPILER="g++" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
@@ -38,10 +38,6 @@ try
 	}
 
 	ninja install
-	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.lib -Force
-	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.a -Force
-	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.dll.lib -Force
-	Copy-Item -Path $install_path/lib/zlib.lib -Destination $install_path/lib/libz.dll.a -Force
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
