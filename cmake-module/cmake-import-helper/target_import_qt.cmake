@@ -1,0 +1,5 @@
+function(target_import_qt target_name)
+    add_and_install_third_party_include_dir(${target_name} ${libs_path}/qt5/include)
+    target_auto_link_lib(${target_name} Qt6Core ${libs_path}/qt5/lib)
+    install_dll_from_dir(${libs_path}/qt5/bin)
+endfunction()
