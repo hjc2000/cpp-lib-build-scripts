@@ -16,7 +16,6 @@ try
 {
 	# 构建依赖项
 	Build-Dependency "build-libiconv.ps1"
-	Build-Dependency "build-xz.ps1"
 	Build-Dependency "build-zlib.ps1"
 
 
