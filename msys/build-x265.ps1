@@ -21,6 +21,9 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_C_COMPILER="gcc" `
 		-DCMAKE_CXX_COMPILER="g++" `
+		-DCMAKE_ASM_YASM_COMPILER="yasm" `
+		-DCMAKE_RC_COMPILER="windres" `
+		-DCMAKE_RANLIB="ranlib" `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DENABLE_SHARED=ON `
