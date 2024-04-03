@@ -19,10 +19,10 @@ try
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DCMAKE_C_COMPILER="gcc" `
-		-DCMAKE_CXX_COMPILER="g++"
+		-DCMAKE_CXX_COMPILER="g++" `
+		-DCMAKE_INSTALL_PREFIX="$install_path" `
+		-DCMAKE_BUILD_TYPE=Release
 		
 	if ($LASTEXITCODE)
 	{
