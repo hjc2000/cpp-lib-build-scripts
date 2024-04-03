@@ -29,14 +29,20 @@ function(install_from_dir src_dir dst_dir pattern)
     install(
         DIRECTORY ${src_dir}/
         DESTINATION ${dst_dir}
+        # 安装时保留原始的权限
         USE_SOURCE_PERMISSIONS
         FILES_MATCHING
-        PATTERN ${pattern} # 使用提供的模式，或默认匹配所有文件
+        # 使用提供的模式，或默认匹配所有文件
+        PATTERN ${pattern}
     )
 endfunction()
 
 
-# 定义了安装规则，安装时会将 dll 安装到安装目录中的 bin 目录。
+# 将 dll_dir 下的所有 dll 安装到 ${CMAKE_INSTALL_PREFIX}/bin
+# 因为是按文件夹安装，只不过是加了 *.dll 的筛选器，所以会保持原来的目录结构
+#
+# 参数：
+#   dll_dir - 要被安装的 dll 所在的目录
 function(install_dll_from_dir dll_dir)
     install_from_dir(${dll_dir}/ bin "*.dll")
 endfunction()
