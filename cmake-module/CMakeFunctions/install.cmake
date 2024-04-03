@@ -40,3 +40,12 @@ endfunction()
 function(install_dll_from_dir dll_dir)
     install_from_dir(${dll_dir}/ bin "*.dll")
 endfunction()
+
+
+# 安装一个文件到指定的路径。
+# 参数：
+#   file_path - 要被安装的文件的路径
+#   dest_dir - 要将此文件安装到的文件夹。此文件夹相对于 CMAKE_INSTALL_PREFIX。
+function(install_one_file file_path dest_dir)
+    install(FILES "${file_path}" DESTINATION "${dest_dir}")
+endfunction()
