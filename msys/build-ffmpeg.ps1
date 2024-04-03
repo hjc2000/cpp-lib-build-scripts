@@ -15,6 +15,7 @@ try
 {
 	# 构建依赖项
 	Build-Dependency "build-x264.ps1"
+	Build-Dependency "build-x265.ps1"
 	Build-Dependency "build-openssl.ps1"
 	Build-Dependency "build-sdl2.ps1"
 	Build-Dependency "build-amf.ps1"
@@ -38,6 +39,7 @@ try
 	--prefix="$(cygpath.exe $install_path)" \
 	--extra-cflags="-DAMF_CORE_STATICTIC" \
 	--enable-libx264 \
+	--enable-libx265 \
 	--enable-libwebp \
 	--enable-libsrt \
 	--enable-librist \
@@ -67,6 +69,7 @@ try
 		"/ucrt64/bin/libwinpthread-1.dll"
 	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/sdl2/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
