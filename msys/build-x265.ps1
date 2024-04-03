@@ -25,6 +25,8 @@ try
 	Set-Location $build_path
 	cmake -G "Unix Makefiles" $source_path `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
+		-DCMAKE_C_COMPILER="gcc" `
+		-DCMAKE_CXX_COMPILER="g++" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DENABLE_SHARED=OFF `
 		-DENABLE_PIC=OFF `
