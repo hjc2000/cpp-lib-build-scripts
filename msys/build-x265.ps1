@@ -16,18 +16,18 @@ try
 {
 	get-git-repo.ps1 -git_url "https://bitbucket.org/multicoreware/x265_git.git"
 
+	# 修复 CMakeLists.txt
+	$cmake_lists_content = Get-Content -Path $source_path/CMakeLists.txt
+	$cmake_lists_content = $cmake_lists_content.Replace("CMAKE_RC_COMPILER", "FALSE")
+	$cmake_lists_content | Set-Content -Path $source_path/CMakeLists.txt
+
 	New-Empty-Dir $build_path
 	Set-Location $build_path
-	cmake -G "Ninja" $source_path `
-		-DCMAKE_C_COMPILER="gcc" `
-		-DCMAKE_CXX_COMPILER="g++" `
-		-DCMAKE_ASM_YASM_COMPILER="yasm" `
-		-DCMAKE_RC_COMPILER="windres" `
-		-DCMAKE_RANLIB="ranlib" `
+	cmake -G "Unix Makefiles" $source_path `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DENABLE_SHARED=ON `
-		-DENABLE_PIC=ON `
+		-DENABLE_SHARED=OFF `
+		-DENABLE_PIC=OFF `
 		-DENABLE_ASSEMBLY=OFF
 		
 	if ($LASTEXITCODE)
@@ -35,13 +35,13 @@ try
 		throw "$source_path 配置失败"
 	}
 	
-	ninja -j12
+	make -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install
+	make install
 
 	Install-Msys-Dlls @(
 		"/ucrt64/bin/libstdc++-6.dll"
