@@ -16,6 +16,7 @@ try
 	# 构建依赖项
 	Build-Dependency "build-x264.ps1"
 	Build-Dependency "build-x265.ps1"
+	Build-Dependency "build-xz.ps1"
 	Build-Dependency "build-openssl.ps1"
 	Build-Dependency "build-sdl2.ps1"
 	Build-Dependency "build-amf.ps1"
@@ -70,6 +71,7 @@ try
 	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/xz/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/sdl2/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
