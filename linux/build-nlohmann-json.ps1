@@ -7,7 +7,7 @@ $install_path = "$libs_path/nlohmann-json/include/nlohmann"
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://github.com/nlohmann/json.git
+	git-get-repo.ps1 -git_url https://github.com/nlohmann/json.git
 	New-Empty-Dir -Path $install_path
 	Copy-Item -Path "$source_path/single_include/nlohmann/json.hpp" `
 		-Destination $install_path `

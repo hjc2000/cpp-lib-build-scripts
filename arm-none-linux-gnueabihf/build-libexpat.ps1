@@ -15,7 +15,7 @@ Push-Location $repos_path
 try
 {
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url https://github.com/libexpat/libexpat.git
+	git-get-repo.ps1 -git_url https://github.com/libexpat/libexpat.git
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `

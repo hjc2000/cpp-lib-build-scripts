@@ -16,7 +16,7 @@ try
 {
 	Build-Dependency "build-libiconv.ps1"
 
-	get-git-repo.ps1 -git_url "https://salsa.debian.org/debian/xz-utils.git"
+	git-get-repo.ps1 -git_url "https://salsa.debian.org/debian/xz-utils.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path

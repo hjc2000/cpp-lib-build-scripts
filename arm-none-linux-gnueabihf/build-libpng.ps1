@@ -17,7 +17,7 @@ try
 	Build-Dependency "build-zlib.ps1"
 
 
-	get-git-repo.ps1 -git_url "https://github.com/pnggroup/libpng.git"
+	git-get-repo.ps1 -git_url "https://github.com/pnggroup/libpng.git"
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `

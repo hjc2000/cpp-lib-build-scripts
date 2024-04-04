@@ -20,7 +20,7 @@ try
 
 
 
-	get-git-repo.ps1 -git_url "https://github.com/GNOME/libxml2.git" `
+	git-get-repo.ps1 -git_url "https://github.com/GNOME/libxml2.git" `
 		-branch_name "2.12"
 
 	New-Empty-Dir -Path $build_path

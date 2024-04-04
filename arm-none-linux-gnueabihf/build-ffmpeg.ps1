@@ -21,7 +21,7 @@ try
 
 
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
+	git-get-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
 
 	$env:PATH = "$libs_path/sdl2/bin/:$env:PATH"

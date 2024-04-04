@@ -21,7 +21,7 @@ try
 	
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/harfbuzz/harfbuzz.git"
+	git-get-repo.ps1 -git_url "https://github.com/harfbuzz/harfbuzz.git"
 
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File

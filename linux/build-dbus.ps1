@@ -14,7 +14,7 @@ Push-Location $repos_path
 try
 {
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `
+	git-get-repo.ps1 -git_url https://gitlab.freedesktop.org/dbus/dbus.git `
 		-branch_name dbus-1.14
 
 	New-Empty-Dir $build_path

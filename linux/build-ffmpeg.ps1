@@ -19,7 +19,7 @@ try
 	Build-Dependency "build-sdl2.ps1"
 
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
+	git-get-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
 	run-bash-cmd.ps1 @"
 	cd $source_path

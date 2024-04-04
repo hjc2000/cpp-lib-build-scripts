@@ -17,7 +17,7 @@ try
 	Build-Dependency "build-libpng.ps1"
 	Build-Dependency "build-libjpeg.ps1"
 
-	get-git-repo.ps1 -git_url "https://github.com/webmproject/libwebp.git"
+	git-get-repo.ps1 -git_url "https://github.com/webmproject/libwebp.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path

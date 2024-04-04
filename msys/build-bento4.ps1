@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://github.com/axiomatic-systems/Bento4.git"
+	git-get-repo.ps1 -git_url "https://github.com/axiomatic-systems/Bento4.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path

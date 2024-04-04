@@ -24,7 +24,7 @@ try
 
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/fontconfig/fontconfig.git" `
+	git-get-repo.ps1 -git_url "https://gitlab.freedesktop.org/fontconfig/fontconfig.git" `
 		-branch_name "2.15.0"
 
 	New-Empty-Dir -Path $build_path

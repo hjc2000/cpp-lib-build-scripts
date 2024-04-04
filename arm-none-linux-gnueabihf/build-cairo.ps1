@@ -27,7 +27,7 @@ try
 
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/cairo/cairo.git"
+	git-get-repo.ps1 -git_url "https://gitlab.freedesktop.org/cairo/cairo.git"
 
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File

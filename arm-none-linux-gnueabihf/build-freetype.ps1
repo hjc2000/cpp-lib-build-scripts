@@ -21,7 +21,7 @@ try
 
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/freetype/freetype.git"
+	git-get-repo.ps1 -git_url "https://github.com/freetype/freetype.git"
 
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File

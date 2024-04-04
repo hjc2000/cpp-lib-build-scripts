@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
+	git-get-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
 
 	New-Empty-Dir -Path $build_path
 	Create-Text-File -Path $build_path/cross_file.ini `

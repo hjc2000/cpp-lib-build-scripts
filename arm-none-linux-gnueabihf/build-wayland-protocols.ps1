@@ -20,7 +20,7 @@ try
 	
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
+	git-get-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
 
 	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${override_pkg_config_libdir}"
 

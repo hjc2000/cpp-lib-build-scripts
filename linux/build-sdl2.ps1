@@ -19,7 +19,7 @@ try
 		"libpulse-dev"
 	)
 
-	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
+	git-get-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name "SDL2"
 
 	New-Empty-Dir $build_path

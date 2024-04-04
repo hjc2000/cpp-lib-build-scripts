@@ -18,7 +18,7 @@ try
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-openssl.ps1"
 
-	get-git-repo.ps1 -git_url "https://github.com/libssh2/libssh2.git"
+	git-get-repo.ps1 -git_url "https://github.com/libssh2/libssh2.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path

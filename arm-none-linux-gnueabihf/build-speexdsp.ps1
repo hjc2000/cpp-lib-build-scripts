@@ -13,7 +13,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://gitlab.xiph.org/xiph/speexdsp.git"
+	git-get-repo.ps1 -git_url "https://gitlab.xiph.org/xiph/speexdsp.git"
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"

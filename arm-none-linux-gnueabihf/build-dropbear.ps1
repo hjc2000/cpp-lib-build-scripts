@@ -15,7 +15,7 @@ try
 {
 	Build-Dependency "build-zlib.ps1"
 
-	get-git-repo.ps1 -git_url "https://github.com/mkj/dropbear.git"
+	git-get-repo.ps1 -git_url "https://github.com/mkj/dropbear.git"
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"

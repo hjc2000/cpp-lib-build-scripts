@@ -18,7 +18,7 @@ try
 		"yasm"
 	)
 
-	get-git-repo.ps1 -git_url "https://gitee.com/Qianshunan/x264.git"
+	git-get-repo.ps1 -git_url "https://gitee.com/Qianshunan/x264.git"
 
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"

@@ -17,7 +17,7 @@ try
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-libpng.ps1"
 
-	get-git-repo.ps1 -git_url "https://github.com/uclouvain/openjpeg.git"
+	git-get-repo.ps1 -git_url "https://github.com/uclouvain/openjpeg.git"
 
 	New-Empty-Dir -Path $build_path	
 	Set-Location $build_path

@@ -20,7 +20,7 @@ try
 	
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/pango.git"
+	git-get-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/pango.git"
 
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File -c_std "c17" -cpp_std "c++20"

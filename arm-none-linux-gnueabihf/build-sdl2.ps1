@@ -21,7 +21,7 @@ try
 	Build-Dependency "build-libxkbcommon.ps1"
 
 	# 开始构建本体
-	get-git-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
+	git-get-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name SDL2
 
 	New-Empty-Dir -Path $build_path

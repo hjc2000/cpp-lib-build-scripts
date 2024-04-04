@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://github.com/PCRE2Project/pcre2.git"
+	git-get-repo.ps1 -git_url "https://github.com/PCRE2Project/pcre2.git"
 
 	New-Empty-Dir $build_path
 	Create-Text-File -Path "$build_path/toolchain.cmake" `

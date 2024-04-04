@@ -24,7 +24,7 @@ try
 
 	# 开始构建本体
 	Set-Location $repos_path
-	get-git-repo.ps1 -git_url "https://github.com/xkbcommon/libxkbcommon.git"
+	git-get-repo.ps1 -git_url "https://github.com/xkbcommon/libxkbcommon.git"
 
 	New-Empty-Dir -Path $build_path
 	$env:PKG_CONFIG_LIBDIR = "${default_pkg_config_libdir}:${override_pkg_config_libdir}"

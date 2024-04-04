@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url "https://gitee.com/mycn027b/SDL.git" `
+	git-get-repo.ps1 -git_url "https://gitee.com/mycn027b/SDL.git" `
 		-branch_name "release-2.30.x"
 
 

@@ -16,7 +16,7 @@ try
 {
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-bzip2.ps1"
-	get-git-repo.ps1 -git_url "https://github.com/nih-at/libzip.git"
+	git-get-repo.ps1 -git_url "https://github.com/nih-at/libzip.git"
 
 
 	New-Empty-Dir $build_path

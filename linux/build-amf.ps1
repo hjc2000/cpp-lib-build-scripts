@@ -7,7 +7,7 @@ $install_path = "$libs_path/amf/"
 Push-Location $repos_path
 try
 {
-	get-git-repo.ps1 -git_url https://gitee.com/mirrors_GPUOpen-LibrariesAndSDKs/AMF_1.git
+	git-get-repo.ps1 -git_url https://gitee.com/mirrors_GPUOpen-LibrariesAndSDKs/AMF_1.git
 
 	# 准备好安装目录
 	$amf_include_install_path = "$install_path/include/AMF/"
