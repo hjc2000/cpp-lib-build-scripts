@@ -18,6 +18,8 @@ try
 
 	get-git-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
 		-branch_name "6.7.0"
+	git-get-submodule.ps1 -submoudle_name "qtbase"
+	git-get-submodule.ps1 -submoudle_name "qt3d"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
