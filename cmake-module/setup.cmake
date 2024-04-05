@@ -19,7 +19,7 @@ if(1)
 	include(process)
 
 	list(
-		APPEND CMAKE_MODULE_PATH 
+		APPEND CMAKE_MODULE_PATH
 		$ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
 	)
 	include(target_import_src)

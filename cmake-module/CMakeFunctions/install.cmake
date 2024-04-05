@@ -20,7 +20,7 @@ endfunction()
 #   src_dir - 此文件夹内的内容将被安装
 #   dst_dir - 安装到的目标路径（相对于CMAKE_INSTALL_PREFIX）
 #   pattern - 通配符
-function(install_from_dir src_dir dst_dir pattern)
+function(install_dir src_dir dst_dir pattern)
     if(NOT PATTERN)
         # 如果没有提供 PATTERN，设置为匹配所有文件
         set(PATTERN "*")
@@ -44,7 +44,7 @@ endfunction()
 # 参数：
 #   dll_dir - 要被安装的 dll 所在的目录
 function(install_dll_from_dir dll_dir)
-    install_from_dir(${dll_dir}/ bin "*.dll")
+    install_dir(${dll_dir}/ bin "*.dll")
 endfunction()
 
 

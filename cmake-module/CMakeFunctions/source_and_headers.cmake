@@ -3,11 +3,9 @@
 function(add_and_install_third_party_include_dir target_name include_dir)
     target_include_directories(${target_name} PUBLIC ${include_dir})
     if(${option_install_headers} AND NOT ${option_do_not_install_third_party_headers})
-        install_from_dir(${include_dir} include "*.h*")
+        install_dir(${include_dir} include "*.h*")
     endif()
 endfunction()
-
-
 
 # 递归收集头文件，添加到查找路径，然后定义安装规则，安装时会将这些头文件
 # 都安装到 include 目录下。
@@ -31,10 +29,6 @@ function(add_and_install_headers_recurse target src_dir)
         install(FILES ${HEADERS} DESTINATION include)
     endif()
 endfunction()
-
-
-
-
 
 # 递归访问 source_path，收集所有源文件，然后添加到目标中
 function(target_add_source_recurse target_name source_path)
