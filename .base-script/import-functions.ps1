@@ -253,6 +253,11 @@ function Install-Dependent-Dlls-From-Dir
 		[string]$dll_dir	# dll 所在的路径。将从这里以非递归的方式收集 dll 文件。
 	)
 	
+	if (-not (Test-Path $install_path))
+	{
+		return
+	}
+
 	New-Item -Path "$install_path/bin/" -ItemType Directory -Force
 	$dlls = Get-ChildItem -Path "$dll_dir/*.dll" -File
 	foreach ($dll in $dlls)
