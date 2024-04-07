@@ -14,10 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	# x265 必须完全克隆。因为这逼在 cmake 配置时会从 git log 中获取标签，然后作为
-	# 版本号，注入 x265.rc 中，然后再编译 x265.rc
-	git-get-repo.ps1 -git_url "https://bitbucket.org/multicoreware/x265_git.git" `
-		-all_depth
+	git-get-repo.ps1 -git_url "https://bitbucket.org/multicoreware/x265_git.git"
 	
 	New-Empty-Dir $build_path
 	Set-Location $build_path
