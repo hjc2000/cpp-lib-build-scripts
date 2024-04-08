@@ -3,8 +3,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-msys.ps1
 
 $source_path = "$repos_path/fftw/fftw-3.3.10"
-$install_path = "$libs_path/fftw/"
-$build_path = "$source_path/jc_build/"
+$install_path = "$libs_path/fftw"
+$build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"

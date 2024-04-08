@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/../.base-script/prepare-for-msys.ps1
 
-$source_path = "$repos_path/qt5/"
-$install_path = "$libs_path/qt5/"
+$source_path = "$repos_path/qt5"
+$install_path = "$libs_path/qt5"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {

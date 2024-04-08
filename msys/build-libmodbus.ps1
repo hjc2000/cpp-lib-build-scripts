@@ -2,7 +2,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/../.base-script/prepare-for-msys.ps1
 
-$source_path = "$repos_path/libmodbus/"
+$source_path = "$repos_path/libmodbus"
 $install_path = "$libs_path/libmodbus"
 if (Test-Path -Path $install_path)
 {
