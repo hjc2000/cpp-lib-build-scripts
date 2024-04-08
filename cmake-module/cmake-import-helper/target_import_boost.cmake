@@ -1,5 +1,5 @@
 function(target_import_boost target_name)
-	add_and_install_third_party_include_dir(${target_name} ${libs_path}/boost/include/)
+    target_include_directories(${target_name} PUBLIC ${libs_path}/boost/include/)
 
     if(WIN32)
         # 定义 windows API 版本

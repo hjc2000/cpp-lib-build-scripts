@@ -1,13 +1,3 @@
-# 将指定的第三方头文件文件夹添加给目标，然后定义安装规则，安装的时候会安装该文件夹内的头文件，
-# 并且会保持原来的目录结构。
-function(add_and_install_third_party_include_dir target_name include_dir)
-    target_include_directories(${target_name} PUBLIC ${include_dir})
-    if(${option_install_headers} AND NOT ${option_do_not_install_third_party_headers})
-        install_dir(${include_dir} include "*.h*")
-    endif()
-endfunction()
-
-
 function(add_private_headers_recurse target src_dir)
     # 收集指定目录及其子目录下所有的头文件
     file(GLOB_RECURSE HEADERS "${src_dir}/*.h")
