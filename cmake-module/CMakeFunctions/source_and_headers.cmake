@@ -7,6 +7,26 @@ function(add_and_install_third_party_include_dir target_name include_dir)
     endif()
 endfunction()
 
+
+function(add_private_headers_recurse target src_dir)
+    # 收集指定目录及其子目录下所有的头文件
+    file(GLOB_RECURSE HEADERS "${src_dir}/*.h")
+
+    # 获取所有头文件的目录并去重，以添加到编译时的包含目录中
+    set(DIRS "")
+    foreach(HEADER ${HEADERS})
+        get_filename_component(DIR ${HEADER} DIRECTORY)
+        list(APPEND DIRS ${DIR})
+    endforeach()
+    list(REMOVE_DUPLICATES DIRS)
+
+    # 将收集到的目录添加到目标的编译时包含目录中
+    target_include_directories(${target} PRIVATE ${DIRS})
+endfunction()
+
+
+
+
 # 递归收集头文件，添加到查找路径，然后定义安装规则，安装时会将这些头文件
 # 都安装到 include 目录下。
 function(add_and_install_headers_recurse target src_dir)

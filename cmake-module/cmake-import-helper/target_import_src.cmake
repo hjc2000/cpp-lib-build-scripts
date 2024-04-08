@@ -21,7 +21,7 @@ function(target_import_src target_name)
     # private_src 中的头文件是私有的，不会被安装，同时是通过 PRIVATE 添加到包含的。
     # 这可以用来放置内部私有的代码，实现类似 C# 中的 internal 修饰符的效果。
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
-        target_include_directories(${target_name} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
+        add_private_headers_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
         target_add_source_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
     endif()
 endfunction()
