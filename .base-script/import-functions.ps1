@@ -44,6 +44,16 @@ function Install-Lib
 	)
 	$ErrorActionPreference = "Stop"
 
+	if (-not (Test-Path $src_path))
+	{
+		throw "源路径 $src_path 不存在。"
+	}
+
+	if (-not (Test-Path $dst_path))
+	{
+		throw "目标路径 $dst_path 不存在。"
+	}
+
 	Write-Host "将 $src_path 安装到 $dst_path"
 
 	New-Item -Path $dst_path/bin/ -ItemType Directory -Force | Out-Null
@@ -253,9 +263,14 @@ function Install-Dependent-Dlls-From-Dir
 		[string]$dll_dir	# dll 所在的路径。将从这里以非递归的方式收集 dll 文件。
 	)
 	
+	if (-not (Test-Path $dll_dir))
+	{
+		throw "源路径 $dll_dir 不存在。"
+	}
+
 	if (-not (Test-Path $install_path))
 	{
-		return
+		throw "安装路径 $install_path 不存在。"
 	}
 
 	New-Item -Path "$install_path/bin/" -ItemType Directory -Force
@@ -273,6 +288,11 @@ function Install-Msys-Dlls
 		[array]$msys_dlls	# msys 的 dll 的路径。需要使用 msys 的路径，而不是 windows 路径。
 	)
 	
+	if (-not (Test-Path $install_path))
+	{
+		throw "安装路径 $install_path 不存在。"
+	}
+
 	foreach ($msys_dll in $msys_dlls)
 	{
 		$win_path = cygpath.exe $msys_dll -w
