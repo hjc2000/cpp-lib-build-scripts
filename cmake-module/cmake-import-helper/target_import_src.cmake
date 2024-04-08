@@ -1,9 +1,10 @@
 # 导入项目文件夹中的 src 文件夹内的源文件和头文件
 function(target_import_src target_name)
-    target_add_source_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/src/)
-    add_header_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/src/)
-    install_header_files_recurse(${CMAKE_CURRENT_SOURCE_DIR}/src/)
-    install_target_to_standard_paths(${target_name})
+    if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+        target_add_source_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+        add_header_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/src/)
+        install_header_files_recurse(${CMAKE_CURRENT_SOURCE_DIR}/src/)
+    endif()
 
     # 放到项目根目录的 include 目录中的头文件会被包含，然后安装时保持目录结构安装。
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/)
@@ -19,4 +20,6 @@ function(target_import_src target_name)
         add_private_header_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
         target_add_source_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
     endif()
+
+    install_target_to_standard_paths(${target_name})
 endfunction()
