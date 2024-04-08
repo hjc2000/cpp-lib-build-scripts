@@ -13,5 +13,5 @@ function(target_import_ffmpeg target_name)
     target_auto_link_lib(${target_name} libswresample ${libs_path}/ffmpeg/lib/)
     target_auto_link_lib(${target_name} libswscale ${libs_path}/ffmpeg/lib/)
 
-    install_dll_from_dir(${libs_path}/ffmpeg/bin/)
+    install_dll_dir(${libs_path}/ffmpeg/bin/)
 endfunction()

@@ -1,9 +1,7 @@
-# 定义一个函数来自动安装目标到标准的安装路径
-# 这个函数确保可执行文件、动态库、静态库被安装到合适的目录中
+# 将 ${target_name} 目标编译产生的 .a, .lib, .so, .dll, .exe 等文件
+# 安装到标准的路径。
 #
-# 参数:
-#   target_name - 需要安装的目标名称。这应该是之前使用 add_executable 或 add_library 创建的目标。
-#
+# 标准路径即安装路径下的 include, lib, bin 这 3 个目录。
 function(install_target_to_standard_paths target_name)
     install(
         TARGETS ${target_name}
@@ -15,17 +13,11 @@ endfunction()
 
 
 
-# 定义安装规则。将一个文件夹的内容安装到安装目录。
-# 参数：
-#   src_dir - 此文件夹内的内容将被安装
-#   dst_dir - 安装到的目标路径（相对于CMAKE_INSTALL_PREFIX）
-#   pattern - 通配符
-function(install_dir src_dir dst_dir pattern)
-    if(NOT PATTERN)
-        # 如果没有提供 PATTERN，设置为匹配所有文件
-        set(PATTERN "*")
-    endif()
 
+
+# 将 ${src_dir} 目录的内容安装到 ${dst_dir} 目录下。会保持目录结构。
+# ${pattern} 是通配符，例如 "*" 匹配所有，"*.h" 匹配所有头文件。
+function(install_dir src_dir dst_dir pattern)
     install(
         DIRECTORY ${src_dir}/
         DESTINATION ${dst_dir}
@@ -38,12 +30,15 @@ function(install_dir src_dir dst_dir pattern)
 endfunction()
 
 
+
+
+
 # 将 dll_dir 下的所有 dll 安装到 ${CMAKE_INSTALL_PREFIX}/bin
 # 因为是按文件夹安装，只不过是加了 *.dll 的筛选器，所以会保持原来的目录结构
 #
 # 参数：
 #   dll_dir - 要被安装的 dll 所在的目录
-function(install_dll_from_dir dll_dir)
+function(install_dll_dir dll_dir)
     install_dir(${dll_dir}/ bin "*.dll")
 endfunction()
 
@@ -55,4 +50,13 @@ endfunction()
 #   dest_dir - 要将此文件安装到的文件夹。此文件夹相对于 CMAKE_INSTALL_PREFIX。
 function(install_one_file file_path dest_dir)
     install(FILES "${file_path}" DESTINATION "${dest_dir}")
+endfunction()
+
+
+# 将一个文件夹中的头文件安装到安装目录下的 include 目录。
+# 会保持目录结构，同时会过滤，仅安装 *.h
+function(install_include_dir include_dir)
+    if(${option_install_headers})
+        install_dir(${include_dir} include "*.h")
+    endif()
 endfunction()
