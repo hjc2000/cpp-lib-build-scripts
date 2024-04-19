@@ -68,7 +68,7 @@ try
 		"/ucrt64/bin/libgcc_s_seh-1.dll",
 		"/ucrt64/bin/libstdc++-6.dll",
 		"/ucrt64/bin/libwinpthread-1.dll"
-		"/ucrt64/bin/zlib1.dll"
+		# "/ucrt64/bin/zlib1.dll"
 	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
