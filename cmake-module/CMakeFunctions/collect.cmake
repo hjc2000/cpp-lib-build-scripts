@@ -7,6 +7,7 @@ function(append_source_files_to_list_recurse path out_list)
             ${path}/*.c
             ${path}/*.h
             ${path}/*.hpp
+            ${path}/*.s
         )
 
         set(${out_list} ${temp_list} PARENT_SCOPE)
