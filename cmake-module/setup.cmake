@@ -27,7 +27,14 @@ endif()
 
 
 # 库仓库的路径
-if(WIN32)
+if(ARM_NONE_EABI)
+	set(
+		libs_path 
+		$ENV{cpp_lib_build_scripts_path}/arm-none-eabi/.libs 
+		CACHE STRING "库仓库路径"
+	)
+	message(STATUS "库仓库路径：${libs_path}")
+elseif(WIN32)
 	set(
 		libs_path 
 		$ENV{cpp_lib_build_scripts_path}/msys/.libs 
