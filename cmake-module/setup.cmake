@@ -19,6 +19,7 @@ if(1)
 	list(
 		APPEND CMAKE_MODULE_PATH
 		${cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
+		${cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/
 	)
 	include(target_import_src)
 endif()
