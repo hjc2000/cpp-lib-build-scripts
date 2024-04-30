@@ -25,23 +25,14 @@ endif()
 
 
 
+set(
+	libs_path 
+	${cpp_lib_build_scripts_path}/${platform}/.libs 
+	CACHE STRING "库仓库路径"
+)
+message(STATUS "库仓库路径：${libs_path}")
 
-# 库仓库的路径
-if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
-	set(
-		libs_path 
-		${cpp_lib_build_scripts_path}/${platform}/.libs 
-		CACHE STRING "库仓库路径"
-	)
-	message(STATUS "库仓库路径：${libs_path}")
-else()
-	set(
-		libs_path 
-		${cpp_lib_build_scripts_path}/${platform}/.libs 
-		CACHE STRING "库仓库路径"
-	)
-	message(STATUS "库仓库路径：${libs_path}")
-
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
 	list(
 		APPEND CMAKE_INSTALL_RPATH
 		$ORIGIN/../lib
