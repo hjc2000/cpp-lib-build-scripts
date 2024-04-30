@@ -18,7 +18,8 @@ try
 	
 	New-Empty-Dir $build_path
 	Set-Location $build_path
-	cmake -G "Ninja" $source_path --preset "gcc release" `
+	cmake -G "Ninja" $source_path `
+		--preset "gcc release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 		
 	if ($LASTEXITCODE)
