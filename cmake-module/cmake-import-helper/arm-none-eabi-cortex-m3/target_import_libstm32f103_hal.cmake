@@ -1,6 +1,6 @@
 function(target_import_libstm32f103_hal target_name visibility)
     target_compile_definitions(
-	    ${ProjectName}
+        ${target_name}
         ${visibility}
 	    USE_HAL_DRIVER=1
 	    STM32F103xE=1
