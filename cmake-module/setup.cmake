@@ -7,7 +7,7 @@ option(option_install_headers true)
 if(1)
 	list(
 		APPEND CMAKE_MODULE_PATH 
-		$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions
+		${cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions
 	)
 	include(install)
 	include(collect)
@@ -18,7 +18,7 @@ if(1)
 
 	list(
 		APPEND CMAKE_MODULE_PATH
-		$ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
+		${cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
 	)
 	include(target_import_src)
 endif()
@@ -30,14 +30,14 @@ endif()
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 	set(
 		libs_path 
-		$ENV{cpp_lib_build_scripts_path}/${platform}/.libs 
+		${cpp_lib_build_scripts_path}/${platform}/.libs 
 		CACHE STRING "库仓库路径"
 	)
 	message(STATUS "库仓库路径：${libs_path}")
 else()
 	set(
 		libs_path 
-		$ENV{cpp_lib_build_scripts_path}/${platform}/.libs 
+		${cpp_lib_build_scripts_path}/${platform}/.libs 
 		CACHE STRING "库仓库路径"
 	)
 	message(STATUS "库仓库路径：${libs_path}")
@@ -46,19 +46,19 @@ else()
 		APPEND CMAKE_INSTALL_RPATH
 		$ORIGIN/../lib
 		$ORIGIN/../usr/lib
-		$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib
-		$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib
+		${cpp_lib_build_scripts_path}/${platform}/.total-install/lib
+		${cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib
 	)
 	set(CMAKE_BUILD_WITH_INSTALL_RPATH true)
 
 	set(
 		CMAKE_EXE_LINKER_FLAGS
-		"-Wl,-rpath-link,$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib:$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_EXE_LINKER_FLAGS}"
+		"-Wl,-rpath-link,${cpp_lib_build_scripts_path}/${platform}/.total-install/lib:${cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_EXE_LINKER_FLAGS}"
 		CACHE STRING "Linker flags for executables"
 		FORCE
 	)
 	set(CMAKE_SHARED_LINKER_FLAGS
-		"-Wl,-rpath-link,$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib:$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_SHARED_LINKER_FLAGS}"
+		"-Wl,-rpath-link,${cpp_lib_build_scripts_path}/${platform}/.total-install/lib:${cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_SHARED_LINKER_FLAGS}"
 		CACHE STRING "Linker flags for shared libraries"
 		FORCE
 	)
