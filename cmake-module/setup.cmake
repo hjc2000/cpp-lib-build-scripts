@@ -27,26 +27,21 @@ endif()
 
 
 # 库仓库的路径
-if(ARM_NONE_EABI)
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 	set(
 		libs_path 
-		$ENV{cpp_lib_build_scripts_path}/arm-none-eabi/.libs 
+		$ENV{cpp_lib_build_scripts_path}/${platform}/.libs 
 		CACHE STRING "库仓库路径"
 	)
 	message(STATUS "库仓库路径：${libs_path}")
-elseif(WIN32)
-	set(
-		libs_path 
-		$ENV{cpp_lib_build_scripts_path}/msys/.libs 
-		CACHE STRING "库仓库路径"
-	)
-elseif(UNIX AND NOT APPLE)
+else()
 	# platform 的值在预设里设置
 	set(
 		libs_path 
 		$ENV{HOME}/cpp-lib-build-scripts/${platform}/.libs 
 		CACHE STRING "库仓库路径"
 	)
+	message(STATUS "库仓库路径：${libs_path}")
 
 	list(
 		APPEND CMAKE_INSTALL_RPATH
