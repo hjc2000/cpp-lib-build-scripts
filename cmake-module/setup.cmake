@@ -35,7 +35,6 @@ if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 	)
 	message(STATUS "库仓库路径：${libs_path}")
 else()
-	# platform 的值在预设里设置
 	set(
 		libs_path 
 		$ENV{HOME}/cpp-lib-build-scripts/${platform}/.libs 
