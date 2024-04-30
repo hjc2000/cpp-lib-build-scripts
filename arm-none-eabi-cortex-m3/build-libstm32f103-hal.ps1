@@ -18,28 +18,8 @@ try
 	
 	New-Empty-Dir $build_path
 	Set-Location $build_path
-	cmake -G "Ninja" $source_path `
-		-Dcpp_lib_build_scripts_path="$project_root_path" `
-		-Dplatform="arm-none-eabi-cortex-m3" `
-		-DCMAKE_SYSTEM_PROCESSOR="arm" `
-		-DCMAKE_SYSTEM_ARCH="armv7-m" `
-		-DCMAKE_SYSTEM_NAME="Generic" `
-		-DCMAKE_C_COMPILER="arm-none-eabi-gcc" `
-		-DCMAKE_CXX_COMPILER="arm-none-eabi-g++" `
-		-DCMAKE_ASM_COMPILER="arm-none-eabi-gcc" `
-		-DCMAKE_AR="arm-none-eabi-ar" `
-		-DCMAKE_LINKER="arm-none-eabi-ld" `
-		-DCMAKE_OBJCOPY="arm-none-eabi-objcopy" `
-		-DCMAKE_RANLIB="arm-none-eabi-ranlib" `
-		-DCMAKE_SIZE="arm-none-eabi-size" `
-		-DCMAKE_STRIP="arm-none-eabi-ld" `
-		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DCMAKE_C_FLAGS="$c_cxx_flags" `
-		-DCMAKE_CXX_FLAGS="$c_cxx_flags" `
-		-DCMAKE_ASM_FLAGS="$asm_flags" `
-		-DCMAKE_EXECUTABLE_SUFFIX=".elf" `
-		-DCMAKE_STATIC_LIBRARY_SUFFIX=".a"
+	cmake -G "Ninja" $source_path --preset "gcc release" `
+		-DCMAKE_INSTALL_PREFIX="$install_path"
 		
 	if ($LASTEXITCODE)
 	{
@@ -54,7 +34,7 @@ try
 
 	ninja install
 
-	Install-Lib -src_path $install_path -dst_path $total_install_path
+	# Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
