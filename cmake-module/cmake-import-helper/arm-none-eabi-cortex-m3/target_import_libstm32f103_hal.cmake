@@ -17,14 +17,10 @@ function(target_import_libstm32f103_hal target_name visibility)
         ${libs_path}/libstm32f103-hal/include
     )
 
-    target_link_libraries(
+    target_auto_link_lib(
         ${target_name}
         ${visibility}
-        ${libs_path}/libstm32f103-hal/lib/libstm32f103-hal.a
-    )
-
-    install(
-        FILES ${libs_path}/libstm32f103-hal/lib/libstm32f103-hal.a
-        DESTINATION lib
+        libstm32f103-hal
+        ${libs_path}/libstm32f103-hal/lib/
     )
 endfunction()
