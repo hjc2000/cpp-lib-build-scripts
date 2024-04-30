@@ -29,13 +29,13 @@ try
 		throw "$source_path 配置失败"
 	}
 	
-	ninja -j12 | Out-Null
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install | Out-Null
+	ninja install
 
 	Install-Msys-Dlls @(
 		"/ucrt64/bin/libgcc_s_seh-1.dll"
