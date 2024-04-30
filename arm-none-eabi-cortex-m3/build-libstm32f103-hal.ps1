@@ -15,7 +15,7 @@ Push-Location $repos_path
 try
 {
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/libstm32f103-hal.git"
-
+	
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
@@ -35,10 +35,9 @@ try
 		-DCMAKE_STRIP="arm-none-eabi-ld" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DCMAKE_C_FLAGS=$c_cxx_flags `
-		-DCMAKE_CXX_FLAGS=$c_cxx_flags `
-		-DCMAKE_ASM_FLAGS=$asm_flags `
-		-DCMAKE_EXE_LINKER_FLAGS=$exe_link_flags `
+		-DCMAKE_C_FLAGS="$c_cxx_flags" `
+		-DCMAKE_CXX_FLAGS="$c_cxx_flags" `
+		-DCMAKE_ASM_FLAGS="$asm_flags" `
 		-DCMAKE_EXECUTABLE_SUFFIX=".elf" `
 		-DCMAKE_STATIC_LIBRARY_SUFFIX=".a"
 		
