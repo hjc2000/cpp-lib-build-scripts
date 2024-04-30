@@ -21,5 +21,11 @@ function(target_import_src target_name)
         target_add_source_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
     endif()
 
-    install_target_to_standard_paths(${target_name})
+    # 将本目标的编译产物安装到标准目录
+    install(
+        TARGETS ${target_name}
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+    )
 endfunction()

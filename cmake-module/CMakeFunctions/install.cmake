@@ -1,19 +1,3 @@
-# 将 ${target_name} 目标编译产生的 .a, .lib, .so, .dll, .exe 等文件
-# 安装到标准的路径。
-#
-# 标准路径即安装路径下的 include, lib, bin 这 3 个目录。
-function(install_target_to_standard_paths target_name)
-    install(
-        TARGETS ${target_name}
-        RUNTIME DESTINATION bin # 可执行文件和DLL到 bin
-        LIBRARY DESTINATION lib # 共享库 (.so) 到 lib
-        ARCHIVE DESTINATION lib
-    )
-endfunction()
-
-
-
-
 # 安装一个文件到指定的路径。
 #
 # 参数：
