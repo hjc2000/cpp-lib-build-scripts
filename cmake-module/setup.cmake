@@ -1,8 +1,3 @@
-# 安装时是否安装头文件。默认会安装。
-option(option_install_headers true)
-
-
-
 # 导入我的 cmake 函数
 if(1)
 	list(

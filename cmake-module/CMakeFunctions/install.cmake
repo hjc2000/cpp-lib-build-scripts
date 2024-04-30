@@ -31,9 +31,7 @@ endfunction()
 # 将一个文件夹中的头文件安装到安装目录下的 include 目录。
 # 会保持目录结构，同时会过滤，仅安装 *.h
 function(install_include_dir include_dir)
-    if(${option_install_headers})
-        install_dir(${include_dir} include "*.h")
-    endif()
+    install_dir(${include_dir} include "*.h")
 endfunction()
 
 
@@ -45,7 +43,5 @@ function(install_header_files_recurse header_dir)
     file(GLOB_RECURSE header_files "${header_dir}/*.h")
 
     # 安装所有收集到的头文件到安装前缀的include目录下
-    if(${option_install_headers})
-        install(FILES ${header_files} DESTINATION include)
-    endif()
+    install(FILES ${header_files} DESTINATION include)
 endfunction()
