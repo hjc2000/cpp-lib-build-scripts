@@ -37,7 +37,7 @@ if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 else()
 	set(
 		libs_path 
-		$ENV{HOME}/cpp-lib-build-scripts/${platform}/.libs 
+		$ENV{cpp_lib_build_scripts_path}/${platform}/.libs 
 		CACHE STRING "库仓库路径"
 	)
 	message(STATUS "库仓库路径：${libs_path}")
@@ -46,19 +46,19 @@ else()
 		APPEND CMAKE_INSTALL_RPATH
 		$ORIGIN/../lib
 		$ORIGIN/../usr/lib
-		$ENV{HOME}/cpp-lib-build-scripts/${platform}/.total-install/lib
-		$ENV{HOME}/cpp-lib-build-scripts/${platform}/.total-install/usr/lib
+		$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib
+		$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib
 	)
 	set(CMAKE_BUILD_WITH_INSTALL_RPATH true)
 
 	set(
 		CMAKE_EXE_LINKER_FLAGS
-		"-Wl,-rpath-link,$ENV{HOME}/cpp-lib-build-scripts/${platform}/.total-install/lib:$ENV{HOME}/cpp-lib-build-scripts/${platform}/.total-install/usr/lib		${CMAKE_EXE_LINKER_FLAGS}"
+		"-Wl,-rpath-link,$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib:$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_EXE_LINKER_FLAGS}"
 		CACHE STRING "Linker flags for executables"
 		FORCE
 	)
 	set(CMAKE_SHARED_LINKER_FLAGS
-		"-Wl,-rpath-link,$ENV{HOME}/cpp-lib-build-scripts/${platform}/.total-install/lib:$ENV{HOME}/cpp-lib-build-scripts/${platform}/.total-install/usr/lib		${CMAKE_SHARED_LINKER_FLAGS}"
+		"-Wl,-rpath-link,$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib:$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_SHARED_LINKER_FLAGS}"
 		CACHE STRING "Linker flags for shared libraries"
 		FORCE
 	)
