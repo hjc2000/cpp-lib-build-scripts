@@ -1,5 +1,5 @@
 function(target_import_libusb target_name visibility)
     target_include_directories(${target_name} ${visibility} ${libs_path}/libusb/include/)
-    target_auto_link_lib(${target_name} ${visibility} libusb-1.0 ${libs_path}/libusb/lib/)
+    target_auto_link_lib(${target_name} libusb-1.0 ${libs_path}/libusb/lib/)
     install_dll_dir(${libs_path}/libusb/bin/)
 endfunction()
