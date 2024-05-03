@@ -1,13 +1,14 @@
 # 递归收集 ${path} 中的 .cpp, .c, .h 文件追加到 ${out_list}。
 function(append_source_files_to_list_recurse path out_list)
     function(collect_source_files_to_list path out_list)
-        file(GLOB_RECURSE
+        file(
+            GLOB_RECURSE
             temp_list
-            ${path}/*.cpp
-            ${path}/*.c
-            ${path}/*.h
-            ${path}/*.hpp
-            ${path}/*.s
+            "${path}/*.cpp"
+            "${path}/*.c"
+            "${path}/*.h"
+            "${path}/*.hpp"
+            "${path}/*.s"
         )
 
         set(${out_list} ${temp_list} PARENT_SCOPE)
@@ -27,10 +28,12 @@ endfunction()
 # 将这些目录添加到 ${out_list} 中。
 function(append_header_file_paths_to_list_recurse path out_list)
     # 收集指定目录及其子目录下所有的头文件
-    set(header_files "")
-    file(GLOB_RECURSE h_files "${path}/*.h")
-    file(GLOB_RECURSE hpp_files "${path}/*.hpp")
-    list(APPEND header_files ${h_files} ${hpp_files})
+    file(
+        GLOB_RECURSE
+        header_files
+        "${path}/*.h"
+        "${path}/*.hpp"
+    )
 
     # 收集到的头文件目录放到这里
     set(header_dirs "")
