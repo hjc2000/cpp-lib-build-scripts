@@ -27,7 +27,10 @@ endfunction()
 # 将这些目录添加到 ${out_list} 中。
 function(append_header_file_paths_to_list_recurse path out_list)
     # 收集指定目录及其子目录下所有的头文件
-    file(GLOB_RECURSE header_files "${path}/*.h")
+    set(header_files "")
+    file(GLOB_RECURSE h_files "${path}/*.h")
+    file(GLOB_RECURSE hpp_files "${path}/*.hpp")
+    list(APPEND header_files ${h_files} ${hpp_files})
 
     # 收集到的头文件目录放到这里
     set(header_dirs "")
