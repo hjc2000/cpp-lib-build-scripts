@@ -16,12 +16,19 @@ if(1)
 
 	string(
 		CONCAT CMAKE_EXE_LINKER_FLAGS
-		" -T${CMAKE_SOURCE_DIR}/link_script.ld "
 		" --specs=nosys.specs "
 		" -Wl,-Map=out_map.map "
 		" -Wl,--gc-sections "
 		" -static "
 	)
+	# 检查链接脚本文件是否存在
+	if(EXISTS "${CMAKE_SOURCE_DIR}/link_script.ld")
+		# 文件存在，添加 -T 选项及链接脚本路径到 CMAKE_EXE_LINKER_FLAGS
+		string(
+			APPEND CMAKE_EXE_LINKER_FLAGS
+			" -T${CMAKE_SOURCE_DIR}/link_script.ld "
+		)
+	endif()
 
 	set(CMAKE_EXECUTABLE_SUFFIX ".elf" CACHE STRING "可执行文件后缀名")
 	set(CMAKE_STATIC_LIBRARY_SUFFIX ".a" CACHE STRING "静态库文件后缀名")
