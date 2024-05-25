@@ -1,5 +1,0 @@
-function(target_import_jc_algorithm target_name visibility)
-    target_include_directories(${target_name} ${visibility} ${libs_path}/jc-algorithm/include/)
-    target_auto_link_lib(${target_name} jc-algorithm ${libs_path}/jc-algorithm/lib/)
-    install_dll_dir(${libs_path}/jc-algorithm/bin/)
-endfunction()
