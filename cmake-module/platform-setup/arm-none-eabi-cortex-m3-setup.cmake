@@ -23,6 +23,6 @@ if(1)
 		" -static "
 	)
 
-	set (CMAKE_EXECUTABLE_SUFFIX ".elf" CACHE STRING "可执行文件后缀名")
-	set (CMAKE_STATIC_LIBRARY_SUFFIX ".a" CACHE STRING "静态库文件后缀名")
+	set(CMAKE_EXECUTABLE_SUFFIX ".elf" CACHE STRING "可执行文件后缀名")
+	set(CMAKE_STATIC_LIBRARY_SUFFIX ".a" CACHE STRING "静态库文件后缀名")
 endif()
