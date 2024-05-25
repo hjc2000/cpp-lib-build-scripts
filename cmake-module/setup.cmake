@@ -1,23 +1,23 @@
 # 导入我的 cmake 函数
-if(1)
-	list(
-		APPEND CMAKE_MODULE_PATH 
-		${cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions
-	)
-	include(install)
-	include(collect)
-	include(link)
-	include(source_and_headers)
-	include(get_source_and_build)
-	include(process)
+list(
+	APPEND CMAKE_MODULE_PATH 
+	${cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions
+)
+include(install)
+include(collect)
+include(link)
+include(source_and_headers)
+include(get_source_and_build)
+include(process)
 
-	list(
-		APPEND CMAKE_MODULE_PATH
-		${cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
-		${cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/
-	)
-	include(target_import_src)
-endif()
+list(
+	APPEND CMAKE_MODULE_PATH
+	${cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
+	${cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/
+	${cpp_lib_build_scripts_path}/cmake-module/platform-setup/
+)
+include(target_import_src)
+include("${platform}-setup")
 
 
 
