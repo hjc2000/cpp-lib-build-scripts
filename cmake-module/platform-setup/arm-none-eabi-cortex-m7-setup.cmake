@@ -4,9 +4,10 @@
 string(
 	CONCAT C_CXX_FLAGS
 	" -Wall -Wextra -Wno-unused-parameter "
-	" -mcpu=cortex-m3 -mthumb "
+	" -mcpu=Cortex-M7 -mthumb "
 	" -fno-strict-aliasing -ffunction-sections -fdata-sections "
 	" --specs=nano.specs "
+	" -mfloat-abi=hard -mfpu=fpv5-sp-d16 "
 )
 set(CMAKE_C_FLAGS ${C_CXX_FLAGS})
 set(CMAKE_CXX_FLAGS ${C_CXX_FLAGS})
