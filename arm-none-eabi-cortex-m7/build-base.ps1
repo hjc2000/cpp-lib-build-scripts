@@ -19,7 +19,7 @@ try
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
-		--preset "arm-none-eabi-cortex-m3-release" `
+		--preset "arm-none-eabi-cortex-m7-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 		
 	if ($LASTEXITCODE)
