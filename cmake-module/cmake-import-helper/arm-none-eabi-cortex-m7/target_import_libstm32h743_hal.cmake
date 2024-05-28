@@ -4,6 +4,7 @@ function(target_import_libstm32h743_hal target_name visibility)
         ${visibility}
 	    USE_HAL_DRIVER=1
 	    STM32H743xx=1
+        __FPU_PRESENT=1
     )
 
     target_include_directories(
