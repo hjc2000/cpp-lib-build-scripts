@@ -267,12 +267,14 @@ function Install-Dependent-Dlls-From-Dir
 	
 	if (-not (Test-Path $dll_dir))
 	{
-		throw "源路径 $dll_dir 不存在。"
+		Write-Host "源路径 $dll_dir 不存在，跳过安装。"
+		return
 	}
 
 	if (-not (Test-Path $install_path))
 	{
-		throw "安装路径 $install_path 不存在。"
+		Write-Host "安装路径 $install_path 不存在，跳过安装。"
+		return
 	}
 
 	New-Item -Path "$install_path/bin/" -ItemType Directory -Force
