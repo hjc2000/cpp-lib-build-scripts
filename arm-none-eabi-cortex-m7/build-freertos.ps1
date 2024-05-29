@@ -3,7 +3,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/prepare.ps1
 
 $source_path = "$repos_path/freertos-gcc-cm7"
-$install_path = "$libs_path/freertos-gcc-cm7"
+$install_path = "$libs_path/freertos"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
