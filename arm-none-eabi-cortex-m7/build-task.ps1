@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-freertos-gcc-cm7"
+	Build-Dependency "build-freertos"
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/task.git"
 	
 	New-Empty-Dir $build_path
