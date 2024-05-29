@@ -1,4 +1,4 @@
-function(target_import_freertos_gcc_cm7 target_name visibility)
+function(target_import_freertos target_name visibility)
     target_include_directories(
         ${target_name}
         ${visibility}
