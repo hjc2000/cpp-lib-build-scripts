@@ -50,3 +50,6 @@ if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
 		FORCE
 	)
 endif()
+
+# 设置CMake构建时使用的线程数
+set(CMAKE_BUILD_PARALLEL_LEVEL 12)
