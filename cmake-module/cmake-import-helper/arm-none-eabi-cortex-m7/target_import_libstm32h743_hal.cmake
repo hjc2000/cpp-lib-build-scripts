@@ -9,12 +9,12 @@ function(target_import_libstm32h743_hal target_name visibility)
     target_include_directories(
         ${target_name}
         ${visibility}
-        ${libs_path}/libstm32h743-hal/include
+        ${libs_path}/stm32h743-hal/include
     )
 
     target_auto_link_lib(
         ${target_name}
-        libstm32h743-hal
-        ${libs_path}/libstm32h743-hal/lib/
+        stm32h743-hal
+        ${libs_path}/stm32h743-hal/lib/
     )
 endfunction()
