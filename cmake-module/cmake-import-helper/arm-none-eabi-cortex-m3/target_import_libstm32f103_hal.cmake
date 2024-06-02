@@ -14,12 +14,12 @@ function(target_import_libstm32f103_hal target_name visibility)
     target_include_directories(
         ${target_name}
         ${visibility}
-        ${libs_path}/libstm32f103-hal/include
+        ${libs_path}/stm32f103-hal/include
     )
 
     target_auto_link_lib(
         ${target_name}
-        libstm32f103-hal
-        ${libs_path}/libstm32f103-hal/lib/
+        stm32f103-hal
+        ${libs_path}/stm32f103-hal/lib/
     )
 endfunction()
