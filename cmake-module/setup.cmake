@@ -25,6 +25,7 @@ set(
 	libs_path 
 	${cpp_lib_build_scripts_path}/${platform}/.libs 
 	CACHE STRING "库仓库路径"
+	FORCE
 )
 
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
