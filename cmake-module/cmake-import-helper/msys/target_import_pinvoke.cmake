@@ -1,5 +1,5 @@
 include(target_import_base)
-include(target_import_pinvoke)
+include(target_import_jccpp)
 
 function(target_import_pinvoke target_name visibility)
     target_include_directories(${target_name} ${visibility} ${libs_path}/pinvoke/include/)
