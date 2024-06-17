@@ -23,13 +23,11 @@ try
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-bzip2.ps1"
 	Build-Dependency "build-libiconv.ps1"
-	# Build-Dependency "build-webp.ps1"
 	Build-Dependency "build-srt.ps1"
 	Build-Dependency "build-librist.ps1"
 	Build-Dependency "build-speex.ps1"
 	Build-Dependency "build-openjpeg.ps1"
 
-	
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
 
@@ -53,8 +51,6 @@ try
 	--enable-shared \
 	--disable-static
 
-	# --enable-libwebp \
-
 	make clean
 	make -j12
 	make install
@@ -69,7 +65,6 @@ try
 		"/ucrt64/bin/libgcc_s_seh-1.dll",
 		"/ucrt64/bin/libstdc++-6.dll",
 		"/ucrt64/bin/libwinpthread-1.dll"
-		# "/ucrt64/bin/zlib1.dll"
 	)
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
@@ -79,7 +74,6 @@ try
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bzip2/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
-	# Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/webp/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/srt/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/librist/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/speex/bin"
