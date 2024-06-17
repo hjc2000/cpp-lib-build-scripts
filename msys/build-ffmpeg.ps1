@@ -79,7 +79,7 @@ try
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bzip2/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/webp/bin"
+	# Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/webp/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/srt/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/librist/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/speex/bin"
