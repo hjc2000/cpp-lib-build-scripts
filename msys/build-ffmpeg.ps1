@@ -23,7 +23,7 @@ try
 	Build-Dependency "build-zlib.ps1"
 	Build-Dependency "build-bzip2.ps1"
 	Build-Dependency "build-libiconv.ps1"
-	Build-Dependency "build-webp.ps1"
+	# Build-Dependency "build-webp.ps1"
 	Build-Dependency "build-srt.ps1"
 	Build-Dependency "build-librist.ps1"
 	Build-Dependency "build-speex.ps1"
@@ -41,7 +41,6 @@ try
 	--extra-cflags="-DAMF_CORE_STATICTIC" \
 	--enable-libx264 \
 	--enable-libx265 \
-	--enable-libwebp \
 	--enable-libsrt \
 	--enable-librist \
 	--enable-libspeex \
@@ -53,6 +52,8 @@ try
 	--enable-gpl \
 	--enable-shared \
 	--disable-static
+
+	# --enable-libwebp \
 
 	make clean
 	make -j12
