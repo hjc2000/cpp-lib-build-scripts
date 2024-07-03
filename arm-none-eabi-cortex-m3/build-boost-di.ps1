@@ -4,9 +4,9 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 $source_path = "$repos_path/di/include/boost"
 $install_path = "$libs_path/boost"
-if (Test-Path -Path $install_path/di)
+if (Test-Path -Path "$install_path/include/boost/di")
 {
-	Write-Host "${install_path}/di 已存在，不编译，直接返回。如需编译，请先删除目录。"
+	Write-Host "$install_path/include/boost/di 已存在，不编译，直接返回。如需编译，请先删除目录。"
 	return 0
 }
 
