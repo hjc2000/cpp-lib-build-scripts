@@ -1,4 +1,5 @@
 include(target_import_boost)
+include(target_import_nlohmann_json)
 
 function(target_import_base target_name visibility)
 	if(has_thread)
@@ -13,4 +14,5 @@ function(target_import_base target_name visibility)
     install_dll_dir(${libs_path}/base/bin/)
 
 	target_import_boost(${target_name} ${visibility})
+	target_import_nlohmann_json(${target_name} ${visibility})
 endfunction()
