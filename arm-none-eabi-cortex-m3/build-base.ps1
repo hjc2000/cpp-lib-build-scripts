@@ -15,6 +15,7 @@ Push-Location $repos_path
 try
 {
 	Build-Dependency "build-boost"
+	Build-Dependency "build-nlohmann-json"
 
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/base.git"
 	
@@ -37,6 +38,7 @@ try
 
 	ninja install
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/boost/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/nlohmann-json/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
