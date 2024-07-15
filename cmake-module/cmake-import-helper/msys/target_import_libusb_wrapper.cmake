@@ -1,5 +1,4 @@
 include(target_import_libusb)
-include(target_import_jccpp)
 include(target_import_base)
 
 function(target_import_libusb_wrapper target_name visibility)
@@ -8,6 +7,5 @@ function(target_import_libusb_wrapper target_name visibility)
     install_dll_dir(${libs_path}/libusb-wrapper/bin/)
 
 	target_import_libusb(${target_name} ${visibility})
-	target_import_jccpp(${target_name} ${visibility})
 	target_import_base(${target_name} ${visibility})
 endfunction()
