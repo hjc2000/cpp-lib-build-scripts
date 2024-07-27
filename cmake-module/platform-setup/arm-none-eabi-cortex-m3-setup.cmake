@@ -13,6 +13,7 @@ set(CMAKE_CXX_FLAGS ${C_CXX_FLAGS})
 
 set(CMAKE_ASM_FLAGS "${C_CXX_FLAGS} -x assembler-with-cpp")
 
+# 特定于可执行文件的链接选项
 string(
 	CONCAT CMAKE_EXE_LINKER_FLAGS
 	" --specs=nosys.specs "
