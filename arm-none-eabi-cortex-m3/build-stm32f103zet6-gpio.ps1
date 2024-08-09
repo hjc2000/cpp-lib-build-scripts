@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/prepare.ps1
 
-$source_path = "$repos_path/stm32f103-gpio"
-$install_path = "$libs_path/stm32f103-gpio"
+$source_path = "$repos_path/stm32f103zet6-gpio"
+$install_path = "$libs_path/stm32f103zet6-gpio"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
@@ -14,8 +14,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-stm32f103zet6-hal"
 	Build-Dependency "build-bsp-interface"
-	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32f103-gpio.git"
+	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32f103zet6-gpio.git"
 	
 	New-Empty-Dir $build_path
 	Set-Location $build_path
@@ -37,6 +38,7 @@ try
 	ninja install
 
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bsp-interface/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/stm32f103zet6-hal/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
