@@ -7,6 +7,7 @@ string(
 	" -mcpu=cortex-m3 -mthumb "
 	" -fno-strict-aliasing -ffunction-sections -fdata-sections "
 	" --specs=nano.specs "
+	" -fexceptions "
 )
 set(CMAKE_C_FLAGS ${C_CXX_FLAGS})
 set(CMAKE_CXX_FLAGS ${C_CXX_FLAGS})
