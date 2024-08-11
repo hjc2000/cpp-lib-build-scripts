@@ -1,4 +1,4 @@
 {
-	"git.ignoreLimitWarning": true,
-	"dotnet.defaultSolution": "disable"
+	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
 }
