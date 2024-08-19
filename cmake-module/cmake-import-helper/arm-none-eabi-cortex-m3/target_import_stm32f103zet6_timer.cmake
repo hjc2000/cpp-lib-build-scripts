@@ -10,5 +10,5 @@ function(target_import_stm32f103zet6_timer target_name visibility)
 
     target_import_base(${target_name} ${visibility})
     target_import_bsp_interface(${target_name} ${visibility})
-	target_import_stm32f103zet6_hal(${ProjectName} PRIVATE)
+	target_import_stm32f103zet6_hal(${target_name} PRIVATE)
 endfunction()
