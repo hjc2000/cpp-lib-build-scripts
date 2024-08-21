@@ -5,7 +5,7 @@ function New-Empty-Dir
 		[Parameter(Mandatory = $true)]
 		[string]$Path
 	)
-	
+
 	# 创建 build 目录
 	New-Item -Path $Path -ItemType Directory -Force | Out-Null
 	Remove-Item "$Path/*" -Recurse -Force
@@ -21,10 +21,10 @@ function Create-Text-File
 		[Parameter(Mandatory = $true)]
 		[string]$Content
 	)
-	
+
 	# 创建文件 toolchain.cmake
 	New-Item -Path $Path -ItemType File -Force | Out-Null
-	$Content | Out-File -FilePath $Path -Encoding UTF8	
+	$Content | Out-File -FilePath $Path -Encoding UTF8
 }
 
 
@@ -34,7 +34,7 @@ function Apt-Ensure-Packets
 		[Parameter(Mandatory = $true)]
 		[string[]]$packets
 	)
-		
+
 	if (-not $IsLinux)
 	{
 		return
@@ -52,11 +52,11 @@ function Apt-Ensure-Packets
 				# 如果此包没安装，使用 apt-get 安装。
 				sudo apt-get install $packet -y
 			}
-		}		
+		}
 	}
 	finally
 	{
-		Pop-Location	
+		Pop-Location
 	}
 }
 
@@ -66,7 +66,7 @@ function Pacman-Ensure-Packages
 		[Parameter(Mandatory = $true)]
 		[string[]]$RequiredPackages
 	)
-    
+
 	foreach ($pkg in $RequiredPackages)
 	{
 		Write-Output "Checking for package: $pkg"
@@ -124,7 +124,7 @@ function New-Meson-Cross-File
 		[string]$c_std = "",
 		[string]$cpp_std = ""
 	)
-	
+
 	# meson 的
 	#
 	# [properties]
@@ -264,7 +264,7 @@ function Install-Dependent-Dlls-From-Dir
 		[Parameter(Mandatory = $true)]
 		[string]$dll_dir	# dll 所在的路径。将从这里以非递归的方式收集 dll 文件。
 	)
-	
+
 	if (-not (Test-Path $dll_dir))
 	{
 		Write-Host "源路径 $dll_dir 不存在，跳过安装。"
@@ -291,7 +291,7 @@ function Install-Msys-Dlls
 		[Parameter(Mandatory = $true)]
 		[array]$msys_dlls	# msys 的 dll 的路径。需要使用 msys 的路径，而不是 windows 路径。
 	)
-	
+
 	if (-not (Test-Path $install_path))
 	{
 		throw "安装路径 $install_path 不存在。"
@@ -319,7 +319,7 @@ function Auto-Ldd
 		[Parameter(Mandatory = $true)]
 		$bin_dir
 	)
-	
+
 	if (-not (Test-Path $bin_dir))
 	{
 		return 0
@@ -345,5 +345,23 @@ function Auto-Ldd
 	{
 		Write-Host "---------------------------------------------------------------------------------"
 		Pop-Location
+	}
+}
+
+function Try-Remove-Item
+{
+	param (
+		[Parameter(Mandatory = $true)]
+		$Path
+	)
+
+	try
+	{
+		Write-Host "删除 $Path"
+		Remove-Item -Path "$Path" -Force -Recurse
+	}
+	catch
+	{
+		<#Do this if a terminating exception happens#>
 	}
 }
