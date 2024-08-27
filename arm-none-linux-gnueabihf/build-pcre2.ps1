@@ -17,7 +17,7 @@ try
 	git-get-repo.ps1 -git_url "https://github.com/PCRE2Project/pcre2.git"
 
 	New-Empty-Dir $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
+	New-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
 	set(CMAKE_SYSTEM_NAME Linux)
@@ -39,7 +39,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja clean
 	ninja -j12
 	if ($LASTEXITCODE)

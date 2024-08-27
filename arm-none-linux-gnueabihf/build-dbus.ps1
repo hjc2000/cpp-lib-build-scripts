@@ -23,8 +23,8 @@ try
 	git-get-repo.ps1 -git_url "https://gitlab.freedesktop.org/dbus/dbus.git" `
 		-branch_name "dbus-1.14"
 
-	New-Empty-Dir -Path $build_path	
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
+	New-Empty-Dir -Path $build_path
+	New-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
 	set(CMAKE_SYSTEM_NAME Linux)
@@ -42,12 +42,12 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DDBUS_SESSION_SOCKET_DIR="/tmp" `
 		-DDBUS_WITH_GLIB=OFF
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

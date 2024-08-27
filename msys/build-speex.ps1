@@ -17,7 +17,7 @@ try
 	git-get-repo.ps1 -git_url "https://gitlab.xiph.org/xiph/speex.git"
 
 	New-Empty-Dir -Path $build_path
-	Create-Text-File -Path $build_path/cross_file.ini `
+	New-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
 	c = 'gcc'
@@ -27,17 +27,17 @@ try
 	strip = 'strip'
 	pkg-config = 'pkg-config'
 "@
-	
+
 	Set-Location $source_path
 	meson setup jc_build/ `
 		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

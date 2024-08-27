@@ -20,7 +20,7 @@ try
 	git-get-repo.ps1 -git_url "https://github.com/pnggroup/libpng.git"
 
 	New-Empty-Dir -Path $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
+	New-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
 	set(CMAKE_SYSTEM_NAME Linux)
@@ -32,19 +32,19 @@ try
 	$(Get-Cmake-Set-Find-Lib-Path-String)
 	link_libraries(m)
 "@
-	
+
 
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

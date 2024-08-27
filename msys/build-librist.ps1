@@ -17,7 +17,7 @@ try
 	git-get-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
 
 	New-Empty-Dir -Path $build_path
-	Create-Text-File -Path $build_path/cross_file.ini `
+	New-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
 	c = 'gcc'
@@ -35,12 +35,12 @@ try
 	meson setup jc_build/ `
 		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

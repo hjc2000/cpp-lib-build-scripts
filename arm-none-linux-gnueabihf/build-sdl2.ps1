@@ -25,7 +25,7 @@ try
 		-branch_name SDL2
 
 	New-Empty-Dir -Path $build_path
-	Create-Text-File -Path "$build_path/toolchain.cmake" `
+	New-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
 	set(CMAKE_SYSTEM_NAME Linux)
@@ -36,7 +36,7 @@ try
 
 	$(Get-Cmake-Set-Find-Lib-Path-String)
 "@
-	
+
 
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
@@ -57,7 +57,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
