@@ -13,7 +13,7 @@ try
 	Build-Dependency "build-base"
 	Build-Dependency "build-c-bsp-interface"
 	Build-Dependency "build-libusb-wrapper"
-	Build-Dependency "build-libusb-wrapper"
+	Build-Dependency "build-ffmpeg-wrapper"
 	Build-Dependency "build-pinvoke"
 }
 finally
