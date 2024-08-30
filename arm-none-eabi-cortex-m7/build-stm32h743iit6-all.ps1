@@ -11,6 +11,7 @@ try
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-gpio"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-flash"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-interrupt"
+	Try-Remove-Item -Path "$libs_path/stm32h743iit6-dma"
 	Try-Remove-Item -Path "$libs_path/task"
 
 	Build-Dependency "build-base"
@@ -20,6 +21,7 @@ try
 	Build-Dependency "build-stm32h743iit6-gpio"
 	Build-Dependency "build-stm32h743iit6-flash"
 	Build-Dependency "build-stm32h743iit6-interrupt"
+	Build-Dependency "build-stm32h743iit6-dma"
 	Build-Dependency "build-task"
 }
 finally
