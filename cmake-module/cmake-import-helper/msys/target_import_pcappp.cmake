@@ -9,5 +9,5 @@ function(target_import_pcappp target_name visibility)
     install_dll_dir(${libs_path}/${lib_name}/bin/)
 
 	target_import_base(${target_name} ${visibility})
-	target_link_libraries(${target_name} PUBLIC pcap)
+	target_link_libraries(${target_name} PUBLIC wpcap)
 endfunction()
