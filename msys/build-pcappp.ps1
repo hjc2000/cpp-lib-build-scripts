@@ -15,6 +15,7 @@ Push-Location $repos_path
 try
 {
 	Build-Dependency "build-base"
+	Pacman-Ensure-Packages "mingw-w64-ucrt-x86_64-libpcap"
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/pcappp.git"
 
 	New-Empty-Dir $build_path
