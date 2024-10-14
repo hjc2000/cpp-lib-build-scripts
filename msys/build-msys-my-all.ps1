@@ -9,12 +9,14 @@ try
 	Try-Remove-Item -Path "$libs_path/libusb-wrapper"
 	Try-Remove-Item -Path "$libs_path/ffmpeg-wrapper"
 	Try-Remove-Item -Path "$libs_path/pinvoke"
+	Try-Remove-Item -Path "$libs_path/pcappp"
 
 	Build-Dependency "build-base"
 	Build-Dependency "build-c-bsp-interface"
 	Build-Dependency "build-libusb-wrapper"
 	Build-Dependency "build-ffmpeg-wrapper"
 	Build-Dependency "build-pinvoke"
+	Build-Dependency "build-pcappp"
 }
 finally
 {
