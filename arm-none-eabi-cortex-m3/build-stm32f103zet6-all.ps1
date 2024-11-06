@@ -13,6 +13,7 @@ try
 	Try-Remove-Item -Path "$libs_path/stm32f103zet6-interrupt"
 	Try-Remove-Item -Path "$libs_path/stm32f103zet6-timer"
 	Try-Remove-Item -Path "$libs_path/stm32f103zet6-dma"
+	Try-Remove-Item -Path "$libs_path/stm32f103zet6-serial"
 
 	Build-Dependency "build-freertos"
 	Build-Dependency "build-task"
@@ -23,6 +24,7 @@ try
 	Build-Dependency "build-stm32f103zet6-interrupt"
 	Build-Dependency "build-stm32f103zet6-timer"
 	Build-Dependency "build-stm32f103zet6-dma"
+	Build-Dependency "build-stm32f103zet6-serial"
 }
 finally
 {
