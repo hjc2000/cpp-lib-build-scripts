@@ -15,6 +15,7 @@ try
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-timer"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-dma"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-serial"
+	Try-Remove-Item -Path "$libs_path/stm32h743iit6-clock"
 
 	Build-Dependency "build-freertos"
 	Build-Dependency "build-task"
@@ -27,6 +28,7 @@ try
 	Build-Dependency "build-stm32h743iit6-timer"
 	Build-Dependency "build-stm32h743iit6-dma"
 	Build-Dependency "build-stm32h743iit6-serial"
+	Build-Dependency "build-stm32h743iit6-clock"
 }
 finally
 {
