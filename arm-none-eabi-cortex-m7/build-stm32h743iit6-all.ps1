@@ -5,7 +5,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 try
 {
 	Try-Remove-Item -Path "$libs_path/osal"
-	Try-Remove-Item -Path "$libs_path/freertos"
+	# Try-Remove-Item -Path "$libs_path/freertos"
 	Try-Remove-Item -Path "$libs_path/FatFs"
 	Try-Remove-Item -Path "$libs_path/littlefs"
 	Try-Remove-Item -Path "$libs_path/task"
