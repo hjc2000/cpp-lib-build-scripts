@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/prepare.ps1
 
-$source_path = "$repos_path/osal"
-$install_path = "$libs_path/osal"
+$source_path = "$repos_path/freertos-osal"
+$install_path = "$libs_path/freertos-osal"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
@@ -15,7 +15,7 @@ Push-Location $repos_path
 try
 {
 	Build-Dependency "build-freertos"
-	git-get-repo.ps1 -git_url "https://github.com/hjc2000/osal.git"
+	git-get-repo.ps1 -git_url "https://github.com/hjc2000/freertos-osal.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
