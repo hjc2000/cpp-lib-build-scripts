@@ -4,7 +4,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
-	# Try-Remove-Item -Path "$libs_path/freertos"
+	Try-Remove-Item -Path "$libs_path/osal"
+	Try-Remove-Item -Path "$libs_path/freertos"
 	Try-Remove-Item -Path "$libs_path/FatFs"
 	Try-Remove-Item -Path "$libs_path/littlefs"
 	Try-Remove-Item -Path "$libs_path/task"
@@ -19,9 +20,10 @@ try
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-serial"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-clock"
 
+	Build-Dependency "build-osal"
+	Build-Dependency "build-freertos"
 	Build-Dependency "build-FatFs"
 	Build-Dependency "build-littlefs"
-	Build-Dependency "build-freertos"
 	Build-Dependency "build-task"
 	Build-Dependency "build-base"
 	Build-Dependency "build-bsp-interface"
