@@ -4,14 +4,14 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
-	Try-Remove-Item -Path "$libs_path/system-call"
-	Try-Remove-Item -Path "$libs_path/freertos"
+	# Try-Remove-Item -Path "$libs_path/system-call"
+	# Try-Remove-Item -Path "$libs_path/freertos"
 	Try-Remove-Item -Path "$libs_path/FatFs"
 	Try-Remove-Item -Path "$libs_path/littlefs"
 	Try-Remove-Item -Path "$libs_path/task"
 	Try-Remove-Item -Path "$libs_path/base"
 	Try-Remove-Item -Path "$libs_path/bsp-interface"
-	Try-Remove-Item -Path "$libs_path/c-bsp-interface"
+	# Try-Remove-Item -Path "$libs_path/c-bsp-interface"
 	Try-Remove-Item -Path "$libs_path/stm32f103zet6-gpio"
 	Try-Remove-Item -Path "$libs_path/stm32f103zet6-interrupt"
 	Try-Remove-Item -Path "$libs_path/stm32f103zet6-timer"
