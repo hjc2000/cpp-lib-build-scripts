@@ -6,6 +6,7 @@ try
 {
 	# Try-Remove-Item -Path "$libs_path/freertos-heap4-new"
 	# Try-Remove-Item -Path "$libs_path/system-call"
+	Try-Remove-Item -Path "$libs_path/stm32h743iit6-hal"
 	Try-Remove-Item -Path "$libs_path/lwip"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-p-net"
 	Try-Remove-Item -Path "$libs_path/freertos-osal"
@@ -26,6 +27,7 @@ try
 
 	Build-Dependency "build-freertos-heap4-new"
 	Build-Dependency "build-system-call"
+	Build-Dependency "build-stm32h743iit6-hal"
 	Build-Dependency "build-lwip"
 	Build-Dependency "build-stm32h743iit6-p-net"
 	Build-Dependency "build-freertos-osal"
