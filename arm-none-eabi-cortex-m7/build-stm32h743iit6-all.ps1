@@ -4,6 +4,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
+	Try-Remove-Item -Path "$libs_path/stm32h743iit6-isr"
 	Try-Remove-Item -Path "$libs_path/freertos-heap4-new"
 	Try-Remove-Item -Path "$libs_path/system-call"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-hal"
@@ -25,6 +26,7 @@ try
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-serial"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-clock"
 
+	Build-Dependency "build-stm32h743iit6-isr"
 	Build-Dependency "build-freertos-heap4-new"
 	Build-Dependency "build-system-call"
 	Build-Dependency "build-stm32h743iit6-hal"
