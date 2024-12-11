@@ -4,13 +4,13 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
-	# Try-Remove-Item -Path "$libs_path/freertos-heap4-new"
-	# Try-Remove-Item -Path "$libs_path/system-call"
+	Try-Remove-Item -Path "$libs_path/freertos-heap4-new"
+	Try-Remove-Item -Path "$libs_path/system-call"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-hal"
 	Try-Remove-Item -Path "$libs_path/lwip"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-p-net"
 	Try-Remove-Item -Path "$libs_path/freertos-osal"
-	# Try-Remove-Item -Path "$libs_path/freertos"
+	Try-Remove-Item -Path "$libs_path/freertos"
 	Try-Remove-Item -Path "$libs_path/FatFs"
 	Try-Remove-Item -Path "$libs_path/littlefs"
 	Try-Remove-Item -Path "$libs_path/task"
