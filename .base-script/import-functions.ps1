@@ -256,6 +256,10 @@ function Install-Lib
 
 # 从指定路径安装依赖的 dll 到自己的 $install_path 中。
 # 会收集指定目录下的 dll 然后安装。收集过程是不递归的。
+#
+# 有这个函数是因为第三方库互相依赖时，它们的 cmake 脚本的安装逻辑并不会将自己依赖的 dll
+# 复制到自己的安装目录的 bin 子目录中。我自己的 cmake 脚本安装时是会将自己依赖的 dll
+# 复制到自己的安装目录的 bin 子目录中的。
 function Install-Dependent-Dlls-From-Dir
 {
 	param (
