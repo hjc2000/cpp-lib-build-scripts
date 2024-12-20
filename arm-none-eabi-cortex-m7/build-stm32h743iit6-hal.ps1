@@ -14,19 +14,20 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Build-Dependency "build-bsp-interface"
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32h743iit6-hal.git"
-	
+
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		--preset "arm-none-eabi-cortex-m7-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
