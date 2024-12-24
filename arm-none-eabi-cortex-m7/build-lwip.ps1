@@ -15,6 +15,7 @@ Push-Location $repos_path
 try
 {
 	Build-Dependency "build-freertos"
+	Build-Dependency "build-task"
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/lwip.git"
 
 	New-Empty-Dir $build_path
@@ -36,6 +37,7 @@ try
 
 	ninja install
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/freertos/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/task/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
