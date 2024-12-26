@@ -15,6 +15,7 @@ Push-Location $repos_path
 try
 {
 	Build-Dependency "build-lwip"
+	Build-Dependency "build-bsp-interface"
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/lwip-wrapper.git"
 
 	New-Empty-Dir $build_path
