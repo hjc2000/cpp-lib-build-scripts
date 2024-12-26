@@ -11,6 +11,7 @@ try
 	Try-Remove-Item -Path "$libs_path/ffmpeg-wrapper"
 	Try-Remove-Item -Path "$libs_path/pinvoke"
 	Try-Remove-Item -Path "$libs_path/pcappp"
+	Try-Remove-Item -Path "$libs_path/tsduck"
 
 	Build-Dependency "build-base"
 	Build-Dependency "build-FatFs"
@@ -19,6 +20,7 @@ try
 	Build-Dependency "build-ffmpeg-wrapper"
 	Build-Dependency "build-pinvoke"
 	Build-Dependency "build-pcappp"
+	Build-Dependency "build-tsduck"
 }
 finally
 {
