@@ -15,11 +15,13 @@ Push-Location $repos_path
 try
 {
 	Build-Dependency "build-base"
+	Build-Dependency "build-bsp-interface"
 	Build-Dependency "build-stm32h743iit6-hal"
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32h743iit6-sdram.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		--preset "arm-none-eabi-cortex-m7-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
@@ -37,6 +39,7 @@ try
 
 	ninja install
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/base/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bsp-interface/bin"
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/stm32h743iit6-hal/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
