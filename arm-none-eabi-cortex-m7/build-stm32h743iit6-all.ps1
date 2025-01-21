@@ -28,6 +28,7 @@ try
 	Try-Remove-Item -Path "$libs_path/task"
 
 	Build-Dependency "build-lwip-wrapper"
+	Build-Dependency "build-stm32h743iit6-sdram"
 	Build-Dependency "build-stm32h743iit6-ethternet"
 	Build-Dependency "build-stm32h743iit6-isr"
 	Build-Dependency "build-system-call"
