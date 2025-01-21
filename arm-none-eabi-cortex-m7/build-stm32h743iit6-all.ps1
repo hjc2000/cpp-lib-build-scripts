@@ -5,6 +5,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 try
 {
 	Try-Remove-Item -Path "$libs_path/lwip-wrapper"
+	Try-Remove-Item -Path "$libs_path/stm32h743iit6-sdram"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-ethternet"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-isr"
 	Try-Remove-Item -Path "$libs_path/stm32h743iit6-p-net"
