@@ -15,8 +15,8 @@ Clear-Host
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-zlib.ps1"
-	Build-Dependency "build-openssl.ps1"
+	& "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-openssl.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/libssh2/libssh2.git"
 
@@ -27,12 +27,12 @@ try
 		-DCMAKE_CXX_COMPILER="g++" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

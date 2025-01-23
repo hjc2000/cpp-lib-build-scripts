@@ -17,10 +17,8 @@ try
 	pip install pytest
 	Apt-Ensure-Packets @("gperf ")
 
-	Build-Dependency "build-libpng.ps1"
-	Build-Dependency "build-freetype.ps1"
-
-
+	& "$build_script_path/build-libpng.ps1"
+	& "$build_script_path/build-freetype.ps1"
 
 	# 开始构建本体
 	Set-Location $repos_path
@@ -39,7 +37,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-			
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

@@ -14,10 +14,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-bzip2.ps1"
-	Build-Dependency "build-libpng.ps1"
-	Build-Dependency "build-zlib.ps1"
-
+	& "$build_script_path/build-bzip2.ps1"
+	& "$build_script_path/build-libpng.ps1"
+	& "$build_script_path/build-zlib.ps1"
 
 	# 开始构建本体
 	Set-Location $repos_path
@@ -29,12 +28,12 @@ try
 	meson setup jc_build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

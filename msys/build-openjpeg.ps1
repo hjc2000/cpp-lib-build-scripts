@@ -14,12 +14,12 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-zlib.ps1"
-	Build-Dependency "build-libpng.ps1"
+	& "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-libpng.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/uclouvain/openjpeg.git"
 
-	New-Empty-Dir -Path $build_path	
+	New-Empty-Dir -Path $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_C_COMPILER="gcc" `
@@ -31,7 +31,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

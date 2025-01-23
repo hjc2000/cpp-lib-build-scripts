@@ -21,16 +21,13 @@ try
 	)
 
 	# 构建依赖项
-	Build-Dependency "build-libsndfile.ps1"
-	Build-Dependency "build-dbus.ps1"
-	Build-Dependency "build-libtool.ps1"
-	Build-Dependency "build-gdbm.ps1"
-	Build-Dependency "build-alsa-lib.ps1"
-	Build-Dependency "build-glib.ps1"
+	& "$build_script_path/build-libsndfile.ps1"
+	& "$build_script_path/build-dbus.ps1"
+	& "$build_script_path/build-libtool.ps1"
+	& "$build_script_path/build-gdbm.ps1"
+	& "$build_script_path/build-alsa-lib.ps1"
+	& "$build_script_path/build-glib.ps1"
 
-
-
-	
 	# 开始构建本体
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://github.com/pulseaudio/pulseaudio.git"
@@ -54,7 +51,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

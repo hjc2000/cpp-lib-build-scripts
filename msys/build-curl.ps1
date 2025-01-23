@@ -14,12 +14,12 @@ if (Test-Path -Path $install_path)
 Clear-Host
 Push-Location $repos_path
 try
-{	
-	Build-Dependency "build-zlib.ps1"
-	Build-Dependency "build-libiconv.ps1"
-	Build-Dependency "build-icu.ps1"
-	Build-Dependency "build-openssl.ps1"
-	Build-Dependency "build-libssh2.ps1"
+{
+	& "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-libiconv.ps1"
+	& "$build_script_path/build-icu.ps1"
+	& "$build_script_path/build-openssl.ps1"
+	& "$build_script_path/build-libssh2.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/curl/curl.git"
 
@@ -32,12 +32,12 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON `
 		-DCURL_USE_OPENSSL=ON
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12 | Out-Null
 	if ($LASTEXITCODE)
 	{

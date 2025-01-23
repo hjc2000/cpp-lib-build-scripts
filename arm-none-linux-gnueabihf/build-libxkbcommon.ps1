@@ -17,10 +17,8 @@ try
 	Apt-Ensure-Packets @("wayland-protocols")
 
 	# 构建依赖项
-	Build-Dependency "build-wayland-protocols.ps1"
-	Build-Dependency "build-icu.ps1"
-
-
+	& "$build_script_path/build-wayland-protocols.ps1"
+	& "$build_script_path/build-icu.ps1"
 
 	# 开始构建本体
 	Set-Location $repos_path
@@ -35,11 +33,11 @@ try
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
 		-Denable-x11=false
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
-	}	
+	}
 
 	Set-Location $build_path
 	ninja -j12
@@ -49,7 +47,7 @@ try
 	}
 
 	ninja install
-	
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

@@ -13,10 +13,10 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Build-Dependency "build-x264.ps1"
-	Build-Dependency "build-x265.ps1"
-	Build-Dependency "build-openssl.ps1"
-	Build-Dependency "build-sdl2.ps1"
+	& "$build_script_path/build-x264.ps1"
+	& "$build_script_path/build-x265.ps1"
+	& "$build_script_path/build-openssl.ps1"
+	& "$build_script_path/build-sdl2.ps1"
 
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"
@@ -40,7 +40,7 @@ try
 	make -j12
 	make install
 "@
-		
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

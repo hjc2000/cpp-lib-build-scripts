@@ -14,11 +14,10 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-glib.ps1"
-	Build-Dependency "build-pcre2.ps1"
-	Build-Dependency "build-icu.ps1"
+	& "$build_script_path/build-glib.ps1"
+	& "$build_script_path/build-pcre2.ps1"
+	& "$build_script_path/build-icu.ps1"
 
-	
 	# 开始构建本体
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://github.com/harfbuzz/harfbuzz.git"
@@ -33,7 +32,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

@@ -20,12 +20,9 @@ try
 	)
 
 	# 构建依赖项
-	Build-Dependency "build-libffi.ps1"
-	Build-Dependency "build-libxml2.ps1"
-	Build-Dependency "build-libexpat.ps1"
-
-
-	
+	& "$build_script_path/build-libffi.ps1"
+	& "$build_script_path/build-libxml2.ps1"
+	& "$build_script_path/build-libexpat.ps1"
 
 	# 开始构建本体
 	Set-Location $repos_path
@@ -44,11 +41,11 @@ try
 	meson setup jc_build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
-	}	
+	}
 
 	Set-Location $build_path
 	ninja -j12

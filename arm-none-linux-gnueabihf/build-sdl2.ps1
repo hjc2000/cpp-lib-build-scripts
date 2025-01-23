@@ -15,16 +15,17 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Build-Dependency "build-alsa-lib.ps1"
-	Build-Dependency "build-pulseaudio.ps1"
-	Build-Dependency "build-wayland.ps1"
-	Build-Dependency "build-libxkbcommon.ps1"
+	& "$build_script_path/build-alsa-lib.ps1"
+	& "$build_script_path/build-pulseaudio.ps1"
+	& "$build_script_path/build-wayland.ps1"
+	& "$build_script_path/build-libxkbcommon.ps1"
 
 	# 开始构建本体
 	git-get-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
 		-branch_name SDL2
 
 	New-Empty-Dir -Path $build_path
+
 	New-Text-File -Path "$build_path/toolchain.cmake" `
 		-Content @"
 	set(CROSS_COMPILE_ARM 1)
@@ -37,8 +38,8 @@ try
 	$(Get-Cmake-Set-Find-Lib-Path-String)
 "@
 
-
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_BUILD_TYPE=Release `

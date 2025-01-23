@@ -17,13 +17,11 @@ try
 	pip install packaging
 
 	# 构建依赖项
-	Build-Dependency "build-pcre2.ps1"
-	Build-Dependency "build-libffi.ps1"
-	Build-Dependency "build-zlib.ps1"
-	Build-Dependency "build-libiconv.ps1"
+	& "$build_script_path/build-pcre2.ps1"
+	& "$build_script_path/build-libffi.ps1"
+	& "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-libiconv.ps1"
 
-
-	
 	# 开始构建本体
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://github.com/GNOME/glib.git"
@@ -31,6 +29,7 @@ try
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File
 	Set-Location $source_path
+
 	meson setup jc_build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
@@ -40,7 +39,7 @@ try
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
-	}	
+	}
 
 	Set-Location $build_path
 	ninja -j12

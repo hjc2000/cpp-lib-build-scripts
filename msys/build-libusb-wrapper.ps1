@@ -14,22 +14,22 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-base"
-	Build-Dependency "build-libusb"
+	& "$build_script_path/build-base.ps1"
+	& "$build_script_path/build-libusb.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/libusb-wrapper.git"
-	
+
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		--preset "msys-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

@@ -14,19 +14,19 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Build-Dependency "build-x264.ps1"
-	Build-Dependency "build-x265.ps1"
-	Build-Dependency "build-xz.ps1"
-	Build-Dependency "build-openssl.ps1"
-	Build-Dependency "build-sdl2.ps1"
-	Build-Dependency "build-amf.ps1"
-	Build-Dependency "build-zlib.ps1"
-	Build-Dependency "build-bzip2.ps1"
-	Build-Dependency "build-libiconv.ps1"
-	Build-Dependency "build-srt.ps1"
-	Build-Dependency "build-librist.ps1"
-	Build-Dependency "build-speex.ps1"
-	Build-Dependency "build-openjpeg.ps1"
+	& "$build_script_path/build-x264.ps1"
+	& "$build_script_path/build-x265.ps1"
+	& "$build_script_path/build-xz.ps1"
+	& "$build_script_path/build-openssl.ps1"
+	& "$build_script_path/build-sdl2.ps1"
+	& "$build_script_path/build-amf.ps1"
+	& "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-bzip2.ps1"
+	& "$build_script_path/build-libiconv.ps1"
+	& "$build_script_path/build-srt.ps1"
+	& "$build_script_path/build-librist.ps1"
+	& "$build_script_path/build-speex.ps1"
+	& "$build_script_path/build-openjpeg.ps1"
 
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://github.com/FFmpeg/FFmpeg.git"

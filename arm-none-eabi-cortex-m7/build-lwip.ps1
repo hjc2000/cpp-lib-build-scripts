@@ -14,9 +14,10 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-freertos"
-	Build-Dependency "build-freertos-osal"
-	Build-Dependency "build-bsp-interface"
+	& "$build_script_path/build-freertos.ps1"
+	& "$build_script_path/build-freertos-osal.ps1"
+	& "$build_script_path/build-bsp-interface.ps1"
+
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/lwip.git"
 
 	New-Empty-Dir $build_path
