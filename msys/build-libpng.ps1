@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-zlib.ps1"
+	& "$build_script_path/build-zlib.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/pnggroup/libpng.git"
 
@@ -27,12 +27,12 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DPNG_SHARED=ON `
 		-DPNG_STATIC=OFF
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

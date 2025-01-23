@@ -14,8 +14,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-libpng.ps1"
-	Build-Dependency "build-libjpeg.ps1"
+	& "$build_script_path/build-libpng.ps1"
+	& "$build_script_path/build-libjpeg.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/webmproject/libwebp.git"
 
@@ -27,12 +27,12 @@ try
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

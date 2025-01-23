@@ -15,9 +15,9 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Build-Dependency "build-cairo.ps1"
+	& "$build_script_path/build-cairo.ps1"
 
-	
+
 	# 开始构建本体
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://gitlab.gnome.org/GNOME/pango.git"
@@ -33,7 +33,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

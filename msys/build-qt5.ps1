@@ -14,8 +14,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-zlib.ps1"
-	Build-Dependency "build-zstd.ps1"
+	& "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-zstd.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
 		-branch_name "6.7.0"
@@ -35,7 +35,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	# qt 需要编译很久。这里使用 11 线程，避免电脑长时间卡顿。
 	ninja -j11
 	if ($LASTEXITCODE)

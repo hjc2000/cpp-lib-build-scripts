@@ -15,9 +15,8 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Build-Dependency "build-wayland.ps1"
+	& "$build_script_path/build-wayland.ps1"
 
-	
 	# 开始构建本体
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://gitlab.freedesktop.org/wayland/wayland-protocols.git"
@@ -30,12 +29,12 @@ try
 	meson setup jc_build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	Set-Location $build_path
 	ninja -j12
 	if ($LASTEXITCODE)

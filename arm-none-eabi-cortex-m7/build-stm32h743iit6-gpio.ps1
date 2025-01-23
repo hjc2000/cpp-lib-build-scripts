@@ -14,11 +14,13 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-stm32h743iit6-hal"
+	& "$build_script_path/build-stm32h743iit6-hal.ps1"
+
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32h743iit6-gpio.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		--preset "arm-none-eabi-cortex-m7-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"

@@ -14,8 +14,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-stm32h743iit6-hal"
-	Build-Dependency "build-task"
+	& "$build_script_path/build-stm32h743iit6-hal.ps1"
+	& "$build_script_path/build-task.ps1"
+
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32h743iit6-dma.git"
 
 	New-Empty-Dir $build_path
