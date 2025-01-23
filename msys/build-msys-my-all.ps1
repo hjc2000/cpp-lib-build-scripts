@@ -13,14 +13,14 @@ try
 	Try-Remove-Item -Path "$libs_path/pcappp"
 	Try-Remove-Item -Path "$libs_path/tsduck"
 
-	Build-Dependency "build-base"
-	Build-Dependency "build-FatFs"
-	Build-Dependency "build-c-bsp-interface"
-	Build-Dependency "build-libusb-wrapper"
-	Build-Dependency "build-ffmpeg-wrapper"
-	Build-Dependency "build-pinvoke"
-	Build-Dependency "build-pcappp"
-	Build-Dependency "build-tsduck"
+	& "$build_script_path/build-base.ps1"
+	& "$build_script_path/build-FatFs.ps1"
+	& "$build_script_path/build-c-bsp-interface.ps1"
+	& "$build_script_path/build-libusb-wrapper.ps1"
+	& "$build_script_path/build-ffmpeg-wrapper.ps1"
+	& "$build_script_path/build-pinvoke.ps1"
+	& "$build_script_path/build-pcappp.ps1"
+	& "$build_script_path/build-tsduck.ps1"
 }
 finally
 {
