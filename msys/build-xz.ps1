@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-libiconv.ps1"
+	& "$build_script_path/build-libiconv.ps1"
 
 	git-get-repo.ps1 -git_url "https://salsa.debian.org/debian/xz-utils.git"
 
@@ -31,7 +31,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

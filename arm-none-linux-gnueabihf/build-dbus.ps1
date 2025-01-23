@@ -15,9 +15,7 @@ Push-Location $repos_path
 try
 {
 	# 构建依赖项
-	Build-Dependency "build-libexpat.ps1"
-
-
+	& "$build_script_path/build-libexpat.ps1"
 
 	Set-Location $repos_path
 	git-get-repo.ps1 -git_url "https://gitlab.freedesktop.org/dbus/dbus.git" `

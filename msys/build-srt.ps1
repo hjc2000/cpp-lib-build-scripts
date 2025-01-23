@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-openssl.ps1"
+	& "$build_script_path/build-openssl.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/Haivision/srt.git"
 
@@ -25,12 +25,12 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DCMAKE_C_COMPILER="gcc" `
 		-DCMAKE_CXX_COMPILER="g++"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{

@@ -164,23 +164,6 @@ function New-Meson-Cross-File
 "@
 }
 
-function Build-Dependency
-{
-	param (
-		[Parameter(Mandatory = $true)]
-		[string]$script_name
-	)
-
-	# 启用另一个进程，不要让依赖项的构建脚本破坏当前环境的环境变量
-	@"
-	$build_script_path/$script_name
-"@ | pwsh
-
-	if ($LASTEXITCODE)
-	{
-		throw "$script_name 执行失败"
-	}
-}
 
 function Fix-Pck-Config-Pc-Path
 {
