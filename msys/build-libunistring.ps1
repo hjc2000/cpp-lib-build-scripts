@@ -13,7 +13,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Build-Dependency "build-libiconv.ps1"
+	& "$build_script_path/build-libiconv.ps1"
 
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://ftp.gnu.org/gnu/libunistring/libunistring-1.2.tar.gz" `
@@ -23,7 +23,7 @@ try
 	cd $(cygpath.exe $source_path)
 
 	./autogen.sh
-	
+
 	./configure \
 	--prefix=$(cygpath.exe $install_path)
 

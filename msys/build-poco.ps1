@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	# Build-Dependency "build-zlib.ps1"
+	# & "$build_script_path/build-zlib.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/pocoproject/poco.git"
 
