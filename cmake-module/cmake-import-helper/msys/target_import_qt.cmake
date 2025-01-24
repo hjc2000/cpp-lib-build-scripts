@@ -20,6 +20,8 @@ function(target_import_qt_widgets target_name visibility)
     install(
         FILES
 		${libs_path}/qt5/bin/Qt6Widgets.dll
+		${libs_path}/qt5/bin/Qt6Gui.dll
+		${libs_path}/qt5/bin/libzstd.dll
         DESTINATION bin
     )
 
