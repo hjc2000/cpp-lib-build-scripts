@@ -23,5 +23,5 @@ function(target_import_qt_widgets target_name visibility)
         DESTINATION bin
     )
 
-	install_dir(${libs_path}/qt5/plugins/ bin "*")
+	install_dir(${libs_path}/qt5/plugins/platforms/ bin/platforms/ "*")
 endfunction()
