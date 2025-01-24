@@ -16,6 +16,8 @@ try
 {
 	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-qt5.ps1"
+	& "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-libpng.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/widget.git"
 
@@ -39,7 +41,15 @@ try
 
 	ninja install
 
+	Install-Msys-Dlls @(
+		"/ucrt64/bin/libgcc_s_seh-1.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+		"/ucrt64/bin/libstdc++-6.dll"
+	)
+
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/base/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
+	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libpng/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Auto-Ldd $install_path/bin
 }
