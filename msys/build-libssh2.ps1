@@ -40,9 +40,6 @@ try
 	}
 
 	ninja install
-
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin

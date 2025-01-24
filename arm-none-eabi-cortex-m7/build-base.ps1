@@ -37,8 +37,6 @@ try
 	}
 
 	ninja install
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/boost/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/nlohmann-json/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

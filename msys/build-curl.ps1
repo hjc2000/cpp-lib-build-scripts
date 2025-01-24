@@ -53,12 +53,6 @@ try
 		"/ucrt64/bin/libidn2-0.dll"
 		"/ucrt64/bin/libintl-8.dll"
 	)
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/icu/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libssh2/bin"
-
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin

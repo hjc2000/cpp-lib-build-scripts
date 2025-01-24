@@ -45,10 +45,6 @@ try
 	Install-Msys-Dlls @(
 		"/ucrt64/bin/libzstd.dll"
 	)
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bzip2/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/xz/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zstd/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin

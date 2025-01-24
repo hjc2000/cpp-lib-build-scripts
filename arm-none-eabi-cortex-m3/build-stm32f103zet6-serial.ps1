@@ -38,10 +38,6 @@ try
 	}
 
 	ninja install
-
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bsp-interface/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/stm32f103zet6-hal/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/task/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

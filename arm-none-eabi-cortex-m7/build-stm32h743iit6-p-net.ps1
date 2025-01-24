@@ -37,8 +37,6 @@ try
 	}
 
 	ninja install
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/lwip/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/freertos-osal/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

@@ -66,19 +66,6 @@ try
 		"/ucrt64/bin/libstdc++-6.dll",
 		"/ucrt64/bin/libwinpthread-1.dll"
 	)
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x264/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/x265/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/xz/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openssl/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/sdl2/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bzip2/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/libiconv/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/srt/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/librist/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/speex/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/openjpeg/bin"
-
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin

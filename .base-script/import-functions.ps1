@@ -237,39 +237,6 @@ function Install-Lib
 
 
 
-# 从指定路径安装依赖的 dll 到自己的 $install_path 中。
-# 会收集指定目录下的 dll 然后安装。收集过程是不递归的。
-#
-# 有这个函数是因为第三方库互相依赖时，它们的 cmake 脚本的安装逻辑并不会将自己依赖的 dll
-# 复制到自己的安装目录的 bin 子目录中。我自己的 cmake 脚本安装时是会将自己依赖的 dll
-# 复制到自己的安装目录的 bin 子目录中的。
-function Install-Dependent-Dlls-From-Dir
-{
-	param (
-		[Parameter(Mandatory = $true)]
-		[string]$dll_dir	# dll 所在的路径。将从这里以非递归的方式收集 dll 文件。
-	)
-
-	if (-not (Test-Path $dll_dir))
-	{
-		Write-Host "源路径 $dll_dir 不存在，跳过安装。"
-		return
-	}
-
-	if (-not (Test-Path $install_path))
-	{
-		Write-Host "安装路径 $install_path 不存在，跳过安装。"
-		return
-	}
-
-	New-Item -Path "$install_path/bin/" -ItemType Directory -Force
-	$dlls = Get-ChildItem -Path "$dll_dir/*.dll" -File
-	foreach ($dll in $dlls)
-	{
-		Copy-Item -Path $dll.FullName -Destination "$install_path/bin/" -Force
-	}
-}
-
 function Install-Msys-Dlls
 {
 	param (

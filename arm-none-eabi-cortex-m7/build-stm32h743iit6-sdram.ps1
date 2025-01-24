@@ -39,9 +39,6 @@ try
 	}
 
 	ninja install
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/base/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/bsp-interface/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/stm32h743iit6-hal/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

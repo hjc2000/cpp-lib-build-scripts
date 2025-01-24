@@ -40,6 +40,7 @@ try
 	}
 
 	ninja install
+
 	# 有些 dll 存在于 lib 目录，需要复制到 bin 目录
 	$lib_dlls = Get-ChildItem -Path $install_path/lib/*.dll -Recurse
 	foreach ($dll in $lib_dlls)
@@ -47,7 +48,6 @@ try
 		Copy-Item -Path $dll.FullName -Destination $install_path/bin -Force
 	}
 
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/zlib/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin
