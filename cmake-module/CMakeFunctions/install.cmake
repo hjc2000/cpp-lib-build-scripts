@@ -16,17 +16,6 @@ endfunction()
 
 
 
-# 将 ${dll_dir} 内的 dll 文件安装到安装目录下的 bin 目录。
-# 会保持目录结构。
-function(install_dll_dir dll_dir)
-    install_dir(${dll_dir}/ bin "*.dll")
-endfunction()
-
-
-
-
-
-
 
 # 将一个文件夹中的头文件安装到安装目录下的 include 目录。
 # 会保持目录结构，同时会过滤，仅安装 *.h
