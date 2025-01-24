@@ -14,6 +14,10 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	Pacman-Ensure-Packages -RequiredPackages @(
+		"mingw-w64-ucrt-x86_64-poco"
+	)
+
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/sync-time.git"
 
 	New-Empty-Dir $build_path
@@ -35,7 +39,18 @@ try
 
 	ninja install
 
+	Install-Msys-Dlls @(
+		"/ucrt64/bin/libgcc_s_seh-1.dll"
+		"/ucrt64/bin/libwinpthread-1.dll"
+		"/ucrt64/bin/libstdc++-6.dll"
+		"/ucrt64/bin/libPocoFoundation-100.dll"
+		"/ucrt64/bin/libPocoNet-100.dll"
+		"/ucrt64/bin/zlib1.dll"
+		"/ucrt64/bin/libpcre2-8-0.dll"
+	)
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Auto-Ldd $install_path/bin
 }
 finally
 {
