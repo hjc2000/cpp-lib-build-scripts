@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/prepare.ps1
 
-$source_path = "$repos_path/ffmpeg-wrapper"
-$install_path = "$libs_path/ffmpeg-wrapper"
+$source_path = "$repos_path/widget"
+$install_path = "$libs_path/widget"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
@@ -15,10 +15,9 @@ Push-Location $repos_path
 try
 {
 	& "$build_script_path/build-base.ps1"
-	& "$build_script_path/build-pinvoke.ps1"
-	& "$build_script_path/build-ffmpeg.ps1"
+	& "$build_script_path/build-qt5.ps1"
 
-	git-get-repo.ps1 -git_url "https://github.com/hjc2000/ffmpeg-wrapper.git"
+	git-get-repo.ps1 -git_url "https://github.com/hjc2000/widget.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
@@ -41,8 +40,6 @@ try
 	ninja install
 
 	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/base/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/pinvoke/bin"
-	Install-Dependent-Dlls-From-Dir -dll_dir "$libs_path/ffmpeg/bin"
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
