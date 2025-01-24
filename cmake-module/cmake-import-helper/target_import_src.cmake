@@ -28,4 +28,11 @@ function(target_import_src target_name)
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib
 	)
+
+	install(
+		TARGETS ${target_name}
+		RUNTIME DESTINATION ${libs_path}/../.total-install/bin
+		LIBRARY DESTINATION ${libs_path}/../.total-install/lib
+		ARCHIVE DESTINATION ${libs_path}/../.total-install/lib
+	)
 endfunction()
