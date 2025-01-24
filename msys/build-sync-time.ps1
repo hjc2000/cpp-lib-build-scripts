@@ -22,6 +22,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		--preset "msys-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
