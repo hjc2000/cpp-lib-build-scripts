@@ -4,14 +4,14 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
-	Try-Remove-Item.exe --path "$libs_path/base"
-	Try-Remove-Item.exe --path "$libs_path/FatFs"
-	Try-Remove-Item.exe --path "$libs_path/c-bsp-interface"
-	Try-Remove-Item.exe --path "$libs_path/libusb-wrapper"
-	Try-Remove-Item.exe --path "$libs_path/ffmpeg-wrapper"
-	Try-Remove-Item.exe --path "$libs_path/pinvoke"
-	Try-Remove-Item.exe --path "$libs_path/pcappp"
-	Try-Remove-Item.exe --path "$libs_path/tsduck"
+	try-remove-items --paths "$libs_path/base"
+	try-remove-items --paths "$libs_path/FatFs"
+	try-remove-items --paths "$libs_path/c-bsp-interface"
+	try-remove-items --paths "$libs_path/libusb-wrapper"
+	try-remove-items --paths "$libs_path/ffmpeg-wrapper"
+	try-remove-items --paths "$libs_path/pinvoke"
+	try-remove-items --paths "$libs_path/pcappp"
+	try-remove-items --paths "$libs_path/tsduck"
 
 	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-FatFs.ps1"
