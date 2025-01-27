@@ -299,21 +299,3 @@ function Auto-Ldd
 		Pop-Location
 	}
 }
-
-function Try-Remove-Item
-{
-	param (
-		[Parameter(Mandatory = $true)]
-		$Path
-	)
-
-	try
-	{
-		Write-Host "删除 $Path"
-		Remove-Item -Path "$Path" -Force -Recurse
-	}
-	catch
-	{
-		<#Do this if a terminating exception happens#>
-	}
-}
