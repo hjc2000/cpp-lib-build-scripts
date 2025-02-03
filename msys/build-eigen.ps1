@@ -18,18 +18,19 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DCMAKE_C_COMPILER="gcc" `
 		-DCMAKE_CXX_COMPILER="g++" `
 		-DEIGEN_BUILD_PKGCONFIG=ON
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
@@ -37,7 +38,6 @@ try
 	}
 
 	ninja install | Out-Null
-
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 	Auto-Ldd $install_path/bin
