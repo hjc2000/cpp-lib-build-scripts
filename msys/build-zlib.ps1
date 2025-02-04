@@ -18,6 +18,7 @@ try
 
 	New-Empty-Dir -Path $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_C_COMPILER="gcc" `
 		-DCMAKE_CXX_COMPILER="g++" `
