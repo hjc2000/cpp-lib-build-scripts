@@ -25,6 +25,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_C_COMPILER="gcc" `
 		-DCMAKE_CXX_COMPILER="g++" `
@@ -38,21 +39,13 @@ try
 		throw "$source_path 配置失败"
 	}
 
-	ninja -j12 | Out-Null
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
 	}
 
-	ninja install | Out-Null
-
-	Install-Msys-Dlls @(
-		"/ucrt64/bin/libgcc_s_seh-1.dll"
-		"/ucrt64/bin/libwinpthread-1.dll"
-		"/ucrt64/bin/libstdc++-6.dll"
-		"/ucrt64/bin/libidn2-0.dll"
-		"/ucrt64/bin/libintl-8.dll"
-	)
+	ninja install
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }

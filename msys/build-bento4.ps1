@@ -36,12 +36,6 @@ try
 	}
 
 	ninja install
-
-	Install-Msys-Dlls @(
-		"/ucrt64/bin/libgcc_s_seh-1.dll"
-		"/ucrt64/bin/libwinpthread-1.dll"
-		"/ucrt64/bin/libstdc++-6.dll"
-	)
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }

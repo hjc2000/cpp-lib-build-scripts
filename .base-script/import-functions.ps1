@@ -234,33 +234,3 @@ function Install-Lib
 "@
 	}
 }
-
-
-
-function Install-Msys-Dlls
-{
-	param (
-		[Parameter(Mandatory = $true)]
-		[array]$msys_dlls	# msys 的 dll 的路径。需要使用 msys 的路径，而不是 windows 路径。
-	)
-
-	if (-not (Test-Path $install_path))
-	{
-		throw "安装路径 $install_path 不存在。"
-	}
-
-	foreach ($msys_dll in $msys_dlls)
-	{
-		$win_path = cygpath.exe $msys_dll -w
-		if (Test-Path $win_path)
-		{
-			Copy-Item -Path $(cygpath.exe $msys_dll -w) `
-				-Destination "$install_path/bin/" `
-				-Force
-		}
-		else
-		{
-			Write-Host "$msys_dll 不存在"
-		}
-	}
-}
