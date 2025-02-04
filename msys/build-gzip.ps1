@@ -14,7 +14,7 @@ Push-Location $repos_path
 try
 {
 	Pacman-Ensure-Packages @("texinfo")
-	
+
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://ftp.gnu.org/gnu/gzip/gzip-1.13.zip" `
 		-out_dir_name "gzip"
@@ -39,7 +39,6 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
-	Auto-Ldd $install_path/bin
 }
 finally
 {
