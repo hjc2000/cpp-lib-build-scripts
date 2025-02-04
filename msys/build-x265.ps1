@@ -18,6 +18,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Unix Makefiles" $source_path `
 		-DCMAKE_INSTALL_PREFIX="${install_path}" `
 		-DCMAKE_C_COMPILER="gcc" `
