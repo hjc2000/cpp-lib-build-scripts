@@ -14,7 +14,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	git-get-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git"
+	git-get-repo.ps1 -git_url "https://github.com/libsdl-org/SDL.git" `
+		-branch_name "SDL2"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
