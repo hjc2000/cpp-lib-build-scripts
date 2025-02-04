@@ -24,12 +24,12 @@ try
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DWITH_EIGEN=OFF
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
@@ -37,10 +37,8 @@ try
 	}
 
 	ninja install
-
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
-	Auto-Ldd $install_path/bin
 }
 finally
 {

@@ -17,7 +17,7 @@ try
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://www.openssl.org/source/openssl-3.3.0-beta1.tar.gz" `
 		-out_dir_name "openssl"
-	
+
 	run-bash-cmd.ps1 @"
 	cd $(cygpath.exe $source_path)
 
@@ -41,16 +41,15 @@ try
 	{
 		$prefix = "prefix=$(cygpath.exe $install_path)"
 		$content = Get-Content -Path "$($pc_file.FullName)"
-		
+
 		$prefix | Set-Content -Path "$($pc_file.FullName)"
 		$content | Add-Content -Path "$($pc_file.FullName)"
 	}
 
 	Copy-Item -Path $install_path/lib64 -Destination $install_path/lib -Force -Recurse
-	
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
-	Auto-Ldd $install_path/bin
 }
 finally
 {

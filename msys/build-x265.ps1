@@ -15,7 +15,7 @@ Push-Location $repos_path
 try
 {
 	git-get-repo.ps1 -git_url "https://bitbucket.org/multicoreware/x265_git.git"
-	
+
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Unix Makefiles" $source_path `
@@ -26,12 +26,12 @@ try
 		-DENABLE_SHARED=ON `
 		-DENABLE_PIC=ON `
 		-DENABLE_ASSEMBLY=OFF
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	make -j12
 	if ($LASTEXITCODE)
 	{
@@ -47,7 +47,6 @@ try
 	)
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
-	Auto-Ldd $install_path/bin
 }
 finally
 {

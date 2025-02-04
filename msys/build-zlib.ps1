@@ -16,7 +16,7 @@ try
 {
 	git-get-repo.ps1 -git_url "https://github.com/madler/zlib.git"
 
-	New-Empty-Dir -Path $build_path	
+	New-Empty-Dir -Path $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_C_COMPILER="gcc" `
@@ -30,7 +30,7 @@ try
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
@@ -41,7 +41,6 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
-	Auto-Ldd $install_path/bin
 }
 finally
 {
