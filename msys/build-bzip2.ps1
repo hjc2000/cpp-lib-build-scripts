@@ -19,7 +19,7 @@ try
 
 	run-bash-cmd.ps1 -cmd @"
 	cd $(cygpath.exe $source_path)
-	
+
 	make PREFIX=$(cygpath.exe $install_path) clean
 	make PREFIX=$(cygpath.exe $install_path) -j12
 	make PREFIX=$(cygpath.exe $install_path) install
@@ -43,12 +43,12 @@ Version: 1.0.6
 Libs: -L`${libdir} -lbz2
 Cflags: -I`${includedir}
 "@
+
 	New-Item -Path $install_path/lib/pkgconfig/bzip2.pc -ItemType File -Force
 	$pc_file_content | Out-File -FilePath $install_path/lib/pkgconfig/bzip2.pc
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
-	Auto-Ldd $install_path/bin
 }
 finally
 {

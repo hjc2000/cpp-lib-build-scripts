@@ -264,38 +264,3 @@ function Install-Msys-Dlls
 		}
 	}
 }
-
-function Auto-Ldd
-{
-	param (
-		[Parameter(Mandatory = $true)]
-		$bin_dir
-	)
-
-	if (-not (Test-Path $bin_dir))
-	{
-		return 0
-	}
-
-	Push-Location $bin_dir
-	try
-	{
-		$exes = Get-ChildItem -Path $bin_dir/*.exe
-		foreach ($exe in $exes)
-		{
-			Write-Host "---------------------------------------------------------------------------------"
-			Write-Host "$($exe.FullName)"
-			Write-Host "---------------------------------------------------------------------------------"
-			ldd $exe.Name
-		}
-	}
-	catch
-	{
-		<#Do this if a terminating exception happens#>
-	}
-	finally
-	{
-		Write-Host "---------------------------------------------------------------------------------"
-		Pop-Location
-	}
-}

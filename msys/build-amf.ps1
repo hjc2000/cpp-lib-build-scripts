@@ -18,7 +18,7 @@ try
 	# 准备好安装目录
 	$amf_include_install_path = "$install_path/include/AMF/"
 	New-Item -Path $amf_include_install_path -ItemType Directory -Force
-	
+
 	# 将头文件复制到安装目录
 	Copy-Item -Path "$source_path/amf/public/include/*" `
 		-Destination $amf_include_install_path `
@@ -26,7 +26,6 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
-	Auto-Ldd $install_path/bin
 }
 finally
 {
