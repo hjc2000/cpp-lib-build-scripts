@@ -37,6 +37,9 @@ try
 		throw "$source_path 编译失败"
 	}
 
+	Copy-Item -Path $install_path/x64/mingw/bin -Destination $install_path/bin -Force -Recurse
+	Copy-Item -Path $install_path/x64/mingw/lib -Destination $install_path/lib -Force -Recurse
+
 	ninja install
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
