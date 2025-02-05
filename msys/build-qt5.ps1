@@ -18,8 +18,6 @@ try
 	& "$build_script_path/build-zstd.ps1"
 	& "$build_script_path/build-ffmpeg.ps1"
 
-	Pacman-Ensure-Packages @("mingw-w64-ucrt-x86_64-nodejs")
-
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
 		-branch_name "6.7"
 
