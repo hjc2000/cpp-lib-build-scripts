@@ -17,9 +17,10 @@ try
 {
 	& "$build_script_path/build-zlib.ps1"
 	& "$build_script_path/build-libiconv.ps1"
-	& "$build_script_path/build-icu.ps1"
 	& "$build_script_path/build-openssl.ps1"
 	& "$build_script_path/build-libssh2.ps1"
+
+	Pacman-Ensure-Packages @("mingw-w64-ucrt-x86_64-icu")
 
 	git-get-repo.ps1 -git_url "https://github.com/curl/curl.git"
 
