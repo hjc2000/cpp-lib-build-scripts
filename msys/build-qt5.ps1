@@ -18,7 +18,8 @@ try
 	& "$build_script_path/build-zstd.ps1"
 	& "$build_script_path/build-ffmpeg.ps1"
 
-	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git"
+	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
+		-branch_name "v6.8.2"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
