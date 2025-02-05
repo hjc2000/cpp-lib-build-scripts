@@ -19,7 +19,7 @@ try
 	& "$build_script_path/build-ffmpeg.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
-		-branch_name "6.8.2"
+		-branch_name "6.7"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
