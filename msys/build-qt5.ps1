@@ -18,6 +18,9 @@ try
 	& "$build_script_path/build-zstd.ps1"
 	& "$build_script_path/build-ffmpeg.ps1"
 
+	$env:Clang_DIR = cygpath.exe -m "$(which.exe clang)"
+	$env:Clang_DIR = Split-Path -Path "$env:Clang_DIR" -Parent
+
 	pip install html5lib
 	Pacman-Ensure-Packages @("mingw-w64-ucrt-x86_64-gperf")
 
