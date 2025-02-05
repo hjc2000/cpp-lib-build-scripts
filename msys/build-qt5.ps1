@@ -19,7 +19,11 @@ try
 	& "$build_script_path/build-ffmpeg.ps1"
 
 	pip install html5lib
-	Pacman-Ensure-Packages @("mingw-w64-ucrt-x86_64-gperf")
+
+	Pacman-Ensure-Packages @(
+		"mingw-w64-ucrt-x86_64-gperf",
+		"mingw-w64-ucrt-x86_64-clang"
+	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
 		-branch_name "6.7"
