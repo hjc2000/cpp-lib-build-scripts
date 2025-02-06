@@ -9,3 +9,6 @@ Pacman-Ensure-Packages @(
 	"mingw-w64-ucrt-x86_64-7zip"
 	"texinfo"
 )
+
+python -m pip install --upgrade pip
+pip install meson

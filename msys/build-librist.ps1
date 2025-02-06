@@ -14,6 +14,8 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	pip install meson
+
 	git-get-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
 
 	New-Empty-Dir -Path $build_path
