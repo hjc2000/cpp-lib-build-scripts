@@ -8,6 +8,7 @@ Pacman-Ensure-Packages @(
 	"autotools"
 	"mingw-w64-ucrt-x86_64-7zip"
 	"texinfo"
+	"libtool"
 )
 
 python -m pip install --upgrade pip

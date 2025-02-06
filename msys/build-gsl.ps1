@@ -13,8 +13,6 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Pacman-Ensure-Packages @("libtool")
-
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz" `
 		-out_dir_name "gsl"
