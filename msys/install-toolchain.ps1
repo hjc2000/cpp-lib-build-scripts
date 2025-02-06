@@ -7,4 +7,5 @@ Pacman-Ensure-Packages @(
 	"make"
 	"autotools"
 	"mingw-w64-ucrt-x86_64-7zip"
+	"texinfo"
 )
