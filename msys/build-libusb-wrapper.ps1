@@ -21,6 +21,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		--preset "msys-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
@@ -38,6 +39,7 @@ try
 
 	ninja install
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }
 finally
 {

@@ -49,6 +49,7 @@ try
 	Copy-Item -Path $install_path/lib64 -Destination $install_path/lib -Force -Recurse
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }
 finally
 {

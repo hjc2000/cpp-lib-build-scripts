@@ -15,18 +15,18 @@ Push-Location $repos_path
 try
 {
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/c-bsp-interface.git"
-	
+
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		--preset "msys-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
+
 	ninja -j12
 	if ($LASTEXITCODE)
 	{
@@ -35,6 +35,7 @@ try
 
 	ninja install
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }
 finally
 {

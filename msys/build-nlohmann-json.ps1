@@ -16,11 +16,13 @@ try
 	git-get-repo.ps1 -git_url "https://github.com/nlohmann/json.git"
 
 	New-Item -Path $install_path/include/nlohmann -ItemType Directory -Force
+
 	Copy-Item -Path "$source_path/single_include/nlohmann/json.hpp" `
 		-Destination "$install_path/include/nlohmann/json.hpp" `
 		-Force -Recurse
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
 }
 finally
 {
