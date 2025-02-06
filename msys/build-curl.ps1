@@ -20,7 +20,10 @@ try
 	& "$build_script_path/build-openssl.ps1"
 	& "$build_script_path/build-libssh2.ps1"
 
-	Pacman-Ensure-Packages @("mingw-w64-ucrt-x86_64-icu")
+	Pacman-Ensure-Packages @(
+		"mingw-w64-ucrt-x86_64-icu"
+		"mingw-w64-ucrt-x86_64-libpsl"
+	)
 
 	git-get-repo.ps1 -git_url "https://github.com/curl/curl.git"
 
