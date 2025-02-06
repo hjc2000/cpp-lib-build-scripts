@@ -13,8 +13,6 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Pacman-Ensure-Packages @("texinfo")
-
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://ftp.gnu.org/gnu/gzip/gzip-1.13.zip" `
 		-out_dir_name "gzip"
