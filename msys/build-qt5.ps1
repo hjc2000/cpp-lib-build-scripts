@@ -21,8 +21,9 @@ try
 	pip install html5lib
 
 	Pacman-Ensure-Packages @(
-		"mingw-w64-ucrt-x86_64-gperf",
-		"mingw-w64-ucrt-x86_64-clang"
+		"mingw-w64-ucrt-x86_64-gperf"
+		"bison"
+		"flex"
 	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
