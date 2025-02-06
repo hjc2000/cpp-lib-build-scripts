@@ -22,8 +22,8 @@ try
 
 	Pacman-Ensure-Packages @(
 		"mingw-w64-ucrt-x86_64-gperf"
-		"bison"
-		"flex"
+		# "bison"
+		# "flex"
 	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
@@ -46,8 +46,7 @@ try
 		throw "$source_path 配置失败"
 	}
 
-	# qt 需要编译很久。这里使用 11 线程，避免电脑长时间卡顿。
-	ninja -j11
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
