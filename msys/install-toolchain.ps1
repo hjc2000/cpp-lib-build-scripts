@@ -6,4 +6,5 @@ Pacman-Ensure-Packages @(
 	"mingw-w64-ucrt-x86_64-yasm"
 	"make"
 	"autotools"
+	"mingw-w64-ucrt-x86_64-7zip"
 )
