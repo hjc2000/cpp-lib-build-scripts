@@ -13,6 +13,10 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
+	<#
+	可以从 https://download.qt.io/development_releases/prebuilt/libclang/qt/ 中选择一个链接进行下载，
+	然后在浏览器的下载列表中获取下载链接。
+	#>
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url "https://mirrors.tuna.tsinghua.edu.cn/qt/development_releases/prebuilt/libclang/qt/libclang-release_120-based-windows-mingw_64.7z" `
 		-out_dir_name "clang"
