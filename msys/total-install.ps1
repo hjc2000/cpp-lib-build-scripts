@@ -7,7 +7,7 @@ try
 {
 	New-Item -Path $total_install_path -ItemType Directory -Force
 
-	# 使用Get-ChildItem获取所有子目录，-Directory参数确保只获取目录
+	# 使用Get-ChildItem获取所有子目录，-Directory 参数确保只获取目录
 	$libs = Get-ChildItem -Path $libs_path -Directory
 	foreach ($lib in $libs)
 	{
