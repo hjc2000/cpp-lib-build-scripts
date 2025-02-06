@@ -13,10 +13,6 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Pacman-Ensure-Packages @(
-		"autotools"
-	)
-
 	git-get-repo.ps1 -git_url "https://github.com/libusb/libusb.git"
 
 	# 执行命令进行构建
