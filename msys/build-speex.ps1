@@ -17,6 +17,7 @@ try
 	git-get-repo.ps1 -git_url "https://gitlab.xiph.org/xiph/speex.git"
 
 	New-Empty-Dir -Path $build_path
+
 	New-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
@@ -29,6 +30,7 @@ try
 "@
 
 	Set-Location $source_path
+
 	meson setup jc_build/ `
 		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path"
