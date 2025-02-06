@@ -17,7 +17,6 @@ try
 	& "$build_script_path/build-zlib.ps1"
 	& "$build_script_path/build-zstd.ps1"
 	& "$build_script_path/build-ffmpeg.ps1"
-	& "$build_script_path/build-clang.ps1"
 
 	pip install html5lib
 
