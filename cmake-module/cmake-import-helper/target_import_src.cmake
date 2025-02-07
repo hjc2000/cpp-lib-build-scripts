@@ -24,17 +24,13 @@ function(target_import_src target_name)
 	set(CMAKE_INSTALL_PREFIX ${libs_path}/${ProjectName}/)
 
 	# 将本目标的编译产物安装到标准目录
-	install(
-		TARGETS ${target_name}
-		RUNTIME DESTINATION bin
-		LIBRARY DESTINATION lib
-		ARCHIVE DESTINATION lib
-	)
+	install(TARGETS ${target_name}
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION lib
+			ARCHIVE DESTINATION lib)
 
-	install(
-		TARGETS ${target_name}
-		RUNTIME DESTINATION ${libs_path}/../.total-install/bin
-		LIBRARY DESTINATION ${libs_path}/../.total-install/lib
-		ARCHIVE DESTINATION ${libs_path}/../.total-install/lib
-	)
+	install(TARGETS ${target_name}
+			RUNTIME DESTINATION ${libs_path}/../.total-install/bin
+			LIBRARY DESTINATION ${libs_path}/../.total-install/lib
+			ARCHIVE DESTINATION ${libs_path}/../.total-install/lib)
 endfunction()
