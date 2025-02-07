@@ -15,19 +15,19 @@ Push-Location $repos_path
 try
 {
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/c-bsp-interface.git"
-	
+
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 	cmake -G "Ninja" $source_path `
 		--preset "arm-none-eabi-cortex-m7-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
-		
+
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
 	}
-	
-	ninja -j12
+
+	ninja -j12 -v
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"
