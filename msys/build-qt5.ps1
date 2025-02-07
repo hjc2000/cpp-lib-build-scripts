@@ -32,14 +32,42 @@ try
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 
+	$env:CC = "gcc"
+	$env:CXX = "g++"
+
+	$skiped_modules = @(
+		"qtlanguageserver"
+		"qttools"
+		"qtdoc"
+		"qttranslations"
+		"qtdeclarative"
+		"qtquicktimeline"
+		"qtquick3d"
+		"qtgraphs"
+		"qtlocation"
+		"qtlottie"
+		"qtmqtt"
+		"qtopcua"
+		"qtquick3dphysics"
+		"qtquickeffectmaker"
+		"qtvirtualkeyboard"
+		"qtwebengine"
+		"qtwebview"
+	)
+
+	Invoke-Expression "../configure.bat -skip $($skiped_modules -join ",") -prefix ${install_path}"
+	if ($LASTEXITCODE)
+	{
+		throw "$source_path 配置失败"
+	}
+
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_C_COMPILER="gcc" `
 		-DCMAKE_CXX_COMPILER="g++" `
 		-DCMAKE_C_STANDARD=17 `
 		-DCMAKE_CXX_STANDARD=20 `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="${install_path}" `
-		-DQT_NO_PACKAGE_VERSION_CHECK=TRUE
+		-DCMAKE_INSTALL_PREFIX="${install_path}"
 
 	if ($LASTEXITCODE)
 	{
