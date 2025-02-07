@@ -29,10 +29,10 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DSDL_SHARED=ON `
 		-DSDL_STATIC=OFF
-		
-	ninja -j12
+
+	ninja -j12 -v
 	ninja install
-		
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

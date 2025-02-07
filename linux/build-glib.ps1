@@ -23,9 +23,9 @@ try
 		--prefix="$install_path"
 
 	Set-Location $build_path
-	ninja -j12
+	ninja -j12 -v
 	ninja install
-		
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally

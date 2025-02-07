@@ -22,9 +22,9 @@ try
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
 		-DBUILD_SHARED_LIBS=ON
 
-	ninja -j12
+	ninja -j12 -v
 	ninja install
-		
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 catch
