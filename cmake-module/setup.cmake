@@ -26,6 +26,9 @@ set(libs_path
 	CACHE STRING "库仓库路径"
 	FORCE)
 
+# 如果预设文件已经设置了安装目录，则本语句设置的安装目录不会生效。
+set(CMAKE_INSTALL_PREFIX ${libs_path}/${ProjectName}/)
+
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
 	list(APPEND CMAKE_INSTALL_RPATH
 		 $ORIGIN/../lib

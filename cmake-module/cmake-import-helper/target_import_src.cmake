@@ -21,9 +21,6 @@ function(target_import_src target_name)
 		target_add_source_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/private_src/)
 	endif()
 
-	# 如果预设文件已经设置了安装目录，则本语句设置的安装目录不会生效。
-	set(CMAKE_INSTALL_PREFIX ${libs_path}/${ProjectName}/)
-
 	# 将本目标的编译产物安装到标准目录
 	install(TARGETS ${target_name}
 			RUNTIME DESTINATION bin
