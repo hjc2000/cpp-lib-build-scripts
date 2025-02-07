@@ -15,6 +15,7 @@ Push-Location $repos_path
 try
 {
 	& "$build_script_path/build-base.ps1"
+	& "$build_script_path/build-npcap.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/pcappp.git"
 
