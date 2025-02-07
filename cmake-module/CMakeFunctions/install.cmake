@@ -21,6 +21,7 @@ endfunction()
 # 会保持目录结构，同时会过滤，仅安装 *.h
 function(install_include_dir include_dir)
     install_dir(${include_dir} include "*.h")
+    install_dir(${include_dir} ${libs_path}/../.total-install/include "*.h")
 endfunction()
 
 
@@ -33,4 +34,5 @@ function(install_header_files_recurse header_dir)
 
     # 安装所有收集到的头文件到安装前缀的include目录下
     install(FILES ${header_files} DESTINATION include)
+    install(FILES ${header_files} DESTINATION ${libs_path}/../.total-install/include)
 endfunction()
