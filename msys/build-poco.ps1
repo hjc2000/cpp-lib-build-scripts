@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	# & "$build_script_path/build-zlib.ps1"
+	& "$build_script_path/build-zlib.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/pocoproject/poco.git"
 
@@ -39,8 +39,7 @@ try
 	}
 
 	ninja install
-	Install-Lib -src_path $install_path -dst_path $total_install_path
-	Install-Lib -src_path $install_path -dst_path $(cygpath.exe /ucrt64 -w)
+	# Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
 {
