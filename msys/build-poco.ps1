@@ -16,6 +16,11 @@ try
 {
 	& "$build_script_path/build-zlib.ps1"
 
+	Pacman-Ensure-Packages @(
+		"mingw-w64-ucrt-x86_64-libutf8proc"
+		"mingw-w64-ucrt-x86_64-pcre2"
+	)
+
 	git-get-repo.ps1 -git_url "https://github.com/pocoproject/poco.git"
 
 	New-Empty-Dir -Path $build_path
@@ -25,7 +30,8 @@ try
 		-DCMAKE_C_COMPILER="gcc" `
 		-DCMAKE_CXX_COMPILER="g++" `
 		-DCMAKE_BUILD_TYPE=Release `
-		-DCMAKE_INSTALL_PREFIX="$install_path"
+		-DCMAKE_INSTALL_PREFIX="$install_path" `
+		-DPOCO_UNBUNDLED=ON
 
 	if ($LASTEXITCODE)
 	{
