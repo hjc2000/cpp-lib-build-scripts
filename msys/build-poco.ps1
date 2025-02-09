@@ -27,8 +27,10 @@ try
 	Set-Location $build_path
 
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_C_COMPILER="gcc" `
-		-DCMAKE_CXX_COMPILER="g++" `
+		-DCMAKE_C_COMPILER="clang" `
+		-DCMAKE_CXX_COMPILER="clang++" `
+		-DCMAKE_C_STANDARD=17 `
+		-DCMAKE_CXX_STANDARD=20 `
 		-DCMAKE_MC_COMPILER="C:\msys64\ucrt64\bin\windmc.exe" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
