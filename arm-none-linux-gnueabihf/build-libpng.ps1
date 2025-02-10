@@ -44,7 +44,7 @@ try
 		throw "$source_path 配置失败"
 	}
 
-	ninja -j12 -v
+	ninja -j12
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 编译失败"

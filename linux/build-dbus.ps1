@@ -22,7 +22,7 @@ try
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_INSTALL_PREFIX="${install_path}"
 
-	ninja -j12 -v
+	ninja -j12
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
