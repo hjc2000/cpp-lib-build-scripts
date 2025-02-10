@@ -5,7 +5,6 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 try
 {
 	try-remove-items --paths "$libs_path/base"
-	try-remove-items --paths "$libs_path/FatFs"
 	try-remove-items --paths "$libs_path/c-bsp-interface"
 	try-remove-items --paths "$libs_path/libusb-wrapper"
 	try-remove-items --paths "$libs_path/ffmpeg-wrapper"
@@ -15,7 +14,6 @@ try
 	try-remove-items --paths "$libs_path/sync-time"
 
 	& "$build_script_path/build-base.ps1"
-	& "$build_script_path/build-FatFs.ps1"
 	& "$build_script_path/build-c-bsp-interface.ps1"
 	& "$build_script_path/build-libusb-wrapper.ps1"
 	& "$build_script_path/build-ffmpeg-wrapper.ps1"
