@@ -12,6 +12,7 @@ try
 	try-remove-items --paths "$libs_path/pcappp"
 	try-remove-items --paths "$libs_path/tsduck"
 	try-remove-items --paths "$libs_path/sync-time"
+	try-remove-items --paths "$libs_path/widget"
 
 	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-c-bsp-interface.ps1"
@@ -21,6 +22,7 @@ try
 	& "$build_script_path/build-pcappp.ps1"
 	& "$build_script_path/build-tsduck.ps1"
 	& "$build_script_path/build-sync-time.ps1"
+	& "$build_script_path/build-widget.ps1"
 }
 finally
 {
