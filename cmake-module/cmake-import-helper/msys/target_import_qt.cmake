@@ -42,3 +42,11 @@ function(target_import_qt_opengl target_name visibility)
 
 	target_import_qt_widgets(${target_name} ${visibility})
 endfunction()
+
+
+
+
+function(target_import_qwt target_name visibility)
+	target_link_libraries(${target_name} PUBLIC qwt-qt6)
+	target_import_qt_widgets(${target_name} ${visibility})
+endfunction()

@@ -24,6 +24,7 @@ try
 		"mingw-w64-ucrt-x86_64-gperf"
 		"bison"
 		"flex"
+		"mingw-w64-ucrt-x86_64-qwt-qt6"
 	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
