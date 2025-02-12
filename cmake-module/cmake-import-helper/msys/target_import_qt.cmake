@@ -45,7 +45,7 @@ endfunction()
 
 
 
-
+# qwt 是一个基于 qt 的绘制函数曲线的库。
 function(target_import_qwt target_name visibility)
 	target_link_libraries(${target_name} PUBLIC qwt-qt6)
 	target_import_qt_widgets(${target_name} ${visibility})
