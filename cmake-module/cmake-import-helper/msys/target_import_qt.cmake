@@ -9,6 +9,7 @@ endif()
 
 function(target_import_qt_core target_name visibility)
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtCore)
     target_auto_link_lib(${target_name} Qt6Core ${libs_path}/qt5/lib)
 endfunction()
 
@@ -18,7 +19,9 @@ endfunction()
 
 
 function(target_import_qt_widgets target_name visibility)
-    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtWidgets)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtGui)
+
     target_auto_link_lib(${target_name} Qt6Widgets ${libs_path}/qt5/lib)
     target_auto_link_lib(${target_name} Qt6Gui ${libs_path}/qt5/lib)
 
@@ -32,7 +35,8 @@ endfunction()
 
 
 function(target_import_qt_opengl target_name visibility)
-    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtOpenGL)
+
     target_auto_link_lib(${target_name} Qt6OpenGL ${libs_path}/qt5/lib)
     target_auto_link_lib(${target_name} Qt6OpenGLWidgets ${libs_path}/qt5/lib)
 
