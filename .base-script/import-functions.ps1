@@ -71,16 +71,17 @@ function Pacman-Ensure-Packages
 		run-bash-cmd.ps1 @"
 		pacman -Q $pkg
 "@
+
 		if ($LASTEXITCODE)
 		{
-			Write-Output "$pkg is not installed. Installing..."
+			Write-Output "$pkg 还没被安装. 尝试安装："
 			run-bash-cmd.ps1 @"
 			pacman -S $pkg --noconfirm --overwrite '*'
 "@
 		}
 		else
 		{
-			Write-Output "$pkg is already installed."
+			Write-Output "$pkg 已经安装。"
 		}
 	}
 }
