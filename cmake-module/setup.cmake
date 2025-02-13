@@ -8,7 +8,6 @@ include(install)
 include(collect)
 include(link)
 include(source_and_headers)
-include(get_source_and_build)
 include(process)
 
 list(APPEND CMAKE_MODULE_PATH
