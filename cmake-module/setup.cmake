@@ -5,7 +5,6 @@ list(APPEND CMAKE_MODULE_PATH
 	 $ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions)
 
 include(install)
-include(collect)
 include(link)
 include(source_and_headers)
 

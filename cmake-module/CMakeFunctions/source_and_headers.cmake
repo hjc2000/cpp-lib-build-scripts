@@ -1,7 +1,19 @@
 # 递归收集头文件，添加到查找路径，然后定义安装规则，安装时会将这些头文件
 # 都安装到 include 目录下。
 function(target_add_header_files_recurse target visibility src_dir)
-    append_header_file_paths_to_list_recurse(${src_dir} header_file_path_list)
+	execute_process(
+		COMMAND collect-header-file-dir-recurse --paths "./"
+		WORKING_DIRECTORY ${src_dir}
+		OUTPUT_VARIABLE header_file_path_list
+		RESULT_VARIABLE exit_code
+	)
+
+	if(exit_code EQUAL 0)
+		# 无操作
+	else()
+		message(FATAL_ERROR "递归收集 ${src_dir} 中的头文件失败。")
+	endif()
+
     target_include_directories(${target} ${visibility} ${header_file_path_list})
 endfunction()
 
