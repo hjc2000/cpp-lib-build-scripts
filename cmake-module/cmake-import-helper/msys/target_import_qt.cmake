@@ -4,12 +4,14 @@ endif()
 
 
 
-set(CMAKE_AUTOMOC ON)
-find_package(Qt6 COMPONENTS Core REQUIRED)
-
 
 
 function(target_import_qt_core target_name visibility)
+	if(CMAKE_AUTOMOC EQUAL OFF)
+		set(CMAKE_AUTOMOC ON)
+		find_package(Qt6 COMPONENTS Core REQUIRED)
+	endif()
+
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include)
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtCore)
     target_auto_link_lib(${target_name} Qt6Core ${libs_path}/qt5/lib)
