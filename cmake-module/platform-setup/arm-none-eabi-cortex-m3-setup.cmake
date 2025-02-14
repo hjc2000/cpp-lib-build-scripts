@@ -31,3 +31,6 @@ endif()
 
 set(CMAKE_EXECUTABLE_SUFFIX ".elf")
 set(CMAKE_STATIC_LIBRARY_SUFFIX ".a")
+
+list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install)
+list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib)

@@ -3,3 +3,4 @@
 run-bash-cmd.ps1 "true"
 
 $env:Path = "C:\msys64\usr\bin\core_perl;" + $env:Path
+$env:CMAKE_PREFIX_PATH = "$total_install_path;C:/msys64/ucrt64/lib;C:/msys64/ucrt64"
