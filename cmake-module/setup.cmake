@@ -27,6 +27,10 @@ set(CMAKE_INSTALL_PREFIX
 	${libs_path}/${ProjectName}/
 	CACHE STRING "安装路径")
 
+list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install)
+list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib)
+message(STATUS "CMAKE_PREFIX_PATH 的值：${CMAKE_PREFIX_PATH}")
+
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
 	list(APPEND CMAKE_INSTALL_RPATH
 		 $ORIGIN/../lib
