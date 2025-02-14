@@ -4,6 +4,8 @@ endif()
 
 
 
+set(CMAKE_AUTOMOC ON)
+find_package(Qt6 COMPONENTS Core REQUIRED)
 
 
 
