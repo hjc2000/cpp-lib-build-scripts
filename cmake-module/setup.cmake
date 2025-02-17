@@ -1,4 +1,4 @@
-if(${ProjectName} STREQUAL "")
+if("${ProjectName}" STREQUAL "")
 	message(FATAL_ERROR "ProjectName 没有被设置。")
 endif()
 
@@ -29,7 +29,8 @@ set(libs_path
 
 set(CMAKE_INSTALL_PREFIX
 	${libs_path}/${ProjectName}/
-	CACHE STRING "安装路径")
+	CACHE STRING "安装路径"
+	FORCE)
 
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
 	list(APPEND CMAKE_INSTALL_RPATH
