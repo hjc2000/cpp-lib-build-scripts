@@ -1,3 +1,7 @@
+if(${ProjectName} EQUAL "")
+	message(FATAL_ERROR "ProjectName 没有被设置。")
+endif()
+
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 
 # 导入我的 cmake 函数
