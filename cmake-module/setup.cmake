@@ -1,4 +1,4 @@
-if(${ProjectName} EQUAL "")
+if(${ProjectName} STREQUAL "")
 	message(FATAL_ERROR "ProjectName 没有被设置。")
 endif()
 
