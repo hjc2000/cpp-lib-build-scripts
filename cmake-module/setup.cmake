@@ -54,3 +54,4 @@ endif()
 
 # 设置CMake构建时使用的线程数
 set(CMAKE_BUILD_PARALLEL_LEVEL 12)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
