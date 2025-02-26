@@ -1,5 +1,6 @@
 include(target_import_base)
 include(target_import_qt)
+include(target_import_qxlsx)
 
 function(target_import_widget target_name visibility)
 	set(lib_name "widget")
@@ -10,4 +11,5 @@ function(target_import_widget target_name visibility)
 	target_import_qt_widgets(${target_name} PUBLIC)
 	target_import_qt_opengl(${target_name} PUBLIC)
 	target_import_qwt(${target_name} PUBLIC)
+	target_import_qxlsx(${target_name} PUBLIC)
 endfunction()
