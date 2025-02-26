@@ -18,6 +18,7 @@ try
 	& "$build_script_path/build-qt5.ps1"
 	& "$build_script_path/build-zlib.ps1"
 	& "$build_script_path/build-libpng.ps1"
+	& "$build_script_path/build-qxlsx.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/widget.git"
 
