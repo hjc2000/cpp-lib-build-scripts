@@ -4,16 +4,16 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
-	try-remove-items --paths "$libs_path/base" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
-	try-remove-items --paths "$libs_path/c-bsp-interface" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
-	try-remove-items --paths "$libs_path/libusb-wrapper" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
-	try-remove-items --paths "$libs_path/ffmpeg-wrapper" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
-	try-remove-items --paths "$libs_path/pinvoke" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
-	try-remove-items --paths "$libs_path/pcappp" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
-	try-remove-items --paths "$libs_path/tsduck" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
-	try-remove-items --paths "$libs_path/sync-time" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
+	try-remove-items --paths "$libs_path/base"
+	try-remove-items --paths "$libs_path/c-bsp-interface"
+	try-remove-items --paths "$libs_path/libusb-wrapper"
+	try-remove-items --paths "$libs_path/ffmpeg-wrapper"
+	try-remove-items --paths "$libs_path/pinvoke"
+	try-remove-items --paths "$libs_path/pcappp"
+	try-remove-items --paths "$libs_path/tsduck"
+	try-remove-items --paths "$libs_path/sync-time"
 	try-remove-items --paths "$libs_path/widget"
-	try-remove-items --paths "$libs_path/can-diagnosis" || throw "try-remove-items 失败，退出代码: $LASTEXITCODE"
+	try-remove-items --paths "$libs_path/can-diagnosis"
 
 	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-c-bsp-interface.ps1"
