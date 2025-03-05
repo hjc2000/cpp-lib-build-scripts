@@ -4,6 +4,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
+	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/bsp-interface"
 	try-remove-items --paths "$libs_path/stm32h743iit6-sdram"
@@ -26,6 +27,7 @@ try
 	try-remove-items --paths "$libs_path/FatFs"
 	try-remove-items --paths "$libs_path/littlefs"
 	try-remove-items --paths "$libs_path/task"
+	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-bsp-interface.ps1"
