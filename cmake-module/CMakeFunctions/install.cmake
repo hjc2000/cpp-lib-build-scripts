@@ -36,3 +36,21 @@ function(install_header_files_recurse header_dir)
     install(FILES ${header_files} DESTINATION include)
     install(FILES ${header_files} DESTINATION ${libs_path}/../.total-install/include)
 endfunction()
+
+
+
+
+function(target_install target_name)
+	install(TARGETS ${target_name}
+			RUNTIME DESTINATION bin
+			LIBRARY DESTINATION lib
+			ARCHIVE DESTINATION lib)
+endfunction(target_install target_name)
+
+
+function(target_total_install target_name)
+	install(TARGETS ${target_name}
+			RUNTIME DESTINATION ${libs_path}/../.total-install/bin
+			LIBRARY DESTINATION ${libs_path}/../.total-install/lib
+			ARCHIVE DESTINATION ${libs_path}/../.total-install/lib)
+endfunction(target_total_install target_name)
