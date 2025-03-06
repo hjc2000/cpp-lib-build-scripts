@@ -35,8 +35,8 @@ try
 
 	}
 
-	try-remove-items.exe --paths "$source_path/lib/x64"
-	try-remove-items.exe --paths "$source_path/lib/ARM64"
+	try-remove-items --paths "$source_path/lib/x64"
+	try-remove-items --paths "$source_path/lib/ARM64"
 	Copy-Item -Path $source_path -Destination $install_path -Force -Recurse
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
