@@ -73,12 +73,14 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 点击设置，添加配置文件，在 ”命令行“ 输入框中输入如下内容：
 
 ```cmd
-C:\msys64\msys2_shell.cmd -ucrt64 -defterm -no-start -here
+pwsh -Command enter-bash.ps1
 ```
 
 如图所示：
 
-![image-20240329082827329](./README.assets/image-20240329082827329.jpg)
+![image-20250306231255463](./README.assets/image-20250306231255463.png)
+
+这里是利用 my_shell 中的一个 ps1 脚本来启动 ucrt64 环境下的 bash.
 
 # linux 环境搭建
 
