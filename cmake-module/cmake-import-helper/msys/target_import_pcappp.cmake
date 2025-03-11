@@ -1,6 +1,7 @@
 include(target_import_ffmpeg)
 include(target_import_base)
 include(target_import_pinvoke)
+include(target_import_npcap)
 
 function(target_import_pcappp target_name visibility)
 	set(lib_name pcappp)
@@ -8,5 +9,5 @@ function(target_import_pcappp target_name visibility)
 	target_auto_link_lib(${target_name} ${lib_name} ${libs_path}/${lib_name}/lib/)
 
 	target_import_base(${target_name} ${visibility})
-	target_link_libraries(${target_name} PUBLIC wpcap)
+	target_import_npcap(${target_name} ${visibility})
 endfunction()
