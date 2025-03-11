@@ -1,5 +1,63 @@
+# 配置平台、工具链。
+if(1)
+	set(BUILD_SHARED_LIBS
+		false
+		CACHE STRING "是否编译动态链接库"
+		FORCE)
+
+	set(CMAKE_SYSTEM_PROCESSOR
+		"arm"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_SYSTEM_ARCH
+		"armv7-m"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_SYSTEM_NAME
+		"Generic"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_C_COMPILER
+		"arm-none-eabi-gcc.exe"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_CXX_COMPILER
+		"arm-none-eabi-g++.exe"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_ASM_COMPILER
+		"arm-none-eabi-gcc.exe"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_LINKER
+		"arm-none-eabi-ld.exe"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_OBJCOPY
+		"arm-none-eabi-objcopy.exe"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_SIZE
+		"arm-none-eabi-size.exe"
+		CACHE STRING "平台"
+		FORCE)
+
+	set(CMAKE_STRIP
+		"arm-none-eabi-ld.exe"
+		CACHE STRING "平台"
+		FORCE)
+endif()
+
 # 编译，链接选项
-# 则需要在任何一个 project 函数的调用之前调用，否则 cmake 会报错，
+# 需要在任何一个 project 函数的调用之前调用，否则 cmake 会报错，
 # 说编译器无法编译测试程序。
 string(
 	CONCAT C_CXX_FLAGS

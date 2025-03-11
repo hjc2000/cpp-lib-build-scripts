@@ -1,5 +1,5 @@
 # 编译，链接选项
-# 则需要在任何一个 project 函数的调用之前调用，否则 cmake 会报错，
+# 需要在任何一个 project 函数的调用之前调用，否则 cmake 会报错，
 # 说编译器无法编译测试程序。
 string(
 	CONCAT C_CXX_FLAGS
