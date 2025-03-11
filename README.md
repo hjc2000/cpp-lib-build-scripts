@@ -6,9 +6,9 @@
 
 在环境变量中添加 `cpp_lib_build_scripts_path` ，指向本仓库的所在路径，如下图所示：
 
-![image-20250310163024423](README.assets/image-20250310163024423.png)
+![image-20250311083722513](README.assets/image-20250311083722513.png)
 
-
+记得要把所有反斜杠 `\` 替换成正斜杠 `/` .
 
 # 安装 msys2
 
