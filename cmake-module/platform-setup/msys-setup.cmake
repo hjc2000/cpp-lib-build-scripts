@@ -55,6 +55,8 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS true)
 
 set(has_thread TRUE)
 
+# 添加查找库的路径。
+# cmake 会从 CMAKE_PREFIX_PATH 路径列表里面的路径查找库、包等。
 list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install)
 list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib)
 list(APPEND CMAKE_PREFIX_PATH "C:/msys64/ucrt64/lib")
