@@ -4,8 +4,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 
 try
 {
-	git config --global core.symlinks true
-	git config --global core.longpaths true
+	# git config --global core.symlinks true
+	# git config --global core.longpaths true
 
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
