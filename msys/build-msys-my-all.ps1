@@ -15,6 +15,7 @@ try
 	try-remove-items --paths "$libs_path/sync-time"
 	try-remove-items --paths "$libs_path/widget"
 	try-remove-items --paths "$libs_path/can-diagnosis"
+	try-remove-items --paths "$libs_path/FatFs"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -27,6 +28,7 @@ try
 	& "$build_script_path/build-sync-time.ps1"
 	& "$build_script_path/build-widget.ps1"
 	& "$build_script_path/build-can-diagnosis.ps1"
+	& "$build_script_path/build-FatFs.ps1"
 }
 finally
 {
