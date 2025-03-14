@@ -16,6 +16,8 @@ try
 	try-remove-items --paths "$libs_path/widget"
 	try-remove-items --paths "$libs_path/can-diagnosis"
 	try-remove-items --paths "$libs_path/sdl2-wrapper"
+	try-remove-items --paths "$libs_path/avmixer"
+	try-remove-items --paths "$libs_path/check-avstream"
 	# try-remove-items --paths "$libs_path/FatFs"
 	$PSNativeCommandUseErrorActionPreference = $false
 
@@ -30,6 +32,8 @@ try
 	& "$build_script_path/build-widget.ps1"
 	& "$build_script_path/build-can-diagnosis.ps1"
 	& "$build_script_path/build-sdl2-wrapper.ps1"
+	& "$build_script_path/build-avmixer.ps1"
+	& "$build_script_path/build-check-avstream.ps1"
 	& "$build_script_path/build-FatFs.ps1"
 }
 finally
