@@ -9,6 +9,16 @@ function(target_import_src target_name)
 	# 放到项目根目录的 include 目录中的头文件会被包含，然后安装时保持目录结构安装。
 	if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 		target_include_directories(${target_name} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+
+		# 定义预编译头文件路径
+		set(pch_path "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h")
+
+		# 如果预编译标头存在则添加
+		if(EXISTS "${pch_path}")
+			target_precompile_headers(${target_name} PUBLIC "${pch_path}")
+			message(STATUS "预编译头文件已启用: ${pch_path}")
+		endif()
+
 		install_include_dir(${CMAKE_CURRENT_SOURCE_DIR}/include)
 		target_add_source_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/include/)
 	endif()
