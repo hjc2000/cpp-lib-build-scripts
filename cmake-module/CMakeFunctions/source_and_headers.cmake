@@ -43,7 +43,9 @@ endfunction()
 
 
 # 添加预编译标头。
-function(target_add_pch target_name pch_path)
+function(target_add_pch target_name)
+	set(pch_path "${CMAKE_CURRENT_SOURCE_DIR}/include/${target_name}/pch.h")
+
 	# 如果预编译标头存在则添加
 	if(EXISTS "${pch_path}")
 		target_precompile_headers(${target_name} PUBLIC "${pch_path}")

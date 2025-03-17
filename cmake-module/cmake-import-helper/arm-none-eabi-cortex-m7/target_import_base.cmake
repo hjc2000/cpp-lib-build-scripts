@@ -12,7 +12,6 @@ function(target_import_base target_name visibility)
 	endif()
 
     target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include/)
-	target_add_pch(${target_name} "${libs_path}/${lib_name}/include/${lib_name}/pch.h")
     target_auto_link_lib(${target_name} ${lib_name} ${libs_path}/${lib_name}/lib/)
 
 	target_import_boost(${target_name} ${visibility})
