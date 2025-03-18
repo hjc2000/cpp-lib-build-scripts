@@ -19,7 +19,7 @@ try
 	try-remove-items --paths "$libs_path/avmixer"
 	try-remove-items --paths "$libs_path/check-avstream"
 	try-remove-items --paths "$libs_path/cpp-test"
-	# try-remove-items --paths "$libs_path/FatFs"
+	try-remove-items --paths "$libs_path/FatFs"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
