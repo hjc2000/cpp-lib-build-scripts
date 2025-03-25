@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	& "$build_script_path/build-freertos.ps1"
+	& "$build_script_path/build-freertos-gcc-cm7.ps1"
 	& "$build_script_path/build-freertos-osal.ps1"
 	& "$build_script_path/build-bsp-interface.ps1"
 
