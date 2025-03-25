@@ -6,7 +6,10 @@ function New-Empty-Dir
 		[string]$Path
 	)
 
+	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$Path"
+	$PSNativeCommandUseErrorActionPreference = $false
+
 	New-Item -Path $Path -ItemType Directory -Force | Out-Null
 }
 
