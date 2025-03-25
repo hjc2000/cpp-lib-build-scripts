@@ -6,8 +6,8 @@ function New-Empty-Dir
 		[string]$Path
 	)
 
+	try-remove-items --paths "$Path"
 	New-Item -Path $Path -ItemType Directory -Force | Out-Null
-	Remove-Item "$Path/*" -Recurse -Force | Out-Null
 }
 
 
@@ -218,7 +218,7 @@ function Install-Lib
 
 	if ($IsWindows)
 	{
-		Copy-Item -Path "$src_path/*" -Destination "$dst_path/" -Force -Recurse | Out-Null
+		Copy-Item -Path "$src_path/*" -Destination "$dst_path/" -Force -Recurse
 	}
 	else
 	{
