@@ -10,7 +10,7 @@ function New-Empty-Dir
 	Remove-Item "$Path/*" -Recurse -Force
 
 	# 避免进度条残留
-	Write-Host ""
+	Write-Host "`n"
 }
 
 
@@ -224,8 +224,7 @@ function Install-Lib
 		Copy-Item -Path "$src_path/*" -Destination "$dst_path/" -Force -Recurse
 
 		# 避免进度条残留
-		Write-Host ""
-
+		Write-Host "`n"
 	}
 	else
 	{
