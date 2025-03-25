@@ -8,6 +8,9 @@ function New-Empty-Dir
 
 	New-Item -Path $Path -ItemType Directory -Force | Out-Null
 	Remove-Item "$Path/*" -Recurse -Force
+
+	# 避免进度条残留
+	Write-Host ""
 }
 
 
@@ -219,6 +222,10 @@ function Install-Lib
 	if ($IsWindows)
 	{
 		Copy-Item -Path "$src_path/*" -Destination "$dst_path/" -Force -Recurse
+
+		# 避免进度条残留
+		Write-Host ""
+
 	}
 	else
 	{
