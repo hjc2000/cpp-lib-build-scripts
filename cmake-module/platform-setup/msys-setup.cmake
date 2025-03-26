@@ -1,3 +1,5 @@
+set(platform "msys" CACHE STRING "平台" FORCE)
+
 # 配置平台、工具链。
 if(1)
 	set(BUILD_SHARED_LIBS
@@ -59,6 +61,8 @@ set(has_thread TRUE)
 # cmake 会从 CMAKE_PREFIX_PATH 路径列表里面的路径查找库、包等。
 list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install)
 list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib)
+list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib/cmake)
 list(APPEND CMAKE_PREFIX_PATH "C:/msys64/ucrt64/lib")
+list(APPEND CMAKE_PREFIX_PATH "C:/msys64/ucrt64/lib/cmake")
 list(APPEND CMAKE_PREFIX_PATH "C:/msys64/ucrt64")
 message(STATUS "CMAKE_PREFIX_PATH 的值：${CMAKE_PREFIX_PATH}")
