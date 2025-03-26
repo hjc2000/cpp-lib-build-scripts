@@ -7,11 +7,11 @@ endif()
 
 
 function(target_import_qt_core target_name visibility)
-	if(NOT CMAKE_AUTOMOC)
-		set(CMAKE_AUTOMOC ON CACHE STRING "启用 moc")
-		find_package(Qt6 COMPONENTS Core REQUIRED)
-		message(STATUS "启用 moc")
-	endif()
+	# if(NOT CMAKE_AUTOMOC)
+	# 	set(CMAKE_AUTOMOC ON CACHE STRING "启用 moc")
+	# 	find_package(Qt6 COMPONENTS Core REQUIRED)
+	# 	message(STATUS "启用 moc")
+	# endif()
 
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include)
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtCore)
