@@ -39,7 +39,9 @@ endfunction()
 # 递归收集 ${header_dir} 下的所有头文件，安装到安装目录下的 include 目录。
 function(install_header_files_recurse header_dir)
     # 收集指定目录及其子目录下所有的头文件
-    file(GLOB_RECURSE header_files "${header_dir}/*.h" "${header_dir}/*.hpp")
+    file(GLOB_RECURSE header_files
+		"${header_dir}/*.h"
+		"${header_dir}/*.hpp")
 
     install(FILES ${header_files}
 			DESTINATION include
