@@ -3,11 +3,11 @@
 function(install_dir src_dir dst_dir pattern)
     install(DIRECTORY ${src_dir}/
         	DESTINATION ${dst_dir}
+			# 安装时保留原始的权限
+			USE_SOURCE_PERMISSIONS
 			# 使用提供的模式，或默认匹配所有文件
         	FILES_MATCHING
-			PATTERN ${pattern}
-			# 安装时保留原始的权限
-			USE_SOURCE_PERMISSIONS)
+			PATTERN ${pattern})
 endfunction()
 
 
