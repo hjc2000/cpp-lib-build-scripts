@@ -22,6 +22,7 @@ function(install_include_dir include_dir)
 			DESTINATION include
 			FILES_MATCHING
 			PATTERN "*.h"
+			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
 			PATTERN "*.hpp"
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 
@@ -29,6 +30,7 @@ function(install_include_dir include_dir)
 			DESTINATION ${libs_path}/../.total-install/include
 			FILES_MATCHING
 			PATTERN "*.h"
+			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
 			PATTERN "*.hpp"
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 endfunction()
