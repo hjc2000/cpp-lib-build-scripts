@@ -15,10 +15,7 @@ try
 	try-remove-items --paths "$libs_path/stm32h743iit6-gpio"
 	try-remove-items --paths "$libs_path/stm32h743iit6-flash"
 	try-remove-items --paths "$libs_path/stm32h743iit6-interrupt"
-	try-remove-items --paths "$libs_path/stm32h743iit6-timer"
-	try-remove-items --paths "$libs_path/stm32h743iit6-dma"
 	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
-	try-remove-items --paths "$libs_path/stm32h743iit6-clock"
 	try-remove-items --paths "$libs_path/system-call"
 	try-remove-items --paths "$libs_path/stm32h743iit6-hal"
 	try-remove-items --paths "$libs_path/lwip"
@@ -47,10 +44,7 @@ try
 	& "$build_script_path/build-stm32h743iit6-gpio.ps1"
 	& "$build_script_path/build-stm32h743iit6-flash.ps1"
 	& "$build_script_path/build-stm32h743iit6-interrupt.ps1"
-	& "$build_script_path/build-stm32h743iit6-timer.ps1"
-	& "$build_script_path/build-stm32h743iit6-dma.ps1"
 	& "$build_script_path/build-stm32h743iit6-peripherals.ps1"
-	& "$build_script_path/build-stm32h743iit6-clock.ps1"
 }
 finally
 {
