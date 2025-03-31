@@ -7,7 +7,6 @@ try
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/bsp-interface"
-	try-remove-items --paths "$libs_path/stm32h743iit6-sdram"
 	try-remove-items --paths "$libs_path/lwip-wrapper"
 	try-remove-items --paths "$libs_path/stm32h743iit6-isr"
 	try-remove-items --paths "$libs_path/stm32h743iit6-p-net"
@@ -27,7 +26,6 @@ try
 	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-bsp-interface.ps1"
 	& "$build_script_path/build-lwip-wrapper.ps1"
-	& "$build_script_path/build-stm32h743iit6-sdram.ps1"
 	& "$build_script_path/build-stm32h743iit6-isr.ps1"
 	& "$build_script_path/build-system-call.ps1"
 	& "$build_script_path/build-stm32h743iit6-hal.ps1"
