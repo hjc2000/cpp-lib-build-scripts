@@ -10,7 +10,6 @@ try
 	try-remove-items --paths "$libs_path/lwip-wrapper"
 	try-remove-items --paths "$libs_path/stm32h743iit6-isr"
 	try-remove-items --paths "$libs_path/stm32h743iit6-p-net"
-	try-remove-items --paths "$libs_path/stm32h743iit6-flash"
 	try-remove-items --paths "$libs_path/stm32h743iit6-interrupt"
 	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
 	try-remove-items --paths "$libs_path/system-call"
@@ -36,7 +35,6 @@ try
 	& "$build_script_path/build-FatFs.ps1"
 	& "$build_script_path/build-littlefs.ps1"
 	& "$build_script_path/build-task.ps1"
-	& "$build_script_path/build-stm32h743iit6-flash.ps1"
 	& "$build_script_path/build-stm32h743iit6-interrupt.ps1"
 	& "$build_script_path/build-stm32h743iit6-peripherals.ps1"
 }
