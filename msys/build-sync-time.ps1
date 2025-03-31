@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Pacman-Ensure-Packages -RequiredPackages @(
+	pacman-ensure-packages -RequiredPackages @(
 		"mingw-w64-ucrt-x86_64-poco"
 	)
 

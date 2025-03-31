@@ -13,7 +13,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	Pacman-Ensure-Packages @(
+	pacman-ensure-packages @(
 		"nasm"
 		"yasm"
 	)

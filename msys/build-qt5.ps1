@@ -20,7 +20,7 @@ try
 
 	pip install html5lib
 
-	Pacman-Ensure-Packages @(
+	pacman-ensure-packages @(
 		"mingw-w64-ucrt-x86_64-gperf"
 		"bison"
 		"flex"

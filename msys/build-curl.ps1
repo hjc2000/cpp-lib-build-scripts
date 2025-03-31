@@ -20,7 +20,7 @@ try
 	& "$build_script_path/build-openssl.ps1"
 	& "$build_script_path/build-libssh2.ps1"
 
-	Pacman-Ensure-Packages @(
+	pacman-ensure-packages @(
 		"mingw-w64-ucrt-x86_64-icu"
 		"mingw-w64-ucrt-x86_64-libpsl"
 	)
