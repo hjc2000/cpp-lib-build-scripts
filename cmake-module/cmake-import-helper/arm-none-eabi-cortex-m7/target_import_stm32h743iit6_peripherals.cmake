@@ -1,7 +1,3 @@
-include(target_import_stm32h743iit6_hal)
-include(target_import_base)
-include(target_import_bsp_interface)
-
 function(target_import_stm32h743iit6_peripherals target_name visibility)
 	set(lib_name stm32h743iit6-peripherals)
 	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include)

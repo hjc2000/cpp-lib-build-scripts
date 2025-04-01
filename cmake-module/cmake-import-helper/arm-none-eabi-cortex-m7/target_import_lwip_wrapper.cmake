@@ -1,5 +1,3 @@
-include(target_import_lwip)
-
 function(target_import_lwip_wrapper target_name visibility)
 	set(lib_name "lwip-wrapper")
 	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include)

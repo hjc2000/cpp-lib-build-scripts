@@ -1,7 +1,3 @@
-include(target_import_base)
-include(target_import_qt)
-include(target_import_qxlsx)
-
 function(target_import_widget target_name visibility)
 	set(lib_name "widget")
     target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include/)

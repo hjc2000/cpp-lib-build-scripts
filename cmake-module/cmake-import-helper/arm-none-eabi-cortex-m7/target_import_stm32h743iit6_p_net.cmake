@@ -1,5 +1,3 @@
-include(target_import_lwip)
-
 function(target_import_stm32h743iit6_p_net target_name visibility)
 	set(lib_name "stm32h743iit6-p-net")
 	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include)

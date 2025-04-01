@@ -1,3 +1,4 @@
+#
 # cmake_import_all_module 函数
 #
 # 该函数用于导入指定目录下的所有 .cmake 文件。
@@ -21,6 +22,7 @@
 #
 # # 导入 cmake_scripts 目录及其子目录下的所有 .cmake 文件（递归）
 # cmake_import_all_module("${CMAKE_SOURCE_DIR}/cmake_scripts" TRUE)
+#
 function(cmake_import_all_module DIRECTORY RECURSIVE)
     # 参数检查
     if(NOT IS_DIRECTORY ${DIRECTORY})

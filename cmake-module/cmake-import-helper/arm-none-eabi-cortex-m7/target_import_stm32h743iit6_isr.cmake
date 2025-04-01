@@ -1,8 +1,3 @@
-include(target_import_base)
-include(target_import_bsp_interface)
-include(target_import_stm32h743iit6_hal)
-include(target_import_task)
-
 function(target_import_stm32h743iit6_isr target_name visibility)
 	set(lib_name "stm32h743iit6-isr")
 

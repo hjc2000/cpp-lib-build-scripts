@@ -6,17 +6,15 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 
 # region 导入我的 cmake 函数
 
-include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/base-cmake-functions.cmake)
-include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/install.cmake)
-include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/link.cmake)
-include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/source_and_headers.cmake)
+# 通用
+include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/base-cmake-functions.cmake")
+include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/install.cmake")
+include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/link.cmake")
+include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/source_and_headers.cmake")
 
-list(APPEND CMAKE_MODULE_PATH
-	 $ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
-	 $ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/
-	 $ENV{cpp_lib_build_scripts_path}/cmake-module/platform-setup/)
-
-include("${platform}-setup")
+# 平台特定
+include("$ENV{cpp_lib_build_scripts_path}/cmake-module/platform-setup/${platform}-setup.cmake")
+cmake_import_all_module($ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/ FALSE)
 
 # endregion
 

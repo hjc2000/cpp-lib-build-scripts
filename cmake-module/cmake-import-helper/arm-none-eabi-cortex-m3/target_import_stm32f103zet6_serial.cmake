@@ -1,8 +1,3 @@
-include(target_import_base)
-include(target_import_bsp_interface)
-include(target_import_stm32f103zet6_hal)
-include(target_import_task)
-
 function(target_import_stm32f103zet6_serial target_name visibility)
 	set(lib_name "stm32f103zet6-serial")
 	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include/)

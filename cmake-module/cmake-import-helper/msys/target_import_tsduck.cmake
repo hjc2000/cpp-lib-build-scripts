@@ -1,5 +1,3 @@
-include(target_import_base)
-
 function(target_import_tsduck target_name visibility)
     target_include_directories(${target_name} ${visibility} ${libs_path}/tsduck/include/)
     target_auto_link_lib(${target_name} tsduck ${libs_path}/tsduck/lib/)

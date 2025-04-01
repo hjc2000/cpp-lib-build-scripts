@@ -1,5 +1,3 @@
-include(target_import_bsp_interface)
-
 function(target_import_system_call target_name visibility)
 	set(lib_name "system-call")
 	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include)

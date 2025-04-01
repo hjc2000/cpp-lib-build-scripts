@@ -1,6 +1,3 @@
-include(target_import_boost)
-include(target_import_nlohmann_json)
-
 function(target_import_base target_name visibility)
 	set(lib_name "base")
 

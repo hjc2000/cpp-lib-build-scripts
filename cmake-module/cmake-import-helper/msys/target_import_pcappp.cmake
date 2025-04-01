@@ -1,8 +1,3 @@
-include(target_import_ffmpeg)
-include(target_import_base)
-include(target_import_pinvoke)
-include(target_import_npcap)
-
 function(target_import_pcappp target_name visibility)
 	set(lib_name pcappp)
     target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include/)

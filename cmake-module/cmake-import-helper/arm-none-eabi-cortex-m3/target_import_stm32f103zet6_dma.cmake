@@ -1,7 +1,3 @@
-include(target_import_base)
-include(target_import_bsp_interface)
-include(target_import_stm32f103zet6_hal)
-
 function(target_import_stm32f103zet6_dma target_name visibility)
 	set(lib_name stm32f103zet6-dma)
 	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include/)
