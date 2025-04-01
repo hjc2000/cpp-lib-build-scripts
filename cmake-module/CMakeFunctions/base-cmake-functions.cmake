@@ -45,7 +45,6 @@ function(cmake_import_all_module DIRECTORY RECURSIVE)
 
     # 遍历所有找到的 .cmake 文件并 include 它们
     foreach(module_file IN LISTS CMAKE_MODULE_FILES)
-        message(STATUS "Including module: ${module_file}")
         include(${module_file})
     endforeach()
 endfunction()
