@@ -20,14 +20,8 @@ list(APPEND CMAKE_MODULE_PATH
 include("${platform}-setup")
 
 
-
-set(libs_path
-	$ENV{cpp_lib_build_scripts_path}/${platform}/.libs
-	CACHE STRING "库仓库路径"
-	FORCE)
-
 set(CMAKE_INSTALL_PREFIX
-	${libs_path}/${ProjectName}/
+	$ENV{cpp_lib_build_scripts_path}/${platform}/.libs/${ProjectName}/
 	CACHE STRING "安装路径"
 	FORCE)
 

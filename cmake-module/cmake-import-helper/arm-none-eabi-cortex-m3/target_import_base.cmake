@@ -11,8 +11,8 @@ function(target_import_base target_name visibility)
 		message(STATUS "此平台没有线程")
 	endif()
 
-    target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include/)
-    target_auto_link_lib(${target_name} ${lib_name} ${libs_path}/${lib_name}/lib/)
+    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/${lib_name}/include/)
+    target_auto_link_lib(${target_name} ${lib_name} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/${lib_name}/lib/)
 
 	target_import_boost(${target_name} ${visibility})
 	target_import_nlohmann_json(${target_name} ${visibility})
