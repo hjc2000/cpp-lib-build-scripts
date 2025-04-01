@@ -28,7 +28,8 @@ function(target_add_source_files_recurse target_name source_path)
 		"${source_path}/*.c"
 		"${source_path}/*.cpp"
 		"${source_path}/*.s"
-	)
+		"${source_path}/*.o"
+		"${source_path}/*.obj")
 
 	target_sources(${target_name} PRIVATE ${source_file_list})
 endfunction()
