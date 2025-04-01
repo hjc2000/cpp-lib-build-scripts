@@ -67,6 +67,7 @@ string(
 	" -ffunction-sections "
 	" -fdata-sections "
 	" -mfloat-abi=hard -mfpu=fpv5-sp-d16 "
+	" -nodefaultlibs "
 )
 string(
 	CONCAT cpp_flags
