@@ -1,7 +1,5 @@
 # region 配置平台、工具链
 
-set(platform "msys" CACHE STRING "平台" FORCE)
-
 set(BUILD_SHARED_LIBS
 	true
 	CACHE STRING "是否编译动态链接库"

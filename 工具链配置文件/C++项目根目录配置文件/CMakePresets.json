@@ -5,7 +5,10 @@
 			"name": "windows-base",
 			"hidden": true,
 			"generator": "Ninja",
-			"binaryDir": "${sourceDir}/jc_build"
+			"binaryDir": "${sourceDir}/jc_build",
+			"cacheVariables": {
+				"platform": "msys"
+			}
 		},
 		{
 			"name": "msys-debug",
@@ -27,7 +30,10 @@
 			"name": "arm-none-eabi-cortex-m3-base",
 			"hidden": true,
 			"generator": "Ninja",
-			"binaryDir": "${sourceDir}/jc_build"
+			"binaryDir": "${sourceDir}/jc_build",
+			"cacheVariables": {
+				"platform": "arm-none-eabi-cortex-m3"
+			}
 		},
 		{
 			"name": "arm-none-eabi-cortex-m3-debug",
@@ -49,7 +55,10 @@
 			"name": "arm-none-eabi-cortex-m7-base",
 			"hidden": true,
 			"generator": "Ninja",
-			"binaryDir": "${sourceDir}/jc_build"
+			"binaryDir": "${sourceDir}/jc_build",
+			"cacheVariables": {
+				"platform": "arm-none-eabi-cortex-m7"
+			}
 		},
 		{
 			"name": "arm-none-eabi-cortex-m7-debug",
