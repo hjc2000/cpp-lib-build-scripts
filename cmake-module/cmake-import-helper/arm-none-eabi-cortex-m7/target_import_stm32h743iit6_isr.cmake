@@ -5,8 +5,9 @@ include(target_import_task)
 
 function(target_import_stm32h743iit6_isr target_name visibility)
 	set(lib_name "stm32h743iit6-isr")
-	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include)
-	target_auto_link_lib(${target_name} ${lib_name} ${libs_path}/${lib_name}/lib/)
+
+	# 导入源码而不是预编译好的库
+	target_import_src_root_path(${target_name} "${repos_path}/${lib_name}")
 
 	target_import_base(${target_name} PUBLIC)
 	target_import_bsp_interface(${target_name} PUBLIC)
