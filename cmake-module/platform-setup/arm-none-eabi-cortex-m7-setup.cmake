@@ -81,7 +81,7 @@ set(CMAKE_ASM_FLAGS "${c_cpp_flags} -x assembler-with-cpp")
 string(
 	CONCAT CMAKE_EXE_LINKER_FLAGS
 	" -Wl,-Map=out_map.map "
-	" -Wl,--gc-sections "
+	# " -Wl,--gc-sections "
 	" -static "
 )
 # 检查链接脚本文件是否存在
