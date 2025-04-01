@@ -1,20 +1,3 @@
-# 将 ${src_dir} 目录的内容安装到 ${dst_dir} 目录下。会保持目录结构。
-# ${pattern} 是通配符，例如 "*" 匹配所有，"*.h" 匹配所有头文件。
-function(install_dir src_dir dst_dir pattern)
-    install(DIRECTORY ${src_dir}/
-        	DESTINATION ${dst_dir}
-			# 安装时保留原始的权限
-			USE_SOURCE_PERMISSIONS
-			# 使用提供的模式，或默认匹配所有文件
-        	FILES_MATCHING
-			PATTERN ${pattern})
-endfunction()
-
-
-
-
-
-
 # 将一个文件夹中的头文件安装到安装目录下的 include 目录。
 # 会保持目录结构，同时会过滤，仅安装 *.h
 function(install_include_dir include_dir)
@@ -57,19 +40,24 @@ endfunction()
 
 
 
-function(target_install_obj_files_recurse target_name)
-    file(GLOB_RECURSE obj_files
-		"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/*.o"
-		"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/*.obj")
 
-    install(FILES ${obj_files}
-			DESTINATION obj
-			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+function(target_install_obj_dir target_name)
+	install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/"
+			DESTINATION "obj"
+			# 安装时保留原始的权限
+			USE_SOURCE_PERMISSIONS
+			FILES_MATCHING
+			PATTERN "*.o"
+			PATTERN "*.obj")
 
-    install(FILES ${obj_files}
-			DESTINATION ${total_install_path}/obj
-			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
-endfunction()
+	install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/"
+			DESTINATION "${total_install_path}/obj"
+			# 安装时保留原始的权限
+			USE_SOURCE_PERMISSIONS
+			FILES_MATCHING
+			PATTERN "*.o"
+			PATTERN "*.obj")
+endfunction(target_install_obj_dir )
 
 
 

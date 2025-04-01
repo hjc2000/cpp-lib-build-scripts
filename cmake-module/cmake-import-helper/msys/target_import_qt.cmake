@@ -32,8 +32,13 @@ function(target_import_qt_widgets target_name visibility)
 
 	target_import_qt_core(${target_name} ${visibility})
 
-	# 安装 qt 运行时插件。
-	install_dir(${libs_path}/qt5/plugins/platforms/ bin/platforms/ "*windows*")
+	# 安装 qt 运行时插件
+	install(DIRECTORY "${libs_path}/qt5/plugins/platforms/"
+			DESTINATION "bin/platforms/"
+			# 安装时保留原始的权限
+			USE_SOURCE_PERMISSIONS
+			FILES_MATCHING
+			PATTERN "*windows*")
 endfunction()
 
 
