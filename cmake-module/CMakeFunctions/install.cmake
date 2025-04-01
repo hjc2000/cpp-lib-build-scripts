@@ -40,7 +40,7 @@ endfunction()
 
 
 
-
+# 安装一个项目目标编译产生的 obj 文件目录
 function(target_install_obj_dir target_name)
 	install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/"
 			DESTINATION "obj"
