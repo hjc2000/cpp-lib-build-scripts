@@ -63,13 +63,17 @@ string(
 	CONCAT C_CXX_FLAGS
 	" -Wall -Wextra -Wno-unused-parameter "
 	" -mcpu=Cortex-M7 -mthumb "
-	" -fno-strict-aliasing -ffunction-sections -fdata-sections "
+	" -fno-strict-aliasing "
+	# " -ffunction-sections -fdata-sections "
 	" -mfloat-abi=hard -mfpu=fpv5-sp-d16 "
+)
+string(
+	CONCAT CXX_FLAGS
 	" -fexceptions "
 	" -fno-rtti "
 )
 set(CMAKE_C_FLAGS ${C_CXX_FLAGS})
-set(CMAKE_CXX_FLAGS ${C_CXX_FLAGS})
+set(CMAKE_CXX_FLAGS "${C_CXX_FLAGS} ${CXX_FLAGS}")
 
 set(CMAKE_ASM_FLAGS "${C_CXX_FLAGS} -x assembler-with-cpp")
 
