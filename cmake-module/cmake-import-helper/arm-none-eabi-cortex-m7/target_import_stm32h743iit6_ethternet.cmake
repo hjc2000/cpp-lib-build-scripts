@@ -1,7 +1,6 @@
 include(target_import_stm32h743iit6_hal)
 include(target_import_base)
 include(target_import_bsp_interface)
-include(target_import_stm32h743iit6_interrupt)
 
 function(target_import_stm32h743iit6_ethternet target_name visibility)
 	set(lib_name stm32h743iit6-ethternet)
@@ -11,5 +10,4 @@ function(target_import_stm32h743iit6_ethternet target_name visibility)
 	target_import_stm32h743iit6_hal(${target_name} PRIVATE)
 	target_import_base(${target_name} ${visibility})
 	target_import_bsp_interface(${target_name} ${visibility})
-	target_import_stm32h743iit6_interrupt(${target_name} ${visibility})
 endfunction()
