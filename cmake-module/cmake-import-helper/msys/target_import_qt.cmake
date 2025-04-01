@@ -13,9 +13,9 @@ function(target_import_qt_core target_name visibility)
 	# 	message(STATUS "启用 moc")
 	# endif()
 
-    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/include)
-    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/include/QtCore)
-    target_auto_link_lib(${target_name} Qt6Core $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/lib)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtCore)
+    target_auto_link_lib(${target_name} Qt6Core ${libs_path}/qt5/lib)
 endfunction()
 
 
@@ -24,26 +24,26 @@ endfunction()
 
 
 function(target_import_qt_widgets target_name visibility)
-    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/include/QtWidgets)
-    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/include/QtGui)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtWidgets)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtGui)
 
-    target_auto_link_lib(${target_name} Qt6Widgets $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/lib)
-    target_auto_link_lib(${target_name} Qt6Gui $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/lib)
+    target_auto_link_lib(${target_name} Qt6Widgets ${libs_path}/qt5/lib)
+    target_auto_link_lib(${target_name} Qt6Gui ${libs_path}/qt5/lib)
 
 	target_import_qt_core(${target_name} ${visibility})
 
 	# 安装 qt 运行时插件。
-	install_dir($ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/plugins/platforms/ bin/platforms/ "*windows*")
+	install_dir(${libs_path}/qt5/plugins/platforms/ bin/platforms/ "*windows*")
 endfunction()
 
 
 
 
 function(target_import_qt_opengl target_name visibility)
-    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/include/QtOpenGL)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtOpenGL)
 
-    target_auto_link_lib(${target_name} Qt6OpenGL $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/lib)
-    target_auto_link_lib(${target_name} Qt6OpenGLWidgets $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/lib)
+    target_auto_link_lib(${target_name} Qt6OpenGL ${libs_path}/qt5/lib)
+    target_auto_link_lib(${target_name} Qt6OpenGLWidgets ${libs_path}/qt5/lib)
 
 	target_import_qt_widgets(${target_name} ${visibility})
 endfunction()
@@ -52,9 +52,9 @@ endfunction()
 
 
 function(target_import_qt_xml target_name visibility)
-    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/include/QtXml)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtXml)
 
-    target_auto_link_lib(${target_name} Qt6Xml $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/qt5/lib)
+    target_auto_link_lib(${target_name} Qt6Xml ${libs_path}/qt5/lib)
 
 	target_import_qt_core(${target_name} ${visibility})
 endfunction()

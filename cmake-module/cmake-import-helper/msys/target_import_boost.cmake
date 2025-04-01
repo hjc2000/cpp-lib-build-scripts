@@ -1,5 +1,5 @@
 function(target_import_boost target_name visibility)
-    target_include_directories(${target_name} ${visibility} $ENV{cpp_lib_build_scripts_path}/${platform}/.libs/boost/include/)
+    target_include_directories(${target_name} ${visibility} ${libs_path}/boost/include/)
 
     if(WIN32)
         # 定义 windows API 版本

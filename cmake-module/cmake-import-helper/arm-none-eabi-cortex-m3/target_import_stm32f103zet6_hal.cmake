@@ -14,12 +14,12 @@ function(target_import_stm32f103zet6_hal target_name visibility)
 	target_include_directories(
 		${target_name}
 		${visibility}
-		$ENV{cpp_lib_build_scripts_path}/${platform}/.libs/stm32f103zet6-hal/include
+		${libs_path}/stm32f103zet6-hal/include
 	)
 
 	target_auto_link_lib(
 		${target_name}
 		stm32f103zet6-hal
-		$ENV{cpp_lib_build_scripts_path}/${platform}/.libs/stm32f103zet6-hal/lib/
+		${libs_path}/stm32f103zet6-hal/lib/
 	)
 endfunction()

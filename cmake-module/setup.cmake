@@ -19,11 +19,27 @@ list(APPEND CMAKE_MODULE_PATH
 
 include("${platform}-setup")
 
+# region 路径变量定义
+
+set(libs_path
+	$ENV{cpp_lib_build_scripts_path}/${platform}/.libs
+	CACHE STRING "各个库的预编译安装路径"
+	FORCE)
+set(repos_path
+	$ENV{cpp_lib_build_scripts_path}/${platform}/.repos
+	CACHE STRING "各个库的源码路径"
+	FORCE)
+set(total_install_path
+	$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install
+	CACHE STRING "各个库的源码路径"
+	FORCE)
 
 set(CMAKE_INSTALL_PREFIX
-	$ENV{cpp_lib_build_scripts_path}/${platform}/.libs/${ProjectName}/
+	${libs_path}/${ProjectName}/
 	CACHE STRING "安装路径"
 	FORCE)
+
+# endregion
 
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
 	list(APPEND CMAKE_INSTALL_RPATH
