@@ -66,6 +66,7 @@ string(
 	" -fno-strict-aliasing -ffunction-sections -fdata-sections "
 	" -mfloat-abi=hard -mfpu=fpv5-sp-d16 "
 	" -fexceptions "
+	" -fno-rtti "
 )
 set(CMAKE_C_FLAGS ${C_CXX_FLAGS})
 set(CMAKE_CXX_FLAGS ${C_CXX_FLAGS})
