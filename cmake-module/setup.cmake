@@ -4,13 +4,12 @@ endif()
 
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 
-# 导入我的 cmake 函数
-list(APPEND CMAKE_MODULE_PATH
-	 $ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions)
+# region 导入我的 cmake 函数
 
-include(install)
-include(link)
-include(source_and_headers)
+include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/base-cmake-functions.cmake)
+include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/install.cmake)
+include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/link.cmake)
+include($ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/source_and_headers.cmake)
 
 list(APPEND CMAKE_MODULE_PATH
 	 $ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper
@@ -18,6 +17,8 @@ list(APPEND CMAKE_MODULE_PATH
 	 $ENV{cpp_lib_build_scripts_path}/cmake-module/platform-setup/)
 
 include("${platform}-setup")
+
+# endregion
 
 # region 路径变量定义
 
