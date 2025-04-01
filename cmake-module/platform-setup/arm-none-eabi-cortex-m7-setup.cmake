@@ -76,7 +76,6 @@ string(
 )
 set(CMAKE_C_FLAGS ${c_cpp_flags})
 set(CMAKE_CXX_FLAGS "${c_cpp_flags} ${cpp_flags}")
-
 set(CMAKE_ASM_FLAGS "${c_cpp_flags} -x assembler-with-cpp")
 
 # 特定于可执行文件的链接选项
