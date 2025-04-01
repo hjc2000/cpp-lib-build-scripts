@@ -1,6 +1,5 @@
 include(target_import_base)
 include(target_import_bsp_interface)
-include(target_import_stm32h743iit6_isr)
 include(target_import_stm32h743iit6_hal)
 
 function(target_import_stm32h743iit6_interrupt target_name visibility)
@@ -10,6 +9,5 @@ function(target_import_stm32h743iit6_interrupt target_name visibility)
 
 	target_import_base(${target_name} ${visibility})
 	target_import_bsp_interface(${target_name} ${visibility})
-	target_import_stm32h743iit6_isr(${target_name} ${visibility})
 	target_import_stm32h743iit6_hal(${target_name} PRIVATE)
 endfunction()
