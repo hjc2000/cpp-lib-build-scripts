@@ -60,7 +60,7 @@ endif()
 # 需要在任何一个 project 函数的调用之前调用，否则 cmake 会报错，
 # 说编译器无法编译测试程序。
 string(
-	CONCAT C_CXX_FLAGS
+	CONCAT c_cpp_flags
 	" -Wall -Wextra -Wno-unused-parameter "
 	" -mcpu=Cortex-M7 -mthumb "
 	" -fno-strict-aliasing "
@@ -68,14 +68,14 @@ string(
 	" -mfloat-abi=hard -mfpu=fpv5-sp-d16 "
 )
 string(
-	CONCAT CXX_FLAGS
+	CONCAT cpp_flags
 	" -fexceptions "
 	" -fno-rtti "
 )
-set(CMAKE_C_FLAGS ${C_CXX_FLAGS})
-set(CMAKE_CXX_FLAGS "${C_CXX_FLAGS} ${CXX_FLAGS}")
+set(CMAKE_C_FLAGS ${c_cpp_flags})
+set(CMAKE_CXX_FLAGS "${c_cpp_flags} ${cpp_flags}")
 
-set(CMAKE_ASM_FLAGS "${C_CXX_FLAGS} -x assembler-with-cpp")
+set(CMAKE_ASM_FLAGS "${c_cpp_flags} -x assembler-with-cpp")
 
 # 特定于可执行文件的链接选项
 string(
