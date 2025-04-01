@@ -24,18 +24,11 @@ endfunction()
 
 # 递归收集 ${source_path} 下的所有源文件，添加到目标 ${target_name} 中。
 function(target_add_source_files_recurse target_name source_path)
-	execute_process(
-		COMMAND expand-wildcard-for-cmake --paths "**.c" "**.cpp" "**.h" "**.hpp" "**.s"
-		WORKING_DIRECTORY ${source_path}
-		OUTPUT_VARIABLE source_file_list
-		RESULT_VARIABLE exit_code
+	file(GLOB_RECURSE source_file_list
+		"${source_path}/*.c"
+		"${source_path}/*.cpp"
+		"${source_path}/*.s"
 	)
-
-	if(exit_code EQUAL 0)
-		# 无操作
-	else()
-		message(FATAL_ERROR "递归收集 ${source_path} 中的源文件失败。")
-	endif()
 
 	target_sources(${target_name} PRIVATE ${source_file_list})
 endfunction()
