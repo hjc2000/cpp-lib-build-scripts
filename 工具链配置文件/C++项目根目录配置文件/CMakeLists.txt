@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.20)
 
 if(1)
 	get_filename_component(CURRENT_DIR_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
@@ -12,20 +12,4 @@ if(1)
 	set(CMAKE_C_STANDARD 17)
 endif()
 
-include(target_import_base)
-
-add_library(${ProjectName})
-target_import_src(${ProjectName})
-target_import_base(${ProjectName} PUBLIC)
-
-# 添加测试程序
-if(platform STREQUAL "msys")
-	# set(exe_name "test")
-	# add_executable(${exe_name} ${CMAKE_CURRENT_SOURCE_DIR}/exe/main.cpp)
-
-	# target_link_libraries(${ProjectName} PUBLIC -Wl,--start-group)
-	# target_link_libraries(${exe_name} ${ProjectName})
-	# target_link_libraries(${ProjectName} PUBLIC -Wl,--end-group)
-
-	# target_install(${exe_name})
-endif()
+include("./project.cmake")
