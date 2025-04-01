@@ -17,7 +17,6 @@ list(APPEND CMAKE_MODULE_PATH
 	 $ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/
 	 $ENV{cpp_lib_build_scripts_path}/cmake-module/platform-setup/)
 
-include(target_import_src)
 include("${platform}-setup")
 
 

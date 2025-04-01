@@ -89,3 +89,12 @@ function(target_import_src_root_path target_name root_path)
 	target_install(${target_name})
 	target_total_install(${target_name})
 endfunction()
+
+
+
+
+# 导入 ${CMAKE_CURRENT_SOURCE_DIR} 中的源码。
+# ${CMAKE_CURRENT_SOURCE_DIR} 中的源码按照标准的目录结构存放。
+function(target_import_src target_name)
+	target_import_src_root_path(${target_name} "${CMAKE_CURRENT_SOURCE_DIR}/")
+endfunction()
