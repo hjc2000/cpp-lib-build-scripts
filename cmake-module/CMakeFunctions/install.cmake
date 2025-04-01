@@ -27,7 +27,7 @@ function(install_include_dir include_dir)
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 
 	install(DIRECTORY ${include_dir}/
-			DESTINATION ${libs_path}/../.total-install/include
+			DESTINATION ${total_install_path}/include
 			FILES_MATCHING
 			PATTERN "*.h"
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ
@@ -50,7 +50,7 @@ function(install_header_files_recurse header_dir)
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 
     install(FILES ${header_files}
-			DESTINATION ${libs_path}/../.total-install/include
+			DESTINATION ${total_install_path}/include
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 endfunction()
 
@@ -67,7 +67,7 @@ endfunction(target_install target_name)
 
 function(target_total_install target_name)
 	install(TARGETS ${target_name}
-			RUNTIME DESTINATION ${libs_path}/../.total-install/bin
-			LIBRARY DESTINATION ${libs_path}/../.total-install/lib
-			ARCHIVE DESTINATION ${libs_path}/../.total-install/lib)
+			RUNTIME DESTINATION ${total_install_path}/bin
+			LIBRARY DESTINATION ${total_install_path}/lib
+			ARCHIVE DESTINATION ${total_install_path}/lib)
 endfunction(target_total_install target_name)

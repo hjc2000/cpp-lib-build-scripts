@@ -58,9 +58,9 @@ set(has_thread TRUE)
 
 # 添加查找库的路径。
 # cmake 会从 CMAKE_PREFIX_PATH 路径列表里面的路径查找库、包等。
-list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install)
-list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib)
-list(PREPEND CMAKE_PREFIX_PATH $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib/cmake)
+list(PREPEND CMAKE_PREFIX_PATH ${total_install_path})
+list(PREPEND CMAKE_PREFIX_PATH ${total_install_path}/lib)
+list(PREPEND CMAKE_PREFIX_PATH ${total_install_path}/lib/cmake)
 list(APPEND CMAKE_PREFIX_PATH "C:/msys64/ucrt64/lib")
 list(APPEND CMAKE_PREFIX_PATH "C:/msys64/ucrt64/lib/cmake")
 list(APPEND CMAKE_PREFIX_PATH "C:/msys64/ucrt64")

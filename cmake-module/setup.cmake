@@ -25,10 +25,12 @@ set(libs_path
 	$ENV{cpp_lib_build_scripts_path}/${platform}/.libs
 	CACHE STRING "各个库的预编译安装路径"
 	FORCE)
+
 set(repos_path
 	$ENV{cpp_lib_build_scripts_path}/${platform}/.repos
 	CACHE STRING "各个库的源码路径"
 	FORCE)
+
 set(total_install_path
 	$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install
 	CACHE STRING "各个库的源码路径"
@@ -45,18 +47,18 @@ if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
 	list(APPEND CMAKE_INSTALL_RPATH
 		 $ORIGIN/../lib
 		 $ORIGIN/../usr/lib
-		 $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib
-		 $ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib)
+		 ${total_install_path}/lib
+		 ${total_install_path}/usr/lib)
 
 	set(CMAKE_BUILD_WITH_INSTALL_RPATH true)
 
 	set(CMAKE_EXE_LINKER_FLAGS
-		"-Wl,-rpath-link,$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib:$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_EXE_LINKER_FLAGS}"
+		"-Wl,-rpath-link,${total_install_path}/lib:${total_install_path}/usr/lib		${CMAKE_EXE_LINKER_FLAGS}"
 		CACHE STRING "Linker flags for executables"
 		FORCE)
 
 	set(CMAKE_SHARED_LINKER_FLAGS
-		"-Wl,-rpath-link,$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/lib:$ENV{cpp_lib_build_scripts_path}/${platform}/.total-install/usr/lib		${CMAKE_SHARED_LINKER_FLAGS}"
+		"-Wl,-rpath-link,${total_install_path}/lib:${total_install_path}/usr/lib		${CMAKE_SHARED_LINKER_FLAGS}"
 		CACHE STRING "Linker flags for shared libraries"
 		FORCE)
 endif()
