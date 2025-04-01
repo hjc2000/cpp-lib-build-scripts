@@ -57,6 +57,23 @@ endfunction()
 
 
 
+function(target_install_obj_files_recurse target_name)
+    file(GLOB_RECURSE obj_files
+		"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/*.o"
+		"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/*.obj")
+
+    install(FILES ${obj_files}
+			DESTINATION obj
+			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+
+    install(FILES ${obj_files}
+			DESTINATION ${total_install_path}/obj
+			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
+endfunction()
+
+
+
+
 function(target_install target_name)
 	install(TARGETS ${target_name}
 			RUNTIME DESTINATION bin
