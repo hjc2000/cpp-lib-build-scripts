@@ -1,47 +1,48 @@
+# region 配置平台、工具链
+
 set(platform "msys" CACHE STRING "平台" FORCE)
 
-# 配置平台、工具链。
-if(1)
-	set(BUILD_SHARED_LIBS
-		true
-		CACHE STRING "是否编译动态链接库"
-		FORCE)
+set(BUILD_SHARED_LIBS
+	true
+	CACHE STRING "是否编译动态链接库"
+	FORCE)
 
-	set(CMAKE_C_COMPILER
-		"C:/msys64/ucrt64/bin/gcc.exe"
-		CACHE STRING "平台"
-		FORCE)
+set(CMAKE_C_COMPILER
+	"C:/msys64/ucrt64/bin/gcc.exe"
+	CACHE STRING "平台"
+	FORCE)
 
-	set(CMAKE_CXX_COMPILER
-		"C:/msys64/ucrt64/bin/g++.exe"
-		CACHE STRING "平台"
-		FORCE)
+set(CMAKE_CXX_COMPILER
+	"C:/msys64/ucrt64/bin/g++.exe"
+	CACHE STRING "平台"
+	FORCE)
 
-	set(CMAKE_ASM_COMPILER
-		"C:/msys64/ucrt64/bin/gcc.exe"
-		CACHE STRING "平台"
-		FORCE)
+set(CMAKE_ASM_COMPILER
+	"C:/msys64/ucrt64/bin/gcc.exe"
+	CACHE STRING "平台"
+	FORCE)
 
-	set(CMAKE_LINKER
-		"C:/msys64/ucrt64/bin/ld.exe"
-		CACHE STRING "平台"
-		FORCE)
+set(CMAKE_LINKER
+	"C:/msys64/ucrt64/bin/ld.exe"
+	CACHE STRING "平台"
+	FORCE)
 
-	set(CMAKE_OBJCOPY
-		"C:/msys64/ucrt64/bin/objcopy.exe"
-		CACHE STRING "平台"
-		FORCE)
+set(CMAKE_OBJCOPY
+	"C:/msys64/ucrt64/bin/objcopy.exe"
+	CACHE STRING "平台"
+	FORCE)
 
-	set(CMAKE_SIZE
-		"C:/msys64/ucrt64/bin/size.exe"
-		CACHE STRING "平台"
-		FORCE)
+set(CMAKE_SIZE
+	"C:/msys64/ucrt64/bin/size.exe"
+	CACHE STRING "平台"
+	FORCE)
 
-	set(CMAKE_STRIP
-		"C:/msys64/ucrt64/bin/ld.exe"
-		CACHE STRING "平台"
-		FORCE)
-endif()
+set(CMAKE_STRIP
+	"C:/msys64/ucrt64/bin/ld.exe"
+	CACHE STRING "平台"
+	FORCE)
+
+# endregion
 
 string(
 	CONCAT C_CXX_FLAGS
