@@ -13,3 +13,4 @@ if(1)
 endif()
 
 include("./project.cmake")
+target_obj_size(${ProjectName})

@@ -81,7 +81,11 @@ endfunction(target_total_install target_name)
 function(target_obj_size target_name)
 	file(GLOB obj_list
 		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}"
-		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.*")
+		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.dll"
+		"${CMAKE_CURRENT_BINARY_DIR}/lib${target_name}.dll"
+		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.elf"
+		"${CMAKE_CURRENT_BINARY_DIR}/lib${target_name}.elf"
+	)
 
 	foreach(obj ${obj_list})
 		message(STATUS "-------------------------------------------------------------------\n")
