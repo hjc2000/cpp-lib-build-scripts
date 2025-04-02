@@ -93,7 +93,6 @@ function(target_obj_size target_name)
 		message(STATUS "-------------------------------------------------------------------\n")
 		execute_process(COMMAND ${CMAKE_SIZE} "${obj}"
 						WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
-		message(STATUS "")
 		message(STATUS "-------------------------------------------------------------------\n")
 	endforeach(obj ${obj_list})
 
