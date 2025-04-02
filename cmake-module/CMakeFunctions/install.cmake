@@ -83,6 +83,8 @@ function(target_obj_size target_name)
 		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}"
 		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.dll"
 		"${CMAKE_CURRENT_BINARY_DIR}/lib${target_name}.dll"
+		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.so"
+		"${CMAKE_CURRENT_BINARY_DIR}/lib${target_name}.so"
 		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.elf"
 		"${CMAKE_CURRENT_BINARY_DIR}/lib${target_name}.elf"
 	)
