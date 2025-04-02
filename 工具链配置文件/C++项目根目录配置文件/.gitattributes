@@ -40,6 +40,7 @@
 *.dylib 	binary
 *.exe 		binary
 *.o 		binary
+*.obj 		binary
 *.out 		binary
 *.pdb 		binary
 
