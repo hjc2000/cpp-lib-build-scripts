@@ -76,3 +76,18 @@ function(target_total_install target_name)
 			LIBRARY DESTINATION ${total_install_path}/lib
 			ARCHIVE DESTINATION ${total_install_path}/lib)
 endfunction(target_total_install target_name)
+
+
+function(target_obj_size target_name)
+	file(GLOB obj_list
+		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}"
+		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.*")
+
+	foreach(obj ${obj_list})
+		execute_process(COMMAND ${CMAKE_SIZE} "${obj}"
+						WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+	endforeach(obj ${obj_list})
+
+	add_custom_command(TARGET ${target_name} POST_BUILD
+					COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${target_name}>)
+endfunction(target_obj_size target_name)
