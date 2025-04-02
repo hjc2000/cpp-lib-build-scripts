@@ -71,6 +71,16 @@
 *.eot 		binary
 *.otf 		binary
 
+
+*.doc		binary
+*.docx		binary
+*.xls		binary
+*.xlsx		binary
+*.ppt		binary
+*.pptx		binary
+*.pdf		binary
+
+
 ###############################################################################
 # Set the merge driver for project and solution files
 #
