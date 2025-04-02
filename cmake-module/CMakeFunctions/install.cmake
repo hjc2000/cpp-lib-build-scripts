@@ -84,8 +84,11 @@ function(target_obj_size target_name)
 		"${CMAKE_CURRENT_BINARY_DIR}/${target_name}.*")
 
 	foreach(obj ${obj_list})
+		message(STATUS "-------------------------------------------------------------------\n")
 		execute_process(COMMAND ${CMAKE_SIZE} "${obj}"
 						WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}")
+		message(STATUS "")
+		message(STATUS "-------------------------------------------------------------------\n")
 	endforeach(obj ${obj_list})
 
 	add_custom_command(TARGET ${target_name} POST_BUILD
