@@ -42,7 +42,15 @@ endfunction()
 
 # 安装一个项目目标编译产生的 obj 文件目录
 function(target_install_obj_dir target_name)
-	# 安装前删除旧的 obj 目录，防止源文件重命名或删除后旧的 obj 文件还存在。
+	#
+	# ss安装前删除旧的 obj 目录，防止源文件重命名或删除后旧的 obj 文件还存在。
+	#
+	# 有空设计一个命令，接收源文件路径，接收目标文件路径，然后将目标文件路径安装到
+	# 安装目录的 obj 目录下。安装过程中检查 obj 是否有对应的源文件，有才实际拷贝
+	# 过去。
+	#
+	# 安装前删除安装目录的 obj 目录的操作也放到该命令中。
+	#
 	install(CODE "
 		execute_process(
 			COMMAND try-remove-items.exe --paths \"${CMAKE_INSTALL_PREFIX}/obj\"
