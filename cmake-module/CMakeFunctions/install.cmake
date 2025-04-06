@@ -44,7 +44,7 @@ endfunction()
 function(target_install_obj_dir target_name)
 	install(CODE "
 		execute_process(
-			COMMAND clean-garbage-obj.exe --src_path \"${CMAKE_CURRENT_SOURCE_DIR}\" --obj_path \"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/\"
+			COMMAND clean-garbage-obj --src_path \"${CMAKE_CURRENT_SOURCE_DIR}\" --obj_path \"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/\"
 			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 			OUTPUT_VARIABLE std_out
 			RESULT_VARIABLE exit_code
@@ -55,7 +55,7 @@ function(target_install_obj_dir target_name)
 
 	install(CODE "
 		execute_process(
-			COMMAND clean-garbage-obj.exe --src_path \"${CMAKE_CURRENT_SOURCE_DIR}\" --obj_path \"${CMAKE_INSTALL_PREFIX}/obj\"
+			COMMAND clean-garbage-obj --src_path \"${CMAKE_CURRENT_SOURCE_DIR}\" --obj_path \"${CMAKE_INSTALL_PREFIX}/obj\"
 			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 			OUTPUT_VARIABLE std_out
 			RESULT_VARIABLE exit_code
