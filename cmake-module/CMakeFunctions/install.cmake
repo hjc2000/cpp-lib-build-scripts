@@ -42,6 +42,7 @@ endfunction()
 
 # 安装一个项目目标编译产生的 obj 文件目录
 function(target_install_obj_dir target_name)
+	# 对比 obj 路径和源文件路径，将没有对应源文件的垃圾 obj 删除。
 	install(CODE "
 		execute_process(
 			COMMAND clean-garbage-obj --src_path \"${CMAKE_CURRENT_SOURCE_DIR}\" --obj_path \"${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/\"
