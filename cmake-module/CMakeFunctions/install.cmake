@@ -42,6 +42,17 @@ endfunction()
 
 # 安装一个项目目标编译产生的 obj 文件目录
 function(target_install_obj_dir target_name)
+	install(CODE "
+		execute_process(
+			COMMAND try-remove-items.exe --paths \"${CMAKE_INSTALL_PREFIX}/obj\"
+			WORKING_DIRECTORY ${CMAKE_INSTALL_PREFIX}
+			OUTPUT_VARIABLE std_out
+			RESULT_VARIABLE exit_code
+		)
+
+		message(STATUS \"\${std_out}\")
+	")
+
 	install(DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${target_name}.dir/"
 			DESTINATION "${CMAKE_INSTALL_PREFIX}/obj"
 			# 安装时保留原始的权限
