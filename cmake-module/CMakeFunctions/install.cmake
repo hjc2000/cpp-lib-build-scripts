@@ -1,3 +1,5 @@
+# region install_include_dir
+
 # 将一个文件夹中的头文件安装到安装目录下的 include 目录。
 # 会保持目录结构，同时会过滤，仅安装 *.h
 function(install_include_dir include_dir)
@@ -18,8 +20,10 @@ function(install_include_dir include_dir)
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 endfunction()
 
+# endregion
 
 
+# region install_header_files_recurse
 
 # 递归收集 ${header_dir} 下的所有头文件，安装到安装目录下的 include 目录。
 function(install_header_files_recurse header_dir)
@@ -37,8 +41,10 @@ function(install_header_files_recurse header_dir)
 			PERMISSIONS OWNER_READ GROUP_READ WORLD_READ)
 endfunction()
 
+# endregion
 
 
+# region target_install_obj_dir
 
 # 安装一个项目目标编译产生的 obj 文件目录
 function(target_install_obj_dir target_name)
@@ -74,8 +80,10 @@ function(target_install_obj_dir target_name)
 			PATTERN "*.obj")
 endfunction(target_install_obj_dir)
 
+# endregion
 
 
+# region target_install
 
 function(target_install target_name)
 	install(TARGETS ${target_name}
@@ -84,6 +92,10 @@ function(target_install target_name)
 			ARCHIVE DESTINATION lib)
 endfunction(target_install target_name)
 
+# endregion
+
+
+# region target_total_install
 
 function(target_total_install target_name)
 	install(TARGETS ${target_name}
@@ -92,6 +104,10 @@ function(target_total_install target_name)
 			ARCHIVE DESTINATION ${total_install_path}/lib)
 endfunction(target_total_install target_name)
 
+# endregion
+
+
+# region target_obj_size
 
 function(target_obj_size target_name)
 	file(GLOB obj_list
@@ -115,3 +131,5 @@ function(target_obj_size target_name)
 	add_custom_command(TARGET ${target_name} POST_BUILD
 					COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${target_name}>)
 endfunction(target_obj_size target_name)
+
+# endregion
