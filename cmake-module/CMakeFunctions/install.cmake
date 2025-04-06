@@ -42,6 +42,7 @@ endfunction()
 
 # 安装一个项目目标编译产生的 obj 文件目录
 function(target_install_obj_dir target_name)
+	# 安装前删除旧的 obj 目录，防止源文件重命名或删除后旧的 obj 文件还存在。
 	install(CODE "
 		execute_process(
 			COMMAND try-remove-items.exe --paths \"${CMAKE_INSTALL_PREFIX}/obj\"
