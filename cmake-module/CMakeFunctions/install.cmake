@@ -72,7 +72,7 @@ function(target_install_obj_dir target_name)
 			FILES_MATCHING
 			PATTERN "*.o"
 			PATTERN "*.obj")
-endfunction(target_install_obj_dir )
+endfunction(target_install_obj_dir)
 
 
 
