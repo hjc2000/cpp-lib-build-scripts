@@ -95,9 +95,6 @@ if(EXISTS "${CMAKE_SOURCE_DIR}/link_script.ld")
 	)
 endif()
 
-set(CMAKE_EXECUTABLE_SUFFIX ".elf")
-set(CMAKE_STATIC_LIBRARY_SUFFIX ".a")
-
 # 添加查找库的路径。
 # cmake 会从 CMAKE_PREFIX_PATH 路径列表里面的路径查找库、包等。
 list(PREPEND CMAKE_PREFIX_PATH ${total_install_path})
