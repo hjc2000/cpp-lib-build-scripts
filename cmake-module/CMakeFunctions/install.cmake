@@ -57,6 +57,11 @@ function(target_install_obj_dir target_name)
 			RESULT_VARIABLE exit_code
 		)
 
+		# 检查子进程的退出码
+		if(NOT \${exit_code} EQUAL 0)
+			message(FATAL_ERROR \"clean-garbage-obj 命令执行失败: \${std_out}\")
+		endif()
+
 		message(STATUS \"\${std_out}\")
 	")
 
@@ -67,6 +72,11 @@ function(target_install_obj_dir target_name)
 			OUTPUT_VARIABLE std_out
 			RESULT_VARIABLE exit_code
 		)
+
+		# 检查子进程的退出码
+		if(NOT \${exit_code} EQUAL 0)
+			message(FATAL_ERROR \"clean-garbage-obj 命令执行失败: \${std_out}\")
+		endif()
 
 		message(STATUS \"\${std_out}\")
 	")
