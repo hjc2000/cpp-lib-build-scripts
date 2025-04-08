@@ -22,6 +22,7 @@ try
 	try-remove-items --paths "$libs_path/FatFs"
 	try-remove-items --paths "$libs_path/littlefs"
 	try-remove-items --paths "$libs_path/task"
+	try-remove-items --paths "$libs_path/stm32h743-project"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -39,6 +40,7 @@ try
 	& "$build_script_path/build-task.ps1"
 	& "$build_script_path/build-stm32h743iit6-peripherals.ps1"
 	& "$build_script_path/build-stm32h743iit6-isr.ps1"
+	& "$build_script_path/build-stm32h743-project.ps1"
 }
 finally
 {
