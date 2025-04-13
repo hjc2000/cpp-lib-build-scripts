@@ -14,14 +14,6 @@ endfunction()
 # endregion
 
 
-# region target_import_stm32h743iit6_isr
-function(target_import_stm32h743iit6_isr target_name visibility)
-	set(lib_name "stm32h743iit6-isr")
-	target_add_source_files_recurse(${target_name} "${libs_path}/${lib_name}/obj/")
-endfunction()
-# endregion
-
-
 # region target_import_stm32h743iit6_peripherals
 function(target_import_stm32h743iit6_peripherals target_name visibility)
 	set(lib_name "stm32h743iit6-peripherals")
