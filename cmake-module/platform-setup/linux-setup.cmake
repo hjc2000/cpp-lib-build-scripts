@@ -66,17 +66,24 @@ set(CMAKE_SHARED_LINKER_FLAGS
 	FORCE)
 
 
-list(APPEND CMAKE_BUILD_RPATH
-	$ORIGIN/../lib
-	$ORIGIN/../usr/lib
-	${total_install_path}/lib
-	${total_install_path}/usr/lib)
+# 定义通用的 RPATH 列表
+set(build_and_install_rpaths
+    "$ORIGIN/../lib"
+    "$ORIGIN/../usr/lib"
+    "${total_install_path}/lib"
+    "${total_install_path}/usr/lib")
 
-list(APPEND CMAKE_INSTALL_RPATH
-	$ORIGIN/../lib
-	$ORIGIN/../usr/lib
-	${total_install_path}/lib
-	${total_install_path}/usr/lib)
+# 设置构建阶段的 RPATH
+list(APPEND CMAKE_BUILD_RPATH ${build_and_install_rpaths})
+
+# 设置安装阶段的 RPATH
+list(APPEND CMAKE_INSTALL_RPATH ${build_and_install_rpaths})
+
+# 打印调试信息
+message(STATUS "CMAKE_BUILD_RPATH: ${CMAKE_BUILD_RPATH}")
+message(STATUS "CMAKE_INSTALL_RPATH: ${CMAKE_INSTALL_RPATH}")
+
+
 
 set(has_thread TRUE)
 
