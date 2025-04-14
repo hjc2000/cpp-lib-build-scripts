@@ -102,7 +102,7 @@ function(target_import_src target_name)
 	# 将本目标的编译产物安装到标准目录
 	target_install(${target_name})
 	target_total_install(${target_name})
-	target_install_obj_dir(${ProjectName})
+	target_install_obj_dir(${target_name})
 endfunction()
 
 # endregion
