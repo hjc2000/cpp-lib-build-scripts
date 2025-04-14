@@ -42,12 +42,18 @@ set(CMAKE_STRIP
 
 # endregion
 
+# region 编译器标志
+
 string(
 	CONCAT c_cpp_flags
 	" -Wall -Wextra -Wno-unused-parameter "
 )
 set(CMAKE_C_FLAGS ${c_cpp_flags})
 set(CMAKE_CXX_FLAGS ${c_cpp_flags})
+
+# endregion
+
+# region 链接器标志
 
 string(
 	CONCAT exe_so_linker_flags
@@ -56,15 +62,18 @@ string(
 )
 
 set(CMAKE_EXE_LINKER_FLAGS
-	"${exe_so_linker_flags} ${CMAKE_EXE_LINKER_FLAGS}"
+	${exe_so_linker_flags}
 	CACHE STRING "可执行文件连接标志"
 	FORCE)
 
 set(CMAKE_SHARED_LINKER_FLAGS
-	"${exe_so_linker_flags} ${CMAKE_SHARED_LINKER_FLAGS}"
+	${exe_so_linker_flags}
 	CACHE STRING "动态库链接标志"
 	FORCE)
 
+# endregion
+
+# region RPATH
 
 # 定义通用的 RPATH 列表
 list(APPEND build_and_install_rpaths
@@ -84,9 +93,12 @@ list(APPEND CMAKE_INSTALL_RPATH ${build_and_install_rpaths})
 message(STATUS "CMAKE_BUILD_RPATH: ${CMAKE_BUILD_RPATH}")
 message(STATUS "CMAKE_INSTALL_RPATH: ${CMAKE_INSTALL_RPATH}")
 
+# endregion
 
 
 set(has_thread TRUE)
+
+# region CMAKE_PREFIX_PATH
 
 # 添加查找库的路径。
 # cmake 会从 CMAKE_PREFIX_PATH 路径列表里面的路径查找库、包等。
@@ -95,3 +107,5 @@ list(PREPEND CMAKE_PREFIX_PATH ${total_install_path}/lib)
 list(PREPEND CMAKE_PREFIX_PATH ${total_install_path}/lib/cmake)
 list(APPEND CMAKE_PREFIX_PATH "/usr/lib")
 message(STATUS "CMAKE_PREFIX_PATH 的值：${CMAKE_PREFIX_PATH}")
+
+# endregion
