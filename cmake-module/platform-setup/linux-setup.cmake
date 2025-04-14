@@ -67,7 +67,8 @@ set(CMAKE_SHARED_LINKER_FLAGS
 
 
 # 定义通用的 RPATH 列表
-set(build_and_install_rpaths
+list(APPEND build_and_install_rpaths
+    "$ORIGIN"
     "$ORIGIN/../lib"
     "$ORIGIN/../usr/lib"
     "${total_install_path}/lib"
