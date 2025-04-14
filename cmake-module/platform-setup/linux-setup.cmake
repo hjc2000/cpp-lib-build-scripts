@@ -109,3 +109,7 @@ list(APPEND CMAKE_PREFIX_PATH "/usr/lib")
 message(STATUS "CMAKE_PREFIX_PATH 的值：${CMAKE_PREFIX_PATH}")
 
 # endregion
+
+
+# 生成位置无关代码
+set(CMAKE_POSITION_INDEPENDENT_CODE true)
