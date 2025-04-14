@@ -116,27 +116,3 @@ function(target_auto_link_lib target_name lib_name search_path)
 
     message(WARNING "无法找到任何名称匹配 ${lib_name} 的动态库和静态库 ${search_path}")
 endfunction()
-
-
-
-
-function(enable_lto_if_debug_and_executable target_name)
-    # 获取目标类型
-    get_target_property(target_type ${target_name} TYPE)
-
-    # 如果不是 DEBUG 构建，直接返回
-    if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-        message(STATUS "LTO not enabled for target: ${target_name} (build type: ${CMAKE_BUILD_TYPE})")
-        return()
-    endif()
-
-    # 如果目标不是可执行文件，直接返回
-    if(NOT target_type STREQUAL "EXECUTABLE")
-        message(STATUS "LTO not enabled for non-executable target: ${target_name} (type: ${target_type})")
-        return()
-    endif()
-
-    # 启用 LTO
-    set_target_properties(${target_name} PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-    message(STATUS "LTO enabled for target: ${target_name} in Debug build")
-endfunction()
