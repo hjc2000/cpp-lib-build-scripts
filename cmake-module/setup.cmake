@@ -42,26 +42,6 @@ set(CMAKE_INSTALL_PREFIX
 
 # endregion
 
-if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
-	list(APPEND CMAKE_INSTALL_RPATH
-		 $ORIGIN/../lib
-		 $ORIGIN/../usr/lib
-		 ${total_install_path}/lib
-		 ${total_install_path}/usr/lib)
-
-	set(CMAKE_BUILD_WITH_INSTALL_RPATH true)
-
-	set(CMAKE_EXE_LINKER_FLAGS
-		"-Wl,-rpath-link,${total_install_path}/lib:${total_install_path}/usr/lib		${CMAKE_EXE_LINKER_FLAGS}"
-		CACHE STRING "Linker flags for executables"
-		FORCE)
-
-	set(CMAKE_SHARED_LINKER_FLAGS
-		"-Wl,-rpath-link,${total_install_path}/lib:${total_install_path}/usr/lib		${CMAKE_SHARED_LINKER_FLAGS}"
-		CACHE STRING "Linker flags for shared libraries"
-		FORCE)
-endif()
-
 # 设置CMake构建时使用的线程数
 set(CMAKE_BUILD_PARALLEL_LEVEL 12)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
