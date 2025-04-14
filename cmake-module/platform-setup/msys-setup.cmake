@@ -43,12 +43,12 @@ set(CMAKE_STRIP
 # endregion
 
 string(
-	CONCAT C_CXX_FLAGS
+	CONCAT c_cpp_flags
 	" -Wall -Wextra -Wno-unused-parameter "
 )
 
-set(CMAKE_C_FLAGS ${C_CXX_FLAGS})
-set(CMAKE_CXX_FLAGS ${C_CXX_FLAGS})
+set(CMAKE_C_FLAGS ${c_cpp_flags})
+set(CMAKE_CXX_FLAGS ${c_cpp_flags})
 
 
 set(has_thread TRUE)
