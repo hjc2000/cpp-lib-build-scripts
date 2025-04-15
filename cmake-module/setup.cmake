@@ -99,7 +99,7 @@ set(CMAKE_INSTALL_PREFIX
 # region 导入我的 cmake 函数
 
 # 通用
-cmake_import_all_module("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/" FALSE)
+cmake_import_all_module("$ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-function/" FALSE)
 
 # 平台特定
 include("$ENV{cpp_lib_build_scripts_path}/cmake-module/platform-setup/${platform}-setup.cmake")
