@@ -29,11 +29,6 @@ function(target_add_platform_link_options_when_it_is_exe target_name)
 	endif()
 
     set(link_options
-		-mcpu=Cortex-M7
-		-mthumb
-		-mfloat-abi=hard
-		-mfpu=fpv5-sp-d16
-		-nodefaultlibs
 		-Wl,-Map=out_map.map
         -static)
 
@@ -51,5 +46,12 @@ endfunction()
 
 
 function(target_add_platform_link_options target_name)
+	target_link_options(${target_name} PRIVATE
+		-mcpu=Cortex-M7
+		-mthumb
+		-mfloat-abi=hard
+		-mfpu=fpv5-sp-d16
+		-nodefaultlibs)
+
 	target_add_platform_link_options_when_it_is_exe(${target_name})
 endfunction()
