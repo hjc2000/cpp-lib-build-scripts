@@ -101,7 +101,7 @@ list(PREPEND CMAKE_PREFIX_PATH ${total_install_path})
 list(PREPEND CMAKE_PREFIX_PATH ${total_install_path}/lib)
 
 
-function(target_set_platform_compile_options target)
+function(target_set_platform_compile_options target_name)
     # 定义通用的 C/C++ 编译选项
     set(c_cpp_flags
         -Wall -Wextra -Wno-unused-parameter
@@ -125,11 +125,11 @@ function(target_set_platform_compile_options target)
     )
 
     # 为目标设置通用的编译选项
-    target_compile_options(${target} PRIVATE ${c_cpp_flags})
+    target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
 
     # 为 C++ 源文件追加额外的编译选项
-    target_compile_options(${target} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
 
     # 为汇编源文件追加额外的编译选项
-    target_compile_options(${target} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
 endfunction()
