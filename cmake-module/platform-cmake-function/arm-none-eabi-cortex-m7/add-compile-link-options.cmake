@@ -1,11 +1,15 @@
-function(target_add_platform_link_options target_name)
+# region target_add_platform_link_options_when_it_is_exe
+
+function(target_add_platform_link_options_when_it_is_exe target_name)
+    get_target_property(target_type ${target_name} TYPE)
+	if(NOT "${target_type}" STREQUAL "EXECUTABLE")
+		return()
+	endif()
+
     set(link_options
         -Wl,-Map=out_map.map
-        -Wl,--gc-sections
-        -static
-    )
+        -static)
 
-    # 为目标添加通用的链接选项
     target_link_options(${target_name} PRIVATE ${link_options})
 
     # 检查链接脚本文件是否存在
@@ -13,4 +17,12 @@ function(target_add_platform_link_options target_name)
         # 文件存在，添加 -T 选项及链接脚本路径
         target_link_options(${target_name} PRIVATE -T${CMAKE_SOURCE_DIR}/link_script.ld)
     endif()
+endfunction()
+
+# endregion
+
+
+
+function(target_add_platform_link_options target_name)
+	target_add_platform_link_options_when_it_is_exe(${target_name})
 endfunction()
