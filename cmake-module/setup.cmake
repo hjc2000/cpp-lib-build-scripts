@@ -47,6 +47,10 @@ set(CMAKE_BUILD_PARALLEL_LEVEL 12)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
+
+
+# region target_set_compile_options
+
 function(target_set_compile_options target_name)
     # 定义通用的 C/C++ 编译选项
     set(c_cpp_flags
@@ -67,3 +71,5 @@ function(target_set_compile_options target_name)
     # 为汇编源文件追加额外的编译选项
     target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
 endfunction()
+
+# endregion
