@@ -1,5 +1,6 @@
 # region target_add_compile_options
 
+# 添加所有平台通用的编译器选项。
 function(target_add_compile_options target_name)
     # 定义通用的 C/C++ 编译选项
     set(c_cpp_flags
