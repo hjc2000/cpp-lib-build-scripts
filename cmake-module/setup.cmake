@@ -5,6 +5,10 @@ endif()
 set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY")
 
 
+# 设置CMake构建时使用的线程数
+set(CMAKE_BUILD_PARALLEL_LEVEL 12)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 
 
 # region 路径变量定义
@@ -49,12 +53,6 @@ cmake_import_all_module($ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-impo
 
 # endregion
 
-
-
-
-# 设置CMake构建时使用的线程数
-set(CMAKE_BUILD_PARALLEL_LEVEL 12)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 
 
