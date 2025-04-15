@@ -1,25 +1,3 @@
-function(target_add_platform_compile_options target_name)
-    set(c_cpp_flags
-        -mcpu=Cortex-M7
-		-mthumb
-        -mfloat-abi=hard
-		-mfpu=fpv5-sp-d16
-        -nodefaultlibs
-    )
-
-    set(cpp_flags
-		-fexceptions
-		-fno-rtti
-    )
-
-    target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
-    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
-endfunction()
-
-
-
-
-
 # region target_add_platform_link_options_when_it_is_exe
 
 function(target_add_platform_link_options_when_it_is_exe target_name)
