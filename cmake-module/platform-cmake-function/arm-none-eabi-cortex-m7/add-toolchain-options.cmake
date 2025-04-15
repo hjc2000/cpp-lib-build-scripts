@@ -1,18 +1,24 @@
-function(target_add_platform_compile_options target_name)
-    set(c_cpp_flags
-        -mcpu=Cortex-M7
+function(target_add_compile_and_link_options target_name)
+    set(options
+        -mcpu=cortex-m7
 		-mthumb
         -mfloat-abi=hard
 		-mfpu=fpv5-sp-d16
         -nodefaultlibs
     )
 
+	target_compile_options(${target_name} PRIVATE ${options})
+	target_link_options(${target_name} PRIVATE ${options})
+endfunction()
+
+
+
+
+function(target_add_platform_compile_options target_name)
     set(cpp_flags
 		-fexceptions
-		-fno-rtti
-    )
+		-fno-rtti)
 
-    target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
     target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
 endfunction()
 
@@ -45,13 +51,10 @@ endfunction()
 
 
 
-function(target_add_platform_link_options target_name)
-	target_link_options(${target_name} PRIVATE
-		-mcpu=Cortex-M7
-		-mthumb
-		-mfloat-abi=hard
-		-mfpu=fpv5-sp-d16
-		-nodefaultlibs)
 
+
+function(target_add_platform_toolchain_options target_name)
+	target_add_compile_and_link_options(${target_name})
+	target_add_platform_compile_options(${target_name})
 	target_add_platform_link_options_when_it_is_exe(${target_name})
 endfunction()

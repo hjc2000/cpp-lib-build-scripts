@@ -72,10 +72,8 @@ endfunction(target_add_pch target_name)
 # 导入 ${CMAKE_CURRENT_SOURCE_DIR} 中的源码。
 # ${CMAKE_CURRENT_SOURCE_DIR} 中的源码按照标准的目录结构存放。
 function(target_import_src target_name)
-	target_add_compile_options(${target_name})
-	target_add_link_options(${target_name})
-	target_add_platform_compile_options(${target_name})
-	target_add_platform_link_options(${target_name})
+	target_add_toolchain_options(${target_name})
+	target_add_platform_toolchain_options(${target_name})
 
 	if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/)
 		target_add_source_files_recurse(${target_name} ${CMAKE_CURRENT_SOURCE_DIR}/src/)

@@ -1,3 +1,31 @@
+function(target_add_compile_and_link_options target_name)
+    set(options
+        -mcpu=cortex-m3
+		-mthumb
+        -mfloat-abi=hard
+		-mfpu=fpv5-sp-d16
+        -nodefaultlibs
+    )
+
+	target_compile_options(${target_name} PRIVATE ${options})
+	target_link_options(${target_name} PRIVATE ${options})
+endfunction()
+
+
+
+
+function(target_add_platform_compile_options target_name)
+    set(cpp_flags
+		-fexceptions
+		-fno-rtti)
+
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
+endfunction()
+
+
+
+
+
 # region target_add_platform_link_options_when_it_is_exe
 
 function(target_add_platform_link_options_when_it_is_exe target_name)
@@ -7,7 +35,7 @@ function(target_add_platform_link_options_when_it_is_exe target_name)
 	endif()
 
     set(link_options
-        -Wl,-Map=out_map.map
+		-Wl,-Map=out_map.map
         -static)
 
     target_link_options(${target_name} PRIVATE ${link_options})
@@ -23,6 +51,10 @@ endfunction()
 
 
 
-function(target_add_platform_link_options target_name)
+
+
+function(target_add_platform_toolchain_options target_name)
+	target_add_compile_and_link_options(${target_name})
+	target_add_platform_compile_options(${target_name})
 	target_add_platform_link_options_when_it_is_exe(${target_name})
 endfunction()
