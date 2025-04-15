@@ -62,11 +62,7 @@ set(CMAKE_STRIP
 # 说编译器无法编译测试程序。
 string(
 	CONCAT c_cpp_flags
-	" -Wall -Wextra -Wno-unused-parameter "
 	" -mcpu=Cortex-M7 -mthumb "
-	" -fno-strict-aliasing "
-	" -ffunction-sections "
-	" -fdata-sections "
 	" -mfloat-abi=hard -mfpu=fpv5-sp-d16 "
 	" -nodefaultlibs "
 )
@@ -77,7 +73,6 @@ string(
 )
 set(CMAKE_C_FLAGS ${c_cpp_flags})
 set(CMAKE_CXX_FLAGS "${c_cpp_flags} ${cpp_flags}")
-set(CMAKE_ASM_FLAGS "${c_cpp_flags} -x assembler-with-cpp")
 
 # 特定于可执行文件的链接选项
 string(
