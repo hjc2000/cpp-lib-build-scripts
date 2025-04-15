@@ -64,9 +64,6 @@ function(target_set_compile_options target_name)
     # 为目标设置通用的编译选项
     target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
 
-    # 为 C++ 源文件追加额外的编译选项
-    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
-
     # 为汇编源文件追加额外的编译选项
     target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
 endfunction()
