@@ -45,3 +45,28 @@ set(CMAKE_INSTALL_PREFIX
 # 设置CMake构建时使用的线程数
 set(CMAKE_BUILD_PARALLEL_LEVEL 12)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+
+function(target_set_compile_options target_name)
+    # 定义通用的 C/C++ 编译选项
+    set(c_cpp_flags
+        -Wall -Wextra -Wno-unused-parameter
+        -fno-strict-aliasing
+        -ffunction-sections
+        -fdata-sections
+    )
+
+    # 定义汇编器相关的编译选项
+    set(asm_flags
+        -x assembler-with-cpp
+    )
+
+    # 为目标设置通用的编译选项
+    target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
+
+    # 为 C++ 源文件追加额外的编译选项
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
+
+    # 为汇编源文件追加额外的编译选项
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
+endfunction()
