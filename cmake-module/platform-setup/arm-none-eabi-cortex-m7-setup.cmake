@@ -99,3 +99,37 @@ endif()
 # cmake 会从 CMAKE_PREFIX_PATH 路径列表里面的路径查找库、包等。
 list(PREPEND CMAKE_PREFIX_PATH ${total_install_path})
 list(PREPEND CMAKE_PREFIX_PATH ${total_install_path}/lib)
+
+
+function(target_set_platform_compile_options target)
+    # 定义通用的 C/C++ 编译选项
+    set(c_cpp_flags
+        -Wall -Wextra -Wno-unused-parameter
+        -mcpu=Cortex-M7 -mthumb
+        -fno-strict-aliasing
+        -ffunction-sections
+        -fdata-sections
+        -mfloat-abi=hard -mfpu=fpv5-sp-d16
+        -nodefaultlibs
+    )
+
+    # 定义 C++ 特定的编译选项
+    set(cpp_flags
+        -fexceptions
+        -fno-rtti
+    )
+
+    # 定义汇编器相关的编译选项
+    set(asm_flags
+        -x assembler-with-cpp
+    )
+
+    # 为目标设置通用的编译选项
+    target_compile_options(${target} PRIVATE ${c_cpp_flags})
+
+    # 为 C++ 源文件追加额外的编译选项
+    target_compile_options(${target} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
+
+    # 为汇编源文件追加额外的编译选项
+    target_compile_options(${target} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
+endfunction()
