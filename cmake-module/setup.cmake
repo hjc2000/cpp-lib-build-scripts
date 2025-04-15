@@ -1,3 +1,60 @@
+# region cmake_import_all_module
+
+#
+# cmake_import_all_module 函数
+#
+# 该函数用于导入指定目录下的所有 .cmake 文件。
+# 可以选择是否递归地搜索子目录中的 .cmake 文件。
+#
+# 参数:
+# - DIRECTORY: 要搜索的根目录路径。
+# - RECURSIVE: 是否递归搜索子目录中的 .cmake 文件 (TRUE 或 FALSE)。
+#
+# 示例项目结构:
+# project/
+# ├── CMakeLists.txt
+# └── cmake_scripts/
+#     ├── module1.cmake
+#     └── subdir/
+#         └── module2.cmake
+#
+# 示例调用:
+# # 导入 cmake_scripts 目录下的所有 .cmake 文件（非递归）
+# cmake_import_all_module("${CMAKE_SOURCE_DIR}/cmake_scripts" FALSE)
+#
+# # 导入 cmake_scripts 目录及其子目录下的所有 .cmake 文件（递归）
+# cmake_import_all_module("${CMAKE_SOURCE_DIR}/cmake_scripts" TRUE)
+#
+function(cmake_import_all_module DIRECTORY RECURSIVE)
+    # 参数检查
+    if(NOT IS_DIRECTORY ${DIRECTORY})
+        message(WARNING "Directory does not exist: ${DIRECTORY}")
+        return()
+    endif()
+
+    # 根据是否递归选择 GLOB 或 GLOB_RECURSE
+    if(RECURSIVE)
+        file(GLOB_RECURSE CMAKE_MODULE_FILES "${DIRECTORY}/*.cmake")
+    else()
+        file(GLOB CMAKE_MODULE_FILES "${DIRECTORY}/*.cmake")
+    endif()
+
+    # 如果没有找到任何 .cmake 文件，打印警告信息
+    if(NOT CMAKE_MODULE_FILES)
+        message(WARNING "No .cmake files found in directory: ${DIRECTORY}")
+        return()
+    endif()
+
+    # 遍历所有找到的 .cmake 文件并 include 它们
+    foreach(module_file IN LISTS CMAKE_MODULE_FILES)
+        include(${module_file})
+    endforeach()
+endfunction()
+
+# endregion
+
+
+
 if("${ProjectName}" STREQUAL "")
 	message(FATAL_ERROR "ProjectName 没有被设置。")
 endif()
@@ -42,14 +99,11 @@ set(CMAKE_INSTALL_PREFIX
 # region 导入我的 cmake 函数
 
 # 通用
-include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/base-cmake-functions.cmake")
-include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/install.cmake")
-include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/link.cmake")
-include("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/source_and_headers.cmake")
+cmake_import_all_module("$ENV{cpp_lib_build_scripts_path}/cmake-module/CMakeFunctions/" FALSE)
 
 # 平台特定
 include("$ENV{cpp_lib_build_scripts_path}/cmake-module/platform-setup/${platform}-setup.cmake")
-cmake_import_all_module($ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/ FALSE)
+cmake_import_all_module("$ENV{cpp_lib_build_scripts_path}/cmake-module/cmake-import-helper/${platform}/" FALSE)
 
 # endregion
 
