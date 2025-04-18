@@ -5,16 +5,6 @@ set(BUILD_SHARED_LIBS
 	CACHE STRING "是否编译动态链接库"
 	FORCE)
 
-set(CMAKE_SYSTEM_PROCESSOR
-	"arm"
-	CACHE STRING "平台"
-	FORCE)
-
-set(CMAKE_SYSTEM_ARCH
-	"armv7-m"
-	CACHE STRING "平台"
-	FORCE)
-
 set(CMAKE_SYSTEM_NAME
 	"Generic"
 	CACHE STRING "平台"
