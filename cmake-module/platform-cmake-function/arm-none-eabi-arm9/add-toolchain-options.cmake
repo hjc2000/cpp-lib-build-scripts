@@ -1,28 +1,3 @@
-function(target_add_platform_compile_and_link_options target_name)
-    set(options
-		-nostdlib)
-
-	target_compile_options(${target_name} PRIVATE ${options})
-	target_link_options(${target_name} PRIVATE ${options})
-endfunction()
-
-
-
-
-
-
-function(target_add_platform_compile_options target_name)
-    set(options
-		-fgnu89-inline
-		-std=gnu99)
-
-    target_compile_options(${target_name} PRIVATE ${options})
-endfunction()
-
-
-
-
-
 # region target_add_platform_link_options_when_it_is_exe
 
 function(target_add_platform_link_options_when_it_is_exe target_name)
@@ -51,7 +26,5 @@ endfunction()
 
 
 function(target_add_platform_toolchain_options target_name)
-	target_add_platform_compile_and_link_options(${target_name})
-	target_add_platform_compile_options(${target_name})
 	target_add_platform_link_options_when_it_is_exe(${target_name})
 endfunction()
