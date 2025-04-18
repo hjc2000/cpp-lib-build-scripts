@@ -1,6 +1,7 @@
 function(target_add_platform_compile_and_link_options target_name)
     set(options
-		-nostdlib)
+		-nostdlib
+		-g)
 
 	target_compile_options(${target_name} PRIVATE ${options})
 	target_link_options(${target_name} PRIVATE ${options})
