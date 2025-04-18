@@ -8,6 +8,7 @@ function(target_add_compile_options target_name)
         -fno-strict-aliasing
         -ffunction-sections
         -fdata-sections
+		-fmessage-length=0
     )
 
     # 定义汇编器相关的编译选项
