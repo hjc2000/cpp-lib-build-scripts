@@ -16,7 +16,7 @@ set(CMAKE_C_COMPILER
 	FORCE)
 
 set(CMAKE_CXX_COMPILER
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin/arm-none-eabi-g++.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/bin/arm-none-eabi-g++.exe"
 	CACHE STRING "平台"
 	FORCE)
 
