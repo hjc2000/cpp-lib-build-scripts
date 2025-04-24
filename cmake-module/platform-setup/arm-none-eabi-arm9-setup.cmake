@@ -10,38 +10,40 @@ set(CMAKE_SYSTEM_NAME
 	CACHE STRING "平台"
 	FORCE)
 
+set(compiler_dir_name "arm-none-eabi-8")
+
 set(CMAKE_C_COMPILER
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin/arm-none-eabi-gcc.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/${compiler_dir_name}/bin/arm-none-eabi-gcc.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_CXX_COMPILER
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/bin/arm-none-eabi-g++.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/${compiler_dir_name}/bin/arm-none-eabi-g++.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_ASM_COMPILER
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin/arm-none-eabi-gcc.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/${compiler_dir_name}/bin/arm-none-eabi-gcc.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_LINKER
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin/arm-none-eabi-ld.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/${compiler_dir_name}/bin/arm-none-eabi-ld.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_OBJCOPY
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin/arm-none-eabi-objcopy.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/${compiler_dir_name}/bin/arm-none-eabi-objcopy.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_SIZE
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin/arm-none-eabi-size.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/${compiler_dir_name}/bin/arm-none-eabi-size.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_STRIP
-	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin/arm-none-eabi-ld.exe"
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/${compiler_dir_name}/bin/arm-none-eabi-ld.exe"
 	CACHE STRING "平台"
 	FORCE)
 
