@@ -16,11 +16,11 @@ endfunction()
 
 
 function(target_add_platform_compile_options target_name)
-    set(cpp_flags
+    set(options
 		-fexceptions
 		-fno-rtti)
 
-    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${cpp_flags}>)
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${options}>)
 endfunction()
 
 
