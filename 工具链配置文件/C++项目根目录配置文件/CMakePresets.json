@@ -100,6 +100,31 @@
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Release"
 			}
+		},
+		{
+			"name": "arm-none-eabi-arm9-gcc14.2-base",
+			"hidden": true,
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/jc_build",
+			"cacheVariables": {
+				"platform": "arm-none-eabi-arm9-gcc14.2"
+			}
+		},
+		{
+			"name": "arm-none-eabi-arm9-gcc14.2-debug",
+			"displayName": "arm-none-eabi-arm9-gcc14.2-debug",
+			"inherits": "arm-none-eabi-arm9-gcc14.2-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "arm-none-eabi-arm9-gcc14.2-release",
+			"displayName": "arm-none-eabi-arm9-gcc14.2-release",
+			"inherits": "arm-none-eabi-arm9-gcc14.2-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
 		}
 	]
 }
