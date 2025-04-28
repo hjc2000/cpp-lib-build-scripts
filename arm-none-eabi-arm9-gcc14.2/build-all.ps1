@@ -8,10 +8,12 @@ try
 {
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/c-bsp-interface"
+	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/prd"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-c-bsp-interface.ps1"
+	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-prd.ps1"
 }
 finally
