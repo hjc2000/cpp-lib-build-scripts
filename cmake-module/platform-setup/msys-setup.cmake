@@ -5,7 +5,7 @@ set(BUILD_SHARED_LIBS
 	CACHE STRING "是否编译动态链接库"
 	FORCE)
 
-set(tool_chain_root_path "C:/msys64/ucrt64/bin/")
+set(tool_chain_root_path "C:/msys64/ucrt64/bin")
 
 set(CMAKE_C_COMPILER
 	"${tool_chain_root_path}/gcc.exe"
