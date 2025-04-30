@@ -20,7 +20,7 @@ function(target_add_platform_link_options_when_it_is_exe target_name)
 	endif()
 
     set(link_options
-		-Wl,-Map=out_map.map
+		-Wl,-Map=out_map.map,--cref
         -static)
 
     target_link_options(${target_name} PRIVATE ${link_options})
