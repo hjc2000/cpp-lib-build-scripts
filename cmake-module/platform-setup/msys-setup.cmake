@@ -5,38 +5,40 @@ set(BUILD_SHARED_LIBS
 	CACHE STRING "是否编译动态链接库"
 	FORCE)
 
+set(tool_chain_root_path "C:/msys64/ucrt64/bin/")
+
 set(CMAKE_C_COMPILER
-	"C:/msys64/ucrt64/bin/gcc.exe"
+	"${tool_chain_root_path}/gcc.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_CXX_COMPILER
-	"C:/msys64/ucrt64/bin/g++.exe"
+	"${tool_chain_root_path}/g++.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_ASM_COMPILER
-	"C:/msys64/ucrt64/bin/gcc.exe"
+	"${tool_chain_root_path}/gcc.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_LINKER
-	"C:/msys64/ucrt64/bin/ld.exe"
+	"${tool_chain_root_path}/ld.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_OBJCOPY
-	"C:/msys64/ucrt64/bin/objcopy.exe"
+	"${tool_chain_root_path}/objcopy.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_SIZE
-	"C:/msys64/ucrt64/bin/size.exe"
+	"${tool_chain_root_path}/size.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_STRIP
-	"C:/msys64/ucrt64/bin/ld.exe"
+	"${tool_chain_root_path}/ld.exe"
 	CACHE STRING "平台"
 	FORCE)
 
