@@ -23,7 +23,7 @@ try
 	Set-Location $build_path
 
 	cmake -G "Ninja" $source_path `
-		--preset "arm-none-eabi-cortex-m7-release" `
+		--preset "arm-none-eabi-cortex-m4-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 
 	if ($LASTEXITCODE)

@@ -52,6 +52,31 @@
 			}
 		},
 		{
+			"name": "arm-none-eabi-cortex-m4-base",
+			"hidden": true,
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/jc_build",
+			"cacheVariables": {
+				"platform": "arm-none-eabi-cortex-m4"
+			}
+		},
+		{
+			"name": "arm-none-eabi-cortex-m4-debug",
+			"displayName": "arm-none-eabi-cortex-m4-debug",
+			"inherits": "arm-none-eabi-cortex-m4-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "arm-none-eabi-cortex-m4-release",
+			"displayName": "arm-none-eabi-cortex-m4-release",
+			"inherits": "arm-none-eabi-cortex-m4-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		},
+		{
 			"name": "arm-none-eabi-cortex-m7-base",
 			"hidden": true,
 			"generator": "Ninja",
