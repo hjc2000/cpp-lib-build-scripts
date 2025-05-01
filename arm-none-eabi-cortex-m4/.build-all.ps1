@@ -8,9 +8,11 @@ try
 {
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
+	try-remove-items --paths "$libs_path/freertos-gcc-cm4"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
+	& "$build_script_path/build-freertos-gcc-cm4.ps1"
 }
 finally
 {
