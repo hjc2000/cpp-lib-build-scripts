@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	& "$build_script_path/build-bsp-interface.ps1"
+	& "$build_script_path/build-base.ps1"
 	& "$build_script_path/build-freertos-gcc-cm4.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/task.git"
