@@ -12,3 +12,14 @@ function(target_import_stm32f407zet6_hal target_name visibility)
 	target_add_source_files_recurse(${target_name} "${libs_path}/${lib_name}/obj/")
 endfunction()
 # endregion
+
+
+
+
+# region target_import_stm32f407zet6_peripheral
+function(target_import_stm32f407zet6_peripheral target_name visibility)
+	set(lib_name "stm32f407zet6-peripheral")
+	target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include)
+	target_add_source_files_recurse(${target_name} "${libs_path}/${lib_name}/obj/")
+endfunction()
+# endregion

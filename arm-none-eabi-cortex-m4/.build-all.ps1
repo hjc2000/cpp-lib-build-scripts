@@ -11,6 +11,7 @@ try
 	try-remove-items --paths "$libs_path/freertos-gcc-cm4"
 	try-remove-items --paths "$libs_path/task"
 	try-remove-items --paths "$libs_path/stm32f407zet6-hal"
+	try-remove-items --paths "$libs_path/stm32f407zet6-peripheral"
 	try-remove-items --paths "$libs_path/stm32f407zet6-project"
 	$PSNativeCommandUseErrorActionPreference = $false
 
@@ -18,6 +19,7 @@ try
 	& "$build_script_path/build-freertos-gcc-cm4.ps1"
 	& "$build_script_path/build-task.ps1"
 	& "$build_script_path/build-stm32f407zet6-hal.ps1"
+	& "$build_script_path/build-stm32f407zet6-peripheral.ps1"
 	& "$build_script_path/build-stm32f407zet6-project.ps1"
 }
 finally
