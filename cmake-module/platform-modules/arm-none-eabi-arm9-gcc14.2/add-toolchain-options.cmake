@@ -9,6 +9,15 @@ endfunction()
 
 
 
+function(target_add_platform_compile_options target_name)
+    set(options
+		-fexceptions
+		-fno-rtti)
+
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${options}>)
+endfunction()
+
+
 
 
 # region target_add_platform_link_options_when_it_is_exe
@@ -40,5 +49,6 @@ endfunction()
 
 function(target_add_platform_toolchain_options target_name)
 	target_add_platform_compile_and_link_options(${target_name})
+	target_add_platform_compile_options(${target_name})
 	target_add_platform_link_options_when_it_is_exe(${target_name})
 endfunction()
