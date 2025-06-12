@@ -14,6 +14,7 @@ try
 	try-remove-items --paths "$libs_path/stm32f407zet6-peripheral"
 	try-remove-items --paths "$libs_path/c-bsp-interface"
 	try-remove-items --paths "$libs_path/prd"
+	try-remove-items --paths "$libs_path/profidrive"
 	try-remove-items --paths "$libs_path/stm32f407zet6-project"
 	$PSNativeCommandUseErrorActionPreference = $false
 
@@ -24,6 +25,7 @@ try
 	& "$build_script_path/build-stm32f407zet6-peripheral.ps1"
 	& "$build_script_path/build-c-bsp-interface.ps1"
 	& "$build_script_path/build-prd.ps1"
+	& "$build_script_path/build-profidrive.ps1"
 	& "$build_script_path/build-stm32f407zet6-project.ps1"
 }
 finally
