@@ -18,7 +18,6 @@ try
 	try-remove-items --paths "$libs_path/sdl2-wrapper"
 	try-remove-items --paths "$libs_path/point24"
 	try-remove-items --paths "$libs_path/check-avstream"
-	try-remove-items --paths "$libs_path/cpp-test"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -28,7 +27,6 @@ try
 	& "$build_script_path/build-sdl2-wrapper.ps1"
 	& "$build_script_path/build-point24.ps1"
 	& "$build_script_path/build-check-avstream.ps1"
-	& "$build_script_path/build-cpp-test.ps1"
 }
 finally
 {
