@@ -37,6 +37,7 @@ function(target_add_platform_link_options_when_it_is_exe target_name)
 	endif()
 
     set(link_options
+		-Wl,--gc-sections
 		-Wl,-Map=out_map.map,--cref
         -static)
 

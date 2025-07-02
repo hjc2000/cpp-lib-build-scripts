@@ -7,4 +7,16 @@ function(target_add_platform_toolchain_options target_name)
 	target_compile_options(${target_name} PRIVATE ${options})
 	target_link_options(${target_name} PRIVATE ${options})
 	# endregion
+
+	# region 是 可执行文件时添加的链接选项
+	set(link_options
+        -Wl,--gc-sections)
+
+	get_target_property(target_type ${target_name} TYPE)
+
+	if("${target_type}" STREQUAL "EXECUTABLE")
+		target_link_options(${target_name} PRIVATE ${link_options})
+	endif()
+	# endregion
+
 endfunction()
