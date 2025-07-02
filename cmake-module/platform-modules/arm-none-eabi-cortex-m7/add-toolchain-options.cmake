@@ -6,6 +6,7 @@ function(target_add_platform_compile_and_link_options target_name)
 		-mfpu=fpv5-sp-d16
         -nodefaultlibs
 		-finline-limit=100
+		-flto
     )
 
 	target_compile_options(${target_name} PRIVATE ${options})
