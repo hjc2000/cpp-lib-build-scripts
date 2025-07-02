@@ -32,6 +32,14 @@ function(target_add_platform_compile_options target_name)
 		-fno-rtti)
 
     target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${options}>)
+
+	# region 汇编选项
+    set(asm_flags
+        -x assembler-with-cpp
+    )
+
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
+	# endregion
 endfunction()
 
 
