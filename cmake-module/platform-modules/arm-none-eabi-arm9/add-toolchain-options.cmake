@@ -1,15 +1,5 @@
-function(target_add_platform_compile_and_link_options target_name)
-    set(options
-		-finline-limit=100
-    )
-
-	target_compile_options(${target_name} PRIVATE ${options})
-	target_link_options(${target_name} PRIVATE ${options})
-endfunction()
-
-
-
-function(target_add_platform_compile_options target_name)
+function(target_add_platform_toolchain_options target_name)
+	# region 所有语言都要添加的编译选项
 	set(options
         -Wall -Wextra -Wno-unused-parameter
         -fno-strict-aliasing
@@ -19,13 +9,16 @@ function(target_add_platform_compile_options target_name)
 	)
 
     target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
+	# endregion
 
+	# region C++ 编译选项
     set(options
 		-fexceptions
 		-fno-rtti
 	)
 
     target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:CXX>:${options}>)
+	# endregion
 
 	# region 汇编选项
     set(asm_flags
@@ -34,18 +27,15 @@ function(target_add_platform_compile_options target_name)
 
     target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
 	# endregion
-endfunction()
 
+	# region 编译器和链接器都要添加的选项
+	set(options
+		-finline-limit=100
+    )
 
-
-
-
-
-
-
-function(target_add_platform_toolchain_options target_name)
-	target_add_platform_compile_and_link_options(${target_name})
-	target_add_platform_compile_options(${target_name})
+	target_compile_options(${target_name} PRIVATE ${options})
+	target_link_options(${target_name} PRIVATE ${options})
+	# endregion
 
 	# region 是可执行文件时才要添加的链接选项
     get_target_property(target_type ${target_name} TYPE)
