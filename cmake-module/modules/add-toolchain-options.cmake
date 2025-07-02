@@ -31,15 +31,14 @@ endfunction()
 # region target_add_link_options_when_it_is_exe
 
 function(target_add_link_options_when_it_is_exe target_name)
-    get_target_property(target_type ${target_name} TYPE)
-	if(NOT "${target_type}" STREQUAL "EXECUTABLE")
-		return()
-	endif()
-
     set(link_options
         -Wl,--gc-sections)
 
-    target_link_options(${target_name} PRIVATE ${link_options})
+	get_target_property(target_type ${target_name} TYPE)
+
+	if("${target_type}" STREQUAL "EXECUTABLE")
+		target_link_options(${target_name} PRIVATE ${link_options})
+	endif()
 endfunction()
 
 # endregion
