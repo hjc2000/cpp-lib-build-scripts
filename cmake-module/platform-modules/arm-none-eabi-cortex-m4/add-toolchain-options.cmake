@@ -8,7 +8,7 @@ function(target_add_platform_toolchain_options target_name)
 		-fmessage-length=0
 	)
 
-    target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
+    target_compile_options(${target_name} PRIVATE ${options})
 	# endregion
 
 	# region 编译器和链接器都要加的选项
@@ -35,24 +35,24 @@ function(target_add_platform_toolchain_options target_name)
 	# endregion
 
 	# region 汇编选项
-    set(asm_flags
+    set(options
         -x assembler-with-cpp
     )
 
-    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${options}>)
 	# endregion
 
 	# region 是可执行文件时才要添加的链接选项
     get_target_property(target_type ${target_name} TYPE)
 
 	if("${target_type}" STREQUAL "EXECUTABLE")
-		set(link_options
+		set(options
 			-Wl,--gc-sections
 			-Wl,-Map=out_map.map,--cref
 			-static
 		)
 
-		target_link_options(${target_name} PRIVATE ${link_options})
+		target_link_options(${target_name} PRIVATE ${options})
 
 		# 检查链接脚本文件是否存在
 		if(EXISTS "${CMAKE_SOURCE_DIR}/link_script.ld")

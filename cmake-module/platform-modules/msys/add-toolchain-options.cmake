@@ -8,7 +8,7 @@ function(target_add_platform_toolchain_options target_name)
 	target_link_options(${target_name} PRIVATE ${options})
 	# endregion
 
-	# region C, C++ 都要添加的编译选项
+	# region 所有语言都要添加的编译选项
 	set(options
         -Wall -Wextra -Wno-unused-parameter
         -fno-strict-aliasing
@@ -17,25 +17,26 @@ function(target_add_platform_toolchain_options target_name)
 		-fmessage-length=0
 	)
 
-    target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
+    target_compile_options(${target_name} PRIVATE ${options})
 	# endregion
 
 	# region 汇编选项
-    set(asm_flags
+    set(options
         -x assembler-with-cpp
     )
 
-    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${asm_flags}>)
+    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${options}>)
 	# endregion
 
 	# region 是可执行文件时添加的链接选项
-	set(link_options
-        -Wl,--gc-sections)
-
 	get_target_property(target_type ${target_name} TYPE)
 
 	if("${target_type}" STREQUAL "EXECUTABLE")
-		target_link_options(${target_name} PRIVATE ${link_options})
+		set(options
+			-Wl,--gc-sections
+		)
+
+		target_link_options(${target_name} PRIVATE ${options})
 	endif()
 	# endregion
 endfunction()
