@@ -16,6 +16,16 @@ endfunction()
 
 
 function(target_add_platform_compile_options target_name)
+	set(options
+        -Wall -Wextra -Wno-unused-parameter
+        -fno-strict-aliasing
+        -ffunction-sections
+        -fdata-sections
+		-fmessage-length=0
+	)
+
+    target_compile_options(${target_name} PRIVATE ${c_cpp_flags})
+
     set(cpp_flags
 		-fexceptions
 		-fno-rtti)
