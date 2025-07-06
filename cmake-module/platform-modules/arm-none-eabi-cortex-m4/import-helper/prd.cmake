@@ -3,5 +3,5 @@ function(target_import_prd target_name visibility)
     target_include_directories(${target_name} ${visibility} ${libs_path}/${lib_name}/include/)
 	target_add_source_files_recurse(${target_name} "${libs_path}/${lib_name}/obj/")
 
-	target_import_c_bsp_interface(${target_name} ${visibility})
+	target_import_cb(${target_name} ${visibility})
 endfunction()
