@@ -7,11 +7,21 @@ function(target_add_platform_toolchain_options target_name)
 		-mfpu=fpv5-sp-d16
         -nodefaultlibs
 		-finline-limit=100
-		-flto=auto
     )
 
 	target_compile_options(${target_name} PRIVATE ${options})
 	target_link_options(${target_name} PRIVATE ${options})
+	# endregion
+
+	# region 如果是 Release 则添加 lto
+	if(CMAKE_BUILD_TYPE STREQUAL "Release")
+		set(options
+			-flto=auto
+		)
+
+		target_compile_options(${target_name} PRIVATE ${options})
+		target_link_options(${target_name} PRIVATE ${options})
+	endif()
 	# endregion
 
 	# region 所有语言都要添加的编译选项
