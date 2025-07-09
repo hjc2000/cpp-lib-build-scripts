@@ -72,11 +72,13 @@ function(target_import_qwt target_name visibility)
 	target_import_qt_widgets(${target_name} ${visibility})
 endfunction()
 
+
+
 # 导入串口库
 function(target_import_qt_serial_port target_name visibility)
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtSerialPort)
 
     target_auto_link_lib(${target_name} Qt6SerialPort ${libs_path}/qt5/lib)
 
-	target_import_qt_widgets(${target_name} ${visibility})
+	target_import_qt_core(${target_name} ${visibility})
 endfunction()
