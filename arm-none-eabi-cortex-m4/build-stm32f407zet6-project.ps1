@@ -14,7 +14,7 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	git-get-repo.ps1 -git_url "https://gitcode.com/Jesse11/stm32f407zet6-project.git"
+	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32f407zet6-project.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
