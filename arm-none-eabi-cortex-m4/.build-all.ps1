@@ -8,10 +8,10 @@ try
 {
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
-	# try-remove-items --paths "$libs_path/freertos-gcc-cm4"
-	# try-remove-items --paths "$libs_path/task"
-	# try-remove-items --paths "$libs_path/stm32f407zet6-hal"
-	# try-remove-items --paths "$libs_path/stm32f407zet6-peripheral"
+	try-remove-items --paths "$libs_path/freertos-gcc-cm4"
+	try-remove-items --paths "$libs_path/task"
+	try-remove-items --paths "$libs_path/stm32f407zet6-hal"
+	try-remove-items --paths "$libs_path/stm32f407zet6-peripheral"
 	try-remove-items --paths "$libs_path/cb"
 	try-remove-items --paths "$libs_path/prd"
 	try-remove-items --paths "$libs_path/stm32f407zet6-project"
