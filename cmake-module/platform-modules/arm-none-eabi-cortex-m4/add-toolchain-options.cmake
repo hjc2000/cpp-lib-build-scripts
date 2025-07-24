@@ -25,16 +25,14 @@ function(target_add_platform_toolchain_options target_name)
 	target_link_options(${target_name} PRIVATE ${options})
 	# endregion
 
-	# region 如果是 Release 则添加 lto
-	if(CMAKE_BUILD_TYPE STREQUAL "Release")
-		set(options
-			-flto=auto
-			-ffat-lto-objects
-		)
+	# region 添加 lto
+	set(options
+		-flto=auto
+		-ffat-lto-objects
+	)
 
-		target_compile_options(${target_name} PRIVATE ${options})
-		target_link_options(${target_name} PRIVATE ${options})
-	endif()
+	target_compile_options(${target_name} PRIVATE ${options})
+	target_link_options(${target_name} PRIVATE ${options})
 	# endregion
 
 	# region C++ 编译选项
