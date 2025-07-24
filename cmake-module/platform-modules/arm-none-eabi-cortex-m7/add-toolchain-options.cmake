@@ -17,6 +17,7 @@ function(target_add_platform_toolchain_options target_name)
 	if(CMAKE_BUILD_TYPE STREQUAL "Release")
 		set(options
 			-flto=auto
+			-ffat-lto-objects
 		)
 
 		target_compile_options(${target_name} PRIVATE ${options})
