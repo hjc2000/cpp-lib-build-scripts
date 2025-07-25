@@ -42,16 +42,6 @@ set(CMAKE_STRIP
 
 # endregion
 
-# region 编译器标志
-
-string(
-	CONCAT c_cpp_flags
-	" -Wall -Wextra -Wno-unused-parameter "
-)
-set(CMAKE_C_FLAGS ${c_cpp_flags})
-set(CMAKE_CXX_FLAGS ${c_cpp_flags})
-
-# endregion
 
 # region 链接器标志
 
