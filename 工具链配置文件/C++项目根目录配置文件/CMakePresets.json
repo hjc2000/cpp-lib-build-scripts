@@ -2,7 +2,7 @@
 	"version": 3,
 	"configurePresets": [
 		{
-			"name": "windows-base",
+			"name": "msys-base",
 			"hidden": true,
 			"generator": "Ninja",
 			"binaryDir": "${sourceDir}/jc_build",
@@ -13,7 +13,7 @@
 		{
 			"name": "msys-debug",
 			"displayName": "msys-debug",
-			"inherits": "windows-base",
+			"inherits": "msys-base",
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Debug"
 			}
@@ -21,7 +21,7 @@
 		{
 			"name": "msys-release",
 			"displayName": "msys-release",
-			"inherits": "windows-base",
+			"inherits": "msys-base",
 			"cacheVariables": {
 				"CMAKE_BUILD_TYPE": "Release"
 			}
