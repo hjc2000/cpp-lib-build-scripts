@@ -4,8 +4,8 @@ function(target_add_platform_toolchain_options target_name)
 		-flto=auto
 	)
 
-	target_compile_options(${target_name} PRIVATE ${options})
-	target_link_options(${target_name} PRIVATE ${options})
+	target_compile_options(${target_name} PUBLIC ${options})
+	target_link_options(${target_name} PUBLIC ${options})
 	# endregion
 
 	# region 所有语言都要添加的编译选项
@@ -17,7 +17,7 @@ function(target_add_platform_toolchain_options target_name)
 		-fmessage-length=0
 	)
 
-    target_compile_options(${target_name} PRIVATE ${options})
+    target_compile_options(${target_name} PUBLIC ${options})
 	# endregion
 
 	# region 汇编选项
@@ -25,7 +25,7 @@ function(target_add_platform_toolchain_options target_name)
         -x assembler-with-cpp
     )
 
-    target_compile_options(${target_name} PRIVATE $<$<COMPILE_LANGUAGE:ASM>:${options}>)
+    target_compile_options(${target_name} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:${options}>)
 	# endregion
 
 	# region 是可执行文件时添加的链接选项
@@ -36,7 +36,7 @@ function(target_add_platform_toolchain_options target_name)
 			-Wl,--gc-sections
 		)
 
-		target_link_options(${target_name} PRIVATE ${options})
+		target_link_options(${target_name} PUBLIC ${options})
 	endif()
 	# endregion
 endfunction()
