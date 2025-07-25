@@ -27,6 +27,31 @@
 			}
 		},
 		{
+			"name": "msys-clang-base",
+			"hidden": true,
+			"generator": "Ninja",
+			"binaryDir": "${sourceDir}/jc_build",
+			"cacheVariables": {
+				"platform": "msys-clang"
+			}
+		},
+		{
+			"name": "msys-clang-debug",
+			"displayName": "msys-clang-debug",
+			"inherits": "msys-clang-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Debug"
+			}
+		},
+		{
+			"name": "msys-clang-release",
+			"displayName": "msys-clang-release",
+			"inherits": "msys-clang-base",
+			"cacheVariables": {
+				"CMAKE_BUILD_TYPE": "Release"
+			}
+		},
+		{
 			"name": "arm-none-eabi-cortex-m3-base",
 			"hidden": true,
 			"generator": "Ninja",
