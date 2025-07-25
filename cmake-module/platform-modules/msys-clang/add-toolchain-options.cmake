@@ -39,7 +39,7 @@ function(target_add_platform_toolchain_options target_name)
 
 	# region C++ 编译选项
     set(options
-        -Wno-delete-non-abstract-non-virtual-dtor
+        # -Wno-delete-non-abstract-non-virtual-dtor
     )
 
     target_compile_options(${target_name} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:${options}>)
