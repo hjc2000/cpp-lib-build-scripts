@@ -1,7 +1,7 @@
 # region 配置平台、工具链
 
 set(BUILD_SHARED_LIBS
-	true
+	false
 	CACHE STRING "是否编译动态链接库"
 	FORCE)
 
