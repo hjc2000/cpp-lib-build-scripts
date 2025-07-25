@@ -27,6 +27,11 @@ set(CMAKE_LINKER
 	CACHE STRING "平台"
 	FORCE)
 
+set(CMAKE_AR
+	"${tool_chain_root_path}/llvm-ar.exe"
+	CACHE STRING "平台"
+	FORCE)
+
 set(CMAKE_OBJCOPY
 	"${tool_chain_root_path}/llvm-objcopy.exe"
 	CACHE STRING "平台"
