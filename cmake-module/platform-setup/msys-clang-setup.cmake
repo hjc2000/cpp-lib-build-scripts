@@ -23,7 +23,7 @@ set(CMAKE_ASM_COMPILER
 	FORCE)
 
 set(CMAKE_LINKER
-	"${tool_chain_root_path}/lld.exe"
+	"${tool_chain_root_path}/ld.lld.exe"
 	CACHE STRING "平台"
 	FORCE)
 
@@ -43,7 +43,7 @@ set(CMAKE_SIZE
 	FORCE)
 
 set(CMAKE_STRIP
-	"${tool_chain_root_path}/lld.exe"
+	"${tool_chain_root_path}/ld.lld.exe"
 	CACHE STRING "平台"
 	FORCE)
 
