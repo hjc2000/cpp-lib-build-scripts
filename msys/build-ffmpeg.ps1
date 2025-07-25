@@ -44,10 +44,10 @@ try
 	--enable-libspeex \
 	--enable-libopenjpeg \
 	--enable-openssl \
-	--enable-version3 \
 	--enable-amf \
 	--enable-pic \
 	--enable-gpl \
+	--enable-version3 \
 	--enable-shared \
 	--disable-static
 
