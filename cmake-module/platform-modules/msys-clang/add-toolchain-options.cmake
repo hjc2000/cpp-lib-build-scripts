@@ -19,6 +19,7 @@ function(target_add_platform_toolchain_options target_name)
 
 	# region 所有语言都要添加的编译选项
 	set(options
+		--target=x86_64-w64-mingw32
         -Wall -Wextra -Wno-unused-parameter
         -fno-strict-aliasing
         -ffunction-sections
