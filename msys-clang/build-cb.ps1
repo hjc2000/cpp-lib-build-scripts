@@ -20,7 +20,7 @@ try
 	Set-Location $build_path
 
 	cmake -G "Ninja" $source_path `
-		--preset "msys-release" `
+		--preset "msys-clang-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 
 	if ($LASTEXITCODE)
