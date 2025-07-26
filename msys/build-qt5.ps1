@@ -31,7 +31,7 @@ try
 	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
-		-branch_name "6.7"
+		-branch_name "6.10"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
