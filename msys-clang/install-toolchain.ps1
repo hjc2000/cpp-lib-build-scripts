@@ -17,7 +17,7 @@ pacman-ensure-packages @(
 	"mingw-w64-ucrt-x86_64-lld"
 	"mingw-w64-ucrt-x86_64-clang"
 	"mingw-w64-ucrt-x86_64-clang-libs"
-	"mingw-w64-x86_64-clang-tools-extra"
+	""
 )
 
 python -m pip install --upgrade pip

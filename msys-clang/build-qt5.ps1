@@ -14,11 +14,11 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	& "$build_script_path/build-zlib.ps1"
-	& "$build_script_path/build-zstd.ps1"
-	& "$build_script_path/build-ffmpeg.ps1"
+	# & "$build_script_path/build-zlib.ps1"
+	# & "$build_script_path/build-zstd.ps1"
+	# & "$build_script_path/build-ffmpeg.ps1"
 
-	pip install html5lib
+	# pip install html5lib
 
 	pacman-ensure-packages @(
 		"mingw-w64-ucrt-x86_64-gperf"
@@ -26,11 +26,11 @@ try
 		"flex"
 		"mingw-w64-ucrt-x86_64-qwt-qt6"
 		"mingw-w64-ucrt-x86_64-clang-libs"
-		"mingw-w64-x86_64-clang-tools-extra"
+		"mingw-w64-ucrt-x86_64-clang-tools-extra"
 	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
-		-branch_name "6.7"
+		-branch_name "6.10"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
@@ -39,26 +39,26 @@ try
 	$env:CXX = "clang++"
 
 	$skiped_modules = @(
-		"qtlanguageserver"
 		"qttools"
 		"qtdoc"
 		"qttranslations"
-		"qtdeclarative"
-		"qtquicktimeline"
-		"qtquick3d"
-		"qtgraphs"
-		"qtlocation"
-		"qtlottie"
-		"qtmqtt"
-		"qtopcua"
-		"qtquick3dphysics"
-		"qtquickeffectmaker"
-		"qtvirtualkeyboard"
-		"qtwebengine"
-		"qtwebview"
+		# "qtlanguageserver"
+		# "qtdeclarative"
+		# "qtquicktimeline"
+		# "qtquick3d"
+		# "qtgraphs"
+		# "qtlocation"
+		# "qtlottie"
+		# "qtmqtt"
+		# "qtopcua"
+		# "qtquick3dphysics"
+		# "qtquickeffectmaker"
+		# "qtvirtualkeyboard"
+		# "qtwebengine"
+		# "qtwebview"
 	)
 
-	Invoke-Expression "../configure.bat -skip $($skiped_modules -join ",") -prefix ${install_path}"
+	Invoke-Expression "../configure.bat -prefix ${install_path}"
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
