@@ -26,7 +26,8 @@ try
 		"flex"
 		"mingw-w64-ucrt-x86_64-qwt-qt6"
 		"mingw-w64-ucrt-x86_64-clang-libs"
-		""
+		"mingw-w64-ucrt-x86_64-clang-tools-extra"
+		"mingw-w64-ucrt-x86_64-protobuf"
 	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
