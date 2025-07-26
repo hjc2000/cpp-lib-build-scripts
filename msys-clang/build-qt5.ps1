@@ -35,8 +35,8 @@ try
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 
-	$env:CC = "gcc"
-	$env:CXX = "g++"
+	$env:CC = "clang"
+	$env:CXX = "clang++"
 
 	$skiped_modules = @(
 		"qtlanguageserver"
@@ -65,8 +65,8 @@ try
 	}
 
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_C_COMPILER="gcc" `
-		-DCMAKE_CXX_COMPILER="g++" `
+		-DCMAKE_C_COMPILER="clang" `
+		-DCMAKE_CXX_COMPILER="clang++" `
 		-DCMAKE_C_STANDARD=17 `
 		-DCMAKE_CXX_STANDARD=20 `
 		-DCMAKE_BUILD_TYPE=Release `
