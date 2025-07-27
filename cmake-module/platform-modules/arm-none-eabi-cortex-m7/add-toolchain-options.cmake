@@ -24,12 +24,21 @@ function(target_add_platform_toolchain_options target_name)
 
 	# region 所有语言都要添加的编译选项
 	set(options
-        -Wall -Wextra -Wno-unused-parameter
         -fno-strict-aliasing
         -ffunction-sections
         -fdata-sections
 		-fmessage-length=0
 	)
+
+    target_compile_options(${target_name} PUBLIC ${options})
+	# endregion
+
+	# region 警告选项
+    set(options
+		-Wall
+		-Wextra
+		-Wno-unused-parameter
+    )
 
     target_compile_options(${target_name} PUBLIC ${options})
 	# endregion

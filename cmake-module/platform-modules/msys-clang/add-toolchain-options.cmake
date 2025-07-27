@@ -20,7 +20,6 @@ function(target_add_platform_toolchain_options target_name)
 	# region 所有语言都要添加的编译选项
 	set(options
 		--target=x86_64-w64-mingw32
-        -Wall -Wextra -Wno-unused-parameter
         -fno-strict-aliasing
         -ffunction-sections
         -fdata-sections
@@ -38,14 +37,16 @@ function(target_add_platform_toolchain_options target_name)
     target_compile_options(${target_name} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:${options}>)
 	# endregion
 
-	# region C++ 编译选项
+	# region 警告选项
     set(options
-        # -Wno-delete-non-abstract-non-virtual-dtor
+		-Wall
+		-Wextra
+		-Wno-unused-parameter
 		-Wno-deprecated-literal-operator
 		-Wno-ignored-attributes
     )
 
-    target_compile_options(${target_name} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:${options}>)
+    target_compile_options(${target_name} PUBLIC ${options})
 	# endregion
 
 	# region 是可执行文件时添加的链接选项
