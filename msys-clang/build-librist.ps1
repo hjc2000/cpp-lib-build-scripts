@@ -19,14 +19,15 @@ try
 	git-get-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
 
 	New-Empty-Dir -Path $build_path
+
 	New-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
-	c = 'gcc'
-	cpp = 'g++'
-	ar = 'ar'
-	ld = 'ld'
-	strip = 'strip'
+	c = 'clang'
+	cpp = 'clang++'
+	ar = 'llvm-ar'
+	ld = 'ld.lld'
+	strip = 'llvm-strip'
 	pkg-config = 'pkg-config'
 
 	[paths]
