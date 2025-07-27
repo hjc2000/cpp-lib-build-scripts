@@ -25,7 +25,7 @@ try
 		-DCMAKE_C_COMPILER="clang" `
 		-DCMAKE_CXX_COMPILER="clang++" `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
-		-DCMAKE_BUILD_TYPE=Debug
+		-DCMAKE_BUILD_TYPE=Release
 
 	if ($LASTEXITCODE)
 	{
