@@ -42,6 +42,7 @@ function(target_add_platform_toolchain_options target_name)
     set(options
         # -Wno-delete-non-abstract-non-virtual-dtor
 		-Wno-deprecated-literal-operator
+		-Wno-ignored-attributes
     )
 
     target_compile_options(${target_name} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:${options}>)
