@@ -1,13 +1,4 @@
 function(target_add_platform_toolchain_options target_name)
-	# region 添加 lto
-	set(options
-		-flto=auto
-	)
-
-	target_compile_options(${target_name} PUBLIC ${options})
-	target_link_options(${target_name} PUBLIC ${options})
-	# endregion
-
 	# region 所有语言都要添加的编译选项
 	set(options
         -fno-strict-aliasing
