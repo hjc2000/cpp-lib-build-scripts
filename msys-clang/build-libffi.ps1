@@ -19,6 +19,9 @@ try
 		-repo_url "https://github.com/libffi/libffi/releases/download/v3.4.6/libffi-3.4.6.tar.gz" `
 		-out_dir_name "libffi"
 
+	$env:CC = "clang"
+	$env:CXX = "clang++"
+
 	run-bash-cmd.ps1 @"
 	cd $source_path
 

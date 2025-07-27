@@ -17,6 +17,9 @@ try
 		-repo_url "https://ftp.gnu.org/gnu/gzip/gzip-1.13.zip" `
 		-out_dir_name "gzip"
 
+	$env:CC = "clang"
+	$env:CXX = "clang++"
+
 	# 执行命令进行构建
 	run-bash-cmd.ps1 @"
 	cd $(cygpath.exe $source_path)

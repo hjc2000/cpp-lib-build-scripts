@@ -17,6 +17,9 @@ try
 		-repo_url "https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz" `
 		-out_dir_name "libiconv"
 
+	$env:CC = "clang"
+	$env:CXX = "clang++"
+
 	run-bash-cmd.ps1 -cmd @"
 	cd $(cygpath.exe $source_path)
 

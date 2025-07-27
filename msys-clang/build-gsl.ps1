@@ -17,6 +17,9 @@ try
 		-repo_url "https://ftp.gnu.org/gnu/gsl/gsl-2.7.1.tar.gz" `
 		-out_dir_name "gsl"
 
+	$env:CC = "clang"
+	$env:CXX = "clang++"
+
 	run-bash-cmd.ps1 -cmd @"
 	cd $(cygpath.exe $source_path)
 
