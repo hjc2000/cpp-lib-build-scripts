@@ -17,6 +17,9 @@ try
 		-repo_url "https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz" `
 		-out_dir_name "gmp"
 
+	$env:CC = "clang"
+	$env:CXX = "clang++"
+
 	run-bash-cmd.ps1 -cmd @"
 	cd $(cygpath.exe $source_path)
 
