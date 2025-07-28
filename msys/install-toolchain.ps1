@@ -13,7 +13,11 @@ pacman-ensure-packages @(
 	"mingw-w64-ucrt-x86_64-7zip"
 	"texinfo"
 	"libtool"
+	"mingw-w64-ucrt-x86_64-llvm"
+	"mingw-w64-ucrt-x86_64-lld"
+	"mingw-w64-ucrt-x86_64-clang"
+	"mingw-w64-ucrt-x86_64-clang-libs"
+	"mingw-w64-ucrt-x86_64-python"
+	"mingw-w64-ucrt-x86_64-python-pip"
+	"mingw-w64-ucrt-x86_64-meson-python"
 )
-
-python -m pip install --upgrade pip
-pip install meson
