@@ -29,7 +29,6 @@ function(target_add_platform_toolchain_options target_name)
 		-lgcc      # GCC runtime support (e.g. integer division, atomic ops)
 		-lstdc++   # C++ standard library
 		-lunwind   # for C++ exception unwinding
-		-lnosys    # stub syscalls (if no `syscalls.c` implemented)
     )
 
 	target_compile_options(${target_name} PUBLIC ${options})
