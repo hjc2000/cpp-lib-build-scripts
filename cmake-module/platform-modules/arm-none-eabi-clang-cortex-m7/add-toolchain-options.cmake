@@ -23,6 +23,14 @@ function(target_add_platform_toolchain_options target_name)
 	target_link_options(${target_name} PUBLIC ${options})
 	# endregion
 
+	# region 链接选项
+	set(options
+		-flavor gnu
+	)
+
+	target_link_options(${target_name} PUBLIC ${options})
+	# endregion
+
 	# region 添加 lto
 	set(options
 		-flto=auto
