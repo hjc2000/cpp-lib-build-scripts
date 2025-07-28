@@ -7,6 +7,7 @@ function(target_add_platform_toolchain_options target_name)
         -mfloat-abi=hard
 		-mfpu=fpv5-sp-d16
         -nodefaultlibs
+		-ffreestanding
 		-finline-limit=100
     )
 
