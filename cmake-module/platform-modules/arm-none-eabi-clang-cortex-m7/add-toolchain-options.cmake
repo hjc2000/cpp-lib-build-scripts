@@ -13,6 +13,28 @@ function(target_add_platform_toolchain_options target_name)
 	target_compile_options(${target_name} PUBLIC ${options})
 	target_link_options(${target_name} PUBLIC ${options})
 	# endregion
+	#
+	# region 添加库和头文件
+    set(options
+		"-I$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/arm-none-eabi/include"
+		"-I$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/arm-none-eabi/include/c++/14.2.1"
+		"-I$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/lib/gcc/arm-none-eabi/14.2.1/include"
+		"-I$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/lib/gcc/arm-none-eabi/14.2.1/include-fixed"
+
+		"-L$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/arm-none-eabi/lib"
+		"-L$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/lib/gcc/arm-none-eabi/14.2.1"
+
+		-lc        # newlib libc
+		-lm        # newlib libm (math)
+		-lgcc      # GCC runtime support (e.g. integer division, atomic ops)
+		-lstdc++   # C++ standard library
+		-lunwind   # for C++ exception unwinding
+		-lnosys    # stub syscalls (if no `syscalls.c` implemented)
+    )
+
+	target_compile_options(${target_name} PUBLIC ${options})
+	target_link_options(${target_name} PUBLIC ${options})
+	# endregion
 
 	# region 使用 lld
 	set(options
