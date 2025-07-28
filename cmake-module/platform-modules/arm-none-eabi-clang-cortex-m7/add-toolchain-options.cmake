@@ -1,6 +1,7 @@
 function(target_add_platform_toolchain_options target_name)
 	# region 编译器和链接器都要添加的选项
     set(options
+		--target=arm-none-eabi
         -mcpu=cortex-m7
 		-mthumb
         -mfloat-abi=hard
@@ -8,6 +9,15 @@ function(target_add_platform_toolchain_options target_name)
         -nodefaultlibs
 		-finline-limit=100
     )
+
+	target_compile_options(${target_name} PUBLIC ${options})
+	target_link_options(${target_name} PUBLIC ${options})
+	# endregion
+
+	# region 使用 lld
+	set(options
+		-fuse-ld=lld
+	)
 
 	target_compile_options(${target_name} PUBLIC ${options})
 	target_link_options(${target_name} PUBLIC ${options})
@@ -46,7 +56,9 @@ function(target_add_platform_toolchain_options target_name)
 	# region C++ 编译选项
     set(options
 		-fexceptions
-		-fno-rtti)
+		-fno-rtti
+		-funwind-tables
+	)
 
     target_compile_options(${target_name} PUBLIC $<$<COMPILE_LANGUAGE:CXX>:${options}>)
 	# endregion
