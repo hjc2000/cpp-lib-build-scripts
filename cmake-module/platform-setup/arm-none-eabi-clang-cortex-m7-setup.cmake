@@ -10,45 +10,65 @@ set(CMAKE_SYSTEM_NAME
 	CACHE STRING "平台"
 	FORCE)
 
-set(tool_chain_root_path "$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/bin")
+set(tool_chain_root_path "C:/msys64/ucrt64/bin")
 
 set(CMAKE_C_COMPILER
-	"${tool_chain_root_path}/arm-none-eabi-gcc.exe"
+	"${tool_chain_root_path}/clang.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_CXX_COMPILER
-	"${tool_chain_root_path}/arm-none-eabi-g++.exe"
+	"${tool_chain_root_path}/clang++.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_ASM_COMPILER
-	"${tool_chain_root_path}/arm-none-eabi-gcc.exe"
+	"${tool_chain_root_path}/clang.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_LINKER
-	"${tool_chain_root_path}/arm-none-eabi-ld.exe"
+	"${tool_chain_root_path}/ld.lld.exe"
+	CACHE STRING "平台"
+	FORCE)
+
+set(CMAKE_AR
+	"${tool_chain_root_path}/llvm-ar.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_OBJCOPY
-	"${tool_chain_root_path}/arm-none-eabi-objcopy.exe"
+	"${tool_chain_root_path}/llvm-objcopy.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_SIZE
-	"${tool_chain_root_path}/arm-none-eabi-size.exe"
+	"${tool_chain_root_path}/llvm-size.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 set(CMAKE_STRIP
-	"${tool_chain_root_path}/arm-none-eabi-ld.exe"
+	"${tool_chain_root_path}/ld.lld.exe"
 	CACHE STRING "平台"
 	FORCE)
 
 # endregion
 
+
+
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+set(CMAKE_SYSROOT "$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/arm-none-eabi")
+set(CMAKE_C_COMPILER_TARGET "arm-none-eabi")
+set(CMAKE_CXX_COMPILER_TARGET "arm-none-eabi")
+
+include_directories(
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/lib/gcc/arm-none-eabi/14.2.1/include"
+)
+
+link_directories(
+	"$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/lib/gcc/arm-none-eabi/14.2.1"
+)
 
 
 
