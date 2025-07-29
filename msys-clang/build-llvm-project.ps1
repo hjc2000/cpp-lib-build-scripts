@@ -19,9 +19,11 @@ try
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 
+	# 交叉编译 llvm 的教程：
+	# https://llvm.org/docs/HowToCrossCompileLLVM.html
 	cmake -G "Ninja" $source_path `
-		-DCMAKE_C_COMPILER="gcc" `
-		-DCMAKE_CXX_COMPILER="g++" `
+		-DCMAKE_C_COMPILER="clang" `
+		-DCMAKE_CXX_COMPILER="clang++" `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 
