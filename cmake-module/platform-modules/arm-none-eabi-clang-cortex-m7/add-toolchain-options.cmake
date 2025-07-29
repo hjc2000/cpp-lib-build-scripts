@@ -1,12 +1,13 @@
 function(target_add_platform_toolchain_options target_name)
 	# region 编译器和链接器都要添加的选项
     set(options
+		--sysroot="$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/arm-none-eabi"
+		--target=arm-none-eabi
         -mcpu=cortex-m7
 		-mthumb
         -mfloat-abi=hard
 		-mfpu=fpv5-sp-d16
         -nodefaultlibs
-		-finline-limit=100
     )
 
 	target_compile_options(${target_name} PUBLIC ${options})
