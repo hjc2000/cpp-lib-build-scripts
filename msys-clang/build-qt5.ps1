@@ -58,7 +58,7 @@ try
 		"qtwebview"
 	)
 
-	Invoke-Expression "../configure.bat -skip $($skiped_modules -join ",") -prefix ${install_path}"
+	Invoke-Expression "../configure.bat -static -skip $($skiped_modules -join ",") -prefix ${install_path}"
 	if ($LASTEXITCODE)
 	{
 		throw "$source_path 配置失败"
