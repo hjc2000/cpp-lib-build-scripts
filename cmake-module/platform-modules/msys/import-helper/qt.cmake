@@ -16,30 +16,14 @@ function(target_import_qt_core target_name visibility)
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include)
     target_include_directories(${target_name} ${visibility} ${libs_path}/qt5/include/QtCore)
     target_auto_link_lib(${target_name} Qt6Core ${libs_path}/qt5/lib)
-    target_auto_link_lib(${target_name} qwindows ${libs_path}/qt5/plugins/platforms)
 
-	target_link_libraries(${target_name} PUBLIC
-		setupapi
-		z
-		synchronization
-		pcre2-16
-		double-conversion
-		ntdll
-		version
-		harfbuzz
-		b2
-		zstd
-		netapi32
-		authz
-		ws2_32
-		winmm
-		userenv
-		dwrite
-		png
-		md4c
-		d3d12
-		dxgi
-		d3d11
+	# 安装 qt 运行时插件
+	install(DIRECTORY "${libs_path}/qt5/plugins/platforms/"
+			DESTINATION "bin/platforms/"
+			# 安装时保留原始的权限
+			USE_SOURCE_PERMISSIONS
+			FILES_MATCHING
+			PATTERN "*windows*"
 	)
 endfunction()
 
