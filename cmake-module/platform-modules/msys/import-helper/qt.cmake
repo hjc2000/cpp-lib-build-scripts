@@ -40,6 +40,15 @@ function(target_import_qt_core target_name visibility)
 		d3d12
 		dxgi
 		d3d11
+		wtsapi32
+		imm32
+		freetype
+		shcore
+		dwmapi
+		d3d9
+		shlwapi
+		runtimeobject
+		uxtheme
 	)
 endfunction()
 
