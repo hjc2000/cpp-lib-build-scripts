@@ -26,7 +26,7 @@ try
 		"mingw-w64-ucrt-x86_64-clang-libs"
 		"mingw-w64-ucrt-x86_64-clang-tools-extra"
 		"mingw-w64-ucrt-x86_64-protobuf"
-		"mingw-w64-ucrt-x86_64-python-html5lib --overwrite " * ""
+		"mingw-w64-ucrt-x86_64-python-html5lib"
 	)
 
 	git-get-repo.ps1 -git_url "https://github.com/qt/qt5.git" `
