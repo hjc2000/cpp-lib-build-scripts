@@ -56,17 +56,17 @@ endfunction()
 function(target_link_static_lib target_name lib_name search_path success)
     # 定义查找库的模式，首先是.a，然后是.lib
     set(patterns
-        # 优先使用动态库
-        "${lib_name}.dll.a"
-        "${lib_name}.dll.lib"
-        "lib${lib_name}.dll.a"
-        "lib${lib_name}.dll.lib"
-
-        # 动态库找不到再使用静态库
+		# 优先使用静态库
         "${lib_name}.a"
         "${lib_name}.lib"
         "lib${lib_name}.a"
         "lib${lib_name}.lib"
+
+        # 静态库找不到再使用动态库
+        "${lib_name}.dll.a"
+        "${lib_name}.dll.lib"
+        "lib${lib_name}.dll.a"
+        "lib${lib_name}.dll.lib"
     )
     set(found_lib "")
     set(${success} FALSE PARENT_SCOPE)
@@ -100,17 +100,17 @@ endfunction()
 #   lib_name - 库的名称。不要带后缀。
 #   search_path - 递归搜索库的路径。
 function(target_auto_link_lib target_name lib_name search_path)
+    # 尝试链接静态库
+    set(success_static)
+    target_link_static_lib(${target_name} ${lib_name} ${search_path} success_static)
+    if(success_static)
+        return()
+    endif()
+
     # 尝试链接共享库
     set(success_so)
     target_link_so(${target_name} ${lib_name} ${search_path} success_so)
     if(success_so)
-        return()
-    endif()
-
-    # 继续尝试链接静态库
-    set(success_static)
-    target_link_static_lib(${target_name} ${lib_name} ${search_path} success_static)
-    if(success_static)
         return()
     endif()
 
