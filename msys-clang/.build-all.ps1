@@ -20,6 +20,7 @@ try
 	try-remove-items --paths "$libs_path/check-avstream"
 	try-remove-items --paths "$libs_path/cb"
 	try-remove-items --paths "$libs_path/tsduck"
+	try-remove-items --paths "$libs_path/pinvoke"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -31,6 +32,7 @@ try
 	& "$build_script_path/build-check-avstream.ps1"
 	& "$build_script_path/build-cb.ps1"
 	& "$build_script_path/build-tsduck.ps1"
+	& "$build_script_path/build-pinvoke.ps1"
 }
 finally
 {
