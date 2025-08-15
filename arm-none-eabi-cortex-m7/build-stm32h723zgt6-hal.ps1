@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/prepare.ps1
 
-$source_path = "$repos_path/stm32h723iit6-peripherals"
-$install_path = "$libs_path/stm32h723iit6-peripherals"
+$source_path = "$repos_path/stm32h723zgt6-hal"
+$install_path = "$libs_path/stm32h723zgt6-hal"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
@@ -14,10 +14,9 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	& "$build_script_path/build-stm32h723iit6-hal.ps1"
-	& "$build_script_path/build-task.ps1"
+	& "$build_script_path/build-bsp-interface.ps1"
 
-	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32h723iit6-peripherals.git"
+	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32h723zgt6-hal.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
@@ -37,6 +36,7 @@ try
 	}
 
 	ninja install
+
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
 finally
