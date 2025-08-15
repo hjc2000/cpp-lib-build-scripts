@@ -12,6 +12,7 @@ try
 	try-remove-items --paths "$libs_path/lwip-wrapper"
 	try-remove-items --paths "$libs_path/stm32h743iit6-p-net"
 	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
+	try-remove-items --paths "$libs_path/stm32h723iit6-peripherals"
 	try-remove-items --paths "$libs_path/stm32h743iit6-hal"
 	try-remove-items --paths "$libs_path/stm32h723iit6-hal"
 	try-remove-items --paths "$libs_path/lwip"
@@ -36,6 +37,7 @@ try
 	& "$build_script_path/build-littlefs.ps1"
 	& "$build_script_path/build-task.ps1"
 	& "$build_script_path/build-stm32h743iit6-peripherals.ps1"
+	& "$build_script_path/build-stm32h723iit6-peripherals.ps1"
 	& "$build_script_path/build-stm32h743-project.ps1"
 }
 finally
