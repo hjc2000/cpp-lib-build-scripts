@@ -22,6 +22,7 @@ try
 	try-remove-items --paths "$libs_path/stm32h743-project"
 	try-remove-items --paths "$libs_path/stm32h723zgt6-hal"
 	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
+	try-remove-items --paths "$libs_path/stm32h723-project"
 	try-remove-items --paths "$libs_path/prd"
 	$PSNativeCommandUseErrorActionPreference = $false
 
@@ -40,6 +41,7 @@ try
 	& "$build_script_path/build-stm32h743-project.ps1"
 	& "$build_script_path/build-stm32h723zgt6-hal.ps1"
 	& "$build_script_path/build-stm32h723zgt6-peripherals.ps1"
+	& "$build_script_path/build-stm32h723-project.ps1"
 	& "$build_script_path/build-prd.ps1"
 }
 finally
