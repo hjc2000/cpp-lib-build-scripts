@@ -13,8 +13,6 @@ try
 	try-remove-items --paths "$libs_path/stm32h743iit6-hal"
 	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
 	try-remove-items --paths "$libs_path/stm32h743iit6-p-net"
-	try-remove-items --paths "$libs_path/stm32h723zgt6-hal"
-	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
 	try-remove-items --paths "$libs_path/lwip"
 	try-remove-items --paths "$libs_path/freertos-osal"
 	try-remove-items --paths "$libs_path/freertos-gcc-cm7"
@@ -22,6 +20,9 @@ try
 	try-remove-items --paths "$libs_path/littlefs"
 	try-remove-items --paths "$libs_path/task"
 	try-remove-items --paths "$libs_path/stm32h743-project"
+	try-remove-items --paths "$libs_path/stm32h723zgt6-hal"
+	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
+	try-remove-items --paths "$libs_path/prd"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -39,6 +40,7 @@ try
 	& "$build_script_path/build-stm32h743-project.ps1"
 	& "$build_script_path/build-stm32h723zgt6-hal.ps1"
 	& "$build_script_path/build-stm32h723zgt6-peripherals.ps1"
+	& "$build_script_path/build-prd.ps1"
 }
 finally
 {
