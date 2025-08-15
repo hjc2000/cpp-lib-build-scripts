@@ -10,11 +10,11 @@ try
 	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/bsp-interface"
 	try-remove-items --paths "$libs_path/lwip-wrapper"
-	try-remove-items --paths "$libs_path/stm32h743iit6-p-net"
-	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
-	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
 	try-remove-items --paths "$libs_path/stm32h743iit6-hal"
+	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
+	try-remove-items --paths "$libs_path/stm32h743iit6-p-net"
 	try-remove-items --paths "$libs_path/stm32h723zgt6-hal"
+	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
 	try-remove-items --paths "$libs_path/lwip"
 	try-remove-items --paths "$libs_path/freertos-osal"
 	try-remove-items --paths "$libs_path/freertos-gcc-cm7"
@@ -28,7 +28,6 @@ try
 	& "$build_script_path/build-bsp-interface.ps1"
 	& "$build_script_path/build-lwip-wrapper.ps1"
 	& "$build_script_path/build-stm32h743iit6-hal.ps1"
-	& "$build_script_path/build-stm32h723zgt6-hal.ps1"
 	& "$build_script_path/build-lwip.ps1"
 	& "$build_script_path/build-stm32h743iit6-p-net.ps1"
 	& "$build_script_path/build-freertos-osal.ps1"
@@ -37,8 +36,9 @@ try
 	& "$build_script_path/build-littlefs.ps1"
 	& "$build_script_path/build-task.ps1"
 	& "$build_script_path/build-stm32h743iit6-peripherals.ps1"
-	& "$build_script_path/build-stm32h723zgt6-peripherals.ps1"
 	& "$build_script_path/build-stm32h743-project.ps1"
+	& "$build_script_path/build-stm32h723zgt6-hal.ps1"
+	& "$build_script_path/build-stm32h723zgt6-peripherals.ps1"
 }
 finally
 {
