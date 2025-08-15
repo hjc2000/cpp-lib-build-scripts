@@ -127,31 +127,6 @@
 			}
 		},
 		{
-			"name": "arm-none-eabi-clang-cortex-m7-base",
-			"hidden": true,
-			"generator": "Ninja",
-			"binaryDir": "${sourceDir}/jc_build",
-			"cacheVariables": {
-				"platform": "arm-none-eabi-clang-cortex-m7"
-			}
-		},
-		{
-			"name": "arm-none-eabi-clang-cortex-m7-debug",
-			"displayName": "arm-none-eabi-clang-cortex-m7-debug",
-			"inherits": "arm-none-eabi-clang-cortex-m7-base",
-			"cacheVariables": {
-				"CMAKE_BUILD_TYPE": "Debug"
-			}
-		},
-		{
-			"name": "arm-none-eabi-clang-cortex-m7-release",
-			"displayName": "arm-none-eabi-clang-cortex-m7-release",
-			"inherits": "arm-none-eabi-clang-cortex-m7-base",
-			"cacheVariables": {
-				"CMAKE_BUILD_TYPE": "Release"
-			}
-		},
-		{
 			"name": "arm-none-eabi-arm9-base",
 			"hidden": true,
 			"generator": "Ninja",
