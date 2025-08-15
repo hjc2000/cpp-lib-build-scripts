@@ -4,7 +4,7 @@ function(target_add_platform_toolchain_options target_name)
         -mcpu=cortex-m7
 		-mthumb
         -mfloat-abi=hard
-		-mfpu=fpv5-sp-d16
+		-mfpu=fpv5-d16
         -nodefaultlibs
 		-finline-limit=100
     )
