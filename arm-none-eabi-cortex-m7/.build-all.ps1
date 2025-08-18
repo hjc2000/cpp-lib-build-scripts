@@ -9,21 +9,22 @@ try
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/bsp-interface"
-	# try-remove-items --paths "$libs_path/lwip-wrapper"
 	try-remove-items --paths "$libs_path/stm32h743iit6-hal"
 	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
 	try-remove-items --paths "$libs_path/stm32h743iit6-p-net"
-	# try-remove-items --paths "$libs_path/lwip"
-	# try-remove-items --paths "$libs_path/freertos-osal"
-	# try-remove-items --paths "$libs_path/freertos-gcc-cm7"
-	# try-remove-items --paths "$libs_path/FatFs"
-	# try-remove-items --paths "$libs_path/littlefs"
 	try-remove-items --paths "$libs_path/task"
 	try-remove-items --paths "$libs_path/stm32h743-project"
 	try-remove-items --paths "$libs_path/stm32h723zgt6-hal"
 	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
 	try-remove-items --paths "$libs_path/stm32h723-project"
 	try-remove-items --paths "$libs_path/prd"
+
+	# try-remove-items --paths "$libs_path/lwip"
+	# try-remove-items --paths "$libs_path/lwip-wrapper"
+	# try-remove-items --paths "$libs_path/freertos-osal"
+	# try-remove-items --paths "$libs_path/freertos-gcc-cm7"
+	# try-remove-items --paths "$libs_path/FatFs"
+	# try-remove-items --paths "$libs_path/littlefs"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
