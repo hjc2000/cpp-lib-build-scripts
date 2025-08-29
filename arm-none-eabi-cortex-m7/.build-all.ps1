@@ -17,6 +17,7 @@ try
 	try-remove-items --paths "$libs_path/stm32h723zgt6-hal"
 	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
 	try-remove-items --paths "$libs_path/stm32h723-project"
+	try-remove-items --paths "$libs_path/cb"
 	try-remove-items --paths "$libs_path/prd"
 
 	# try-remove-items --paths "$libs_path/lwip"
