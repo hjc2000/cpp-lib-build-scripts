@@ -18,7 +18,7 @@ try
 	try-remove-items --paths "$libs_path/stm32h723zgt6-peripherals"
 	try-remove-items --paths "$libs_path/stm32h723-project"
 	try-remove-items --paths "$libs_path/cb"
-	try-remove-items --paths "$libs_path/prd"
+	try-remove-items --paths "$libs_path/pn"
 
 	# try-remove-items --paths "$libs_path/lwip"
 	# try-remove-items --paths "$libs_path/lwip-wrapper"
@@ -35,7 +35,7 @@ try
 	& "$build_script_path/build-lwip-wrapper.ps1"
 	& "$build_script_path/build-stm32h743iit6-hal.ps1"
 	& "$build_script_path/build-lwip.ps1"
-	& "$build_script_path/build-prd.ps1"
+	& "$build_script_path/build-pn.ps1"
 	& "$build_script_path/build-stm32h743iit6-p-net.ps1"
 	& "$build_script_path/build-freertos-osal.ps1"
 	& "$build_script_path/build-freertos-gcc-cm7.ps1"

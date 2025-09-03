@@ -13,7 +13,7 @@ try
 	try-remove-items --paths "$libs_path/stm32f407zet6-hal"
 	try-remove-items --paths "$libs_path/stm32f407zet6-peripheral"
 	try-remove-items --paths "$libs_path/cb"
-	try-remove-items --paths "$libs_path/prd"
+	try-remove-items --paths "$libs_path/pn"
 	try-remove-items --paths "$libs_path/stm32f407zet6-project"
 	$PSNativeCommandUseErrorActionPreference = $false
 
@@ -23,7 +23,7 @@ try
 	& "$build_script_path/build-stm32f407zet6-hal.ps1"
 	& "$build_script_path/build-stm32f407zet6-peripheral.ps1"
 	& "$build_script_path/build-cb.ps1"
-	& "$build_script_path/build-prd.ps1"
+	& "$build_script_path/build-pn.ps1"
 	& "$build_script_path/build-stm32f407zet6-project.ps1"
 }
 finally

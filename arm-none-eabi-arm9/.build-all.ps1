@@ -8,12 +8,12 @@ try
 {
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/cb"
-	try-remove-items --paths "$libs_path/prd"
+	try-remove-items --paths "$libs_path/pn"
 	try-remove-items --paths "$libs_path/DevKit51"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-cb.ps1"
-	& "$build_script_path/build-prd.ps1"
+	& "$build_script_path/build-pn.ps1"
 	& "$build_script_path/build-DevKit51.ps1"
 }
 finally
