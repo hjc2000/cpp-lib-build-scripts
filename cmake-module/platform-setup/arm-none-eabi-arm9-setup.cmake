@@ -3,49 +3,58 @@
 set(BUILD_SHARED_LIBS
 	false
 	CACHE STRING "是否编译动态链接库"
-	FORCE)
+	FORCE
+)
 
 set(CMAKE_SYSTEM_NAME
 	"Generic"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 set(tool_chain_root_path "$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin")
 
 set(CMAKE_C_COMPILER
 	"${tool_chain_root_path}/arm-none-eabi-gcc.exe"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 set(CMAKE_CXX_COMPILER
 	"${tool_chain_root_path}/arm-none-eabi-g++.exe"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 set(CMAKE_ASM_COMPILER
 	"${tool_chain_root_path}/arm-none-eabi-gcc.exe"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 set(CMAKE_LINKER
 	"${tool_chain_root_path}/arm-none-eabi-ld.exe"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 set(CMAKE_OBJCOPY
 	"${tool_chain_root_path}/arm-none-eabi-objcopy.exe"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 set(CMAKE_SIZE
 	"${tool_chain_root_path}/arm-none-eabi-size.exe"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 set(CMAKE_STRIP
 	"${tool_chain_root_path}/arm-none-eabi-ld.exe"
 	CACHE STRING "平台"
-	FORCE)
+	FORCE
+)
 
 # endregion
 
