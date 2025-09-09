@@ -40,9 +40,6 @@ function(target_add_platform_toolchain_options target_name)
 	# region 编译器和链接器都要添加的选项
 	set(options
 		-finline-limit=100
-		-mcpu=arm926ej-s
-		-marm
-		-mlittle-endian
     )
 
 	target_compile_options(${target_name} PUBLIC ${options})
