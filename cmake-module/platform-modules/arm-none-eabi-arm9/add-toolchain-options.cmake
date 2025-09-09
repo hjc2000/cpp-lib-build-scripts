@@ -22,7 +22,7 @@ function(target_add_platform_toolchain_options target_name)
 
 	# region C++ 编译选项
     set(options
-		-fno-exceptions
+		-fexceptions
 		-fno-rtti
 	)
 
