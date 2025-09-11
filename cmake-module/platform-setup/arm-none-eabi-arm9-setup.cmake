@@ -12,7 +12,7 @@ set(CMAKE_SYSTEM_NAME
 	FORCE
 )
 
-set(tool_chain_root_path "$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-8/bin")
+set(tool_chain_root_path "$ENV{cpp_lib_build_scripts_path}/.toolchain/arm-none-eabi-14.2/bin")
 
 set(CMAKE_C_COMPILER
 	"${tool_chain_root_path}/arm-none-eabi-gcc.exe"
