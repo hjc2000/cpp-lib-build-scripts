@@ -25,7 +25,6 @@ try
 	# try-remove-items --paths "$libs_path/freertos-osal"
 	# try-remove-items --paths "$libs_path/freertos-gcc-cm7"
 	# try-remove-items --paths "$libs_path/FatFs"
-	# try-remove-items --paths "$libs_path/littlefs"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -40,7 +39,6 @@ try
 	& "$build_script_path/build-freertos-osal.ps1"
 	& "$build_script_path/build-freertos-gcc-cm7.ps1"
 	& "$build_script_path/build-FatFs.ps1"
-	& "$build_script_path/build-littlefs.ps1"
 	& "$build_script_path/build-stm32h743iit6-hal.ps1"
 	& "$build_script_path/build-stm32h743iit6-p-net.ps1"
 	& "$build_script_path/build-stm32h743iit6-peripherals.ps1"
