@@ -32,15 +32,16 @@ try
 	& "$build_script_path/build-task.ps1"
 	& "$build_script_path/build-lwip.ps1"
 	& "$build_script_path/build-lwip-wrapper.ps1"
-	& "$build_script_path/build-stm32h743iit6-hal.ps1"
 	& "$build_script_path/build-pn.ps1"
-	& "$build_script_path/build-stm32h743iit6-p-net.ps1"
 	& "$build_script_path/build-freertos-osal.ps1"
 	& "$build_script_path/build-freertos-gcc-cm7.ps1"
 	& "$build_script_path/build-FatFs.ps1"
+
+	& "$build_script_path/build-stm32h743iit6-p-net.ps1"
 	& "$build_script_path/build-stm32h743iit6-hal.ps1"
 	& "$build_script_path/build-stm32h743iit6-peripherals.ps1"
 	& "$build_script_path/build-stm32h743-project.ps1"
+
 	& "$build_script_path/build-stm32h723zgt6-hal.ps1"
 	& "$build_script_path/build-stm32h723zgt6-peripherals.ps1"
 	& "$build_script_path/build-stm32h723-project.ps1"
