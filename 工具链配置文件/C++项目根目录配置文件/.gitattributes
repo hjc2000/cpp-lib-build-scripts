@@ -43,6 +43,8 @@
 *.obj 		binary
 *.out 		binary
 *.pdb 		binary
+*.bin 		binary
+*.elf		binary
 
 # 音视频文件
 *.ts 		binary
