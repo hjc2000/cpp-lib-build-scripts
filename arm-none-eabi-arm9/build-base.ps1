@@ -23,7 +23,7 @@ try
 	Set-Location $build_path
 
 	cmake -G "Ninja" $source_path `
-		--preset "arm-none-eabi-arm9-debug" `
+		--preset "arm-none-eabi-arm9-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 
 	if ($LASTEXITCODE)
