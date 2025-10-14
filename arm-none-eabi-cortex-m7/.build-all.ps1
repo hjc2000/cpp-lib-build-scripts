@@ -9,6 +9,7 @@ try
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/task"
+	try-remove-items --paths "$libs_path/profidrive"
 	try-remove-items --paths "$libs_path/bsp-interface"
 	try-remove-items --paths "$libs_path/stm32h743iit6-hal"
 	try-remove-items --paths "$libs_path/stm32h743iit6-peripherals"
@@ -36,6 +37,7 @@ try
 	& "$build_script_path/build-freertos-osal.ps1"
 	& "$build_script_path/build-freertos-gcc-cm7.ps1"
 	& "$build_script_path/build-FatFs.ps1"
+	& "$build_script_path/build-profidrive.ps1"
 
 	& "$build_script_path/build-stm32h743iit6-p-net.ps1"
 	& "$build_script_path/build-stm32h743iit6-hal.ps1"
