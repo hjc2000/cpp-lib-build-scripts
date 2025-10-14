@@ -22,6 +22,7 @@ try
 	try-remove-items --paths "$libs_path/tsduck"
 	try-remove-items --paths "$libs_path/pinvoke"
 	try-remove-items --paths "$libs_path/libusb-wrapper"
+	try-remove-items --paths "$libs_path/profidrive"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -35,6 +36,7 @@ try
 	& "$build_script_path/build-tsduck.ps1"
 	& "$build_script_path/build-pinvoke.ps1"
 	& "$build_script_path/build-libusb-wrapper.ps1"
+	& "$build_script_path/build-profidrive.ps1"
 }
 finally
 {
