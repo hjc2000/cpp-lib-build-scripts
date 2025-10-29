@@ -2,8 +2,8 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/prepare.ps1
 
-$source_path = "$repos_path/task"
-$install_path = "$libs_path/task"
+$source_path = "$repos_path/xhif"
+$install_path = "$libs_path/xhif"
 $build_path = "$source_path/jc_build"
 if (Test-Path -Path $install_path)
 {
@@ -14,16 +14,15 @@ if (Test-Path -Path $install_path)
 Push-Location $repos_path
 try
 {
-	& "$build_script_path/build-base.ps1"
-	& "$build_script_path/build-freertos-gcc-cm4.ps1"
+	& "$build_script_path/build-cb.ps1"
 
-	git-get-repo.ps1 -git_url "https://github.com/hjc2000/task.git"
+	git-get-repo.ps1 -git_url "https://github.com/hjc2000/xhif.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
 
 	cmake -G "Ninja" $source_path `
-		--preset "arm-none-eabi-cortex-m4-release" `
+		--preset "arm-none-eabi-arm9-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
 
 	if ($LASTEXITCODE)
