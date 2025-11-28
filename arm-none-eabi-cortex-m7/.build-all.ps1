@@ -21,7 +21,6 @@ try
 	try-remove-items --paths "$libs_path/xhif"
 	try-remove-items --paths "$libs_path/pn-ertec200p"
 	try-remove-items --paths "$libs_path/pn"
-
 	try-remove-items --paths "$libs_path/lwip"
 	try-remove-items --paths "$libs_path/lwip-wrapper"
 	try-remove-items --paths "$libs_path/freertos-osal"
