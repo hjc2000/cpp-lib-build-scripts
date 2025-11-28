@@ -22,11 +22,11 @@ try
 	try-remove-items --paths "$libs_path/pn-ertec200p"
 	try-remove-items --paths "$libs_path/pn"
 
-	# try-remove-items --paths "$libs_path/lwip"
-	# try-remove-items --paths "$libs_path/lwip-wrapper"
-	# try-remove-items --paths "$libs_path/freertos-osal"
-	# try-remove-items --paths "$libs_path/freertos-gcc-cm7"
-	# try-remove-items --paths "$libs_path/FatFs"
+	try-remove-items --paths "$libs_path/lwip"
+	try-remove-items --paths "$libs_path/lwip-wrapper"
+	try-remove-items --paths "$libs_path/freertos-osal"
+	try-remove-items --paths "$libs_path/freertos-gcc-cm7"
+	try-remove-items --paths "$libs_path/FatFs"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
