@@ -23,6 +23,7 @@ try
 	try-remove-items --paths "$libs_path/pinvoke"
 	try-remove-items --paths "$libs_path/libusb-wrapper"
 	try-remove-items --paths "$libs_path/gsdml"
+	try-remove-items --paths "$libs_path/avmixer"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -37,6 +38,7 @@ try
 	& "$build_script_path/build-pinvoke.ps1"
 	& "$build_script_path/build-libusb-wrapper.ps1"
 	& "$build_script_path/build-gsdml.ps1"
+	& "$build_script_path/build-avmixer.ps1"
 }
 finally
 {
