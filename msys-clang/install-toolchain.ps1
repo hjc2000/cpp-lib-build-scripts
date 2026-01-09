@@ -1,4 +1,6 @@
+# 安装此平台的工具链。
 
+# 保证下面列出的软件包被安装。
 pacman-ensure-packages.ps1 @(
 	"lua"
 	"llvm"
