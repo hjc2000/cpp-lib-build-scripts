@@ -63,13 +63,6 @@ function Apt-Ensure-Packets
 
 
 
-function Total-Install
-{
-	& $build_script_path/total-install.ps1
-}
-
-
-
 function Get-Cmake-Set-Find-Lib-Path-String
 {
 	return @"
