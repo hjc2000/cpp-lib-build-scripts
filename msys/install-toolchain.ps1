@@ -1,0 +1,1 @@
+../msys-clang/install-toolchain.ps1
