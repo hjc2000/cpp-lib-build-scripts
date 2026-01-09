@@ -17,4 +17,5 @@ pacman-ensure-packages.ps1 @(
 	"mingw-w64-ucrt-x86_64-python"
 	"mingw-w64-ucrt-x86_64-python-pip"
 	"mingw-w64-ucrt-x86_64-meson-python"
+	"mingw-w64-ucrt-x86_64-libarchive"
 )
