@@ -1,8 +1,7 @@
-$build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/prepare.ps1
+# 安装此平台的工具链。
 
-pacman-ensure-packages @(
+# 保证下面列出的软件包被安装。
+pacman-ensure-packages.ps1 @(
 	"lua"
 	"llvm"
 	"mingw-w64-ucrt-x86_64-toolchain"
@@ -20,4 +19,5 @@ pacman-ensure-packages @(
 	"mingw-w64-ucrt-x86_64-python"
 	"mingw-w64-ucrt-x86_64-python-pip"
 	"mingw-w64-ucrt-x86_64-meson-python"
+	"mingw-w64-ucrt-x86_64-libarchive"
 )

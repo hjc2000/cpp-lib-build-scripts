@@ -6,10 +6,6 @@ pull-sh.ps1
 
 try
 {
-	# pacman-ensure-packages.ps1 -packages @(
-	# 	"mingw-w64-ucrt-x86_64-libarchive"
-	# )
-
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/widget"
