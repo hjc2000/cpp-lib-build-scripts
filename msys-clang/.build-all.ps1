@@ -20,6 +20,7 @@ try
 	try-remove-items --paths "$libs_path/libusb-wrapper"
 	try-remove-items --paths "$libs_path/gsdml"
 	try-remove-items --paths "$libs_path/avmixer"
+	try-remove-items --paths "$libs_path/rename-with-numbering"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -35,6 +36,7 @@ try
 	& "$build_script_path/build-libusb-wrapper.ps1"
 	& "$build_script_path/build-gsdml.ps1"
 	& "$build_script_path/build-avmixer.ps1"
+	& "$build_script_path/build-rename-with-numbering.ps1"
 }
 finally
 {
