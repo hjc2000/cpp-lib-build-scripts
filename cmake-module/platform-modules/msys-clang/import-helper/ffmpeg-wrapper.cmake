@@ -4,5 +4,6 @@ function(target_import_ffmpeg_wrapper target_name visibility)
 
 	target_import_ffmpeg(${target_name} ${visibility})
 	target_import_base(${target_name} ${visibility})
+	target_import_base_filesystem(${ProjectName} PUBLIC)
 	target_import_pinvoke(${target_name} ${visibility})
 endfunction()
