@@ -15,6 +15,7 @@ Push-Location $repos_path
 try
 {
 	& "$build_script_path/build-ffmpeg-wrapper.ps1"
+	& "$build_script_path/build-base-filesystem.ps1"
 
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/avmixer.git"
 
