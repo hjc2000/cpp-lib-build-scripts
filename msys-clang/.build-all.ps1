@@ -6,7 +6,7 @@ pull-sh.ps1
 
 $PSNativeCommandUseErrorActionPreference = $true
 try-remove-items --paths "$libs_path/base"
-try-remove-items --paths "$libs_path/base-filesystem"
+try-remove-items --paths "$libs_path/msys-base-filesystem"
 try-remove-items --paths "$libs_path/widget"
 try-remove-items --paths "$libs_path/can-diagnosis"
 try-remove-items --paths "$libs_path/ffmpeg-wrapper"
@@ -24,7 +24,7 @@ try-remove-items --paths "$libs_path/copy-truthfully"
 $PSNativeCommandUseErrorActionPreference = $false
 
 & "$build_script_path/build-base.ps1"
-& "$build_script_path/build-base-filesystem.ps1"
+& "$build_script_path/build-msys-base-filesystem.ps1"
 & "$build_script_path/build-widget.ps1"
 & "$build_script_path/build-can-diagnosis.ps1"
 & "$build_script_path/build-ffmpeg-wrapper.ps1"
