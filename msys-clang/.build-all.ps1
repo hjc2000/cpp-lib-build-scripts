@@ -20,6 +20,7 @@ try-remove-items --paths "$libs_path/libusb-wrapper"
 try-remove-items --paths "$libs_path/gsdml"
 try-remove-items --paths "$libs_path/avmixer"
 try-remove-items --paths "$libs_path/rename-with-numbering"
+try-remove-items --paths "$libs_path/copy-truthfully"
 $PSNativeCommandUseErrorActionPreference = $false
 
 & "$build_script_path/build-base.ps1"
@@ -37,3 +38,4 @@ $PSNativeCommandUseErrorActionPreference = $false
 & "$build_script_path/build-gsdml.ps1"
 & "$build_script_path/build-avmixer.ps1"
 & "$build_script_path/build-rename-with-numbering.ps1"
+& "$build_script_path/build-copy-truthfully.ps1"
