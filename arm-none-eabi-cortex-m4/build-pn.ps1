@@ -12,6 +12,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	& "$build_script_path/build-cb.ps1"
@@ -37,6 +38,13 @@ try
 
 	ninja install
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+}
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {
