@@ -15,7 +15,7 @@ try
 	# # 准备好安装目录
 	New-Item -Path "$install_path/lib" -ItemType Directory -Force
 	New-Item -Path "$install_path/usr/lib" -ItemType Directory -Force
-	
+
 	run-bash-cmd.ps1 @"
 	cp -a $source_path/libc/lib/*so* 		$install_path/lib
 	cp -a $source_path/lib/*so* 			$install_path/lib
@@ -26,5 +26,5 @@ try
 }
 finally
 {
-	Pop-Location
+
 }

@@ -46,5 +46,5 @@ try
 }
 finally
 {
-	Pop-Location
+
 }

@@ -14,7 +14,7 @@ try
 
 	# 准备好安装目录
 	New-Item -Path "$install_path/bin" -ItemType Directory -Force
-	
+
 	# 将头文件复制到安装目录
 	Copy-Item -Path "$source_path/*" `
 		-Destination "$install_path/bin" `
@@ -24,5 +24,5 @@ try
 }
 finally
 {
-	Pop-Location
+
 }

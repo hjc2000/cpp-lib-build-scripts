@@ -52,5 +52,5 @@ Cflags: -I`${includedir}
 }
 finally
 {
-	Pop-Location
+
 }

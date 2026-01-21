@@ -16,7 +16,7 @@ try
 {
 	git-get-repo.ps1 -git_url "https://gitee.com/hughpenn23/openssl.git" `
 		-branch_name openssl-3.1
-	
+
 	run-bash-cmd.ps1 @"
 	set -e
 	cd $source_path
@@ -46,5 +46,5 @@ catch
 }
 finally
 {
-	Pop-Location
+
 }

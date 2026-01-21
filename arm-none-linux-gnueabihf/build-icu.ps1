@@ -12,7 +12,7 @@ if (Test-Path -Path $install_path)
 
 Push-Location $repos_path
 try
-{	
+{
 	@"
 	$project_root_path/linux/build-icu.ps1
 "@ | pwsh
@@ -43,5 +43,5 @@ try
 }
 finally
 {
-	Pop-Location
+
 }

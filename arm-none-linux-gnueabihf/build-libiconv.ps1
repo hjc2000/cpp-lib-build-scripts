@@ -27,7 +27,7 @@ try
 	make clean
 	make -j12 > /dev/null
 	make install > /dev/null
-"@					
+"@
 
 	if ($LASTEXITCODE)
 	{
@@ -38,5 +38,5 @@ try
 }
 finally
 {
-	Pop-Location
+
 }
