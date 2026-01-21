@@ -19,3 +19,6 @@ New-Item -Path $libs_path -ItemType Directory -Force | Out-Null
 New-Item -Path $total_install_path -ItemType Directory -Force | Out-Null
 
 . $project_root_path/.base-script/import-functions.ps1
+
+# 进入本项目的根目录
+Set-Location $project_root_path
