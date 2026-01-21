@@ -57,7 +57,7 @@ function Apt-Ensure-Packets
 	}
 	finally
 	{
-		Pop-Location
+
 	}
 }
 
