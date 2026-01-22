@@ -1,9 +1,12 @@
-$build_script_path = get-script-dir.ps1
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/prepare.ps1
+$ErrorActionPreference = "Stop"
+Push-Location
 
 try
 {
+	$build_script_path = get-script-dir.ps1
+	. $build_script_path/../.base-script/prepare-for-building.ps1
+	. $build_script_path/prepare.ps1
+
 	try-remove-items --paths "$libs_path/system-call"
 	try-remove-items --paths "$libs_path/freertos"
 	try-remove-items --paths "$libs_path/FatFs"
@@ -28,7 +31,14 @@ try
 	& "$build_script_path/build-stm32f103zet6-dma.ps1"
 	& "$build_script_path/build-stm32f103zet6-serial.ps1"
 }
+catch
+{
+	throw "
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
+	"
+}
 finally
 {
-
+	Pop-Location
 }
