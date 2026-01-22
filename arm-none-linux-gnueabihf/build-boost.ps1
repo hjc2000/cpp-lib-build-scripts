@@ -1,12 +1,17 @@
-$build_script_path = get-script-dir.ps1
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/../.base-script/prepare-for-cross-building.ps1
+$ErrorActionPreference = "Stop"
+Push-Location
 
-Push-Location $repos_path
 try
 {
+	$build_script_path = get-script-dir.ps1
+	. $build_script_path/../.base-script/prepare-for-building.ps1
+	. $build_script_path/../.base-script/prepare-for-cross-building.ps1
+
+	Set-Location $repos_path
+
 	# 文件URL
 	$url = "https://boostorg.jfrog.io/artifactory/main/release/1.84.0/source/boost_1_84_0.tar.bz2"
+
 	wget-repo.ps1 -workspace_dir $repos_path `
 		-repo_url $url `
 		-out_dir_name boost
@@ -20,8 +25,8 @@ try
 catch
 {
 	throw "
-	$(get-script-position.ps1)
-	$(${PSItem}.Exception.Message)
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
 	"
 }
 finally

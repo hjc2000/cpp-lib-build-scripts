@@ -1,14 +1,17 @@
-$build_script_path = get-script-dir.ps1
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/../.base-script/prepare-for-cross-building.ps1
-
-$source_path = "$repos_path/AMF_1/"
-$install_path = "$libs_path/amf/"
-
-Push-Location $repos_path
+$ErrorActionPreference = "Stop"
+Push-Location
 
 try
 {
+	$build_script_path = get-script-dir.ps1
+	. $build_script_path/../.base-script/prepare-for-building.ps1
+	. $build_script_path/../.base-script/prepare-for-cross-building.ps1
+
+	$source_path = "$repos_path/AMF_1/"
+	$install_path = "$libs_path/amf/"
+
+	Set-Location $repos_path
+
 	git-get-repo.ps1 -git_url https://gitee.com/mirrors_GPUOpen-LibrariesAndSDKs/AMF_1.git
 
 	# 准备好安装目录
@@ -25,8 +28,8 @@ try
 catch
 {
 	throw "
-	$(get-script-position.ps1)
-	$(${PSItem}.Exception.Message)
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
 	"
 }
 finally
