@@ -1,9 +1,11 @@
-$build_script_path = get-script-dir.ps1
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/prepare.ps1
+Push-Location
 
 try
 {
+	$build_script_path = get-script-dir.ps1
+	. $build_script_path/../.base-script/prepare-for-building.ps1
+	. $build_script_path/prepare.ps1
+
 	pull-sh.ps1
 
 	$PSNativeCommandUseErrorActionPreference = $true
@@ -25,11 +27,11 @@ try
 catch
 {
 	throw "
-	$(get-script-position.ps1)
-	$(${PSItem}.Exception.Message)
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
 	"
 }
 finally
 {
-
+	Pop-Location
 }
