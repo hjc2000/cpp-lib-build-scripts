@@ -1,11 +1,12 @@
-$build_script_path = get-script-dir.ps1
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/prepare.ps1
-
+$ErrorActionPreference = "Stop"
 Push-Location
 
 try
 {
+	$build_script_path = get-script-dir.ps1
+	. $build_script_path/../.base-script/prepare-for-building.ps1
+	. $build_script_path/prepare.ps1
+
 	New-Item -Path $total_install_path -ItemType Directory -Force
 
 	# 使用Get-ChildItem获取所有子目录，-Directory 参数确保只获取目录
@@ -19,8 +20,8 @@ try
 catch
 {
 	throw "
-	$(get-script-position.ps1)
-	$(${PSItem}.Exception.Message)
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
 	"
 }
 finally
