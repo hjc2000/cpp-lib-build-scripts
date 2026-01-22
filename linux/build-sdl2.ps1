@@ -4,6 +4,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $source_path = "$repos_path/SDL/"
 $install_path = "$libs_path/sdl2/"
 $build_path = "$source_path/jc_build/"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -11,6 +12,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	# 通过 apt-get 安装依赖
@@ -24,6 +26,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_BUILD_TYPE=Release `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
@@ -34,6 +37,13 @@ try
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+}
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {

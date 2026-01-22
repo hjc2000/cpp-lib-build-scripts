@@ -2,10 +2,10 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . $build_script_path/../.base-script/prepare-for-building.ps1
 . $build_script_path/prepare.ps1
 
-pull-sh.ps1
-
 try
 {
+	pull-sh.ps1
+
 	$PSNativeCommandUseErrorActionPreference = $true
 	try-remove-items --paths "$libs_path/base"
 	try-remove-items --paths "$libs_path/widget"
@@ -27,6 +27,13 @@ try
 	& "$build_script_path/build-check-avstream.ps1"
 	& "$build_script_path/build-cb.ps1"
 	& "$build_script_path/build-pinvoke.ps1"
+}
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {

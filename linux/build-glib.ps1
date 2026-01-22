@@ -4,6 +4,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $source_path = "$repos_path/glib/"
 $install_path = "$libs_path/glib/"
 $build_path = "$source_path/jc_build/"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -19,6 +20,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $source_path
+
 	meson setup jc_build/ `
 		--prefix="$install_path"
 
@@ -27,6 +29,13 @@ try
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+}
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {
