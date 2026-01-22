@@ -1,26 +1,30 @@
-$build_script_path = get-script-dir.ps1
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/prepare.ps1
-
-$source_path = "$repos_path/librist"
-$install_path = "$libs_path/librist"
-$build_path = "$source_path/jc_build"
-
-if (Test-Path -Path $install_path)
-{
-	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
-	return 0
-}
-
-Push-Location $repos_path
+$ErrorActionPreference = "Stop"
+Push-Location
 
 try
 {
+	$build_script_path = get-script-dir.ps1
+	. $build_script_path/../.base-script/prepare-for-building.ps1
+	. $build_script_path/prepare.ps1
+
+	$source_path = "$repos_path/librist"
+	$install_path = "$libs_path/librist"
+	$build_path = "$source_path/jc_build"
+
+	if (Test-Path -Path $install_path)
+	{
+		Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
+		return 0
+	}
+
+	Set-Location $repos_path
+
 	pip install meson
 
 	git-get-repo.ps1 -git_url "https://code.videolan.org/rist/librist.git"
 
 	New-Empty-Dir -Path $build_path
+
 	New-Text-File -Path $build_path/cross_file.ini `
 		-Content @"
 	[binaries]
@@ -36,6 +40,7 @@ try
 "@
 
 	Set-Location $source_path
+
 	meson setup jc_build/ `
 		--cross-file="$build_path/cross_file.ini" `
 		--prefix="$install_path"
@@ -59,8 +64,8 @@ try
 catch
 {
 	throw "
-	$(get-script-position.ps1)
-	$(${PSItem}.Exception.Message)
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
 	"
 }
 finally

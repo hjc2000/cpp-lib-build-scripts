@@ -1,23 +1,40 @@
-# 安装此平台的工具链。
+$ErrorActionPreference = "Stop"
+Push-Location
 
-# 保证下面列出的软件包被安装。
-pacman-ensure-packages.ps1 @(
-	"lua"
-	"llvm"
-	"mingw-w64-ucrt-x86_64-toolchain"
-	"mingw-w64-ucrt-x86_64-nasm"
-	"mingw-w64-ucrt-x86_64-yasm"
-	"make"
-	"autotools"
-	"mingw-w64-ucrt-x86_64-7zip"
-	"texinfo"
-	"libtool"
-	"mingw-w64-ucrt-x86_64-llvm"
-	"mingw-w64-ucrt-x86_64-lld"
-	"mingw-w64-ucrt-x86_64-clang"
-	"mingw-w64-ucrt-x86_64-clang-libs"
-	"mingw-w64-ucrt-x86_64-python"
-	"mingw-w64-ucrt-x86_64-python-pip"
-	"mingw-w64-ucrt-x86_64-meson-python"
-	"mingw-w64-ucrt-x86_64-libarchive"
-)
+try
+{
+	# 安装此平台的工具链。
+
+	# 保证下面列出的软件包被安装。
+	pacman-ensure-packages.ps1 @(
+		"lua"
+		"llvm"
+		"mingw-w64-ucrt-x86_64-toolchain"
+		"mingw-w64-ucrt-x86_64-nasm"
+		"mingw-w64-ucrt-x86_64-yasm"
+		"make"
+		"autotools"
+		"mingw-w64-ucrt-x86_64-7zip"
+		"texinfo"
+		"libtool"
+		"mingw-w64-ucrt-x86_64-llvm"
+		"mingw-w64-ucrt-x86_64-lld"
+		"mingw-w64-ucrt-x86_64-clang"
+		"mingw-w64-ucrt-x86_64-clang-libs"
+		"mingw-w64-ucrt-x86_64-python"
+		"mingw-w64-ucrt-x86_64-python-pip"
+		"mingw-w64-ucrt-x86_64-meson-python"
+		"mingw-w64-ucrt-x86_64-libarchive"
+	)
+}
+catch
+{
+	throw "
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
+	"
+}
+finally
+{
+	Pop-Location
+}
