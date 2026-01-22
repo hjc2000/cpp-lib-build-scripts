@@ -2,6 +2,7 @@ $build_script_path = get-script-dir.ps1
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
 Push-Location
+
 try
 {
 	Apt-Ensure-Packets @("stow")
@@ -20,9 +21,12 @@ try
 }
 catch
 {
-	throw
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {
-
+	Pop-Location
 }

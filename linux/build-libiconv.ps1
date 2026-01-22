@@ -11,6 +11,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
@@ -39,5 +40,5 @@ catch
 }
 finally
 {
-
+	Pop-Location
 }

@@ -2,6 +2,7 @@ $build_script_path = get-script-dir.ps1
 . $build_script_path/../.base-script/prepare-for-building.ps1
 
 Push-Location
+
 try
 {
 	New-Item -Path $total_install_path -ItemType Directory -Force
@@ -13,7 +14,14 @@ try
 		Install-Lib -src_path $lib -dst_path $total_install_path
 	}
 }
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
+}
 finally
 {
-
+	Pop-Location
 }

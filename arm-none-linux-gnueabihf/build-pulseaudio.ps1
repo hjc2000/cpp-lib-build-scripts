@@ -5,6 +5,7 @@ $build_script_path = get-script-dir.ps1
 $source_path = "$repos_path/pulseaudio/"
 $install_path = "$libs_path/pulseaudio/"
 $build_path = "$source_path/jc_build/"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -35,6 +36,7 @@ try
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File -arch "armv4"
 	Set-Location $source_path
+
 	meson setup jc_build/ `
 		-Dbashcompletiondir="$build_path" `
 		--prefix="$install_path" `
@@ -63,7 +65,14 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
+}
 finally
 {
-
+	Pop-Location
 }

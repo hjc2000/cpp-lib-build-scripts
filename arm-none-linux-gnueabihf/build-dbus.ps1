@@ -5,6 +5,7 @@ $build_script_path = get-script-dir.ps1
 $source_path = "$repos_path/dbus/"
 $install_path = "$libs_path/dbus/"
 $build_path = "$source_path/jc_build/"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -12,6 +13,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	# 构建依赖项
@@ -35,6 +37,7 @@ try
 "@
 
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		-DCMAKE_TOOLCHAIN_FILE="$build_path/toolchain.cmake" `
 		-DCMAKE_INSTALL_PREFIX="$install_path" `
@@ -58,9 +61,12 @@ try
 }
 catch
 {
-	throw
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {
-
+	Pop-Location
 }

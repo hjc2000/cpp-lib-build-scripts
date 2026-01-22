@@ -4,6 +4,7 @@ $build_script_path = get-script-dir.ps1
 
 $source_path = "$repos_path/libffi/libffi-3.4.6"
 $install_path = "$libs_path/libffi/"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -38,7 +39,14 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
+}
 finally
 {
-
+	Pop-Location
 }

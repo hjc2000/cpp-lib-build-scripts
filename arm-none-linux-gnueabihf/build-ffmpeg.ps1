@@ -4,6 +4,7 @@ $build_script_path = get-script-dir.ps1
 
 $source_path = "$repos_path/FFmpeg/"
 $install_path = "$libs_path/ffmpeg/"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -11,6 +12,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	# 构建依赖项
@@ -24,6 +26,7 @@ try
 
 
 	$env:PATH = "$libs_path/sdl2/bin/:$env:PATH"
+
 	Copy-Item -Path "$libs_path/sdl2/bin/sdl2-config" `
 		-Destination "$libs_path/sdl2/bin/arm-none-linux-gnueabihf-sdl2-config"
 
@@ -60,7 +63,14 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
+}
 finally
 {
-
+	Pop-Location
 }

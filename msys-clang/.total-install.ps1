@@ -3,6 +3,7 @@ $build_script_path = get-script-dir.ps1
 . $build_script_path/prepare.ps1
 
 Push-Location
+
 try
 {
 	New-Item -Path $total_install_path -ItemType Directory -Force
@@ -23,5 +24,5 @@ catch
 }
 finally
 {
-
+	Pop-Location
 }

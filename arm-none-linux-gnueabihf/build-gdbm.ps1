@@ -4,6 +4,7 @@ $build_script_path = get-script-dir.ps1
 
 $source_path = "$repos_path/gdbm/gdbm-1.23"
 $install_path = "$libs_path/gdbm"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -11,6 +12,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
@@ -38,9 +40,12 @@ try
 }
 catch
 {
-	throw
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {
-
+	Pop-Location
 }

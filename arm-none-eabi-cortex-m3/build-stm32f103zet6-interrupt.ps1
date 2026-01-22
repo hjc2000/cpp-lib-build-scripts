@@ -13,6 +13,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	& "$build_script_path/build-stm32f103zet6-hal.ps1"
@@ -49,5 +50,5 @@ catch
 }
 finally
 {
-
+	Pop-Location
 }

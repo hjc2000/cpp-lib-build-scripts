@@ -16,7 +16,14 @@ try
 		Install-Lib -src_path $lib -dst_path $total_install_path
 	}
 }
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
+}
 finally
 {
-
+	Pop-Location
 }

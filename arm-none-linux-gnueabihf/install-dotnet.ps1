@@ -6,6 +6,7 @@ $source_path = "$repos_path/aspnetcore-8.0.2/"
 $install_path = "$libs_path/aspnetcore-8.0.2/"
 
 Push-Location $repos_path
+
 try
 {
 	wget-repo.ps1 -workspace_dir $repos_path `
@@ -22,7 +23,14 @@ try
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
 }
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
+}
 finally
 {
-
+	Pop-Location
 }

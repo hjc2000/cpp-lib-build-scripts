@@ -56,5 +56,5 @@ catch
 }
 finally
 {
-
+	Pop-Location
 }

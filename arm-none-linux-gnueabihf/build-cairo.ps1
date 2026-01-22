@@ -5,6 +5,7 @@ $build_script_path = get-script-dir.ps1
 $source_path = "$repos_path/cairo/"
 $install_path = "$libs_path/cairo/"
 $build_path = "$source_path/jc_build/"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -12,6 +13,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	Apt-Ensure-Packets @("docbook-utils", "docbook", "docbook-to-man", "docbook-xml")
@@ -32,6 +34,7 @@ try
 	New-Empty-Dir -Path $build_path
 	New-Meson-Cross-File
 	Set-Location $source_path
+
 	meson setup jc_build/ `
 		--prefix="$install_path" `
 		--cross-file="$build_path/cross_file.ini" `
@@ -56,9 +59,12 @@ try
 }
 catch
 {
-	throw
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {
-
+	Pop-Location
 }

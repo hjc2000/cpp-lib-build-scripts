@@ -13,6 +13,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	git-get-repo.ps1 -git_url "https://github.com/hjc2000/stm32f103zet6-hal.git"
@@ -48,5 +49,5 @@ catch
 }
 finally
 {
-
+	Pop-Location
 }
