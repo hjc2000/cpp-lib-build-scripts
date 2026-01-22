@@ -5,6 +5,7 @@ $build_script_path = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 $source_path = "$repos_path/stm32h723zgt6-hal"
 $install_path = "$libs_path/stm32h723zgt6-hal"
 $build_path = "$source_path/jc_build"
+
 if (Test-Path -Path $install_path)
 {
 	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
@@ -12,6 +13,7 @@ if (Test-Path -Path $install_path)
 }
 
 Push-Location $repos_path
+
 try
 {
 	& "$build_script_path/build-bsp-interface.ps1"
@@ -20,6 +22,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		--preset "arm-none-eabi-cortex-m7-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
@@ -38,6 +41,13 @@ try
 	ninja install
 
 	Install-Lib -src_path $install_path -dst_path $total_install_path
+}
+catch
+{
+	throw "
+	$(get-script-position.ps1)
+	$(${PSItem}.Exception.Message)
+	"
 }
 finally
 {
