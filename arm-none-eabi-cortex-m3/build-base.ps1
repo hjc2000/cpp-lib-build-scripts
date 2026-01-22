@@ -1,21 +1,23 @@
-$build_script_path = get-script-dir.ps1
-. $build_script_path/../.base-script/prepare-for-building.ps1
-. $build_script_path/prepare.ps1
-
-$source_path = "$repos_path/base"
-$install_path = "$libs_path/base"
-$build_path = "$source_path/jc_build"
-
-if (Test-Path -Path $install_path)
-{
-	Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
-	return 0
-}
-
-Push-Location $repos_path
+Push-Location
 
 try
 {
+	$build_script_path = get-script-dir.ps1
+	. $build_script_path/../.base-script/prepare-for-building.ps1
+	. $build_script_path/prepare.ps1
+
+	$source_path = "$repos_path/base"
+	$install_path = "$libs_path/base"
+	$build_path = "$source_path/jc_build"
+
+	if (Test-Path -Path $install_path)
+	{
+		Write-Host "$install_path 已存在，不编译，直接返回。如需编译，请先删除目录。"
+		return 0
+	}
+
+	Set-Location $repos_path
+
 	& "$build_script_path/build-boost.ps1"
 	& "$build_script_path/build-nlohmann-json.ps1"
 
@@ -23,6 +25,7 @@ try
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
+
 	cmake -G "Ninja" $source_path `
 		--preset "arm-none-eabi-cortex-m3-release" `
 		-DCMAKE_INSTALL_PREFIX="$install_path"
@@ -44,8 +47,8 @@ try
 catch
 {
 	throw "
-	$(get-script-position.ps1)
-	$(${PSItem}.Exception.Message)
+		$(get-script-position.ps1)
+		$(${PSItem}.Exception.Message)
 	"
 }
 finally
