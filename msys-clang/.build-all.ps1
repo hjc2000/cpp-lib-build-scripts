@@ -26,6 +26,7 @@ try
 	try-remove-items --paths "$libs_path/avmixer"
 	try-remove-items --paths "$libs_path/rename-with-numbering"
 	try-remove-items --paths "$libs_path/copy-truthfully"
+	try-remove-items --paths "$libs_path/sync-time"
 	$PSNativeCommandUseErrorActionPreference = $false
 
 	& "$build_script_path/build-base.ps1"
@@ -44,6 +45,7 @@ try
 	& "$build_script_path/build-avmixer.ps1"
 	& "$build_script_path/build-rename-with-numbering.ps1"
 	& "$build_script_path/build-copy-truthfully.ps1"
+	& "$build_script_path/build-sync-time.ps1"
 }
 catch
 {
