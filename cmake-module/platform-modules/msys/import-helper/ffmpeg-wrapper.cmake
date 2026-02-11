@@ -1,6 +1,8 @@
 function(target_import_ffmpeg_wrapper target_name visibility)
-    target_include_directories(${target_name} ${visibility} ${libs_path}/ffmpeg-wrapper/include/)
-	target_auto_link_lib(${target_name} ffmpeg-wrapper ${libs_path}/ffmpeg-wrapper/lib/)
+	set(lib_name "ffmpeg-wrapper")
+
+    target_include_directories(${target_name} ${visibility} "${libs_path}/${lib_name}/include/")
+	target_add_source_files_recurse(${target_name} "${libs_path}/${lib_name}/obj/")
 
 	target_import_ffmpeg(${target_name} ${visibility})
 	target_import_base(${target_name} ${visibility})
