@@ -27,8 +27,6 @@ endfunction()
 
 # 递归收集 ${source_path} 下的所有源文件，添加到目标 ${target_name} 中。
 function(target_add_source_files_recurse target_name source_path)
-	get_target_property(target_type ${target_name} TYPE)
-
 	file(GLOB_RECURSE source_file_list
 		"${source_path}/*.c"
 		"${source_path}/*.cpp"
@@ -36,14 +34,17 @@ function(target_add_source_files_recurse target_name source_path)
 
 	target_sources(${target_name} PRIVATE ${source_file_list})
 
-	# 判断项目类型是否为可执行文件
-	if("${target_type}" STREQUAL "EXECUTABLE")
-		file(GLOB_RECURSE source_file_list
-			"${source_path}/*.o"
-			"${source_path}/*.obj")
-	endif()
+	get_target_property(target_type ${target_name} TYPE)
 
-	target_sources(${target_name} PRIVATE ${source_file_list})
+	file(GLOB_RECURSE source_file_list
+		"${source_path}/*.o"
+		"${source_path}/*.obj")
+
+	if("${target_type}" STREQUAL "EXECUTABLE")
+		target_sources(${target_name} PRIVATE ${source_file_list})
+	elseif("${target_type}" STREQUAL "OBJECT_LIBRARY")
+		target_sources(${target_name} PUBLIC ${source_file_list})
+	endif()
 endfunction()
 
 # endregion
