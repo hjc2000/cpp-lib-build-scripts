@@ -18,7 +18,7 @@ function(target_import_qt_core target_name visibility)
     target_auto_link_lib(${target_name} Qt6Core ${libs_path}/qt5/lib)
     target_auto_link_lib(${target_name} qwindows ${libs_path}/qt5/plugins/platforms)
 
-	target_link_libraries(${target_name} PUBLIC
+	target_link_libraries(${target_name} ${visibility}
 		setupapi
 		z
 		synchronization
@@ -94,7 +94,7 @@ endfunction()
 
 # qwt 是一个基于 qt 的绘制函数曲线的库。
 function(target_import_qwt target_name visibility)
-	target_link_libraries(${target_name} PUBLIC qwt-qt6)
+	target_link_libraries(${target_name} ${visibility} qwt-qt6)
 	target_import_qt_widgets(${target_name} ${visibility})
 endfunction()
 
