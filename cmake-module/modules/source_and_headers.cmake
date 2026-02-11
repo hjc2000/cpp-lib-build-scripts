@@ -29,21 +29,18 @@ endfunction()
 function(target_add_source_files_recurse target_name source_path)
 	get_target_property(target_type ${target_name} TYPE)
 
+	file(GLOB_RECURSE source_file_list
+		"${source_path}/*.c"
+		"${source_path}/*.cpp"
+		"${source_path}/*.s")
+
+	target_sources(${target_name} PRIVATE ${source_file_list})
+
 	# 判断项目类型是否为可执行文件
 	if("${target_type}" STREQUAL "EXECUTABLE")
-		# 如果是可执行文件，收集所有指定的源文件，包括 .obj 文件
 		file(GLOB_RECURSE source_file_list
-			"${source_path}/*.c"
-			"${source_path}/*.cpp"
-			"${source_path}/*.s"
 			"${source_path}/*.o"
 			"${source_path}/*.obj")
-	else()
-		# 如果不是可执行文件，不收集 .obj 文件
-		file(GLOB_RECURSE source_file_list
-			"${source_path}/*.c"
-			"${source_path}/*.cpp"
-			"${source_path}/*.s")
 	endif()
 
 	target_sources(${target_name} PRIVATE ${source_file_list})
