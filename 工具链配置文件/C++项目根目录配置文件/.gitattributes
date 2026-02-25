@@ -31,32 +31,7 @@
 # Blazor 相关文件
 *.razor text eol=crlf
 
-# 压缩包
-*.zip 		binary
-*.tar.* 	binary
-*.bz2 		binary
-*.gz 		binary
-*.rar 		binary
-*.7z 		binary
-*.xz 		binary
-
-# 字体文件
-*.ttf 		binary
-*.woff 		binary
-*.woff2 	binary
-*.eot 		binary
-*.otf 		binary
-
-###############################################################################
-# Set the merge driver for project and solution files
-#
-# Merging from the command prompt will add diff markers to the files if there
-# are conflicts (Merging from VS is not affected by the settings below, in VS
-# the diff markers are never inserted). Diff markers may cause the following
-# file extensions to fail to load in VS. An alternative would be to treat
-# these files as binary and thus will always conflict and require user
-# intervention with every merge. To do so, just uncomment the entries below
-###############################################################################
+# Visual Studio 项目文件
 *.sln       	text eol=crlf
 *.csproj    	text eol=crlf
 *.vbproj    	text eol=crlf
