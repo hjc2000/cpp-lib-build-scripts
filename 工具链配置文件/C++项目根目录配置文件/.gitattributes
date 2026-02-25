@@ -32,13 +32,6 @@
 *.razor text eol=crlf
 *.wasm binary
 
-# 音视频文件
-*.ts 		binary
-*.mp4		binary
-*.mkv 		binary
-*.mp3 		binary
-*.flac 		binary
-
 # 压缩包
 *.zip 		binary
 *.tar.* 	binary
@@ -104,6 +97,13 @@
 *.bmp filter=lfs diff=lfs merge=lfs -text
 *.ico filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
+
+# 音视频
+*.ts filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mkv filter=lfs diff=lfs merge=lfs -text
+*.flac filter=lfs diff=lfs merge=lfs -text
 
 # 程序
 *.o filter=lfs diff=lfs merge=lfs -text
