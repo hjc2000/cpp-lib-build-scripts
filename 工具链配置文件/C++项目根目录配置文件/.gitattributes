@@ -32,20 +32,6 @@
 *.razor text eol=crlf
 *.wasm binary
 
-# 将静态库 (.lib, .a) 和动态库 (.dll, .so, .dylib) 文件标记为二进制
-*.lib 		binary
-*.a 		binary
-*.dll 		binary
-*.so 		binary
-*.dylib 	binary
-*.exe 		binary
-*.o 		binary
-*.obj 		binary
-*.out 		binary
-*.pdb 		binary
-*.bin 		binary
-*.elf		binary
-
 # 音视频文件
 *.ts 		binary
 *.mp4		binary
