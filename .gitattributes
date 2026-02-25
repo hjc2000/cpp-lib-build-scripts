@@ -1,37 +1,8 @@
-###############################################################################
-# Set default behavior for command prompt diff.
-#
-# This is need for earlier builds of msysgit that does not have it on by
-# default for csharp files.
-# Note: This is only used by command line
-###############################################################################
-#*.cs     diff=csharp
-
-###############################################################################
-# diff behavior for common document formats
-# 
-# Convert binary document formats to text before diffing them. This feature
-# is only available from the command line. Turn it on by uncommenting the 
-# entries below.
-###############################################################################
-#*.doc   diff=astextplain
-#*.DOC   diff=astextplain
-#*.docx  diff=astextplain
-#*.DOCX  diff=astextplain
-#*.dot   diff=astextplain
-#*.DOT   diff=astextplain
-#*.pdf   diff=astextplain
-#*.PDF   diff=astextplain
-#*.rtf   diff=astextplain
-#*.RTF   diff=astextplain
-
-* 			text=auto
+* 			text eol=input
 .txt 		text eol=crlf
 
 # 将 Shell 脚本文件标记为文本，并使用 LF 作为行结束符
 *.sh 		text eol=lf
-*.cmd		text eol=crlf
-*.bat		text eol=crlf
 
 # 将 C、C++ 和 C# 源文件和头文件标记为文本，并使用 LF 作为行结束符
 *.[cC] 		text eol=crlf
@@ -42,7 +13,6 @@
 *.hxx 		text eol=crlf
 *.cc 		text eol=crlf
 *.cs		text eol=crlf
-*.ps1		text eol=crlf
 
 # 将 JavaScript 文件及相关前端文件标记为文本，并使用 LF 作为行结束符
 *.js 		text eol=crlf
@@ -60,57 +30,8 @@
 
 # Blazor 相关文件
 *.razor text eol=crlf
-*.wasm binary
 
-# 将静态库 (.lib, .a) 和动态库 (.dll, .so, .dylib) 文件标记为二进制
-*.lib 		binary
-*.a 		binary
-*.dll 		binary
-*.so 		binary
-*.dylib 	binary
-*.exe 		binary
-*.o 		binary
-*.out 		binary
-*.pdb 		binary
-
-# 音视频文件
-*.ts 		binary
-*.mp4		binary
-*.mkv 		binary
-*.mp3 		binary
-*.flac 		binary
-
-# 图片
-*.jpg   	binary
-*.png   	binary
-*.gif   	binary
-
-# 压缩包
-*.zip 		binary
-*.tar.* 	binary
-*.bz2 		binary
-*.gz 		binary
-*.rar 		binary
-*.7z 		binary
-*.xz 		binary
-
-# 字体文件
-*.ttf 		binary
-*.woff 		binary
-*.woff2 	binary
-*.eot 		binary
-*.otf 		binary
-
-###############################################################################
-# Set the merge driver for project and solution files
-#
-# Merging from the command prompt will add diff markers to the files if there
-# are conflicts (Merging from VS is not affected by the settings below, in VS
-# the diff markers are never inserted). Diff markers may cause the following 
-# file extensions to fail to load in VS. An alternative would be to treat
-# these files as binary and thus will always conflict and require user
-# intervention with every merge. To do so, just uncomment the entries below
-###############################################################################
+# Visual Studio 项目文件
 *.sln       	text eol=crlf
 *.csproj    	text eol=crlf
 *.vbproj    	text eol=crlf
@@ -123,3 +44,58 @@
 *.modelproj 	text eol=crlf
 *.sqlproj   	text eol=crlf
 *.wwaproj   	text eol=crlf
+
+# 文档
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.xlsx filter=lfs diff=lfs merge=lfs -text
+*.xls filter=lfs diff=lfs merge=lfs -text
+*.docx filter=lfs diff=lfs merge=lfs -text
+*.doc filter=lfs diff=lfs merge=lfs -text
+*.pptx filter=lfs diff=lfs merge=lfs -text
+*.ppt filter=lfs diff=lfs merge=lfs -text
+
+# 图片
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.bmp filter=lfs diff=lfs merge=lfs -text
+*.ico filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+
+# 音视频
+*.ts filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mkv filter=lfs diff=lfs merge=lfs -text
+*.flac filter=lfs diff=lfs merge=lfs -text
+
+# 程序
+*.o filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text
+*.a filter=lfs diff=lfs merge=lfs -text
+*.lib filter=lfs diff=lfs merge=lfs -text
+*.so filter=lfs diff=lfs merge=lfs -text
+*.dll filter=lfs diff=lfs merge=lfs -text
+*.exe filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
+*.out filter=lfs diff=lfs merge=lfs -text
+*.dylib filter=lfs diff=lfs merge=lfs -text
+*.pdb filter=lfs diff=lfs merge=lfs -text
+*.elf filter=lfs diff=lfs merge=lfs -text
+*.wasm filter=lfs diff=lfs merge=lfs -text
+
+# 压缩文件
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.tar.* filter=lfs diff=lfs merge=lfs -text
+*.gz filter=lfs diff=lfs merge=lfs -text
+*.7z filter=lfs diff=lfs merge=lfs -text
+*.bz2 filter=lfs diff=lfs merge=lfs -text
+*.rar filter=lfs diff=lfs merge=lfs -text
+*.xz filter=lfs diff=lfs merge=lfs -text
+
+# 字体文件
+*.ttf filter=lfs diff=lfs merge=lfs -text
+*.woff filter=lfs diff=lfs merge=lfs -text
+*.woff2 filter=lfs diff=lfs merge=lfs -text
+*.eot filter=lfs diff=lfs merge=lfs -text
+*.otf filter=lfs diff=lfs merge=lfs -text
