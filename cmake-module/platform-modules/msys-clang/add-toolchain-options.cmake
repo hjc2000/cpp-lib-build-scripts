@@ -44,6 +44,7 @@ function(target_add_platform_toolchain_options target_name)
 		-Wno-unused-parameter
 		-Wno-deprecated-literal-operator
 		-Wno-ignored-attributes
+		-Wno-nonportable-include-path
     )
 
     target_compile_options(${target_name} PUBLIC ${options})
