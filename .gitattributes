@@ -1,5 +1,5 @@
 * -text
-.txt 		text eol=crlf
+*.txt 		text eol=crlf
 
 # 将 Shell 脚本文件标记为文本，并使用 LF 作为行结束符
 *.sh 		text eol=lf
