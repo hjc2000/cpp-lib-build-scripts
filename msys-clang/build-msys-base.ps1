@@ -7,8 +7,8 @@ try
 	. $build_script_path/../.base-script/prepare-for-building.ps1
 	. $build_script_path/prepare.ps1
 
-	$source_path = "$repos_path/msys-base-filesystem"
-	$install_path = "$libs_path/msys-base-filesystem"
+	$source_path = "$repos_path/msys-base"
+	$install_path = "$libs_path/msys-base"
 	$build_path = "$source_path/jc_build"
 
 	if (Test-Path -Path $install_path)
@@ -21,7 +21,7 @@ try
 
 	& "$build_script_path/build-base.ps1"
 
-	git-get-repo.ps1 -git_url "https://github.com/hjc2000/msys-base-filesystem.git"
+	git-get-repo.ps1 -git_url "https://github.com/hjc2000/msys-base.git"
 
 	New-Empty-Dir $build_path
 	Set-Location $build_path
