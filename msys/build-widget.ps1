@@ -20,7 +20,7 @@ try
 	Set-Location $repos_path
 
 	& "$build_script_path/build-base.ps1"
-	& "$build_script_path/build-msys-base-filesystem.ps1"
+	& "$build_script_path/build-msys-base.ps1"
 	& "$build_script_path/build-qt5.ps1"
 	& "$build_script_path/build-zlib.ps1"
 	& "$build_script_path/build-libpng.ps1"
